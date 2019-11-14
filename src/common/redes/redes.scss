@@ -1,0 +1,9 @@
+.redes {
+    img {
+        height: 51px;
+
+        &:not(:last-child) {
+            //margin-right: 10px;
+        }
+    }
+}

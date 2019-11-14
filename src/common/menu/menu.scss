@@ -1,0 +1,140 @@
+// MEDIA QUERIES
+$ordenador: "min-width: 601px" ;
+$movil: "max-width: 600px";
+
+$color-primario: #2C2C2C;
+$margen-vertical-mv: 50px;
+
+.content-menu {
+    height: 100%;
+    width: 100%;
+
+    .logo { z-index: 2; }
+
+    .rutas { z-index: 3; }
+
+    .cruz { z-index: 4; }
+
+    .redes { z-index: 5; }
+
+    h3, h2 {
+        color: white;
+        font-family: "Century Gothic";
+    }
+
+    h2 {
+        font-size: 17pt;
+    }
+
+    // MOVIL
+    @media screen and ($movil) {
+        background-color: $color-primario;
+    
+        .texto {
+            z-index: 6;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            flex-direction: column;
+        }
+    
+        /*.logo {
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            margin-top: $margen-vertical-mv;
+        }*/
+
+        .logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            margin-top: $margen-vertical-mv;
+        }
+    
+        .rutas {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            flex-direction: column;    
+            
+            
+            h3, h2 {
+                color: white;
+                font-family: "Century Gothic";
+                font-size: 27pt;
+            }
+    
+            h3 {
+                font-weight: normal;
+            }
+        }
+    
+        .cruz {
+            position: absolute;
+            right: 0;
+            margin-top: $margen-vertical-mv;
+        }
+    
+        .redes {
+            bottom: 0;
+        }
+        
+    }
+
+    // ORDENADOR
+    @media screen and ($ordenador) {
+        .alinear-menu {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+
+            .logo {
+                width: 100%;
+            }
+        
+            .rutas {
+                width: 100%;
+                top: 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-right: $margen-vertical-mv;
+                flex-grow: 2;
+
+
+                h2, h3 {
+                    text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+                }
+                
+                .redes {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                }                
+            }
+        }
+        
+        h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin-bottom: $margen-vertical-mv;
+            margin-left: $margen-vertical-mv;
+            font-weight: normal;
+            font-size: normal;
+        }
+    
+        
+    }
+}
+
+
+

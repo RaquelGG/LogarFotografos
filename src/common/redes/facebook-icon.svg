@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67.812" height="79.789" viewBox="0 0 67.812 79.789">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        filter: url(#facebook-f-brands);
+      }
+    </style>
+    <filter id="facebook-f-brands" x="0" y="0" width="67.812" height="79.789" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feFlood flood-opacity="0.6"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="cls-2" transform="matrix(1, 0, 0, 1, 0, 0)">
+    <path id="facebook-f-brands-2" data-name="facebook-f-brands" class="cls-1" d="M35.8,14.506l.716-4.667H32.035V6.81a2.334,2.334,0,0,1,2.631-2.521H36.7V.315A24.828,24.828,0,0,0,33.088,0c-3.688,0-6.1,2.235-6.1,6.282V9.839h-4.1v4.667h4.1V25.789h5.045V14.506Z" transform="translate(4.11 27)"/>
+  </g>
+</svg>

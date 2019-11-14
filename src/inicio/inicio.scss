@@ -1,0 +1,65 @@
+// MEDIA QUERIES
+$ordenador: "min-width: 601px" ;
+$movil: "max-width: 600px";
+
+$margen-vertical-mv: 50px;
+.content {
+    height: 100%;
+    width: 100%;
+
+    .imagen {
+        z-index: -1;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo { z-index: 2; }
+    
+        .menu { z-index: 3; }
+    
+        .redes { z-index: 4; }
+    }
+
+    // MOVIL
+    @media screen and ($movil) {
+        /*.logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            margin-top: $margen-vertical-mv;
+        }*/
+    
+        .menu {
+            position: absolute;
+            right: 0;
+            margin-top: $margen-vertical-mv;
+        }
+    
+        .redes {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    // ORDENADOR
+    @media screen and ($ordenador) {
+        /*.logo {
+            width: 100%;
+            left: 0;
+            //margin-top: $margen-vertical-mv;
+        }*/
+
+        .redes {
+            bottom: 0;
+        }
+
+        .menu {
+            max-width: 2000px;
+        }
+    }
+}
