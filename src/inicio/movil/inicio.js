@@ -6,7 +6,7 @@ import "../inicio.scss";
 
 function Inicio() {
     return (
-        <div className="content">
+        <div className="content_inicio">
             <div className="menu">
                 <MenuIcon/>
             </div>

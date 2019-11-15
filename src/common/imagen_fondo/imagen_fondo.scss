@@ -1,0 +1,15 @@
+.content_imagen_fondo {
+    height: 100%;
+    width: 100%;
+
+    .imagen {
+        z-index: -1;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
