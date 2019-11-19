@@ -1,7 +1,7 @@
 import React from "react";
-import facebook from './facebook-icon.svg';
-import email from './email-icon.svg';
-import whatsapp from './whatsapp-icon.svg';
+import facebook from './img/facebook-icon.svg';
+import email from './img/email-icon.svg';
+import whatsapp from './img/whatsapp-icon.svg';
 import "./redes.scss";
 
 function Redes() {

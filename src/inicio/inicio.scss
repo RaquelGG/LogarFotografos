@@ -1,8 +1,4 @@
-// MEDIA QUERIES
-$ordenador: "min-width: 601px" ;
-$movil: "max-width: 600px";
-
-$margen-vertical-mv: 50px;
+@import '../common/estilos_comunes.scss';
 
 .content_inicio {
     height: 100%;
