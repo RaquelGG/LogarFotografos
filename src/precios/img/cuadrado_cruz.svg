@@ -1,0 +1,30 @@
+<svg id="CHEC" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #2c2c2c;
+        stroke-linecap: round;
+        stroke-width: 3px;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: #2c2c2c;
+      }
+    </style>
+  </defs>
+  <g id="Trazado_42" data-name="Trazado 42" class="cls-1">
+    <path class="cls-3" d="M0,0H27V27H0Z"/>
+    <path class="cls-4" d="M 3 3 L 3 24 L 24 24 L 24 3 L 3 3 M 0 0 L 27 0 L 27 27 L 0 27 L 0 0 Z"/>
+  </g>
+  <g id="Grupo_55" data-name="Grupo 55" transform="translate(6.5 7.5)">
+    <path id="Unión_4" data-name="Unión 4" class="cls-2" d="M7,6.5,0,13,7,6.5,0,0,7,6.5,14,0,7,6.5,14,13Z"/>
+  </g>
+</svg>

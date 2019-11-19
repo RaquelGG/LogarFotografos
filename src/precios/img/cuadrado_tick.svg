@@ -1,0 +1,20 @@
+<svg id="CHEC" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #eb8aa0;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <rect id="Rectángulo_40" data-name="Rectángulo 40" class="cls-1" width="27" height="27"/>
+  <g id="Grupo_55" data-name="Grupo 55" transform="translate(5.598 8.182)">
+    <path id="Unión_4" data-name="Unión 4" class="cls-2" d="M5.6,10.766l-.431.431.431-.431L0,5.167l5.6,5.6L16.364,0,5.6,10.766l.431.431Z"/>
+  </g>
+</svg>
