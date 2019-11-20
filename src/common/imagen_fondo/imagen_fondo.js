@@ -1,23 +1,14 @@
 import React from 'react';
+import Menu from '../menu/menu';
 import "./imagen_fondo.scss";
 
-function Imagen_fondo({Movil, Ordenador, fondo}) {
-    let dim = "height";
-    let val = window.innerHeight;
-    if (window.innerWidth > window.innerHeight) {
-        dim = "width";
-        val = window.innerWidth;
-    }
-    const movil = window.matchMedia("(max-width: 600px)").matches;
-    
+function Imagen_fondo({fondo, size_logo}) {
+
     return (
-        <div className="content_imagen_fondo">
+        <div className="content_imagen_fondo" style={{backgroundImage: 'url(' + fondo + ')'}}>
             <div className="imagen">
-                <img src={fondo} {...{[dim]: val}}/>
             </div>
-            <div>
-            { movil ? <Movil/> : <Ordenador/> }
-            </div>
+            <Menu size_logo={size_logo}/>
         </div>
     );
 }

@@ -1,4 +1,8 @@
 .content_imagen_fondo {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     height: 100%;
     width: 100%;
 
@@ -12,4 +16,5 @@
         justify-content: center;
         align-items: center;
     }
+    
 }

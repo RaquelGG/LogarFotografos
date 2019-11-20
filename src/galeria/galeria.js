@@ -4,7 +4,7 @@ import 'pro-gallery/dist/statics/main.css';
 import { items } from "./fotos/fotos"; 
 import { styleParams } from "./conf/consts";
 import { options } from "./conf/consts";
-import Menu from "../common/menu/ordenador/menu";
+import Menu from "../common/menu/menu";
 import "./galeria.scss";
 
 
