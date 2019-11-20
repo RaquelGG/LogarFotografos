@@ -1,32 +1,48 @@
-import React from 'react';
-//import fondo from "./fondo.jpg";
-//import Movil from "./movil/inicio";
-//import Ordenador from "./ordenador/inicio";
-import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
+import { ProGallery } from 'pro-gallery';
+import React, {useEffect, useState} from 'react';
+import 'pro-gallery/dist/statics/main.css';
+import { items } from "./fotos/fotos"; 
+import { styleParams } from "./conf/consts";
+import { options } from "./conf/consts";
+import Menu from "../common/menu/ordenador/menu";
 import "./galeria.scss";
 
-const imgWithClick = { cursor: "pointer" };
 
-const Galeria = ({ index, onClick, photo, margin, direction, top, left }) => {
-  const imgStyle = { margin: margin };
-  if (direction === "column") {
-    imgStyle.position = "absolute";
-    imgStyle.left = left;
-    imgStyle.top = top;
-  }
-
-  const handleClick = event => {
-    onClick(event, { photo, index });
+export function Galeria() {
+  
+  // The size of the gallery container. The images will fit themselves in it
+  const container = {
+    width: window.innerWidth,
+    height: window.innerHeight
   };
 
+  // The eventsListener will notify you anytime something has happened in the gallery.
+  const eventsListener = (eventName, eventData) => console.log({eventName, eventData}); 
+
+  // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
+  const scrollingElement = window;
+
   return (
-    <img
-      style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
-      {...photo}
-      onClick={onClick ? handleClick : null}
-      alt="img"
-    />
+    <div className="content_galeria">
+      <div className="menu">
+            <Menu logoWidth="350px" />
+      </div>
+      <ProGallery
+        items={items}
+        //options={options}
+        container={container}
+        scrollingElement={scrollingElement}
+        eventsListener={eventsListener}
+        styles={options}
+        
+        
+      />
+
+      </div>
   );
-};
+}
+
+  // Enjoy using your new gallery!
+  // For more options, visit https://github.com/wix-incubator/pro-gallery
 
 export default Galeria;
