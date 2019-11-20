@@ -5,15 +5,12 @@
     width: 100%;
     z-index: 1;
 
-    .logo { z-index: 2; }
-
-    .menu { z-index: 3; }
 
     .redes { z-index: 4; }
 
 
     // MOVIL
-    @media screen and ($movil) {
+   /* @media screen and ($movil) {
     
         .menu {
             position: absolute;
@@ -42,5 +39,5 @@
             display: flex;
             justify-content: space-around;
         }
-    }
+    }*/
 }

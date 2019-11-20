@@ -1,10 +1,31 @@
 @import '../estilos_comunes.scss';
 
+h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: $margen-vertical-mv;
+    margin-left: $margen-vertical-mv;
+    font-weight: normal;
+    font-size: normal;
+    color: white;
+}
+
 .content-menu {
     height: 100%;
-    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-left: 59px;
+    padding-top: 39px;
+    padding-right: 48px;
+    padding-bottom: 38px;
 
-    .logo { z-index: 2; }
+    /* Estilo Menu */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-transform: uppercase;
+    min-height: 9vh;
 
     .rutas { z-index: 3; }
 
@@ -12,78 +33,146 @@
 
     .redes { z-index: 5; }
 
-    h3, h2 {
-        color: white;
-        font-family: "Century Gothic";
+    .logo{
+        width: 100%;
+        z-index: 2;
     }
 
-    h2 {
-        font-size: 17pt;
+    .rutas{
+        width: 100%;
+        padding-top: 4vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-right: $margen-vertical-mv;
+        flex-grow: 2;
+
+        .nav-links{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+
+            li{
+                list-style: none;
+
+                a{
+                    color: white;
+                    text-decoration: none;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                    text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+                    font-size: 15pt;
+
+                    //-------- Esta Parte pertenece a la animación sobre el Menu // https://codepen.io/jstn/pen/zuDst
+                    display: inline-block;
+                    padding: 15px 20px;
+                    position: relative;
+                }
+
+                a:after {    
+                    background: none repeat scroll 0 0 transparent;
+                    bottom: 0;
+                    content: "";
+                    display: block;
+                    height: 2px;
+                    left: 50%;
+                    position: absolute;
+                    background: #fff;
+                    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                    width: 0;
+                  }
+                  a:hover:after { 
+                    width: 100%; 
+                    left: 0; 
+                  }
+
+                  // ----------------- Fin de animación
+            }
+        }
+
+        .redes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }   
+    }
+
+    .burger {
+        display: none;
+        cursor: pointer;
+    }
+    
+    .burger div{
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+        transition: all 0.3s ease;
     }
 
     // MOVIL
-    @media screen and ($movil) {
-        background-color: $color-primario;
-    
-        .texto {
-            z-index: 6;
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            flex-direction: column;
-        }
-    
-        /*.logo {
-            z-index: 2;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            margin-top: $margen-vertical-mv;
-        }*/
+   /* @media screen and ($movil) {
 
-        .logo {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            position: absolute;
-            margin-top: $margen-vertical-mv;
+        .logo{
+            display: none;
         }
-    
-        .rutas {
+
+        /*nav {
             display: flex;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            flex-direction: column;    
-            
-            
-            h3, h2 {
-                color: white;
-                font-family: "Century Gothic";
-                font-size: 27pt;
-            }
-    
-            h3 {
-                font-weight: normal;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 7vh;
+            background-color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+
+            .logo{
+                display: none;
             }
         }
-    
-        .cruz {
-            position: absolute;
-            right: 0;
-            margin-top: $margen-vertical-mv;
-        }
-    
-        .redes {
-            bottom: 0;
-        }
+
+        .content-menu{
         
-    }
+            .nav-links {
+                position: absolute;
+                right: 0px; 
+                height: 93vh;
+                top: 7vh;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 65%; 
+                transform: translateX(100%);
+
+                .logo{
+                    display: none;
+                }
+
+                li{
+                    opacity: 0;
+
+                    a{
+                        text-decoration: none;
+                        letter-spacing: 3px;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .burger {
+                display: block;
+                position: absolute;
+                right: 25px;
+                height: 50px;
+                width: 50px;
+            }
+        }
+    }*/
 
     // ORDENADOR
-    @media screen and ($ordenador) {
+   /* @media screen and ($ordenador) {
         .alinear-menu {
             width: 100%;
             display: flex;
@@ -126,9 +215,7 @@
             font-weight: normal;
             font-size: normal;
         }
-    
-        
-    }
+    }*/
 }
 
 
