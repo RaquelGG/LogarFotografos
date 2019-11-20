@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="414" height="128.8" viewBox="0 0 414 128.8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2c2c2c;
+      }
+
+      .cls-2 {
+        filter: url(#Trazado_37);
+      }
+
+      .cls-3 {
+        filter: url(#Trazado_85);
+      }
+    </style>
+    <filter id="Trazado_85" x="147.777" y="0" width="248.613" height="116.003" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Trazado_37" x="0" y="7.6" width="414" height="121.2" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="9" result="blur-2"/>
+      <feFlood flood-opacity="0.749"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="fondo_titulo" transform="translate(27 -209.202)">
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, -27, 209.2)">
+      <path id="Trazado_85-2" data-name="Trazado 85" class="cls-1" d="M0,0H224l-3.1,58.43L0,75Z" transform="matrix(0.99, 0.1, -0.1, 0.99, 164.62, 9)"/>
+    </g>
+    <g class="cls-2" transform="matrix(1, 0, 0, 1, -27, 209.2)">
+      <path id="Trazado_37-2" data-name="Trazado 37" class="cls-1" d="M0,0H360V67.2H0Z" transform="translate(27 34.6)"/>
+    </g>
+  </g>
+</svg>

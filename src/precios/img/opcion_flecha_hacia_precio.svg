@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="72.633" viewBox="0 0 27 72.633">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(0,0,0,0);
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <path id="Unión_5" data-name="Unión 5" class="cls-1" d="M68.633,14.375,58.628,23Zm-20.726,0L58.628,23ZM58.628.719v0ZM0,0H0Z" transform="translate(2 70.633) rotate(-90)"/>
+</svg>
