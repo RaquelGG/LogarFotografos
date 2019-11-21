@@ -1,63 +1,189 @@
-// MEDIA QUERIES
-$ordenador: "min-width: 601px" ;
-$movil: "max-width: 600px";
+@import '../common/estilos_comunes.scss';
 
-$margen-vertical-mv: 50px;
-.content {
+.content_precios {
     height: 100%;
-    width: 100%;
+    width: 100%;    
+    text-transform: uppercase;
 
-    .imagen {
-        z-index: -1;
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
-        position: absolute;
+    .subtitulo {
+        color: white;
+    }
+
+    .opcion_1 {
+        //mask-image: none;
+        background-color: #ACB48A;
+    }
+    .opcion_2 {
+        background-color: #EB8AA0;
+    }
+    .opcion_3 {
+        background-color: #1AD2C2;
+    }
+
+    ul, li {
+        list-style: none;
+    }
+
+    .flecha {
+        margin-left: $margen-peque-mv;
+        height: 12px;
+        width: 14px;
+    }
+
+    .alinear {
         display: flex;
-        justify-content: center;
         align-items: center;
-
-        .logo { z-index: 2; }
-    
-        .menu { z-index: 3; }
-    
-        .redes { z-index: 4; }
+        font-size: 21px;
+        
+        .imagen_lista {
+            margin: 5px $margen-peque-mv 5px 0;
+            //height: 27px;
+            width: 27px;
+        }
     }
 
     // MOVIL
     @media screen and ($movil) {
-        /*.logo {
+        .fondo_titulo {
             width: 100%;
+            margin: 0;
+            display: flex;
+
+            h1 {
+                position: absolute;
+                z-index: 3;
+                color: white;
+                margin-left: $margen-peque-mv;
+                font-size: 40px;
+                left: 0;
+                margin: $margen-peque-mv 0 0 $margen-peque-mv;
+            }
+
+            .fondo_titulo_giro1 {
+                z-index: 2;
+                background-color: $color_primario;
+                box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+                position: absolute;
+                height: 70px;
+                width: 100%;
+            }
+            .fondo_titulo_giro2 {
+                z-index: 1;
+                position: absolute;
+                width: 40%;
+                right: 0;
+                background-color: $color_primario;
+
+                transform: rotate(14deg);
+                
+                box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+                height: 20px;
+                
+            }
+        }
+        
+        .opciones {
+            width: 100%;
+            position: absolute;
             display: flex;
             justify-content: center;
-            position: absolute;
-            margin-top: $margen-vertical-mv;
-        }*/
-    
-        .menu {
-            position: absolute;
-            right: 0;
-            margin-top: $margen-vertical-mv;
-        }
-    
-        .redes {
-            position: absolute;
-            bottom: 0;
+            flex-direction: column;
+            
+
+            .fondo_precios {
+                margin-top: $margen-vertical-mv;
+                margin-bottom: $margen-vertical-mv;
+
+                h2 {
+                    margin: 0;
+                }
+
+
+                .opcion_1_precio {
+                    color: #ACB48A;
+                    z-index: 1;
+                }
+
+                .opcion_2_precio {
+                    color: #D8BDC0;
+                    z-index: 1;
+                }
+
+                .opcion_3_precio {
+                    color: #95DBD5;
+                    z-index: 1;
+                }
+                
+                .fondo_giro1 {
+                    z-index: 1;
+                    position: absolute;
+                    width: 105%;
+                    background-color: $color_primario;
+                    transform: rotate(8deg);
+                    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+                    height: 100px;
+                }
+                .fondo_giro2 {
+                    position: absolute;
+                    background-color: $color_primario;
+                    transform: rotate(-8deg);
+                    height: 100px;
+                    width: 105%;
+                    
+                }
+            }
+
+            .alinear_fondo {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .opcion {
+                background-repeat: no-repeat;
+                background-size: 100%;
+                
+                // el resto tiene pico
+                &:not(:first-child) {
+                    background-image: url(./img/opcion_fondo_oscuro_top.svg);
+                }
+
+                &:first-child {
+                    background-color: #ACB48A;
+                    mask-image: none;
+                }
+                .primero {
+                    background-color: #ACB48A;
+                    mask-image: none;
+                }
+                .fondo_opcion_color {
+                    mask-image: url(./img/opcion_fondo_color_top.svg);
+                    height: 80px;
+                    margin-top: 20px;
+                    mask-size: 100%;
+                    
+                }      
+            }
+
+            .regalo {
+                margin-top: 15px;
+                margin-bottom: 5px;
+                font-size: 25px;
+            }
+            .ver_fotos {
+                margin-top: 15px;
+                margin-bottom: 5px;
+                font-size: 15px;
+                color: $color_primario;
+                display: flex;
+                align-items: center;
+            }
         }
     }
-
     // ORDENADOR
     @media screen and ($ordenador) {
-        .logo {
-            margin-left: $margen-vertical-mv;
-        }
-
-        .redes {
-            bottom: 0;
-        }
-
-        .menu {
-            max-width: 2000px;
-        }
+        
     }
 }
