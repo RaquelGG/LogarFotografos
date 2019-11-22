@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="4" viewBox="0 0 360 4">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #2c2c2c;
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 20;
+      }
+    </style>
+  </defs>
+  <g id="linea_discontinuaa" transform="translate(0 2)">
+    <path id="Trazado_53" data-name="Trazado 53" class="cls-1" d="M0,0H121"/>
+    <line id="Línea_25" data-name="Línea 25" class="cls-2" x2="239" transform="translate(121)"/>
+  </g>
+</svg>

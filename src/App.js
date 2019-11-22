@@ -1,10 +1,13 @@
 import React from 'react';
 import Inicio from "./inicio/inicio"
+import Precios from "./precios/precios"
 
 function App() {
     return (
-        <Inicio/>
+        //<Menu/>
+        //<Inicio/>
         //<Galeria/>
+        <Precios/>
     );
 }
 
