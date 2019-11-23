@@ -4,9 +4,16 @@ $movil: "max-width: 728px";
 $margen-vertical-mv: 50px;
 $margen-peque-mv: 10px;
 $margen-grande: 100px;
+
+// COLORES
 $color-primario: #2C2C2C;
+$color-texto-secundario: rgb(179, 179, 179);
 
 body {
     font-family: "Century Gothic", sans-serif;
     //font-size: 27pt;
+}
+
+.sombra {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
 }
