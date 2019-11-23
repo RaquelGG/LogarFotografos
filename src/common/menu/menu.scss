@@ -1,222 +1,217 @@
 @import '../estilos_comunes.scss';
 
-h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin-bottom: $margen-vertical-mv;
-    margin-left: $margen-vertical-mv;
-    font-weight: normal;
-    font-size: normal;
-    color: white;
-}
-
-.content-menu {
-    height: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    margin-left: 59px;
-    padding-top: 39px;
-    padding-right: 48px;
-    padding-bottom: 38px;
-
-    /* Estilo Menu */
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    text-transform: uppercase;
-    min-height: 9vh;
-
-    .rutas { z-index: 3; }
-
-    .cruz { z-index: 4; }
-
-    .redes { z-index: 5; }
-
-    .logo{
-        width: 100%;
-        z-index: 2;
-    }
-
-    .rutas{
-        width: 100%;
-        padding-top: 4vh;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-right: $margen-vertical-mv;
-        flex-grow: 2;
-
-        .nav-links{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-
-            li{
-                list-style: none;
-
-                a{
-                    color: white;
-                    text-decoration: none;
-                    letter-spacing: 1px;
-                    font-weight: bold;
-                    text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
-                    font-size: 15pt;
-
-                    //-------- Esta Parte pertenece a la animación sobre el Menu // https://codepen.io/jstn/pen/zuDst
-                    display: inline-block;
-                    padding: 15px 20px;
-                    position: relative;
-                }
-
-                a:after {    
-                    background: none repeat scroll 0 0 transparent;
-                    bottom: 0;
-                    content: "";
-                    display: block;
-                    height: 2px;
-                    left: 50%;
-                    position: absolute;
-                    background: #fff;
-                    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-                    width: 0;
-                  }
-                  a:hover:after { 
-                    width: 100%; 
-                    left: 0; 
-                  }
-
-                  // ----------------- Fin de animación
-            }
-        }
-
-        .redes {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }   
-    }
-
-    .burger {
+// MOVIL
+@media screen and ($movil) {
+    
+    .redes-ordenador{
         display: none;
-        cursor: pointer;
+    }
+
+    .terminos-ordenador{
+        display: none;
+    }
+
+    .logo-pc{
+        display: none;
     }
     
+    .nav-links {
+        position: absolute;
+        background-color: $color-primario;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%; 
+        height: 100%;
+        right: 0;
+        justify-content: space-around;
+        transform: translateX(100%);
+        margin-top: 0;
+
+        li {
+            opacity: 0;
+            list-style: none;
+
+            a{ /* Enlaces dentro de la lista*/
+                text-decoration: none;
+                letter-spacing: 3px;
+                font-weight: bold;
+                font-size: 20px;
+                color: white;
+            }
+
+            h3{
+                text-decoration: none;
+                font-size: 14px;
+                color: white;
+                font-family: "Century Gothic";
+            }
+        }
+    } 
+
+    .burger {
+        display: flex;
+        position: absolute;
+        right: 0px;
+        top: 14px;
+        height: 47px;
+        width: 47px;
+        border-color: white;
+        border: 2px solid white;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     .burger div{
         width: 25px;
         height: 3px;
         background-color: white;
-        margin: 5px;
+        margin: 2.5px;
         transition: all 0.3s ease;
     }
+}
 
-    // MOVIL
-   /* @media screen and ($movil) {
+@media screen and ($ordenador) {
+            
+    .content-menu {
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-transform: uppercase;
+        min-height: 9vh;
 
-        .logo{
-            display: none;
+        h3{
+            font-family: "Century Gothic";
+            font-weight: normal;
         }
 
-        /*nav {
+        .rutas { z-index: 3; }
+
+        .cruz { z-index: 4; }
+
+        .redes { z-index: 5; }
+
+        .logo-pc{
+            z-index: 2;
+            width: 100%;
+        }
+    
+        .rutas{
+            width: 100%;
+            padding-top: 4vh;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            min-height: 7vh;
-            background-color: #FFFFFF;
-            font-family: 'Poppins', sans-serif;
-
-            .logo{
-                display: none;
-            }
-        }
-
-        .content-menu{
-        
-            .nav-links {
-                position: absolute;
-                right: 0px; 
-                height: 93vh;
-                top: 7vh;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 65%; 
-                transform: translateX(100%);
-
-                .logo{
-                    display: none;
-                }
-
-                li{
-                    opacity: 0;
-
-                    a{
-                        text-decoration: none;
-                        letter-spacing: 3px;
-                        font-weight: bold;
-                        font-size: 20px;
-                    }
-                }
-            }
-
-            .burger {
-                display: block;
-                position: absolute;
-                right: 25px;
-                height: 50px;
-                width: 50px;
-            }
-        }
-    }*/
-
-    // ORDENADOR
-   /* @media screen and ($ordenador) {
-        .alinear-menu {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-
-
-            .logo {
-                width: 100%;
-            }
-        
-            .rutas {
-                width: 100%;
-                top: 0;
+            margin-right: $margen-vertical-mv;
+            flex-grow: 2;
+    
+            .nav-links{
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                margin-right: $margen-vertical-mv;
-                flex-grow: 2;
+                width: 100%;
 
-
-                h2, h3 {
-                    text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+                .logo-movil{
+                    display: none;
                 }
-                
-                .redes {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-around;
-                }                
+
+                .terminos-movil{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    margin-bottom: $margen-vertical-mv;
+                    margin-left: $margen-vertical-mv;
+                    font-weight: normal;
+                    font-size: normal;
+                    color: white;
+                }
+    
+                li{
+                    list-style: none;
+    
+                    a{
+                        color: white;
+                        text-decoration: none;
+                        letter-spacing: 1px;
+                        font-weight: bold;
+                        text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+                        font-size: 15pt;
+    
+                        //-------- Esta Parte pertenece a la animación sobre el Menu // https://codepen.io/jstn/pen/zuDst
+                        display: inline-block;
+                        padding: 15px 20px;
+                        position: relative;
+                    }
+    
+                    a:after {    
+                        background: none repeat scroll 0 0 transparent;
+                        bottom: 0;
+                        content: "";
+                        display: block;
+                        height: 3px;
+                        left: 50%;
+                        position: absolute;
+                        background: #fff;
+                        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                        width: 0;
+                        }
+                        a:hover:after { 
+                        width: 100%; 
+                        left: 0; 
+                        }
+    
+                        // ----------------- Fin de animación
+                }
             }
+        
+            .redes-movil {
+                display: flex;
+            }  
+        }
+    
+        .burger {
+            display: none;
+            cursor: pointer;
         }
         
-        h3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin-bottom: $margen-vertical-mv;
-            margin-left: $margen-vertical-mv;
-            font-weight: normal;
-            font-size: normal;
-        }
-    }*/
+    }
 }
+
+/* --- Animaciones -- */
+
+.nav-active {
+    transform: translateX(0%);
+    transition: transform 0.5s ease-in;
+}
+
+@keyframes navLinkFade{
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-44deg) translate(-6px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(44deg) translate(-4px, -5.5px);
+}
+
 
 
 
