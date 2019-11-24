@@ -147,7 +147,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            overflow-x: hidden;
+            overflow: hidden;
             
             
             .carta {
@@ -156,7 +156,6 @@
                     background-repeat: no-repeat;
                     background-size: 100%;
                 }
-                
             }
 
             .fondo_precios {
@@ -252,6 +251,7 @@
             font-size: 10px;
             position: relative;
             bottom: 85px;
+            background-color: white;
 
             
             h2 {
@@ -263,10 +263,11 @@
                 background-image: url(./img/opcion_flecha_hacia_precio.svg);
                 height: 90px;
                 background-repeat: no-repeat;
-                margin-left: 40px;
+                margin-left: 50px;
                 position: relative;
                 width: 90px;
                 z-index: 3;
+                bottom: 2px;
             }
             .discontinua {
                 background-image: url(./img/movil_linea_discontinua.svg);
@@ -277,10 +278,7 @@
         }
 
         .notas {
-            width: 100%;
-            height: 100%;
-
-            
+            width: 100%;            
 
             .dec_pag_1 {
                 position: absolute;
@@ -301,7 +299,7 @@
             }
 
             .dec_pag_3 {
-                position: absolute;
+                position: relative;
                 width: 100%;
                 height: 180px;
                 background-color: white;
