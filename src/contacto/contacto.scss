@@ -1,1 +1,107 @@
 @import '../common/estilos_comunes.scss';
+
+.content-contacto{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: visible;
+    
+    .info-contacto{
+        width: 100%;
+        top: $distancia_principio_mv;
+        position: absolute;
+
+        div{
+            background-color: $color-primario;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cuadro-giro-superior{
+            width: $tamano_primer_cuadro_giro;
+            height: 75px;
+            position: absolute;
+            right: 0;
+            transform: rotate(6deg);
+        }
+
+        .info-contacto-cuadro{
+            width: 100%;
+            top: 24.8px;
+            z-index: 4;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-primario;
+
+            .info-contacto-cuadro-informacion{
+                padding-top: 32.4px;
+                background-color: $color-primario;
+                color: #DBDBDB;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                h1{
+                    font-weight: bold;
+                    font-size: 20px;
+                    margin-bottom: 0px;
+                    width: 100%;
+                    text-align: left;
+                }
+
+                h3{
+                    font-weight: bold;
+                    font-size: 7px;
+                    margin-top: 0px;
+                    width: 100%;
+                    text-align: left;
+                    padding-bottom: 25.8px;
+                }
+
+                .info-contacto-cuadro-informacion-datos{
+                    margin-top: 25.8px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    padding-bottom: 23.6px;
+
+                    .icono{
+                        width: 13.38px;
+                        height: 13.38px;
+                    }
+
+                    .titulo{
+                        font-weight: bold;
+                        font-size: 13px;
+                        height: 10px;
+                        padding-left: 6.4px;
+                    }
+
+                    .datos{
+                        font-size: 12px;
+                        padding-left: 21px;;
+                    }
+                }
+            }
+        }
+
+        .cuadro-giro-2{
+            width: 73%;
+            height: 48px;
+            position: absolute;
+            z-index: 3;
+            transform: rotate(6deg);
+        }
+
+        .cuadro-giro-3{
+            width: 40%;
+            height: 70px;
+            z-index: 2;
+            transform: rotate(19deg);
+        }
+    }
+}

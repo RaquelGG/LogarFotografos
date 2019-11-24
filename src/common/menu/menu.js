@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import Redes from '../redes/redes';
 import "../menu/menu.scss";
 import Logo from '../logo/logo';
+import Precios from '../../precios/precios'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 function Menu ({size_logo}) {
 
