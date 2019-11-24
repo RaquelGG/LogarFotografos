@@ -26,15 +26,16 @@
         }
 
         .info-contacto-cuadro{
+            z-index: 4;
             width: 100%;
             top: 24.8px;
-            z-index: 4;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: $color-primario;
+
 
             .info-contacto-cuadro-informacion{
                 padding-top: 32.4px;
@@ -44,6 +45,8 @@
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
+                z-index: 15;
+                box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
 
                 h1{
                     font-weight: bold;
@@ -87,21 +90,180 @@
                     }
                 }
             }
+
+            .fake{
+                padding-bottom: 48px;
+                background-color: white;
+            }
+
+            .cuadro-giro-2{
+                width: 73%;
+                height: 57px;
+                z-index: 1;
+                position: absolute;
+                bottom: 27px;
+                left: 0;
+                transform: rotateZ(6deg);
+            }
+    
+            .cuadro-giro-3{
+                position: absolute;
+                width: 40%;
+                z-index: 0;
+                height: 70px;
+                bottom: 13px;
+                left: 0;
+                transform: rotateZ(19deg);
+            }
         }
 
         .cuadro-giro-2{
             width: 73%;
             height: 48px;
-            position: absolute;
             z-index: 3;
+            position: absolute;
             transform: rotate(6deg);
         }
 
         .cuadro-giro-3{
             width: 40%;
-            height: 70px;
             z-index: 2;
+            height: 70px;
             transform: rotate(19deg);
         }
+
+        .info-contacto-formulario{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            z-index: 0;
+
+            .info-contacto-formulario-contenido{
+                width: 100%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+                padding-top: 68px;
+
+                h1{
+                    font-weight: normal;
+                    font-size: 18px;
+                }
+
+                form{
+                    width: 79%;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    align-items: center;
+                    overflow: hidden;
+                    margin-top: 36px;
+
+                    input{
+                        width: 100%;
+                        background-color: #F1F1F1;
+                        border-bottom: 2px solid #919191;
+                        border-top: none;
+                        border-left: none;
+
+                        font-size: 15px;
+                        padding-left: 15px;
+                        padding-top: 5px;
+                        padding-bottom: 3px;
+                        color: #919191;
+                    }
+
+                    .email{
+                        margin-top: 35.7px;
+                    }
+
+                    .mensaje{
+                        margin-top: 40px;
+                        width: 100%;
+                        min-height: 54px;
+                        border-top: none;
+                        background-color: #F1F1F1;
+                        font-size: 15px;
+                        padding-left: 15px;
+                        padding-bottom: 3px;
+                        color: #919191;
+                        border-bottom: 2px solid #919191;
+                        font-family: "Century Gothic", sans-serif;
+                    }
+
+                    .enviar{
+                        margin-top: 25px;
+                        width: 166px;
+                        height: 50px;
+                        background: none;
+                        border: 2px solid #919191;
+                        padding: 0;
+                    }
+                }
+            }
+
+            .redes{
+                width: 56%;
+                display: flex;
+                justify-content: space-between;
+                background-color: white;
+                margin-top: 72px;
+                margin-bottom: 17px;
+
+                img{
+                    height: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and ($movil){
+    
+}
+
+@media screen and ($ordenador) {
+
+    /* --- Elementos innecesarios ---*/
+    .cuadro-giro-3{
+        display: none;
+    }
+
+    .fake{
+        display: none;
+    }
+
+    .cuadro-giro-2{
+        display: block;
+    }
+
+    /* ------------------------------ */
+
+    .content-contacto{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .info-contacto{
+            width: 96%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .info-contacto-cuadro-informacion{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
     }
 }

@@ -12,6 +12,7 @@
     }
 
     .logo-pc{
+        //display: none;
         position: absolute;
         margin-top: 11px;
         margin-left: 37px;
@@ -30,10 +31,6 @@
         justify-content: space-around;
         transform: translateX(100%);
         margin-top: 0;
-
-        .logo-movil{
-            transform: translateX(0px);
-        }
 
         li {
             opacity: 0;
