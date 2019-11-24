@@ -2,7 +2,7 @@
 
 // MOVIL
 @media screen and ($movil) {
-    
+
     .redes-ordenador{
         display: none;
     }
@@ -16,6 +16,7 @@
     }
     
     .nav-links {
+        z-index: 10;
         position: absolute;
         background-color: $color-primario;
         display: flex;
@@ -58,6 +59,7 @@
         width: 47px;
         border-color: white;
         border: 2px solid white;
+        z-index: 11;
 
         flex-direction: column;
         justify-content: center;
