@@ -4,6 +4,8 @@
     height: 100%;
     width: 100%;    
     text-transform: uppercase;
+    overflow-x: hidden;
+    
 
     .subtitulo {
         color: white;
@@ -18,6 +20,21 @@
     }
     .opcion_3 {
         background-color: #1AD2C2;
+    }
+
+    .opcion_1_precio {
+        color: #ACB48A;
+        z-index: 1;
+    }
+
+    .opcion_2_precio {
+        color: #D8BDC0;
+        z-index: 1;
+    }
+
+    .opcion_3_precio {
+        color: #95DBD5;
+        z-index: 1;
     }
 
     ul, li {
@@ -44,43 +61,85 @@
 
     // MOVIL
     @media screen and ($movil) {
-        .fondo_titulo {
+        .resto_contenido {
+            position: absolute;
+            height: 100%;
             width: 100%;
+            top: $distancia_principio_mv;
+        }
+
+        .fondo_titulo {
+            position: relative;
             margin: 0;
             display: flex;
+            max-width: 100%;
+            max-height: 70px;
+            align-items: center;
 
-            h1 {
+            
+            .alinear_titulo {
                 position: absolute;
-                z-index: 3;
+                display: flex;
+                flex-direction: row;
+                max-width: 100%;
+                //overflow: hidden;
                 color: white;
-                margin-left: $margen-peque-mv;
-                font-size: 40px;
-                left: 0;
-                margin: $margen-peque-mv 0 0 $margen-peque-mv;
-            }
+                align-items: flex-end;
+                z-index: 4;
+                max-height: 70px;
+                
+                h1 {
+                    z-index: 3;
+                    font-size: 40px;
+                    margin: 0 $margen-peque-mv 0 $margen-peque-mv;
+                }
 
+                :last-child {
+                    display: flex;
+                    flex-direction: row;
+                    //align-items: center;
+                    margin-bottom: 5px;
+
+                    li {
+                        color: $color-texto-secundario;
+                    }
+    
+                    .flecha {
+                        margin-top: 5px;
+                        mask: url(./img/flecha.svg);
+                        mask-repeat: no-repeat;
+                        background: $color-texto-secundario;
+                    }
+                
+                }
+
+                
+            }
             .fondo_titulo_giro1 {
                 z-index: 2;
-                background-color: $color_primario;
                 box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
-                position: absolute;
+                position: relative;
                 height: 70px;
+                background-color: $color_primario;
+
                 width: 100%;
+                
             }
+
             .fondo_titulo_giro2 {
                 z-index: 1;
                 position: absolute;
                 width: 40%;
-                right: 0;
+                right: 3px;
                 background-color: $color_primario;
-
-                transform: rotate(14deg);
+                top: -14px;
+                transform: rotate(10deg);
                 
-                box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
-                height: 20px;
-                
+                //box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+                height: 50px;
             }
         }
+                
         
         .opciones {
             width: 100%;
@@ -88,30 +147,24 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            overflow-x: hidden;
             
+            
+            .carta {
+                .f_opcion {
+                    background-image: url(./img/opcion_fondo_oscuro_top.svg);
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                }
+                
+            }
 
             .fondo_precios {
-                margin-top: $margen-vertical-mv;
+                //margin-top: $margen-vertical-mv;
                 margin-bottom: $margen-vertical-mv;
 
                 h2 {
                     margin: 0;
-                }
-
-
-                .opcion_1_precio {
-                    color: #ACB48A;
-                    z-index: 1;
-                }
-
-                .opcion_2_precio {
-                    color: #D8BDC0;
-                    z-index: 1;
-                }
-
-                .opcion_3_precio {
-                    color: #95DBD5;
-                    z-index: 1;
                 }
                 
                 .fondo_giro1 {
@@ -133,6 +186,15 @@
                 }
             }
 
+            .fondo_triangulo {
+                position: static;
+                mask-image: url(./img/opcion_fondo_oscuro_top.svg);
+                transform: rotate(180deg);
+                background-color: white;
+                height: $margen-vertical-mv;
+                min-width: 100%;
+            }
+
             .alinear_fondo {
                 text-align: center;
                 display: flex;
@@ -142,30 +204,28 @@
             }
 
             .opcion {
-                background-repeat: no-repeat;
-                background-size: 100%;
-                
-                // el resto tiene pico
-                &:not(:first-child) {
-                    background-image: url(./img/opcion_fondo_oscuro_top.svg);
-                }
+                overflow: hidden;
 
-                &:first-child {
-                    background-color: #ACB48A;
-                    mask-image: none;
+                ul {
+                    margin: 0;
+                    padding-top: $margen-peque-mv+10px;
                 }
-                .primero {
-                    background-color: #ACB48A;
-                    mask-image: none;
-                }
+            
                 .fondo_opcion_color {
                     mask-image: url(./img/opcion_fondo_color_top.svg);
                     height: 80px;
                     margin-top: 20px;
                     mask-size: 100%;
-                    
                 }      
+
+                .fondo_blanco {
+                    height: 100%;
+                    background-color: white;
+                    width: 100%;
+                }
             }
+
+            
 
             .regalo {
                 margin-top: 15px;
@@ -175,10 +235,90 @@
             .ver_fotos {
                 margin-top: 15px;
                 margin-bottom: 5px;
+                flex-direction: row;
                 font-size: 15px;
                 color: $color_primario;
                 display: flex;
                 align-items: center;
+            }
+        }
+
+        .regalo_video {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: $margen-peque-mv 0 $margen-peque-mv 0;
+            font-size: 10px;
+            position: relative;
+            bottom: 85px;
+
+            
+            h2 {
+                position: relative;
+                margin: 0;
+            }
+
+            .flecha_precio {
+                background-image: url(./img/opcion_flecha_hacia_precio.svg);
+                height: 90px;
+                background-repeat: no-repeat;
+                margin-left: 40px;
+                position: relative;
+                width: 90px;
+                z-index: 3;
+            }
+            .discontinua {
+                background-image: url(./img/movil_linea_discontinua.svg);
+                width: 100%;
+                height: 3px;
+                margin-top: $margen-peque-mv+10px;
+            }
+        }
+
+        .notas {
+            width: 100%;
+            height: 100%;
+
+            
+
+            .dec_pag_1 {
+                position: absolute;
+                width: 100%;
+                height: 180px;
+                background-color: white;
+                transform: rotate(8deg);
+            }
+
+            .dec_pag_2 {
+                position: absolute;
+                width: 100%;
+                height: 180px;
+                background-color: white;
+                transform: rotate(4deg);
+
+                
+            }
+
+            .dec_pag_3 {
+                position: absolute;
+                width: 100%;
+                height: 180px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;       
+                align-items: center;
+                margin-bottom: $margen-vertical-mv;
+
+                h3 {
+                    font-size: 13px;
+                    margin: 2px $margen-peque-mv+5px 2px $margen-peque-mv+5px;
+                    z-index: 4;
+                    position: relative;
+                    font-weight: lighter;
+                }
+
             }
         }
     }
