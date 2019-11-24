@@ -42,7 +42,6 @@ function Menu ({size_logo}) {
                 <div className="logo-pc">
                     <Logo size_logo={size_logo}/>
                 </div>
-
                 <div className="rutas">
                     <div className="sombra"></div>
                     <ul className="nav-links">
