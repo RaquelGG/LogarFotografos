@@ -5,6 +5,7 @@ $margen-vertical-mv: 50px;
 $margen-peque-mv: 10px;
 $margen-grande: 100px;
 $distancia_principio_mv: 158px;
+$distancia_principio_pc: 200px;
 $tamano_primer_cuadro_giro: 62%;
 
 // COLORES
@@ -18,4 +19,8 @@ body {
 
 .sombra {
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+}
+
+.sombra_texto {
+    text-shadow: 0px 1px 20px rgb(0, 0, 0);
 }
