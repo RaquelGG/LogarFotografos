@@ -5,6 +5,14 @@
     width: 100%;    
     text-transform: uppercase;
     overflow-x: hidden;
+
+    .content_imagen_fondo {
+        position: fixed;
+    }
+
+    .content-menu {
+        z-index: 11;
+    }
     
 
     .subtitulo {
@@ -434,7 +442,7 @@
 
             .fondo_precios {
                 //margin-top: $margen-vertical-mv;
-                margin-bottom: $margen-vertical-mv;
+                //margin-bottom: $margen-vertical-mv;
 
                 .precios {
                     position: absolute;
@@ -527,9 +535,6 @@
                             background-color: #1AD2C2;
                         }
 
-                        li {
-                            //margin: $margen-peque-mv 0 $margen-peque-mv 0;
-                        }
                         .cont_der {
                             margin-left: -120px;
                             margin-bottom: 0;

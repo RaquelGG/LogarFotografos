@@ -3,6 +3,7 @@ import Inicio from "./inicio/inicio"
 import Precios from "./precios/precios"
 import Contacto from "./contacto/contacto"
 import Galeria from "./galeria/galeria"
+import Acceso from "./acceso/acceso"
 
 function App() {
     return (
@@ -10,7 +11,8 @@ function App() {
         //<Inicio/>
         //<Galeria/>
         //<Precios/>
-        <Contacto/>
+        //<Contacto/>
+        <Acceso/>
     );
 }
 
