@@ -21,7 +21,7 @@ function Contacto() {
             <Imagen_fondo fondo={fondo} size_logo={"198px"}/>
 
             <div className = "info-contacto">
-                <div className = "cuadro-giro-superior"> </div>
+                <div className = "cuadro-giro-superior sombra"> </div>
                 <div className = "info-contacto-cuadro" >
 
                     <div className = "info-contacto-cuadro-informacion">
@@ -69,7 +69,7 @@ function Contacto() {
                                 </tr>
                             </table>
                         </div>
-                        <img src = {prov} />
+                        <img className="img_dueno" />
                     </div>
                     <div className="fake">
 
@@ -80,7 +80,7 @@ function Contacto() {
                 </div>
                 
 
-                <div className = "info-contacto-formulario">
+                <div className = "info-contacto-formulario sombra">
                     <div className = "info-contacto-formulario-contenido">
                         <h1>ENVIAR UN MENSAJE</h1>
                         <form>

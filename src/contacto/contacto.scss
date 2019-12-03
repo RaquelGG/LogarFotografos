@@ -7,6 +7,80 @@
     overflow-y: visible;
     
     .info-contacto{
+        position: absolute;
+
+        .info-contacto-cuadro{
+            z-index: 4;
+
+            .info-contacto-cuadro-informacion{
+                color: #DBDBDB;
+                width: 100%;
+                z-index: 15;
+                background-color: $color-primario;
+            }
+        }
+
+        .info-contacto-formulario{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            z-index: 0;
+
+            .info-contacto-formulario-contenido{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+
+                h1{
+                    font-weight: normal;
+                }
+
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    align-items: center;
+                    overflow: hidden;
+
+                    input{
+                        width: 100%;
+                        background-color: #F1F1F1;
+                        border-bottom: 2px solid #919191;
+                        border-top: none;
+                        border-left: none;
+                        padding-left: 15px;
+                        padding-top: 5px;
+                        padding-bottom: 3px;
+                        color: #919191;
+                    }
+
+                    .mensaje{
+                        min-height: 54px;
+                        border-top: none;
+                        background-color: #F1F1F1;
+                        padding-left: 15px;
+                        padding-bottom: 3px;
+                        color: #919191;
+                        border-bottom: 2px solid #919191;
+                        font-family: "Century Gothic", sans-serif;
+                    }
+
+                    .enviar{
+                        background: none;
+                        border: 2px solid #919191;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and ($movil){
+    .info-contacto{
         width: 100%;
         top: $distancia_principio_mv;
         position: absolute;
@@ -47,6 +121,18 @@
                 width: 100%;
                 z-index: 15;
                 box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+
+                img{
+                    border: 0;
+                }
+
+                .img_dueno{ //CAMBIAR------------------------------------------------------------------------------
+                    width: 100%;
+                    height: 320px; //Cambiar
+                    background: url(./fondo_prov.png);
+                    background-color: black;
+                    background-size: cover;
+                }
 
                 h1{
                     font-weight: bold;
@@ -223,10 +309,6 @@
     }
 }
 
-@media screen and ($movil){
-    
-}
-
 @media screen and ($ordenador) {
 
     /* --- Elementos innecesarios ---*/
@@ -238,11 +320,37 @@
         display: none;
     }
 
-    .cuadro-giro-2{
-        display: block;
+    .redes{
+        display: none;
     }
 
     /* ------------------------------ */
+
+
+    .cuadro-giro-superior{
+        width: 44%;
+        height: 300px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primario;
+        transform: rotateZ(6deg);
+        margin-bottom: 2%;
+    }
+
+    .cuadro-giro-2{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        //width: 12%;
+        //height: 26%;
+        transform: rotateZ(19deg);
+        background-color: white;
+        margin-top: 1%;
+        margin-right: 1.5%;
+    }
 
     .content-contacto{
         width: 100%;
@@ -250,18 +358,135 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-flow: column;
+        position: relative;
 
         .info-contacto{
             width: 96%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+            height: 62%;
+            bottom: 0;
+            top: 27%;
+            padding-left: 0.6%;
 
-            .info-contacto-cuadro-informacion{
+            .info-contacto-cuadro{
+                width: 96%;
+                height: 100%;
+                bottom: 0;
                 display: flex;
-                flex-direction: row;
-                justify-content: center;
+                align-items: center;
+                justify-content: flex-end;
+                
+
+                .info-contacto-cuadro-informacion{
+                    height: 84%;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: flex-end;
+                    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.70);
+
+                    .info-contacto-cuadro-informacion-datos{
+                        display: flex;
+                        margin-top: 6.4vh;
+                        justify-content: center;
+                        margin-left: 2.9vh;
+
+                        h1{
+                            font-size: 46px;
+                            margin:0;
+                            text-align: left;
+                        }
+
+                        h3{
+                            text-align: left;
+                            margin-top: 0;
+                            margin-bottom: 8%;
+                            font-size: 17px;
+                        }
+
+                        .icono{
+                            width: 24px;
+                            height: 24px;
+                            padding-left: 2vh;
+                        }
+
+                        .titulo{
+                            font-weight: bold;
+                            font-size: 24px;
+                            padding-left: 6.4px;
+                        }
+
+                        .datos{
+                            font-size: 22px;
+                            padding-left: 21px;;
+                        }
+                    }
+
+                    .img_dueno{
+                        width: 18%;
+                        height: 72%;
+                        margin-top: 6.4vh;
+                        background: url(./Captura.PNG);
+                        background-size: contain;
+                        margin-left: $margen-peque-mv;
+                        background-repeat: no-repeat;
+                        background-size: 100%;
+                    }
+                }
+            }
+
+            .info-contacto-formulario{
+                position: absolute;
+                bottom: 0px;
+                right: 0;
+                height: 90%;
+                width: 43%;
+                z-index: 16;
+
+                .info-contacto-formulario-contenido {
+                    height: 72%;
+                    width: 75%;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    padding-top: 9%;
+
+                    h1{
+                        margin: 0;
+                        font-size: 30px;
+                    }
+
+                    form{
+                        width: 100%;
+                        height: 100%;
+                        align-items: flex-start;
+
+                        .nombre{
+                            margin-top: 6%;
+                            width: 100%;
+                            height: 10%;
+                            font-size: 20px;
+                        }
+
+                        .email{
+                            margin-top: 7%;
+                            height: 10%;
+                            font-size: 20px;
+                        }
+
+                        .mensaje{
+                            margin-top: 7%;
+                            width: 100%;
+                            font-size: 20px;
+                            border-left: 0;
+                        }
+
+                        .enviar{
+                            width: 38%;
+                            height: 17%;
+                            font-size: 20px;
+                            margin-top: 6%;
+                        }
+                    }
+                }
             }
         }
 
