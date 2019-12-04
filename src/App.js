@@ -4,6 +4,7 @@ import Precios from "./precios/precios"
 import Contacto from "./contacto/contacto"
 import Galeria from "./galeria/galeria"
 import Cliente from './cliente/cliente';
+import Acceso from "./acceso/acceso"
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
         //<Precios/>
         //<Contacto/>
         <Cliente/>
+        //<Acceso/>
     );
 }
 

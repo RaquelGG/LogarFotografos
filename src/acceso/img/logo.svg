@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="546" height="247" viewBox="0 0 546 247">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #2c2c2c;
+        font-family: CenturyGothic, Century Gothic;
+      }
+
+      .cls-1 {
+        font-size: 166px;
+      }
+
+      .cls-2 {
+        letter-spacing: -0.299em;
+      }
+
+      .cls-3 {
+        font-size: 80px;
+      }
+    </style>
+  </defs>
+  <g id="Logo" transform="translate(-90 -195)">
+    <text id="LOGAR" class="cls-1" transform="translate(90 356)"><tspan x="0" y="0">L</tspan><tspan class="cls-2" y="0">O</tspan><tspan y="0">GAR</tspan></text>
+    <text id="FOTÓGRAFOS" class="cls-3" transform="translate(98 424)"><tspan x="0" y="0">FOTÓGRAFOS</tspan></text>
+  </g>
+</svg>
