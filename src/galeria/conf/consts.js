@@ -1,5 +1,3 @@
-import Consts from 'pro-gallery/dist/src/common/constants';
-
 export const options = {
     imageMargin: 5,
     gridStyle: 1,

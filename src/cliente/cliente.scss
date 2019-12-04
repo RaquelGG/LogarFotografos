@@ -1,0 +1,8 @@
+@import '../common/estilos_comunes.scss';
+
+@media screen and ($movil) {
+
+    .menu{
+        margin-bottom: 27px;
+    }
+}

@@ -7,9 +7,9 @@
     "@angular/cdk": "^8.2.3",
     "@ngx-gallery/core": "^4.0.3",
     "@ngx-gallery/lightbox": "^4.0.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "pro-gallery": "^1.5.38",
-    "react": "^16.10.2",
+    "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
