@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import Redes from '../redes/redes';
 import "../menu/menu.scss";
 import Logo from '../logo/logo';
-import Precios from '../../precios/precios'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import Precios from '../../precios/precios';
 
-function Menu ({size_logo}) {
+function Menu ({size_logo, logo}) {
 
     function navSlide() {
         const burger = document.querySelector('.burger');
@@ -40,13 +34,13 @@ function Menu ({size_logo}) {
         <nav>
             <div className ="content-menu">
                 <div className="logo-pc">
-                    <Logo size_logo={size_logo}/>
+                    <Logo size_logo={size_logo} other_logo={logo}/>
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
                     <ul className="nav-links">
                         <li className="logo-movil">
-                            <Logo size_logo={"200px"}/>
+                            <Logo size_logo={"200px"} other_logo={logo}/>
                         </li>
                         <li>
                             <a href="#">GALERÍA</a>

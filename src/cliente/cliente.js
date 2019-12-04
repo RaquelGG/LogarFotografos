@@ -1,12 +1,13 @@
 import React from 'react';
 import Menu from "../common/menu/menu"
+import logo from "../acceso/img/logo.svg"
 import "./cliente.scss";
-import Redes from "../common/redes/redes";
 
 function Cliente() {
     return (
         <div>
-          <Menu size_logo = { "124px"}/>
+          <Menu size_logo = {"124px"} logo={logo}/>
+          
     
         </div>
     );

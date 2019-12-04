@@ -2,13 +2,13 @@ import React from 'react';
 import Menu from '../menu/menu';
 import "./imagen_fondo.scss";
 
-function Imagen_fondo({fondo, size_logo}) {
+function Imagen_fondo({fondo, size_logo, logo}) {
 
     return (
         <div className="content_imagen_fondo" style={{backgroundImage: 'url(' + fondo + ')'}}>
             <div className="imagen">
             </div>
-            <Menu size_logo={size_logo}/>
+            <Menu size_logo={size_logo} logo={logo}/>
         </div>
     );
 }
