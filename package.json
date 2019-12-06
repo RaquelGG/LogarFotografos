@@ -8,12 +8,9 @@
     "@material/list": "^4.0.0",
     "@ngx-gallery/core": "^4.0.3",
     "@ngx-gallery/lightbox": "^4.0.3",
-<<<<<<< HEAD
-    "mysql": "^2.17.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.0.2",
     "node-sass": "^4.12.0",
-=======
-    "node-sass": "^4.13.0",
->>>>>>> bf094b6447ecd16c6700bfd83335641b8c72e47c
     "pro-gallery": "^1.5.38",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

@@ -10,17 +10,12 @@ import CrearSeleccion from "./administrador/crear_seleccion/crear_seleccion"
 function App() {
     return (
         //<Menu/>
-        //<Inicio/>
+        <Inicio/>
         //<Galeria/>
         //<Precios/>
         //<Contacto/>
-<<<<<<< HEAD
         //<Acceso/>
-        <CrearSeleccion/>
-=======
-        <Cliente/>
-        //<Acceso/>
->>>>>>> bf094b6447ecd16c6700bfd83335641b8c72e47c
+        //<CrearSeleccion/>
     );
 }
 
