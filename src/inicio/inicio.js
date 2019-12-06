@@ -4,7 +4,7 @@ import "./inicio.scss";
 
 function Inicio() {
     return (
-        <Imagen_fondo id_fondo={"1"} size_logo={"546px"}/>
+        <Imagen_fondo id_fondo={1} size_logo={"546px"}/>
     );
 }
 

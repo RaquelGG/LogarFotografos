@@ -1,5 +1,4 @@
 import React from 'react';
-import fondo from "./fondo.jpg";
 import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
@@ -7,18 +6,16 @@ import telefono from "./iconos/telefono.svg"
 import whatsapp from "./iconos/whatsapp.svg"
 import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
-import prov from "./fondo_prov.png"
 import f_black from "./iconos/facebook-black.svg";
 import e_black from "./iconos/email-black.svg";
 import w_black from "./iconos/whatsapp-black.svg"
 import "./contacto.scss";
-import Redes from '../common/redes/redes';
 
 function Contacto() {
     
     return (
         <div className = "content-contacto">
-            <Imagen_fondo fondo={fondo} size_logo={"198px"}/>
+            <Imagen_fondo fondo={3} size_logo={"198px"}/>
 
             <div className = "info-contacto">
                 <div className = "cuadro-giro-superior sombra"> </div>
