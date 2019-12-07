@@ -8,7 +8,7 @@ import flecha from "./img/flecha.svg"
 function Precios() {
     return (
         <div className="content_precios">
-            <Imagen_fondo fondo={2} size_logo={"200px"}/>
+            <Imagen_fondo id_fondo={2} size_logo={"200px"}/>
             
             <div className="resto_contenido">
                 <div className="fondo_titulo">

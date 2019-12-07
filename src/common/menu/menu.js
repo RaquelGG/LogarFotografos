@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Redes from '../redes/redes';
 import "../menu/menu.scss";
 import Logo from '../logo/logo';
-import Precios from '../../precios/precios';
+import { Link } from 'react-router-dom';
 
 function Menu ({size_logo, logo}) {
 
@@ -24,7 +24,6 @@ function Menu ({size_logo, logo}) {
             }
         })
 
-
         //Animar burger
         burger.classList.toggle('toggle');
     }
@@ -43,17 +42,18 @@ function Menu ({size_logo, logo}) {
                             <Logo size_logo={"200px"} other_logo={logo}/>
                         </li>
                         <li>
-                            <a href="#">GALERÍA</a>
+                            <Link to="/">INICIO</Link>
                         </li>
                         <li>
-                            <a href="#">PRECIOS</a>
+                            <Link to="/precios">PRECIOS</Link>
                         </li>
                         <li>
-                            <a href="#">CONTACTO</a>
+                            <Link to="/galeria">GALERÍA</Link>
                         </li>
                         <li>
-                            <a href="#">NOSOTROS</a>
+                            <Link to="/contacto">CONTACTO</Link>
                         </li>
+                        
                         <li className="terminos-movil">
                             <h3>TÉRMINOS DE USO \ POLÍTICA DE PRIVACIDAD</h3>
                         </li>

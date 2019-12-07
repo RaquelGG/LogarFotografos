@@ -15,7 +15,7 @@ function Contacto() {
     
     return (
         <div className = "content-contacto">
-            <Imagen_fondo fondo={3} size_logo={"198px"}/>
+            <Imagen_fondo id_fondo={3} size_logo={"198px"}/>
 
             <div className = "info-contacto">
                 <div className = "cuadro-giro-superior sombra"> </div>
