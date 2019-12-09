@@ -1,36 +1,28 @@
 import React from 'react';
 import fondo from "./img/fondo.jpg";
 import "./acceso.scss";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import {comprobarUsuario, comprobarAdmin} from '../common/comprobarSesion';
 
 function Acceso({match}) {
     const {usuario} = match.params;
     let user = React.createRef();
     let pass = React.createRef();
+    
 
     // Comprueba si el usuario existe
-    async function comprobarUsuario() {
-        console.log("Usuario: ", user.current.value);
-        console.log("Contraseña: ", pass.current.value);
-        let u = user.current.value;
-        let p = pass.current.value;
+    async function acceder() {
+        const u = user.current.value;
+        const p = pass.current.value;
+        //console.log("Usuario: ", u);
+        //console.log("Contraseña: ", p);
 
-        try {
-            const response = await fetch(`http://localhost:3213/comprobarUsuario`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({user: u, pass: p})
-            });
-            let respuesta = await response.text();
-            console.log(respuesta);
-            return respuesta;
-        } catch {
-            console.error("ERROR: Nombre de usuario o contraseña incorrecta");
+        if (await comprobarUsuario(u, p)) {
+            if (await comprobarAdmin(u, p)) {
+                return <Redirect to="/admin"/>; // Si es admin
+            }
+            return <Redirect to="/seleccion"/>;// Si es un cliente
         }
-        return -1;
     }
 
     return (
@@ -39,7 +31,7 @@ function Acceso({match}) {
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" value={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
-                <button className="button" onClick={() => comprobarUsuario()}>Acceder</button>
+                <button className="button" onClick={() => acceder()}>Acceder</button>
                 <Link to="/" className="volver">
                     <h4>Volver a la página principal</h4>
                 </Link>
