@@ -11,8 +11,27 @@ import e_black from "./iconos/email-black.svg";
 import w_black from "./iconos/whatsapp-black.svg"
 import "./contacto.scss";
 
+// Traducción
+/*import i18next from 'i18next';
+
+import common_es from "../traduccion/es/common.json";
+import common_en from "../traduccion/en/common.json";
+
+i18next.init({
+    interpolation: { escapeValue: false },  // React already does escaping
+    lng: 'es',                              // language to use
+    resources: {
+        es: {
+            common: common_es               // 'common' is our custom namespace
+        },
+        en: {
+            common: common_en
+        },
+    },
+});*/
+
 function Contacto() {
-    
+    //const { t, i18n } = this.props;
     return (
         <div className = "content-contacto">
             <Imagen_fondo id_fondo={3} size_logo={"198px"}/>
@@ -26,6 +45,8 @@ function Contacto() {
                             <table>
                                 <tr>
                                     <th colSpan="3">
+                                        {//<h1>{this.props.t('contacto.titulo', { framework: "react-i18next" })}</h1>
+                                        }
                                         <h1>LOGAR FOTÓGRAFOS</h1>
                                     </th>
                                 </tr>
