@@ -1,5 +1,4 @@
 import React from 'react';
-import fondo from "./img/fondo.jpg";
 import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
 import "./precios.scss";
 import cuadrado_tick from "./img/cuadrado_tick.svg"
@@ -9,7 +8,7 @@ import flecha from "./img/flecha.svg"
 function Precios() {
     return (
         <div className="content_precios">
-            <Imagen_fondo fondo={fondo} size_logo={"200px"}/>
+            <Imagen_fondo id_fondo={2} size_logo={"200px"}/>
             
             <div className="resto_contenido">
                 <div className="fondo_titulo">

@@ -2,9 +2,8 @@ import { ProGallery } from 'pro-gallery';
 import React, {useEffect, useState} from 'react';
 import 'pro-gallery/dist/statics/main.css';
 import { items } from "./fotos/fotos"; 
-import { styleParams } from "./conf/consts";
+import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
 import { options } from "./conf/consts";
-import Menu from "../common/menu/menu";
 import "./galeria.scss";
 
 
@@ -24,9 +23,8 @@ export function Galeria() {
 
   return (
     <div className="content_galeria">
-      <div className="menu">
-            <Menu logoWidth="350px" />
-      </div>
+      <Imagen_fondo id_fondo={4} size_logo={"200px"}/>
+      
       <ProGallery
         items={items}
         //options={options}
