@@ -75,10 +75,11 @@ $triangulo_size: 132px;
                 font-size: 16px;
             }
 
-            a {
+            .volver {
                 margin-bottom: 50px;
+                cursor: pointer;
 
-                .volver {
+                h4 {
                     color: $color-primario;
                     font-size: 15px;
                 }

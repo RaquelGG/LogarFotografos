@@ -30,7 +30,7 @@ function App() {
           <Suspense fallback={<Loader />}>
               <Switch>
                   <Route path='/' exact component={Inicio} />
-                  <Route path='/acceso/:id' exact component={Acceso} />
+                  <Route path='/acceso/:usuario?' exact component={Acceso} />
                   <Route path='/galeria/:id' exact component={Galeria} />
                   <Route path='/precios' exact component={Precios} />
                   <Route path='/contacto' exact component={Contacto} />

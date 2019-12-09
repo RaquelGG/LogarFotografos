@@ -11,7 +11,7 @@ function Imagen_fondo({id_fondo, size_logo, logo}) {
         try {
             const response = await fetch(`http://localhost:3213/obtenerUrlFondo/${id_fondo}`)
             let respuesta = await response.text();
-            setFondo(respuesta.replace("undefined", "h"));
+            setFondo(respuesta.replace("undefined", ""));
             console.log(fondo);
         } catch {
             console.error("ERROR: error obteniendo la imagen de fondo.");
