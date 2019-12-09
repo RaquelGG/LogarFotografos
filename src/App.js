@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Cliente from './cliente/cliente';
-import CrearSeleccion from "./administrador/crear_seleccion/crear_seleccion"
+//import CrearSeleccion from "./administrador/crear_seleccion/crear_seleccion"
 import Loader from './common/loader/loader';
 
 const Inicio = lazy(() => import('./inicio/inicio'));
@@ -11,9 +11,6 @@ const Contacto = lazy(() => import('./contacto/contacto'));
 const Galeria = lazy(() => import('./galeria/galeria'));
 const Acceso = lazy(() => import('./acceso/acceso'));
 const NotFound = lazy(() => import('./common/loader/loader'));
-
-
-
 
 function App() {
     return (
