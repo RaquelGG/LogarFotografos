@@ -5,11 +5,7 @@ import "./cliente.scss";
 
 function Cliente() {
     return (
-        <div>
           <Menu size_logo = {"124px"} logo={logo}/>
-          
-    
-        </div>
     );
 }
 

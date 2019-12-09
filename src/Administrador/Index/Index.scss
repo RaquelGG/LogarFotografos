@@ -1,0 +1,26 @@
+@import '../../common/estilos_comunes.scss';
+
+.content-inicio-admin{
+    height: 100%;
+    
+
+    .cuadro-imagen{
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cuadro{
+            width: 50%;
+            height: 50px;
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px; 
+        }
+    }
+}

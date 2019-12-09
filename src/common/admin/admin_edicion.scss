@@ -1,0 +1,40 @@
+@import '../../common/estilos_comunes.scss';
+
+.content-edicion {
+    height: 25%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+
+    .rectangulo {
+        width: 100%;
+        height: 14%;
+        position: absolute;
+        top: 0;
+        z-index: 49;
+        background-color: $color-primario;
+    }
+
+    .img-container {
+        width: 230px;
+        height: 230px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;
+        top: 14%;
+        align-items: flex-start;
+        z-index: 50;
+    }
+
+    .triangulo {    /* ---- MODIFICAR PARA TRABAJAR CON PORCENTAJES ? ---- */
+        width: 0;
+        height: 0;
+        border-top: 230px solid $color-primario;
+        border-right: 230px solid transparent;
+        z-index: 49;
+    }
+}
