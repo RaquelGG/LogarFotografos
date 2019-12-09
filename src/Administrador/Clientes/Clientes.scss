@@ -1,0 +1,196 @@
+@import '../../common/estilos_comunes.scss';
+
+.content-lista {
+    width: 91%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 71px;
+    
+    .content-item {
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+
+        .cuadro {
+            display: flex;
+            flex-direction: column;
+
+            .item{
+                width: 100%;
+                height: 110px;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                text-transform: uppercase;
+                
+                .nombre {
+                    width: 60%;
+                    font-size: 27px;
+                }
+        
+                .funciones {
+                    width: 40%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-self: right;
+                    
+                    .linea {
+                        height: 60px;
+                        width: 2px;
+                        background: black;
+                    }
+        
+                    .caja {
+                        margin-left: 10.5px;
+                        height: 55px;
+                        width: 55px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .activado {
+                        border: 2px solid $color_primario;
+                        background-color: $color_primario;
+                    }
+
+                    .desactivado {
+                        background-color: #e0e0e0;
+                        border: 2px solid #9e9e9e;
+                    }
+
+                }
+            }
+
+            .borde {
+                height: 3px;
+                width: 85.94%;
+                background-color: $color_primario;
+            }
+        }
+    }
+}
+
+.content-clientes-admin {
+    height: 100%;
+    width: 100%;
+
+    .contenido {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 51;
+        display: flex;
+        flex-direction: row;
+
+        .lista {
+            display: flex;
+            justify-content: flex-end;
+            background-color: white;
+            width: 37%;
+            height: 100%;
+        }
+
+        .agregar-contenido {
+            width: 63%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+
+            .input-cuadro {
+                width: 71%;
+                height: 87%;
+                display: flex;
+                flex-direction: column;
+
+                .cuadro {
+                    width: 87%;
+                    height: 81%;
+                    background-color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .input {
+                        width: 52%;
+                        height: 67%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .url {
+                            height: 56%;
+                            width: 100%;
+                            margin-bottom: 7%;
+
+                            .arrastrar {
+                                background-image: url(./arrastrar.PNG);
+                                background-size: 100% 100%;
+                                width: 100%;
+                                height: 81.1%;
+                            }
+
+                            .examinar {
+                                height: 19%;
+                                width: 100%;
+                                background-color: $color_primario;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                
+
+                                h1{
+                                    margin: 0;
+                                    color: white;
+                                    font-size: 25px;
+                                }
+                            }
+                        }
+
+                        .valor {
+                            width: 100%;
+                            height: 37%;
+                            bottom: 0;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            .nombre {
+                                width: 100%;
+                                height: 25%;
+                                border-top: none;
+                                background-color: #F1F1F1;
+                                padding-bottom: 3px;
+                                text-align: center;
+                                color: #919191;
+                                font-size: 24px;
+                                border-left: none;
+                                border-bottom: 2px solid #919191;
+                                margin-bottom: 19px;
+                                font-family: "Century Gothic", sans-serif;
+                            }
+
+                            .enviar {
+                                height: 30%;
+                                width: 35%;
+                                background-color: $color_primario;
+                                color: white;
+                                font-weight: bold;
+                                font-family: "Century Gothic", sans-serif;
+                                border: none;
+                                font-size: 21px;
+                            }
+                        }
+                    }
+                }
+
+                .cuadro-triangulos {
+                    height: 19%;
+                    width: 100%;
+                    background-color: black;
+                }
+            }            
+        }
+    }
+}

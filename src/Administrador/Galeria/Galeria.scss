@@ -1,0 +1,112 @@
+@import '../../common/estilos_comunes.scss';
+
+.content-galeria-admin{
+    height: 82.7%;
+    width: 100%;
+    overflow-x: hidden;
+
+    .content-cuadro{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 21.3%;
+        z-index: 10;
+
+        /* --- Posicionamiento --- */
+        display: flex;
+        flex-direction: column;
+        /* ------------------------ */
+
+        h3{
+            font-size: 28pt;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            user-select: none;
+            margin: 0;
+        }
+
+        .titulo{
+           height: 19%; 
+           width: 100%;
+           background-color: rgba(0, 0, 0, 0.6);
+           display: flex;
+           align-items: center;
+           flex-direction: row;
+        }
+
+        .contenido{
+            width: 100%;
+            height: 81%;
+            display: flex;
+            flex-direction: row;
+            
+            .subir-imagen{
+                height: 100%;
+                width: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .filtro-imagen{
+                height: 100%;
+                width: 20%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .icono{
+                    height: 100%;
+                    width: 30%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+
+                .tipos{
+                    height: 100%;
+                    width: 70%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .etiqueta{
+                height: 100%;
+                width: 20%;
+                display:flex;
+                align-items: center;
+                margin: 0;
+                justify-content: center;
+            }
+
+            .botones{
+                height: 100%;
+                width: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .seleccion{
+                    width: 70%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .guardar {
+                    width: 30%;
+                    height: 94%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+            }
+        }
+    }
+}

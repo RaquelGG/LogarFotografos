@@ -5,16 +5,13 @@ import Contacto from "./contacto/contacto"
 import Galeria from "./galeria/galeria"
 import Cliente from './cliente/cliente';
 import Acceso from "./acceso/acceso"
+import Admin_inicio from './Administrador/Index/Index';
+import Admin_galeria from './Administrador/Galeria/Galeria';
+import Admin_clientes from './Administrador/Clientes/Clientes'
 
 function App() {
     return (
-        //<Menu/>
-        //<Inicio/>
-        //<Galeria/>
-        //<Precios/>
-        //<Contacto/>
-        <Cliente/>
-        //<Acceso/>
+        <Admin_clientes/>
     );
 }
 
