@@ -117,7 +117,7 @@ function Admin_galeria (){
                         <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab"}}></div>
                     </div>
                     <div className="etiqueta">
-                        <RadioGroup aria-label="gender" name="gender1" onChange={handleChange}>
+                        <RadioGroup onChange={handleChange}>
                             <FormControlLabel  control={<Radio />} label="Female" />
                             <FormControlLabel  control={<Radio />} label="Male" />
                             <FormControlLabel  control={<Radio />} label="Other" />

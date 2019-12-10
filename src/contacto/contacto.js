@@ -102,9 +102,9 @@ function Contacto() {
                     <div className = "info-contacto-formulario-contenido">
                         <h1>ENVIAR UN MENSAJE</h1>
                         <form>
-                            <input type="text" name="nombre" className = "nombre" value="Nombre" />
-                            <input type="email" name="email" className="email" value="Correo válido"/>
-                            <textarea rows="5" cols="50" name="mensaje" className="mensaje" >Mensaje</textarea>
+                            <input type="text" placeholder="Nombre"name="nombre" className = "nombre"  />
+                            <input type="email" placeholder="Correo válido" name="email" className="email"/>
+                            <textarea rows="5" cols="50" placeholder="Mensaje" name="mensaje" className="mensaje" />
                             <input type="submit" className="enviar" value="ENVIAR MENSAJE"/>
                         </form>
                     </div>

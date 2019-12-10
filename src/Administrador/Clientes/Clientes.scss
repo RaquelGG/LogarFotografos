@@ -1,5 +1,11 @@
 @import '../../common/estilos_comunes.scss';
 
+.linea {
+    height: 60px;
+    width: 2px;
+    background: black;
+}
+
 .content-lista {
     width: 91%;
     display: flex;
@@ -33,12 +39,6 @@
                     display: flex;
                     flex-direction: row;
                     justify-self: right;
-                    
-                    .linea {
-                        height: 60px;
-                        width: 2px;
-                        background: black;
-                    }
         
                     .caja {
                         margin-left: 10.5px;
@@ -115,12 +115,12 @@
 
                     .input {
                         width: 52%;
-                        height: 67%;
+                        height: 75%;
                         display: flex;
                         flex-direction: column;
 
                         .url {
-                            height: 56%;
+                            height: 54%;
                             width: 100%;
                             margin-bottom: 7%;
 
@@ -150,13 +150,13 @@
 
                         .valor {
                             width: 100%;
-                            height: 37%;
+                            height: 46%;
                             bottom: 0;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
 
-                            .nombre {
+                            /*.nombre {
                                 width: 100%;
                                 height: 25%;
                                 border-top: none;
@@ -169,17 +169,35 @@
                                 border-bottom: 2px solid #919191;
                                 margin-bottom: 19px;
                                 font-family: "Century Gothic", sans-serif;
+                            }*/
+
+                            .mod {
+                                height: 70%;
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: space-between;
+                                margin-bottom: 20px;
                             }
 
-                            .enviar {
+                            .boton {
                                 height: 30%;
-                                width: 35%;
-                                background-color: $color_primario;
-                                color: white;
-                                font-weight: bold;
-                                font-family: "Century Gothic", sans-serif;
-                                border: none;
-                                font-size: 21px;
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                .enviar {
+                                    height: 80%;
+                                    width: 35%;
+                                    background-color: $color_primario;
+                                    color: white;
+                                    font-weight: bold;
+                                    font-family: "Century Gothic", sans-serif;
+                                    border: none;
+                                    font-size: 21px;
+                                }
                             }
                         }
                     }
@@ -188,7 +206,7 @@
                 .cuadro-triangulos {
                     height: 19%;
                     width: 100%;
-                    background-color: black;
+                    //background-color: black; ESTE ES EL COLOR --------------------------------------
                 }
             }            
         }
