@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 import Inicio from '../../inicio/inicio'
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import ArrowDownwardIcon from './node_modules/@material-ui/icons/ArrowDownward';
+import EditOutlinedIcon from './node_modules/@material-ui/icons/EditOutlined';
+import DeleteForeverIcon from './node_modules/@material-ui/icons/DeleteForever';
 import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
+import './node_modules/simplebar/dist/simplebar.min.css';
 import './Clientes.scss'
 
 class Lista extends Component {
