@@ -2,5 +2,10 @@
 
 .content_galeria {
     width: 100%;
-    height: 100%;
+
+    .galeria {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 }
