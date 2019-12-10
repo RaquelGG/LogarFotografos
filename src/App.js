@@ -10,8 +10,10 @@ const Precios = lazy(() => import('./precios/precios'));
 const Contacto = lazy(() => import('./contacto/contacto'));
 const Galeria = lazy(() => import('./galeria/galeria'));
 const Acceso = lazy(() => import('./acceso/acceso'));
-const Admin = lazy(() => import('./administrador/crear_seleccion/crear_seleccion'));
+const Admin = lazy(() => import('./Administrador/Clientes/Clientes'));
 const Cliente = lazy(() => import('./cliente/cliente'));
+const AdminInicio = lazy(() => import('./Administrador/Index/Index'));
+const AdminGaleria = lazy(() => import('./Administrador/Galeria/Galeria'));
 
 const NotFound = Inicio;
 
@@ -31,6 +33,9 @@ function App() {
                     <Route path='/contacto' exact component={Contacto} />
                     <Route path='/admin' exact component={Admin} />
                     <Route path='/seleccion' exact component={Cliente} />
+                    <Route path='/admin/inicio' exact component={AdminInicio} />
+                    <Route path='/admin/galeria' exact component={AdminGaleria} />
+
                     <Route component={NotFound} />
                 </Switch>
             </Suspense>

@@ -1,18 +1,27 @@
 import React, { Component } from './node_modules/react';
 import Inicio from '../../inicio/inicio'
-import ArrowDownwardIcon from './node_modules/@material-ui/icons/ArrowDownward';
-import EditOutlinedIcon from './node_modules/@material-ui/icons/EditOutlined';
-import DeleteForeverIcon from './node_modules/@material-ui/icons/DeleteForever';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { KeyboardDatePicker } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import SimpleBar from 'simplebar-react';
-import './node_modules/simplebar/dist/simplebar.min.css';
+import { withStyles } from '@material-ui/core/styles';
+import 'simplebar/dist/simplebar.min.css';
 import './Clientes.scss'
+import { FormLabel } from '@material-ui/core';
 
 class Lista extends Component {
     constructor(props){
         super(props);
         this.state = {
           list: ["03/02/1996", "05/05/1995", "03/02/1996", "05/05/1995", "03/02/1996", "05/05/1995", "03/02/1996", "05/05/1995", "03/02/1996", "05/05/1995", "03/02/1996", "05/05/1995"]
-        }
+        }        
     }
     
     // Fetch the list on first mount
@@ -74,6 +83,45 @@ class Lista extends Component {
 }
 
 function Clientes() {
+
+    const dateObj = new Date();
+    const month = dateObj.getUTCMonth(); //months from 1-12
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+
+    /* ---- Configuración de la fecha --- */
+    const [selectedDate, setSelectedDate] = React.useState(new Date(year, month, day));
+
+    const handleDateChange = date => {
+        setSelectedDate(date);
+    };
+
+    /* ---------------------------------- */
+
+    /* ---- Configuración Radio button --- */
+
+    const [value, setValue] = React.useState('boda');
+
+
+    const handleChange = event => {
+        setValue(event.target.value);
+      };
+    /* ----------------------------------- */
+
+    /* --- Personalización de los Radio --- */
+
+    const BlackRadio = withStyles({
+        root: {
+          color: '#2C2C2C',
+          '&$checked': {
+            color: '#2C2C2C',
+          },
+        },
+        checked: {},
+      })(props => <Radio color="default" {...props} />);
+
+    /* ----------------------------------- */
+
     return (
         <div className="content-clientes-admin">
             <Inicio />
@@ -93,9 +141,36 @@ function Clientes() {
                                     </div>
                                 </div>
                                 <form className="valor">
-                                    <input type="text" name="nombre" className = "nombre" value="NOMBRE/S" />
-                                    <input type="text" name="nombre" className = "nombre" value="SERVICIO REALIZADO" />
-                                    <input type="submit" className="enviar" value="SUBIR"/>
+                                    <div className="mod">
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <KeyboardDatePicker
+                                                disableToolbar
+                                                disableFuture
+                                                format="dd/MM/yyyy"
+                                                margin="normal"
+                                                id="date-picker-inline"
+                                                label="Fecha"
+                                                style={{margin: '0', width: '50%'}}
+                                                value={selectedDate}
+                                                onChange={handleDateChange}
+                                                KeyboardButtonProps={{
+                                                    'aria-label': 'change date',
+                                                }}
+                                            />
+                                        </MuiPickersUtilsProvider>
+                                        <div className="linea"></div>
+                                        <FormControl component="fieldset">
+                                            <FormLabel component="legend"> Seleccione Evento</FormLabel>
+                                            <RadioGroup onChange={handleChange} value={value}>
+                                                <FormControlLabel  value="boda" control={<BlackRadio />} label="Boda" />
+                                                <FormControlLabel  value="preboda" control={<BlackRadio />} label="Preboda" />
+                                                <FormControlLabel  value="postboda" control={<BlackRadio />} label="Postboda" />
+                                            </RadioGroup>
+                                        </FormControl>
+                                        </div>
+                                        <div className="boton">
+                                             <input type="submit" className="enviar" value="SUBIR"/>
+                                        </div>
                                 </form>
                             </div>
                         </div>
