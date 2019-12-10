@@ -1,4 +1,4 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import Inicio from '../../inicio/inicio'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
@@ -13,7 +13,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import SimpleBar from 'simplebar-react';
 import { withStyles } from '@material-ui/core/styles';
 import 'simplebar/dist/simplebar.min.css';
-import './Clientes.scss'
+import './clientes.scss'
 import { FormLabel } from '@material-ui/core';
 
 class Lista extends Component {

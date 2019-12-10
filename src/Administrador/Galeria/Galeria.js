@@ -1,16 +1,16 @@
-import React from './node_modules/react';
+import React from 'react';
 import Galeria from '../../galeria/galeria';
-import { makeStyles } from './node_modules/@material-ui/core/styles';
-import TextField from './node_modules/@material-ui/core/TextField';
-import FormGroup from './node_modules/@material-ui/core/FormGroup';
-import FormControlLabel from './node_modules/@material-ui/core/FormControlLabel';
-import Switch from './node_modules/@material-ui/core/Switch';
-import SearchIcon from './node_modules/@material-ui/icons/Search';
-import RadioGroup from './node_modules/@material-ui/core/RadioGroup';
-import Radio from './node_modules/@material-ui/core/Radio';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import SearchIcon from '@material-ui/icons/Search';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
 import Notificador from '../../common/admin/admin_edicion'
-import "./Galeria.scss"
-import { Button } from './node_modules/@material-ui/core';
+import "./galeria.scss"
+import { Button } from '@material-ui/core';
 
 function Admin_galeria (){
 

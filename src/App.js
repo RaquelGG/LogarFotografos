@@ -10,10 +10,10 @@ const Precios = lazy(() => import('./precios/precios'));
 const Contacto = lazy(() => import('./contacto/contacto'));
 const Galeria = lazy(() => import('./galeria/galeria'));
 const Acceso = lazy(() => import('./acceso/acceso'));
-const Admin = lazy(() => import('./Administrador/Clientes/Clientes'));
+const Admin = lazy(() => import('./administrador/clientes/clientes'));
 const Cliente = lazy(() => import('./cliente/cliente'));
-const AdminInicio = lazy(() => import('./Administrador/Index/Index'));
-const AdminGaleria = lazy(() => import('./Administrador/Galeria/Galeria'));
+const AdminInicio = lazy(() => import('./administrador/inicio/inicio'));
+const AdminGaleria = lazy(() => import('./administrador/galeria/galeria'));
 
 const NotFound = Inicio;
 
