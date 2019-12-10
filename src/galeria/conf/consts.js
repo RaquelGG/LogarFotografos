@@ -43,5 +43,4 @@ export const styleParams = {
     imageMargin: 5,
     galleryMargin: 0,
     enableInfiniteScroll: true, // false si queremos que aparezca un botón con load more
-    
 };
