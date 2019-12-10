@@ -13,12 +13,42 @@ import img12 from "./miniaturas/12.jpg"
 import img13 from "./miniaturas/13.jpg"
 import img14 from "./miniaturas/14.jpg"
 
+export async function obtenerGaleria() {
+  try {
+      const response = await fetch(`http://localhost:3213/comprobarUsuario`, {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({user: user, pass: pass})
+      });
+      let respuesta = await response.text();
+      
+      console.log(respuesta);
+      return respuesta == 1;
+  } catch {
+      console.error("ERROR: Nombre de usuario o contraseña incorrecta");
+  }
+  return false;
+}
 
 export const items = [
     {
-      src: img1,
-      width: 3,
-      height: 2
+      itemId: 'sample-id',
+      mediaUrl: img1,
+      metaData: {
+        type: 'image',
+        height: 2,
+        width: 4,
+        title: 'sample-title',
+        description: 'sample-description',
+        focalPoint: [1, 4],
+        link: {
+          url: img1,
+          target: '_blank'
+        },
+      }
     },
     {
       src: img4,
@@ -33,15 +63,13 @@ export const items = [
     {
       src: img3,
       width: 4,
-      height: 2
+      height: 2,
     },
     { // Video item:
       src: 'https://player.vimeo.com/video/327919041',
-      metaData: {
         type: 'video',
         height: 4,
         width: 6,
-      }
     },
     {
       src: "https://cdn0.bodas.net/emp/fotos/1/8/4/0/7/t40_15894842-584673431741671-9035533858770220959-n_1_18407.jpg",

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 import Inicio from '../../inicio/inicio'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
