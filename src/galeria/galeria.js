@@ -1,46 +1,25 @@
-import { ProGallery } from 'pro-gallery';
-import React, {useEffect, useState} from 'react';
-import 'pro-gallery/dist/statics/main.css';
-import { items } from "./fotos/fotos"; 
+import React, { useEffect, useState } from 'react';
 import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
-import { options } from "./conf/consts";
 import "./galeria.scss";
+import { obtenerGaleria } from "../common/conexion";
+import Loader from '../common/loader/loader';
+import Gallery from 'react-grid-gallery';
 
 
 export function Galeria() {
-  
-  // The size of the gallery container. The images will fit themselves in it
-  const container = {
-    width: window.innerWidth,
-    height: window.innerHeight
-  };
+    const [images, setImages] = useState(null);
 
-  // The eventsListener will notify you anytime something has happened in the gallery.
-  const eventsListener = (eventName, eventData) => console.log({eventName, eventData}); 
+    useEffect(async () => setImages(await obtenerGaleria(1)), []);
 
-  // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
-  const scrollingElement = window;
-
-  return (
-    <div className="content_galeria">
-      <Imagen_fondo id_fondo={4} size_logo={"200px"}/>
-      
-      <ProGallery
-        items={items}
-        //options={options}
-        container={container}
-        scrollingElement={scrollingElement}
-        eventsListener={eventsListener}
-        styles={options}
-        
-        
-      />
-
-      </div>
-  );
+    return (
+        <div className="content_galeria">
+            <Imagen_fondo id_fondo={4} size_logo={"200px"} />
+            {
+                images
+                ? <Gallery images={images} enableImageSelection={false} />
+                : <Loader />
+            }
+        </div>
+    );
 }
-
-  // Enjoy using your new gallery!
-  // For more options, visit https://github.com/wix-incubator/pro-gallery
-
 export default Galeria;

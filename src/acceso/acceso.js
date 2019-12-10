@@ -2,7 +2,7 @@ import React from 'react';
 import fondo from "./img/fondo.jpg";
 import "./acceso.scss";
 import { Link, Redirect } from 'react-router-dom';
-import {comprobarUsuario, comprobarAdmin} from '../common/comprobarSesion';
+import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
 
 function Acceso({match}) {
     const {usuario} = match.params;
@@ -19,9 +19,9 @@ function Acceso({match}) {
 
         if (await comprobarUsuario(u, p)) {
             if (await comprobarAdmin(u, p)) {
-                return <Redirect to="/admin"/>; // Si es admin
+                return <Redirect exact to="/admin"/>; // Si es admin
             }
-            return <Redirect to="/seleccion"/>;// Si es un cliente
+            return <Redirect exact to="/seleccion"/>;// Si es un cliente
         }
     }
 

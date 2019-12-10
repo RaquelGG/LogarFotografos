@@ -25,7 +25,8 @@ function App() {
                     <Redirect strict from="/seleccion" to="/acceso" />
                     <Route path='/' exact component={Inicio} />
                     <Route path='/acceso/:usuario?' exact component={Acceso} />
-                    <Route path='/galeria/:id' exact component={Galeria} />
+                    {/*<Route path='/galeria/:id' exact component={Galeria} />*/}
+                    <Route path='/galeria' exact component={Galeria} />
                     <Route path='/precios' exact component={Precios} />
                     <Route path='/contacto' exact component={Contacto} />
                     <Route path='/admin' exact component={Admin} />
