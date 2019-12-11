@@ -4,7 +4,7 @@ import "./acceso.scss";
 import { Link, Redirect } from 'react-router-dom';
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
 
-function Acceso({match}) {
+function Acceso({match, history}) {
     const {usuario} = match.params;
     let user = React.createRef();
     let pass = React.createRef();
@@ -19,9 +19,10 @@ function Acceso({match}) {
 
         if (await comprobarUsuario(u, p)) {
             if (await comprobarAdmin(u, p)) {
-                return <Redirect exact to="/admin"/>; // Si es admin
+                history.push("/admin"); // Si es admin
+            } else {
+                history.push("/seleccion");;// Si es un cliente
             }
-            return <Redirect exact to="/seleccion"/>;// Si es un cliente
         }
     }
 
