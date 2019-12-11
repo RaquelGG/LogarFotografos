@@ -9,7 +9,7 @@ function Imagen_fondo({id_fondo, size_logo, logo}) {
 
     (async () => {
         try {
-            const response = await fetch(`https://servidor.logarfotografos.es/sentencias/obtenerUrlFondo.php?id_foto=${id_foto}`)
+            const response = await fetch(`https://servidor.logarfotografos.es/sentencias/obtenerUrlFondo.php?id_foto=${id_fondo}`)
             let respuesta = await response.text();
             setFondo(respuesta.replace("undefined", ""));
             console.log(fondo);
