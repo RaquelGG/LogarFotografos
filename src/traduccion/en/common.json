@@ -49,19 +49,19 @@
 		"opcion1" : {
 			"titulo" : "Opcion 1",
 			"precioFoto" : "295€",
-			"precioVideo" : "295€",
+			"precioVideo" : "295€"
 		},
 
 		"opcion2" : {
 			"titulo" : "Opcion 2",
 			"precioFoto" : "395€",
-			"precioVideo" : "550€",
+			"precioVideo" : "550€"
 		},
 
 		"opcion3" : {
 			"titulo" : "Opcion 3",
 			"precioFoto" : "495€",
-			"precioVideo" : "895€",
+			"precioVideo" : "895€"
 		}
 	},
 
@@ -89,7 +89,7 @@
 		"enviar" : "Enviar todo y terminar",
 		"selecTodo" : "Seleccionar todo",
 		"deselecTodo" : "Deseleccionar todo",
-		"confirmar": "Estás seguro de",
+		"confirmar": "Estás seguro de"
 	},
 
 	"terminos" : "Terminos de uso",

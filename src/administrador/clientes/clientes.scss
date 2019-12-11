@@ -74,6 +74,7 @@
 .content-clientes-admin {
     height: 100%;
     width: 100%;
+    z-index: 5;
 
     .contenido {
         height: 100%;
@@ -112,6 +113,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    z-index: 150;
 
                     .input {
                         width: 52%;
@@ -204,9 +206,40 @@
                 }
 
                 .cuadro-triangulos {
+                    position: relative;
                     height: 19%;
                     width: 100%;
+                    z-index: 1;
                     //background-color: black; ESTE ES EL COLOR --------------------------------------
+
+                    .triangulo {
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    .gr {
+                        top: 0;
+                        right: 13%;
+                        border-top: 132px solid white;
+                        border-right: 132px solid transparent;
+                    }
+
+                    .me {
+                        right: 50px;
+                        bottom: 0;
+                        border-top: 80px solid white;
+                        border-left: 80px solid transparent;
+                    }
+
+                    .pe {
+                        top: 0;
+                        right: 0;
+                        border-top: 50px solid white;
+                        border-right: 50px solid transparent;
+                        transform: rotate(9deg);
+                        transform-origin: top left;
+                    }
                 }
             }            
         }

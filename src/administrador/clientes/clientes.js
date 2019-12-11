@@ -175,7 +175,9 @@ function Clientes() {
                             </div>
                         </div>
                         <div className="cuadro-triangulos">
-
+                            <div className="triangulo gr"></div>
+                            <div className="triangulo pe"></div>
+                            <div className="triangulo me"></div>
                         </div>
                     </div>
                 </div>
