@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 import Inicio from '../../inicio/inicio'
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { KeyboardDatePicker } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import ArrowDownwardIcon from './node_modules/@material-ui/icons/ArrowDownward';
+import EditOutlinedIcon from './node_modules/@material-ui/icons/EditOutlined';
+import DeleteForeverIcon from './node_modules/@material-ui/icons/DeleteForever';
+import { KeyboardDatePicker } from './node_modules/@material-ui/pickers';
+import DateFnsUtils from './node_modules/@date-io/date-fns';
+import RadioGroup from './node_modules/@material-ui/core/RadioGroup';
+import FormControl from './node_modules/@material-ui/core/FormControl';
+import FormControlLabel from './node_modules/@material-ui/core/FormControlLabel';
+import Radio from './node_modules/@material-ui/core/Radio';
+import { MuiPickersUtilsProvider } from './node_modules/@material-ui/pickers';
 import SimpleBar from 'simplebar-react';
-import { withStyles } from '@material-ui/core/styles';
-import 'simplebar/dist/simplebar.min.css';
+import { withStyles } from './node_modules/@material-ui/core/styles';
+import './node_modules/simplebar/dist/simplebar.min.css';
 import './clientes.scss'
-import { FormLabel } from '@material-ui/core';
+import { FormLabel } from './node_modules/@material-ui/core';
 
 class Lista extends Component {
     constructor(props){
