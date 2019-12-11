@@ -24,7 +24,6 @@ function App() {
         <Router>
             <Suspense fallback={<Loader />}>
                 <Switch>
-                    <Redirect strict from="/seleccion" to="/acceso" />
                     <Route path='/' exact component={Inicio} />
                     <Route path='/acceso/:usuario?' exact component={Acceso} />
                     {/*<Route path='/galeria/:id' exact component={Galeria} />*/}
