@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-
+import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
 import { withTranslation, Trans } from 'react-i18next';
@@ -22,6 +22,7 @@ const NotFound = Inicio;
 function App() {
     return (
         <Router>
+            <Menu/>
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />

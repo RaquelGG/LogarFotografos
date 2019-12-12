@@ -9,7 +9,7 @@ import Gallery from 'react-grid-gallery';
 export function Galeria() {
     const [images, setImages] = useState(null);
 
-    useEffect(async () => setImages(await obtenerGaleria(1)), []);
+    useEffect(async () => setImages(await obtenerGaleria()), []);
 
     
 
