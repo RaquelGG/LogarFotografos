@@ -1,26 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="301" viewBox="0 0 600 301">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="395" height="209" viewBox="0 0 395 209">
   <defs>
-    <filter id="LOGAR" x="0" y="0" width="594" height="252" filterUnits="userSpaceOnUse">
+    <filter id="LOGAR" x="0" y="0" width="393" height="178" filterUnits="userSpaceOnUse">
       <feOffset input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="9" result="blur"/>
-      <feFlood flood-opacity="0.749"/>
-      <feComposite operator="in" in2="blur"/>
+
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="FOTÓGRAFOS" x="8" y="151" width="592" height="150" filterUnits="userSpaceOnUse">
-      <feOffset input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="9" result="blur-2"/>
-      <feFlood flood-opacity="0.749"/>
-      <feComposite operator="in" in2="blur-2"/>
+    <filter id="FOTÓGRAFOS" x="5" y="95" width="390" height="114" filterUnits="userSpaceOnUse">
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="Grupo" transform="translate(-63 -168)">
+  <g id="logo_blanco" transform="translate(-63 -168)">
     <g transform="matrix(1, 0, 0, 1, 63, 168)" filter="url(#LOGAR)">
-      <text id="LOGAR-2" data-name="LOGAR" transform="translate(27 188)" fill="#fff" font-size="166" font-family="CenturyGothic, Century Gothic"><tspan x="0" y="0">L</tspan><tspan y="0" letter-spacing="-0.299em">O</tspan><tspan y="0">GAR</tspan></text>
+      <text id="LOGAR-2" data-name="LOGAR" transform="translate(27 128)" fill="#2c2c2c" font-size="104" font-family="CenturyGothic, Century Gothic"><tspan x="0" y="0">L</tspan><tspan y="0" letter-spacing="-0.299em">O</tspan><tspan y="0">GAR</tspan></text>
     </g>
     <g transform="matrix(1, 0, 0, 1, 63, 168)" filter="url(#FOTÓGRAFOS)">
-      <text id="FOTÓGRAFOS-2" data-name="FOTÓGRAFOS" transform="translate(35 256)" fill="#fff" font-size="80" font-family="CenturyGothic, Century Gothic"><tspan x="0" y="0">FOTÓGRAFOS</tspan></text>
+      <text id="FOTÓGRAFOS-2" data-name="FOTÓGRAFOS" transform="translate(32 171)" fill="#2c2c2c" font-size="50" font-family="CenturyGothic, Century Gothic"><tspan x="0" y="0">FOTÓGRAFOS</tspan></text>
     </g>
   </g>
 </svg>

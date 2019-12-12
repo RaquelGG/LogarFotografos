@@ -1,10 +1,10 @@
 import React from "react";
-import logo from './logo.svg';
 
-function Logo({size_logo, other_logo}) {
+function Logo() {
     return (
         //entre llaves se pone javascript
-        <img src={!!other_logo ? other_logo : logo} width={size_logo} />
+        //<img className="logo-logar" src={!!other_logo ? other_logo : logo} width={size_logo} />
+        <div className="logo-logar"/>
     );
 }
 

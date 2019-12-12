@@ -39,7 +39,7 @@ function Contacto() {
     //const { t, i18n } = this.props;
     return (
         <div className = "content-contacto">
-            <Imagen_fondo id_fondo={3} size_logo={"198px"}/>
+            <Imagen_fondo id_fondo={3} />
 
             <div className = "info-contacto">
                 <div className = "cuadro-giro-superior sombra"> </div>

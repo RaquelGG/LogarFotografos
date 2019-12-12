@@ -1,6 +1,20 @@
 @import '../common/estilos_comunes.scss';
 
+.logo-logar {
+    $size: 400px;
+    width: $size;
+    background-image: url(../common/logo/logo.svg);
+    height: $size;
+    background-repeat: no-repeat;
+}
+
 @media screen and ($movil) {
+    .logo-logar {
+        $size: 200px;
+        width: $size;
+        height: 150px;
+        background-size: $size;
+    }
 
     html, body {
         position:relative;

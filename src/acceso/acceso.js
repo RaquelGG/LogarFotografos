@@ -30,7 +30,7 @@ function Acceso({match, history}) {
         <div className="content_acceso" style={{backgroundImage: 'url(' + fondo + ')'}}>
             <div className="acceso sombra">
                 <div className="logo"></div>
-                <input type="text" ref={user} className="inp" placeholder="USUARIO" value={usuario}/>
+                <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
                 <button className="button" onClick={() => acceder()}>Acceder</button>
                 <Link to="/" className="volver">
