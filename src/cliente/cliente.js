@@ -38,10 +38,10 @@ export function Cliente() {
     return (
         <div className="content">
             <Menu size_logo = {"124px"} logo={logo} is_seleccion={true}/>
-            <div className="fake-burger">
-                        <div className="line1"></div>
-                        <div className="line2"></div>
-                        <div className="line3"></div>
+            <div className="fake-burger" onClick={abrir_dialogo}>
+                <div className="line1"></div>
+                <div className="line2"></div>
+                <div className="line3"></div>
             </div>
             <div className="burger-dialogo" onClick={abrir_dialogo}>
                 <img src={dialogo}/>
