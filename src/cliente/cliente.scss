@@ -1,21 +1,6 @@
 @import '../common/estilos_comunes.scss';
 
-.logo-logar {
-    $size: 400px;
-    width: $size;
-    background-image: url(../common/logo/logo.svg);
-    height: $size;
-    background-repeat: no-repeat;
-}
-
 @media screen and ($movil) {
-    .logo-logar {
-        $size: 200px;
-        width: $size;
-        height: 150px;
-        background-size: $size;
-    }
-
     html, body {
         position:relative;
         overflow-x:hidden;
@@ -179,5 +164,12 @@
 
 .toggle .line3 {
     transform: rotate(44deg) translate(-4px, -5.5px);
+}
+
+@media screen and ($ordenador) {
+    .logo-logar {
+        background-image: url(../common/logo/logo.svg);
+        background-repeat: no-repeat;
+    }
 }
 

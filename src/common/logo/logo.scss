@@ -1,0 +1,18 @@
+@import '../estilos_comunes.scss';
+
+.logo-logar {
+    $size: 400px;
+    width: $size;
+    background-image: url(../logo/logo_blanco.svg);
+    height: $size;
+    background-repeat: no-repeat;
+
+
+@media screen and ($movil){
+        text-align: center;
+        $size: 300px;
+        width: $size;
+        height: 150px;
+        background-size: $size;
+    }
+}

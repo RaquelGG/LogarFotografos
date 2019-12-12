@@ -1,14 +1,5 @@
 @import '../common/estilos_comunes.scss';
 
-.logo-logar {
-    $size: 300px;
-    width: $size;
-    background: url(../common/logo/logo_blanco.svg) no-repeat;
-    background-size: $size;
-    height: $size;
-    margin-left: 50px;
-}
-
 .content_galeria {
     width: 100%;
 
@@ -16,14 +7,5 @@
         position: absolute;
         top: 0;
         width: 100%;
-    }
-}
-
-@media screen and ($movil) {
-    .logo-logar {
-        $size: 200px;
-        width: $size;
-        height: 150px;
-        background-size: $size;
     }
 }

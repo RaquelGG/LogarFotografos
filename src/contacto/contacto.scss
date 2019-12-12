@@ -4,14 +4,6 @@
     display: none;
 }
 
-.logo-logar {
-    $size: 400px;
-    width: $size;
-    background-image: url(../common/logo/logo_blanco.svg);
-    height: $size;
-    background-repeat: no-repeat;
-}
-
 .content-contacto{
     width: 100%;
     height: 100%;
@@ -92,13 +84,6 @@
 }
 
 @media screen and ($movil){
-    .logo-logar {
-        $size: 200px;
-        width: $size;
-        height: $size;
-        height: 150px;
-    }
-
     .info-contacto{
         width: 100%;
         top: $distancia_principio_mv;
