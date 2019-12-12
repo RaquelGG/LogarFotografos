@@ -3,7 +3,7 @@ export async function comprobarUsuario(user, pass) {
     console.log("Usuario: ", user);
     console.log("Contraseña: ", pass);
     try {
-        const response = await fetch(`https://servidor.logarfotografos.es/sentencias/comprobarUsuario.php`, {
+        const response = await fetch(`https://pruebas.logarfotografos.es/publico/comprobarUsuario.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -24,7 +24,7 @@ export async function comprobarUsuario(user, pass) {
 // Comprueba si el usuario es administrador
 export async function comprobarAdmin(user, pass) {
     try {
-        const response = await fetch(`https://servidor.logarfotografos.es/sentencias/comprobarAdmin.php`, {
+        const response = await fetch(`https://pruebas.logarfotografos.es/publico/comprobarAdmin.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -42,13 +42,12 @@ export async function comprobarAdmin(user, pass) {
 }
 
 // Obtiene la galería
-export async function obtenerGaleria(id_boda) {
+export async function obtenerGaleria() {
     try {
-        const response = await fetch(`https://servidor.logarfotografos.es/sentencias/obtenerFotos.php?id_boda=${id_boda}`)
+        const response = await fetch(`https://pruebas.logarfotografos.es/publico/obtenerFotos.php`)
         const resultado = await response.json();
 
         const fotos = resultado;//.map(JSON.parse);
-
 
         console.log(fotos);
         return fotos;
