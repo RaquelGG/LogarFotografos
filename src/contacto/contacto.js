@@ -33,7 +33,7 @@ i18next.init({
 
 function Contacto() {
 
-    const admin = true;
+    const admin = false;
     const json = traduccion.contacto;
 
     //const { t, i18n } = this.props;

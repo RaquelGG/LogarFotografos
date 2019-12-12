@@ -2,7 +2,168 @@
 
 @media screen and ($movil) {
 
-    .menu{
-        margin-bottom: 27px;
+    html, body {
+        position:relative;
+        overflow-x:hidden;
     }
+
+    .burger-dialogo {
+        position: absolute;
+        right: 0;
+        top: 77px;
+        height: 47px;
+        width: 47px;
+        border: 2px solid #707070;
+        background-color: $color-primario;
+    }
+
+    .fake-burger {
+        display: none;
+        position: absolute;
+        background-color: $color-primario;
+        right: 0px;
+        top: 14px;
+        height: 47px;
+        width: 47px;
+        border: 2px solid $color-primario;
+        z-index: 11;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fake-burger div{
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 2.5px;
+        transition: all 0.3s ease;
+    }
+
+    .dialogo{
+        position: absolute;
+        overflow-y: scroll;
+        top: 15%;
+        height: 85%;
+        width: 100%;
+        display: flex;
+        transform: translateX(100%);
+        background-color: white;
+        justify-content: center;
+
+        .content {
+            position: relative;
+            width: 86%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .input {
+                position: relative;
+                width: 92.26%;
+                background-color: white;
+
+                h1 {
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-weight: normal;
+                    font-size: 18px;
+                    margin: 0;
+                    font-family: "Century Gothic", sans-serif;
+                }
+
+                h3 {
+                    font-weight: normal;
+                    font-size: 15px;
+                    margin: 0;
+                    font-family: "Century Gothic", sans-serif;
+                    padding-bottom: 15px;
+                }
+
+                form {
+                    position: relative;
+                    width: 100%;       
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;            
+    
+                    .mensaje {
+                        width: 100%;
+                        min-height: 149px;
+                        resize: none;
+                        padding: 0;
+                        padding-left: 10px;
+                        font-size: 14px;
+                        border: none;
+                        border-bottom: 2px solid #919191;
+                        background-color: #F1F1F1;
+                        color: #919191;
+                        font-family: "Century Gothic", sans-serif;
+                        margin-bottom: 8%;
+                    }
+
+                    .boton-enviar {
+                        width: 80%;
+                        min-height: 50px;
+                        background-color: $color-primario;
+                        text-transform: uppercase;
+                        color: white;
+                        font-size: 15px;
+                        border: none;
+                        font-family: "Century Gothic", sans-serif;
+                    }
+                }
+            }
+
+            .botones {
+                margin-top: 25px;
+                width: 100%;
+                position: relative;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    width: 100%;
+                    min-height: 45px;
+                    text-transform: uppercase;
+                    font-size: 25px;
+                    background-color: white;
+                    margin-bottom: 21px;
+                    border: 1px solid $color-primario; 
+                }
+            }
+        }
+    }
+
+    
 }
+
+.abrir-dialogo {
+    transform: translateX(0%);
+    transition: transform 0.5s ease-in;
+}
+
+.cerrar-burger {
+    display: none;
+}
+
+.abrir-fake-burger {
+    display: flex;
+}
+
+.toggle .line1 {
+    transform: rotate(-44deg) translate(-6px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(44deg) translate(-4px, -5.5px);
+}
+

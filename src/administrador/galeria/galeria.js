@@ -60,7 +60,6 @@ function Admin_galeria (){
         postboda: false
       });
 
-
     /* --- Manejor de eventos ------- */
 
     const handleChange = name => event => {

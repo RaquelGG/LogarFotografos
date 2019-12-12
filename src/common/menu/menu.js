@@ -4,7 +4,7 @@ import "../menu/menu.scss";
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 
-function Menu ({size_logo, logo}) {
+function Menu ({size_logo, logo, is_seleccion}) {
 
     function navSlide() {
         const burger = document.querySelector('.burger');
@@ -62,7 +62,7 @@ function Menu ({size_logo, logo}) {
                         </li>
                     </ul>
 
-                    <div className="burger" onClick={navSlide}>
+                    <div className={(is_seleccion) ? "burger seleccion" : "burger"} onClick={navSlide}>
                         <div className="line1"></div>
                         <div className="line2"></div>
                         <div className="line3"></div>
