@@ -492,6 +492,7 @@
                 z-index: 16;
 
                 .cuadro-giro-2-3{
+                    display: none;
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -500,7 +501,7 @@
                     transform: rotateZ(19deg);
                     transform-origin: top right;
                     background-color: white;
-                    z-index: 1;
+                    z-index: 0;
                 }
 
                 .info-contacto-formulario-contenido {
@@ -514,6 +515,8 @@
                         margin: 0;
                         font-size: 30px;
                     }
+
+                    
 
                     form{
                         width: 100%;

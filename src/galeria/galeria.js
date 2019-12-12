@@ -11,8 +11,6 @@ export function Galeria() {
 
     useEffect(async () => setImages(await obtenerGaleria()), []);
 
-    
-
     return (
         <div className="content_galeria">
             <Imagen_fondo id_fondo={4} size_logo={"200px"} />

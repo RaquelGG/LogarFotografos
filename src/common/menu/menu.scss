@@ -3,6 +3,12 @@
 // MOVIL
 @media screen and ($movil) {
 
+    html, body {
+        position:relative;
+        overflow-x:hidden;
+        overflow-y: hidden ;
+    }
+
     .redes-ordenador{
         display: none;
     }
@@ -63,7 +69,6 @@
         border-color: white;
         border: 2px solid white;
         z-index: 11;
-
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -75,6 +80,11 @@
         background-color: white;
         margin: 2.5px;
         transition: all 0.3s ease;
+    }
+
+    .seleccion {
+        background-color: $color-primario;
+        border: 2px solid #707070;
     }
 }
 
