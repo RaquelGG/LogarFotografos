@@ -55,7 +55,7 @@ function Menu ({is_seleccion}) {
                         </li>
                         
                         <li className="terminos-movil">
-                            <h3>TÉRMINOS DE USO \ POLÍTICA DE PRIVACIDAD</h3>
+                            <h3><a>TÉRMINOS DE USO</a>\<a>POLÍTICA DE PRIVACIDAD</a></h3>
                         </li>
                         <li className ="redes-movil">
                             <Redes/>

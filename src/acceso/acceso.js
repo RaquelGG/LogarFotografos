@@ -1,7 +1,7 @@
 import React from 'react';
 import fondo from "./img/fondo.jpg";
 import "./acceso.scss";
-import { Link, Redirect } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
 
 function Acceso({match, history}) {

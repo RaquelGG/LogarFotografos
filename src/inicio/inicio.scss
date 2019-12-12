@@ -1,25 +1,8 @@
 @import '../common/estilos_comunes.scss';
 
-.logo-logar {
-    $size: 500px;
-    width: $size;
-    background: url(../common/logo/logo_blanco.svg) no-repeat;
-    background-size: $size;
-    height: $size;
-}
 
 .content_inicio {
     height: 100%;
     width: 100%;
     z-index: 1;
-}
-
-@media screen and ($movil) {
-    .logo-logar {
-        text-align: center;
-        $size: 300px;
-        width: $size;
-        height: 150px;
-        background-size: $size;
-    }
 }
