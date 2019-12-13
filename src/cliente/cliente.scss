@@ -36,7 +36,6 @@
 }
 
 @media screen and ($movil) {
-
     html, body {
         position:relative;
         overflow-x:hidden;
@@ -200,5 +199,12 @@
 
 .toggle .line3 {
     transform: rotate(44deg) translate(-4px, -5.5px);
+}
+
+@media screen and ($ordenador) {
+    .logo-logar {
+        background-image: url(../common/logo/logo.svg);
+        background-repeat: no-repeat;
+    }
 }
 

@@ -1,43 +1,8 @@
 @import '../common/estilos_comunes.scss';
 
+
 .content_inicio {
     height: 100%;
     width: 100%;
     z-index: 1;
-
-
-    .redes { z-index: 4; }
-
-
-    // MOVIL
-   /* @media screen and ($movil) {
-    
-        .menu {
-            position: absolute;
-            right: 0;
-            margin-top: $margen-vertical-mv;
-        }
-    
-        .redes {
-            position: absolute;
-            bottom: 0;
-        }
-    }
-
-    // ORDENADOR
-    @media screen and ($ordenador) {
-        .logo {
-            margin-left: $margen-vertical-mv;
-        }
-
-        .redes {
-            bottom: 0;
-        }
-
-        .menu {
-            max-width: 2000px;
-            display: flex;
-            justify-content: space-around;
-        }
-    }*/
 }

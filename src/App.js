@@ -17,8 +17,6 @@ const AdminGaleria = lazy(() => import('./administrador/galeria/galeria'));
 
 const NotFound = Inicio;
 
-
-
 function App() {
     return (
         <Router>

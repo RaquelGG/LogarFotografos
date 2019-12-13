@@ -13,7 +13,7 @@ export function Galeria() {
 
     return (
         <div className="content_galeria">
-            <Imagen_fondo id_fondo={4} size_logo={"200px"} />
+            <Imagen_fondo id_fondo={4} />
             {
                 images
                 ? <Gallery className="galeria" images={images} enableImageSelection={false} />

@@ -13,13 +13,10 @@
     .content-menu {
         z-index: 11;
     }
-    
 
     .subtitulo {
         color: white;
     }
-
-    
 
     .opcion_1_precio {
         color: #ACB48A;
@@ -59,9 +56,11 @@
             max-width: 27px;
         }
     }
+}
 
     // MOVIL
     @media screen and ($movil) {
+    .content_precios {
         .resto_contenido {
             position: absolute;
             height: 100%;
@@ -345,16 +344,17 @@
                 }
 
             }
-        }
-
-        
+        }       
     }
+}
 
 
     // ORDENADOR ----------------------------------------------
     @media screen and ($ordenador) {
+
+    .content_precios {
         $carta_ancho: 550px;
-        text-align: center;
+        text-align: center;        
 
         .resto_contenido {
             margin-top: $distancia_principio_pc;
@@ -646,5 +646,6 @@
 
             }
         }
+        
     }
 }

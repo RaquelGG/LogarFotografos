@@ -4,7 +4,7 @@ import "../menu/menu.scss";
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 
-function Menu ({size_logo, logo, is_seleccion}) {
+function Menu ({is_seleccion}) {
 
     function navSlide() {
         const burger = document.querySelector('.burger');
@@ -33,13 +33,13 @@ function Menu ({size_logo, logo, is_seleccion}) {
         <nav>
             <div className ="content-menu">
                 <div className="logo-pc">
-                    <Logo size_logo={size_logo} other_logo={logo}/>
+                    <Logo />
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
                     <ul className="nav-links">
                         <li className="logo-movil">
-                            <Logo size_logo={"200px"} other_logo={logo}/>
+                            <Logo />
                         </li>
                         <li>
                             <Link to="/">INICIO</Link>
@@ -55,7 +55,7 @@ function Menu ({size_logo, logo, is_seleccion}) {
                         </li>
                         
                         <li className="terminos-movil">
-                            <h3>TÉRMINOS DE USO \ POLÍTICA DE PRIVACIDAD</h3>
+                            <h3><a>TÉRMINOS DE USO</a>\<a>POLÍTICA DE PRIVACIDAD</a></h3>
                         </li>
                         <li className ="redes-movil">
                             <Redes/>
