@@ -1,5 +1,40 @@
 @import '../common/estilos_comunes.scss';
 
+@media screen and ($ordenador) {
+
+    .fake-burger {
+        display: none;
+    }
+
+    .burger-dialogo {
+        display: none;
+    }
+
+    .galeria {
+        top: 28%;
+        left: 0;
+        width: 69%;
+        height: 72%;
+        background-color: red($color: #000000);
+    }
+
+    .dialogo {
+        position: absolute;
+        top: 28%;
+        bottom: 0;
+        height: 72%;
+        right: 0;
+        width: 31%;
+        height: 100%;
+
+        .input {
+            display: flex;
+            width: 100%;
+            border: 1px solid #707070;
+        }
+    }
+}
+
 @media screen and ($movil) {
 
     html, body {

@@ -49,7 +49,7 @@ export function Cliente() {
             {
                 images
                 ? <Gallery className="galeria" images={images} enableImageSelection={true} />
-                : <Loader />
+                : <Loader className="galeria"/>
             }
             <div className="dialogo">
                 <div className="content"> 
