@@ -81,11 +81,12 @@
 		"error" : "Usuario o contraseña incorrecto"
 	},
 
-	"eleccion" : {
+	"seleccion" : {
 		"this" : "eleccion",
 		"opcional" : "(Opcional)",
 		"explicacion" : "Especifica cambios en imágenes seleccionadas nombrando el número de imagen",
 		"mensaje" : "Mensaje",
+		"guardar" : "Guardar",
 		"enviar" : "Enviar todo y terminar",
 		"selecTodo" : "Seleccionar todo",
 		"deselecTodo" : "Deseleccionar todo",

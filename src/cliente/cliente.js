@@ -19,7 +19,7 @@ export function Cliente() {
     /* --------------- */
 
     /* --- JSON --- */
-    const json = traduccion.eleccion;
+    const json = traduccion.seleccion;
     /* ------------ */
 
     /* --- Animación cliente --- */
@@ -54,12 +54,15 @@ export function Cliente() {
             <div className="dialogo">
                 <div className="content"> 
                     <div className="input">
-                        <h1>{json.opcional}</h1>
-                        <h3>{json.explicacion}</h3>
-                        <form>
-                            <textarea rows="5" cols="50" placeholder={json.mensaje} className="mensaje"/>
-                            <input type="submit" className="boton-enviar" value={json.enviar} />
-                        </form>
+                        <div className="inner">
+                            <h1>{json.opcional}</h1>
+                            <h3>{json.explicacion}</h3>
+                            <form>
+                                <textarea rows="5" cols="50" placeholder={json.mensaje} className="mensaje"/>
+                                <div style={{marginBottom: "20px"}} className="boton-enviar">{json.guardar}</div>
+                                <input type="submit" className="boton-enviar" value={json.enviar} />
+                            </form>
+                        </div>
                     </div>
                     <div className="botones">
                         <div>{json.selecTodo}</div>

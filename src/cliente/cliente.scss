@@ -1,6 +1,24 @@
 @import '../common/estilos_comunes.scss';
 
+h1 {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+    font-family: "Century Gothic", sans-serif;
+}
+
+h3 {
+    font-weight: normal;
+    margin: 0;
+    font-family: "Century Gothic", sans-serif;
+}
+
 @media screen and ($ordenador) {
+
+    html {
+        overflow: hidden;
+    }
 
     .fake-burger {
         display: none;
@@ -10,27 +28,109 @@
         display: none;
     }
 
+    .content {
+        height: 100%;
+        width: 100%;
+    }
+
     .galeria {
         top: 28%;
         left: 0;
         width: 69%;
         height: 72%;
+        overflow-y: scroll;
         background-color: red($color: #000000);
     }
 
     .dialogo {
         position: absolute;
-        top: 28%;
         bottom: 0;
         height: 72%;
-        right: 0;
+        right: 0.2px;
         width: 31%;
-        height: 100%;
+        min-height: 700px;
+        min-width: 558px;
+
+        .inner {
+            width: 80%;
+            height: 100%;
+        }
 
         .input {
             display: flex;
+            justify-content: center;
             width: 100%;
+            height: 72%;
             border: 1px solid #707070;
+
+            h1 {
+                padding-top: 43px;
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 22px;
+                padding-bottom: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                align-items: center;
+
+                .mensaje {
+                    width: 100%;
+                    min-height: 149px;
+                    resize: none;
+                    padding: 0;
+                    padding-left: 10px;
+                    font-size: 20px;
+                    border: none;
+                    border-bottom: 2px solid #919191;
+                    background-color: #F1F1F1;
+                    color: #919191;
+                    font-family: "Century Gothic", sans-serif;
+                    margin-bottom: 8%;
+                }
+    
+                .boton-enviar {
+                    width: 80%;
+                    min-height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $color-primario;
+                    text-transform: uppercase;
+                    color: white;
+                    font-size: 20px;
+                    border: none;
+                    font-family: "Century Gothic", sans-serif;
+                }
+            }
+        }
+
+        .botones {
+            height: 28%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 70%;
+                min-height: 45px;
+                text-transform: uppercase;
+                font-size: 25px;
+                background-color: white;
+                margin-bottom: 21px;
+                border: 1px solid $color-primario; 
+            }
         }
     }
 }
@@ -99,19 +199,11 @@
                 background-color: white;
 
                 h1 {
-                    width: 100%;
-                    text-transform: uppercase;
-                    font-weight: normal;
                     font-size: 18px;
-                    margin: 0;
-                    font-family: "Century Gothic", sans-serif;
                 }
 
                 h3 {
-                    font-weight: normal;
                     font-size: 15px;
-                    margin: 0;
-                    font-family: "Century Gothic", sans-serif;
                     padding-bottom: 15px;
                 }
 
@@ -140,6 +232,9 @@
 
                     .boton-enviar {
                         width: 80%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         min-height: 50px;
                         background-color: $color-primario;
                         text-transform: uppercase;
