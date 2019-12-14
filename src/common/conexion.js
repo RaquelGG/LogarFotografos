@@ -1,5 +1,5 @@
 const ruta = process.env.NODE_ENV === "production" ? 'https://pruebas.logarfotografos.es' : 'http://localhost/sentencias';
-
+//const ruta = 'https://pruebas.logarfotografos.es';
 // Obtiene la imagen de fondo
 export async function obtenerUrlFondo(id_foto, fondo_off) {
     try {
@@ -68,5 +68,74 @@ export async function obtenerGaleria() {
         return fotos;
     } catch(err) {
         console.error("ERROR: error obteniendo las imagenes.", err);
+    }
+}
+
+// CLIENTE
+// Obtiene la galeria de un usuario
+export async function obtenerGaleriaPrivada(user, pass) {
+    console.log("Usuario: ", user);
+    console.log("Contraseña: ", pass);
+    const body = JSON.stringify({user: user, pass: pass});
+    console.log(body);
+    try {
+        const response = await fetch(`${ruta}/cliente/obtenerFotosPrivadas.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user: user, pass: pass}),
+        });
+        const resultado = await response.json();
+
+        const fotos = resultado;//.map(JSON.parse);
+        console.log(fotos);
+        return fotos;
+
+    } catch(err) {
+        console.error("ERROR: Error obteniendo las imagenes", err);
+    }
+}
+
+// Seleccionar o deseleccionar imagen
+export async function seleccionarFotoCliente(id_foto, seleccionada) {
+    try {
+        const response = await fetch(`${ruta}/cliente/seleccionarFotoCliente.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user: window.session.user, pass: window.session.pass, id_foto: id_foto, seleccionada: seleccionada}),
+        });
+        const resultado = await response.text();
+
+        return true;
+
+    } catch(err) {
+        console.error("ERROR: Error seleccionando la imagen", err);
+        return false
+    }
+}
+
+// Seleccionar o deseleccionar todas las imagenes
+export async function seleccionarTodoCliente(user, pass, seleccionada) {
+    try {
+        const response = await fetch(`${ruta}/cliente/seleccionarTodo.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user: user, pass: pass, seleccionada: seleccionada}),
+        });
+        const resultado = await response.text();
+
+        return true;
+
+    } catch(err) {
+        console.error("ERROR: Error seleccionando las imagenes", err);
+        return false;
     }
 }

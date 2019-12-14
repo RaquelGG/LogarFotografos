@@ -7,9 +7,9 @@ import "./redes.scss";
 function Redes() {
     return (
         <>
-            <img src={facebook}/>
-            <img src={email}/>
-            <img src={whatsapp}/>
+            <img src={facebook} alt="Facebook"/>
+            <img src={email} alt="email"/>
+            <img src={whatsapp} alt="WhatsApp"/>
         </>
     );
 }

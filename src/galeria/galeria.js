@@ -4,10 +4,8 @@ import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
 import "./galeria.scss";
 import { obtenerGaleria } from "../common/conexion";
 import Loader from '../common/loader/loader';
-//import Gallery from 'react-grid-gallery';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-//import SelectedImage from "./imagenSeleccionada";
 
 
 
@@ -17,8 +15,6 @@ export function Galeria() {
     // Para abrir imagen
     const [currentImage, setCurrentImage] = useState(0);
     const [viewerIsOpen, setViewerIsOpen] = useState(false);
-    // Para seleccionar
-    //const [selectAll, setSelectAll] = useState(false);
 
     // Obtenemos las fotos del servidor
     useEffect(() => {
@@ -39,25 +35,7 @@ export function Galeria() {
         setViewerIsOpen(false);
     };
 
-    /*// Para poder seleccionar las imagenes
-    const toggleSelectAll = () => {
-        setSelectAll(!selectAll);
-    };
-
-    const imageRenderer = useCallback(
-        ({ index, left, top, key, photo }) => (
-            <SelectedImage
-                selected={selectAll}
-                key={key}
-                margin={"0"}
-                index={index}
-                photo={photo}
-                left={left}
-                top={top}
-            />
-        ),
-        [selectAll]
-    );*/
+    
 
     return (
         <div className="content_galeria">
@@ -72,8 +50,7 @@ export function Galeria() {
                                 //direction="column"
                                 //margin = "0"
 
-                                // seleccionar
-                                //renderImage={imageRenderer}
+                                
 
                             />
                             <ModalGateway>

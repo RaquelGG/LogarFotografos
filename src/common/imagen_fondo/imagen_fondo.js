@@ -4,7 +4,7 @@ import fondo_off from "./fondo.jpg";
 import { obtenerUrlFondo } from "../conexion";
 
 
-function Imagen_fondo({id_foto}) {
+function Imagen_fondo(id_foto) {
     // Cogemos la imagen de fondo del servidor
     const [fondo, setFondo] = useState(null);
 
@@ -13,7 +13,7 @@ function Imagen_fondo({id_foto}) {
             setFondo(await obtenerUrlFondo(id_foto, fondo_off))
         }
         fetchData();
-    }, []);
+    }, [id_foto]);
 
     return (
         <div className="content_imagen_fondo" style={{backgroundImage: 'url(' + fondo + ')'}}>

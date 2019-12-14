@@ -1,29 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { seleccionarFotoCliente } from "../common/conexion";
+import Checkmark from "./checkmark";
 
-const Checkmark = ({ selected }) => (
-    <div
-        style={
-            selected
-                ? { left: "4px", top: "4px", position: "absolute", zIndex: "1" }
-                : { display: "none" }
-        }
-    >
-        <svg
-            style={{ fill: "white", position: "absolute" }}
-            width="24px"
-            height="24px"
-        >
-            <circle cx="12.5" cy="12.2" r="8.292" />
-        </svg>
-        <svg
-            style={{ fill: "#06befa", position: "absolute" }}
-            width="24px"
-            height="24px"
-        >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-        </svg>
-    </div>
-);
 
 const imgStyle = {
     transition: "transform .135s cubic-bezier(0.0,0.0,0.2,1),opacity linear .15s"
@@ -49,10 +27,15 @@ const SelectedImage = ({
     selected
 }) => {
     const [isSelected, setIsSelected] = useState(selected);
+    const [processing, setProcessing] = useState(false);
     //calculate x,y scale
     const sx = (100 - (30 / photo.width) * 100) / 100;
     const sy = (100 - (30 / photo.height) * 100) / 100;
     selectedImgStyle.transform = `translateZ(0px) scale3d(${sx}, ${sy}, 1)`;
+
+    useEffect(() => {
+        setIsSelected(selected);
+    }, [selected]);
 
     if (direction === "column") {
         cont.position = "absolute";
@@ -61,8 +44,19 @@ const SelectedImage = ({
     }
 
     const handleOnClick = e => {
-        setIsSelected(!isSelected);
+        if (processing) return;
+        setProcessing(true);
+        // Cambiamos la selección en el servidor
+        (async () => {
+            const resultado = await seleccionarFotoCliente(photo.key, !isSelected);
+            if (resultado) setIsSelected(!isSelected);
+            setProcessing(false);
+        })();
+            
     };
+
+    
+    
 
     useEffect(() => {
         setIsSelected(selected);
@@ -73,13 +67,19 @@ const SelectedImage = ({
             style={{ margin, height: photo.height, width: photo.width, ...cont }}
             className={!isSelected ? "not-selected" : ""}
         >
-            <Checkmark selected={isSelected ? true : false} />
+            <Checkmark selected={isSelected} />
             <img
-                alt={photo.title}
+                alt={photo.alt}
                 style={
                     isSelected ? { ...imgStyle, ...selectedImgStyle } : { ...imgStyle }
                 }
-                {...photo}
+                key={photo.key}
+                width={photo.width}
+                height={photo.height}
+                src={photo.src}
+                srcSet={photo.srcSet}
+                alt={photo.alt}
+                title={photo.alt}
                 onClick={handleOnClick}
             />
             <style>{`.not-selected:hover{outline:2px solid #06befa}`}</style>

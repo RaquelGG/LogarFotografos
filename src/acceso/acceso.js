@@ -19,8 +19,18 @@ function Acceso({match, history}) {
 
         if (await comprobarUsuario(u, p)) {
             if (await comprobarAdmin(u, p)) {
+                window.session = {
+                    user: u,
+                    pass: p,
+                    admin: true,
+                };
                 history.push("/admin"); // Si es admin
             } else {
+                window.session = {
+                    user: u,
+                    pass: p,
+                    admin: false,
+                };
                 history.push("/seleccion");;// Si es un cliente
             }
         }

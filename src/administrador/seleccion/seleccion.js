@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerGaleria } from "../../common/conexion";
 import Loader from '../../common/loader/loader';
-import Gallery from 'react-grid-gallery';
+import Gallery from "react-photo-gallery";
 import traduccion from "../../traduccion/es/common.json";
 import fondo_arrastrar from "../seleccion/background_arrastrar.svg";
 import img_arrastrar from "./img_arrastrar.svg";
@@ -14,7 +14,13 @@ export function Seleccion_admin() {
 
     const [images, setImages] = useState(null);
 
-    useEffect(async () => setImages(await obtenerGaleria(1)), []); 
+    // Obtenemos las fotos del servidor
+    useEffect(() => {
+        async function fetchData() {
+            setImages(await obtenerGaleria())
+        }
+        fetchData();
+    }, []);
 
     /* --------------- */
 
