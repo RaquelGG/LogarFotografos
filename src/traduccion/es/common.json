@@ -81,13 +81,20 @@
 		"error" : "Usuario o contraseña incorrecto"
 	},
 
-	"eleccion" : {
+	"seleccion" : {
 		"this" : "eleccion",
+		"boda" : "Boda",
 		"opcional" : "(Opcional)",
 		"explicacion" : "Especifica cambios en imágenes seleccionadas nombrando el número de imagen",
 		"mensaje" : "Mensaje",
+		"guardar" : "Guardar",
 		"enviar" : "Enviar todo y terminar",
 		"selecTodo" : "Seleccionar todo",
+		"borrarSelec" : "Borrar lo seleccionado",
+		"subirFoto" : "Subir fotos",
+		"arrastrar" : "Arrastra las imágenes", 
+		"o" : "o",
+		"examinarEquipo" : "Examinar en el equipo",
 		"deselecTodo" : "Deseleccionar todo",
 		"confirmar": "Estás seguro de"
 	},
