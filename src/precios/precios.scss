@@ -63,9 +63,11 @@
     .content_precios {
         .resto_contenido {
             position: absolute;
+            top: 0;
             height: 100%;
             width: 100%;
-            top: $distancia_principio_mv;
+            padding-top: $distancia_principio_mv;
+            overflow-y: scroll;
         }
 
         .opcion_1 {
