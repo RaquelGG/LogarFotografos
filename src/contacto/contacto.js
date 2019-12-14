@@ -39,7 +39,7 @@ function Contacto() {
     //const { t, i18n } = this.props;
     return (
         <div className = "content-contacto">
-            <Imagen_fondo id_fondo={3} />
+            <Imagen_fondo id_foto={3} />
 
             <div className = "info-contacto">
                 <div className = "cuadro-giro-superior sombra"> </div>

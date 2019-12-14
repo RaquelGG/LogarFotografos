@@ -3,7 +3,7 @@ import Menu from "../common/menu/menu"
 import logo from "../acceso/img/logo.svg"
 import { obtenerGaleria } from "../common/conexion";
 import Loader from '../common/loader/loader';
-import Gallery from 'react-grid-gallery';
+//import Gallery from 'react-grid-gallery';
 import dialogo from './dialogo.svg';
 import traduccion from "../traduccion/es/common.json";
 import "./cliente.scss";
@@ -14,7 +14,14 @@ export function Cliente() {
 
     const [images, setImages] = useState(null);
 
-    useEffect(async () => setImages(await obtenerGaleria(1)), []);
+    /*useEffect(() => {
+        async function fetchData() {
+            useEffect(async () => setImages(await obtenerGaleria(1)), []);
+        }
+        fetchData();
+    }, []);*/
+
+    
 
     /* --------------- */
 
@@ -47,9 +54,9 @@ export function Cliente() {
                 <img src={dialogo}/>
             </div>
             {
-                images
+                /*images
                 ? <Gallery className="galeria" images={images} enableImageSelection={true} />
-                : <Loader className="galeria"/>
+                : <Loader className="galeria"/>*/
             }
             <div className="dialogo">
                 <div className="content"> 

@@ -7,5 +7,15 @@
         position: absolute;
         top: 0;
         width: 100%;
+        margin-top: $distancia_principio_pc;
+        background-color: rgba(255, 255, 255, 0.548);
+
+        img {
+            //width: auto;
+            object-fit: cover;
+        }
     }
+}
+.react-images__footer__count {
+    display: none;
 }

@@ -4,7 +4,7 @@ import "./inicio.scss";
 
 function Inicio() {
     return (
-        <Imagen_fondo id_fondo={1}/>
+        <Imagen_fondo id_foto={1}/>
     );
 }
 

@@ -1,9 +1,24 @@
+const ruta = process.env.NODE_ENV === "production" ? 'https://pruebas.logarfotografos.es' : 'http://localhost/sentencias';
+
+// Obtiene la imagen de fondo
+export async function obtenerUrlFondo(id_foto, fondo_off) {
+    try {
+        const response = await fetch(`${ruta}/publico/obtenerUrlFondo.php?id_foto=${id_foto}`)
+        let fondo = await response.text();
+        console.log(fondo);
+        return fondo;
+    } catch(err) {
+        console.error("ERROR: error obteniendo la imagen de fondo.", err);
+        return fondo_off;
+    }
+}
+
 // Comprueba si existe el usuario
 export async function comprobarUsuario(user, pass) {
     console.log("Usuario: ", user);
     console.log("Contraseña: ", pass);
     try {
-        const response = await fetch(`https://pruebas.logarfotografos.es/publico/comprobarUsuario.php`, {
+        const response = await fetch(`${ruta}/publico/comprobarUsuario.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -14,9 +29,9 @@ export async function comprobarUsuario(user, pass) {
         let respuesta = await response.text();
         
         console.log(respuesta);
-        return respuesta == 1;
-    } catch {
-        console.error("ERROR: Nombre de usuario o contraseña incorrecta");
+        return respuesta === 1;
+    } catch(err) {
+        console.error("ERROR: Nombre de usuario o contraseña incorrecta", err);
     }
     return false;
 }
@@ -24,7 +39,7 @@ export async function comprobarUsuario(user, pass) {
 // Comprueba si el usuario es administrador
 export async function comprobarAdmin(user, pass) {
     try {
-        const response = await fetch(`https://pruebas.logarfotografos.es/publico/comprobarAdmin.php`, {
+        const response = await fetch(`${ruta}/publico/comprobarAdmin.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -34,9 +49,9 @@ export async function comprobarAdmin(user, pass) {
         });
         let respuesta = await response.text();
         console.log(respuesta);
-        return respuesta == 1;
-    } catch {
-        console.error("ERROR: Nombre de usuario o contraseña incorrecta");
+        return respuesta === 1;
+    } catch(err) {
+        console.error("ERROR: Nombre de usuario o contraseña incorrecta", err);
     }
     return false;
 }
@@ -44,14 +59,14 @@ export async function comprobarAdmin(user, pass) {
 // Obtiene la galería
 export async function obtenerGaleria() {
     try {
-        const response = await fetch(`https://pruebas.logarfotografos.es/publico/obtenerFotos.php`)
+        const response = await fetch(`${ruta}/publico/obtenerFotos.php`)
         const resultado = await response.json();
 
         const fotos = resultado;//.map(JSON.parse);
 
         console.log(fotos);
         return fotos;
-    } catch {
-        console.error("ERROR: error obteniendo las imagenes.");
+    } catch(err) {
+        console.error("ERROR: error obteniendo las imagenes.", err);
     }
 }
