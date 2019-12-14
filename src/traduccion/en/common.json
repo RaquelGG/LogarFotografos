@@ -83,12 +83,16 @@
 
 	"seleccion" : {
 		"this" : "eleccion",
+		"boda" : "Wedding",
 		"opcional" : "(Opcional)",
 		"explicacion" : "Especifica cambios en imágenes seleccionadas nombrando el número de imagen",
 		"mensaje" : "Mensaje",
 		"guardar" : "Save",
 		"enviar" : "Enviar todo y terminar",
 		"selecTodo" : "Seleccionar todo",
+		"borrarSelec" : "Remove selected files",
+		"subirFoto" : "Upload photos",
+		"examinarEquipo" : "Browse my computer",
 		"deselecTodo" : "Deseleccionar todo",
 		"confirmar": "Estás seguro de"
 	},

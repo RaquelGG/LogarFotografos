@@ -14,6 +14,7 @@ const Admin = lazy(() => import('./administrador/clientes/clientes'));
 const Cliente = lazy(() => import('./cliente/cliente'));
 const AdminInicio = lazy(() => import('./administrador/inicio/inicio'));
 const AdminGaleria = lazy(() => import('./administrador/galeria/galeria'));
+const AdminSeleccion = lazy(() => import('./administrador/seleccion/seleccion'));
 
 const NotFound = Inicio;
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path='/seleccion' exact component={Cliente} />
                     <Route path='/admin/inicio' exact component={AdminInicio} />
                     <Route path='/admin/galeria' exact component={AdminGaleria} />
+                    <Route path='/admin/seleccion' exact component={AdminSeleccion}/>
 
                     <Route component={NotFound} />
                 </Switch>
