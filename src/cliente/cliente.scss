@@ -14,6 +14,12 @@ h3 {
     font-family: "Century Gothic", sans-serif;
 }
 
+.content {
+    img {
+        object-fit: cover;
+    }
+}
+
 @media screen and ($ordenador) {
 
     html {
@@ -40,6 +46,7 @@ h3 {
         height: 72%;
         overflow-y: scroll;
         background-color: red($color: #000000);
+        position: relative;
     }
 
     .dialogo {
@@ -119,7 +126,7 @@ h3 {
             align-items: center;
             justify-content: center;
 
-            div {
+            button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -131,6 +138,9 @@ h3 {
                 background-color: white;
                 margin-bottom: 21px;
                 border: 1px solid $color-primario; 
+            }
+            button:hover {
+                cursor: pointer;
             }
         }
     }
@@ -252,7 +262,7 @@ h3 {
                 width: 100%;
                 position: relative;
 
-                div {
+                button {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -264,6 +274,9 @@ h3 {
                     background-color: white;
                     margin-bottom: 21px;
                     border: 1px solid $color-primario; 
+                }
+                button:hover {
+                    cursor: pointer;
                 }
             }
         }

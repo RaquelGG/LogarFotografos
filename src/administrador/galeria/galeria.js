@@ -1,5 +1,5 @@
 import React from 'react';
-import Galeria from '../../galeria/galeria';
+import Galeria from "react-photo-gallery";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -13,6 +13,8 @@ import "./galeria.scss"
 import { Button } from '@material-ui/core';
 
 function Admin_galeria (){
+    const user = "admin";
+    const pass = 'admin';
 
     const useStyles = makeStyles({
         textField: {
