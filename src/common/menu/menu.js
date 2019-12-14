@@ -41,16 +41,16 @@ function Menu ({is_seleccion}) {
                         <li className="logo-movil">
                             <Logo />
                         </li>
-                        <li>
+                        <li onClick={navSlide}>
                             <Link to="/">INICIO</Link>
                         </li>
-                        <li>
+                        <li onClick={navSlide}>
                             <Link to="/precios">PRECIOS</Link>
                         </li>
-                        <li>
+                        <li onClick={navSlide}>
                             <Link to="/galeria">GALERÍA</Link>
                         </li>
-                        <li>
+                        <li onClick={navSlide}>
                             <Link to="/contacto">CONTACTO</Link>
                         </li>
                         
