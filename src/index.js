@@ -5,13 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // Para hacer pruebas:
-/*
 window.session = {
-    user: "admin",
-    pass: "admin",
-    admin: true,
+    user: "user1",
+    pass: "user1",
+    admin: false,
 }
-*/
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

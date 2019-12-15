@@ -1,8 +1,8 @@
 import React from 'react';
-import fondo from "./img/fondo.jpg";
 import "./acceso.scss";
 import {Link} from 'react-router-dom';
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
+import Imagen_fondo from '../common/imagen_fondo/imagen_fondo';
 
 function Acceso({match, history}) {
     const {usuario} = match.params;
@@ -14,30 +14,29 @@ function Acceso({match, history}) {
     async function acceder() {
         const u = user.current.value;
         const p = pass.current.value;
-        //console.log("Usuario: ", u);
-        //console.log("Contraseña: ", p);
 
         if (await comprobarUsuario(u, p)) {
-            if (await comprobarAdmin(u, p)) {
-                window.session = {
-                    user: u,
-                    pass: p,
-                    admin: true,
-                };
-                history.push("/admin"); // Si es admin
-            } else {
-                window.session = {
-                    user: u,
-                    pass: p,
-                    admin: false,
-                };
-                history.push("/seleccion");;// Si es un cliente
-            }
+            window.session = {
+                user: u,
+                pass: p,
+                admin: false,
+            };
+            history.push("/seleccion");// Si es un cliente
+        }
+        if (await comprobarAdmin(u, p)) {
+            window.session = {
+                user: u,
+                pass: p,
+                admin: true,
+            };
+            history.push("/admin"); // Si es admin
         }
     }
 
+
     return (
-        <div className="content_acceso" style={{backgroundImage: 'url(' + fondo + ')'}}>
+        <div className="content_acceso">
+            <Imagen_fondo id_foto={1}/>
             <div className="acceso sombra">
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>

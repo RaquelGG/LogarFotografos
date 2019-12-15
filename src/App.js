@@ -20,8 +20,6 @@ const AdminContacto = lazy(() => import('./administrador/contacto/contacto'));
 const NotFound = Inicio;
 
 function App() {
-    /* Pruebas locales */
-
     return (
         <Router>
             <Menu/>
