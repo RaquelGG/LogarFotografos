@@ -1,0 +1,104 @@
+{
+	"contacto" : {
+		"this" : "contacto",
+		"titulo" : "Logar Fotógrafos",
+		"subtitulo" : "Fotógrafos profesionales",
+
+		"tabla" : {
+			"direccion" : "C/Sol Nº5, Berja, Almería",
+			"direccionUrl" : "",
+			"correo" : "bodas@logarfotografos.es",
+			"telefono" : "(+34) 689 13 77 01",
+			"whatsapp" : "(+34) 609 41 04 71",
+			"facebook" : "Logar fotógrafos",
+			"facebookUrl" : "",
+			"bodasNet" : "Logar fotógrafos",
+			"bodasNetUrl": ""
+		},
+		
+		"formulario" : {
+			"titulo" : "Escribir mensaje",
+			"nombre" : "Nombre",
+			"email" : "Dirección de correo electrónico",
+			"mensaje" : "Mensaje",
+			"enviar" : "Enviar mensaje"
+		}
+	},
+
+	"precios" : {
+		"this" : "precios",
+		"titulo" : "Bodas",
+		"verFotosBodas" : "Ver fotos de bodas",
+		"verFotosPrebodas" : "Ver fotos de prebodas",
+		"verFotosPostbodas" : "Ver fotos de postbodas",
+
+		"cerenomia" : "Ceremonia",
+		"casaNovios" : "Casa novios",
+		"coctel" : "Cóctel",
+		"celebracion" : "Celebración hasta el baile nupcial",
+		"fotos" : "Fotos",
+		"video": "Vídeo",
+		"regalo" : "¡Regalo!",
+		"preboda" : "Preboda",
+		"postboda" : "Postboda",
+		"texto1" : "* LAS FOTOS SE ENTREGARÁN EN ALTA RESOLUCIÓN EN UN PEN DRIVE.",
+		"texto2" : "* LOS VÍDEOS SE ENTREGARÁN EDITADOS EN ALTA RESOLUCIÓN EN UN PEN DRIVE.",
+		"texto3" : "* PARA ÁLBUMES DIGITALES 30X30CM 30 HOJAS 295€ MÁS.",
+		"textoRegalo" : "¡REGALO! VÍDEO DE AGRADECIMIENTO PARA VISUALIZARLO EN LA CELEBRACIÓN.",
+				
+		"opcion1" : {
+			"titulo" : "Opcion 1",
+			"precioFoto" : "295€",
+			"precioVideo" : "295€"
+		},
+
+		"opcion2" : {
+			"titulo" : "Opcion 2",
+			"precioFoto" : "395€",
+			"precioVideo" : "550€"
+		},
+
+		"opcion3" : {
+			"titulo" : "Opcion 3",
+			"precioFoto" : "495€",
+			"precioVideo" : "895€"
+		}
+	},
+
+	"galeria" : {
+		"this" : "galeria",
+		"bodas" : "Bodas",
+		"prebodas" : "Prebodas",
+		"postbodas" : "Postbodas"
+	},
+
+	"acceso" : {
+		"this" : "acceso",
+		"usuario" : "Usuario",
+		"contraseña" : "Contraseña",
+		"acceder" : "Acceder",
+		"volver" : "Volver a la página de Inicio",
+		"error" : "Usuario o contraseña incorrecto"
+	},
+
+	"seleccion" : {
+		"this" : "eleccion",
+		"boda" : "Boda",
+		"opcional" : "(Opcional)",
+		"explicacion" : "Especifica cambios en imágenes seleccionadas nombrando el número de imagen",
+		"mensaje" : "Mensaje",
+		"guardar" : "Guardar",
+		"enviar" : "Enviar todo y terminar",
+		"selecTodo" : "Seleccionar todo",
+		"borrarSelec" : "Borrar lo seleccionado",
+		"subirFoto" : "Subir fotos",
+		"arrastrar" : "Arrastra las imágenes", 
+		"o" : "o",
+		"examinarEquipo" : "Examinar en el equipo",
+		"deselecTodo" : "Deseleccionar todo",
+		"confirmar": "Estás seguro de"
+	},
+
+	"terminos" : "Terminos de uso",
+	"privacidad" : "Política de privacidad"
+}

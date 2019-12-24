@@ -1,30 +1,44 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Menu from "../common/menu/menu"
 import logo from "../acceso/img/logo.svg"
-import { obtenerGaleria } from "../common/conexion";
 import Loader from '../common/loader/loader';
 import Gallery from "react-photo-gallery";
 import dialogo from './dialogo.svg';
 import traduccion from "../traduccion/es/common.json";
 import "./cliente.scss";
 import SelectedImage from "./imagenSeleccionada";
-import { obtenerGaleriaPrivada, seleccionarTodoCliente } from "../common/conexion";
+import { finalizarSeleccion, obtenerGaleriaPrivada, seleccionarTodoCliente, obtenerDatosCliente, guardarDescripcionCliente } from "../common/conexion";
 
-export function Cliente() {
-    const user = 'user1';
-    const pass = 'user1';
+export function Cliente({history}) {
+    // Si no es cliente, se redirige a acceso
+    if (!window.session.user || !window.session.pass || window.session.admin) {
+        history.push("/acceso");
+    }
     /* --- Galería --- */
+    // Para cargar los datos, incluido el comentario
+    const [data, setData] = useState(false);
 
     const [images, setImages] = useState(null);
     // Para seleccionar
     const [selectAll, setSelectAll] = useState(-1);
+    // Para no sobrecargar el servidor comprobando si está procesando
     const [processing, setProcessing] = useState(false);
 
-    // Obtenemos las fotos del servidor
+    let descripcion = React.createRef();
+    
+
+
+    // Para establecer la descripción
     useEffect(() => {
         async function fetchData() {
-            setImages(await obtenerGaleriaPrivada(user, pass))
+            const datos = await obtenerDatosCliente();
+            console.log("datos", datos, "antes era", data);
+            setData(datos)
         }
+        async function fetchImages() {
+            setImages(await obtenerGaleriaPrivada())
+        }
+        fetchImages();
         fetchData();
     }, []);
 
@@ -33,9 +47,38 @@ export function Cliente() {
         if (processing) return;
         setProcessing(true);
         (async () => {
-            const resultado = await seleccionarTodoCliente(user, pass, seleccionar);
+            const resultado = await seleccionarTodoCliente(seleccionar);
             if (resultado) setSelectAll(seleccionar ? 1 : 0);
             setProcessing(false);
+        })();
+    };
+
+    // Para guardar la descripción
+    const guardarDescripcion = (descripcion) => {
+        (async () => {
+            const resultado = await guardarDescripcionCliente(descripcion.current.value);
+            if(resultado) setData(descripcion);
+        })();
+    };
+
+    // Para finalizar
+    const finalizarSelec = () => {
+        if (processing) return;
+        setProcessing(true);
+
+        (async () => {
+            const resultado = await finalizarSeleccion();
+            console.log(resultado);
+            if (resultado) {
+                alert("¡Tu selección ha sido enviada correctamente!");
+                history.push("/");
+                window.session = null;
+                //setData(null);
+                
+            } else {
+                alert("Se ha producido un problema. Vuélvalo a intentar más tarde.");
+                setProcessing(false);
+            }
         })();
     };
 
@@ -104,11 +147,28 @@ export function Cliente() {
                         <div className="inner">
                             <h1>{json.opcional}</h1>
                             <h3>{json.explicacion}</h3>
-                            <form>
-                                <textarea rows="5" cols="50" placeholder={json.mensaje} className="mensaje" />
-                                <div style={{ marginBottom: "20px" }} className="boton-enviar">{json.guardar}</div>
-                                <input type="submit" className="boton-enviar" value={json.enviar} />
-                            </form>
+                            <div className="formulario">
+                                <textarea 
+                                    rows="5" cols="50" 
+                                    placeholder={json.mensaje} 
+                                    className="mensaje" 
+                                    ref={descripcion}
+                                    defaultValue={data && data.descripcion || ''}
+                                    onChange={() => guardarDescripcion(descripcion)}
+                                />
+                                {/*<button
+                                    onClick={() => guardarDescripcion(descripcion)}
+                                    disabled={processing}
+                                    style={{ marginBottom: "20px" }} 
+                                    className="boton-enviar">
+                                    {json.guardar}
+                                </button>*/}
+                                <button 
+                                    onClick={() => finalizarSelec()}
+                                    className="boton-enviar">
+                                    {json.enviar}
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="botones">
