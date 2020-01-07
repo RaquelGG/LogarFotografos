@@ -6,10 +6,10 @@ import Button from '@material-ui/core/Button';
 import Guardar from '@material-ui/icons/Save';
 import Notificador from '../../common/admin/admin_edicion'
 import './inicio.scss';
-import { editarFotoFondo } from "../common/conexion";
+import { editarFotoFondo } from "../conexion";
 
 
-function Admin_inicio (){
+function Admin_inicio ({history}){
     const useStyles = makeStyles({
         textfield: {
             borderRightStyle: 'none',
@@ -45,7 +45,9 @@ function Admin_inicio (){
     const guardarUrl = (url) => {
         (async () => {
             const resultado = await editarFotoFondo(1, url.current.value);
-            
+            if (resultado) window.location.href = window.location.href;
+            else alert("No se ha podido subir la imagen");
+
         })();
     }; 
 
