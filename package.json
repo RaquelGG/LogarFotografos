@@ -21,6 +21,7 @@
     "node-sass": "^4.12.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dropzone": "^10.2.1",
     "react-i18next": "^11.2.5",
     "react-images": "^1.0.0",
     "react-photo-gallery": "^8.0.0",

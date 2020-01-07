@@ -4,7 +4,9 @@ const ruta = process.env.NODE_ENV === "production" ? 'https://pruebas.logarfotog
 export async function obtenerUrlFondo(id_foto, fondo_off) {
     console.log("fondo: ", id_foto);
     try {
-        const response = await fetch(`${ruta}/publico/obtenerUrlFondo.php?id_foto=${id_foto}`)
+        const url = `${ruta}/publico/obtenerUrlFondo.php?id_foto=${id_foto}`;
+        console.log("La ruta es: ", url);
+        const response = await fetch(url);
         let fondo = await response.text();
         console.log(fondo);
         return fondo;

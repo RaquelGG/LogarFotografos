@@ -25,13 +25,13 @@ export function Seleccion_admin() {
     /* --------------- */
 
     /* --- JSON --- */
-    const json = traduccion.seleccion;
+    const traduccion = traduccion.seleccion;
     /* ------------ */
 
     return (
         <div className="content-seleccion">
             <div className="content-titulo">
-                <div className="titulo">{json.boda}</div>
+                <div className="titulo">{traduccion.boda}</div>
                 <div className="nombre">Maria del mar y juan</div>
             </div>
             <div className="content-galeria">
@@ -44,26 +44,26 @@ export function Seleccion_admin() {
                 </div>
                 <div className="menu-lateral">
                     <div className="contenido-menu">
-                        <div className="boton puntero">{json.selecTodo}</div>
-                        <div className="boton puntero">{json.deselecTodo}</div>
-                        <div className="boton puntero">{json.borrarSelec}</div>
+                        <div className="boton puntero">{traduccion.selecTodo}</div>
+                        <div className="boton puntero">{traduccion.deselecTodo}</div>
+                        <div className="boton puntero">{traduccion.borrarSelec}</div>
                         <div className="recuadro-subida">
                             <div className="subir">
-                                <div>{json.subirFoto}</div>
+                                <div>{traduccion.subirFoto}</div>
                             </div>
                             <div className="arrastrar sombra">
                                 <div className="content-arrastrar">
                                     <img src={fondo_arrastrar} />
                                     <div className="content-img">
-                                        <h1>{json.arrastrar}</h1>
+                                        <h1>{traduccion.arrastrar}</h1>
                                         <img src={img_arrastrar}/>
-                                        <h1>{json.o}</h1>
+                                        <h1>{traduccion.o}</h1>
                                     </div>
                                 </div>
                             </div>
-                            <div className="examinar">{json.examinarEquipo}</div>
+                            <div className="examinar">{traduccion.examinarEquipo}</div>
                         </div>   
-                        <div className="guardar puntero">{json.guardar}</div>
+                        <div className="guardar puntero">{traduccion.guardar}</div>
                     </div>
                 </div>
             </div>
