@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 
 function Menu ({is_seleccion}) {
 
+    let last = '.inicio';
+
     function navSlide() {
         const burger = document.querySelector('.burger');
         const nav = document.querySelector('.nav-links');
         const navLinks = document.querySelectorAll('.nav-links li');
 
         nav.classList.toggle('nav-active');
+        
+        if(last != null) quitarBorde(last); // Si se puede mejorar, mejor
     
         //Animar elementos burger menu
         navLinks.forEach((link, index) => {
@@ -28,6 +32,31 @@ function Menu ({is_seleccion}) {
         burger.classList.toggle('toggle');
     }
 
+    function detectmob(elemento) {
+        if(window.innerWidth <= 800) {
+          navSlide();
+        } else {
+          setUnderline(elemento);
+        }
+    }
+
+    function quitarBorde(elemento) {
+        const aux = document.querySelector(elemento);
+        aux.style.borderBottom="none";
+    }
+
+    function setUnderline (elemento) {
+        if(last != null && elemento != null) {
+           quitarBorde(last);
+        }
+        elemento = '.' + elemento;
+
+        const link = document.querySelector(elemento);
+        
+        link.style.borderBottom="4px solid #FEDC03";
+        last = elemento;
+    }
+
 
     return(
         <nav>
@@ -41,16 +70,16 @@ function Menu ({is_seleccion}) {
                         <li className="logo-movil">
                             <Logo />
                         </li>
-                        <li onClick={navSlide}>
+                        <li className="inicio" onClick={() => detectmob('inicio')} >
                             <Link to="/">INICIO</Link>
                         </li>
-                        <li onClick={navSlide}>
+                        <li className="precio" onClick={() => detectmob('precio')}>
                             <Link to="/precios">PRECIOS</Link>
                         </li>
-                        <li onClick={navSlide}>
+                        <li className="galeria" onClick={() => detectmob('galeria')}>
                             <Link to="/galeria">GALERÍA</Link>
                         </li>
-                        <li onClick={navSlide}>
+                        <li className="contacto" onClick={() => detectmob('contacto')}>
                             <Link to="/contacto">CONTACTO</Link>
                         </li>
                         
