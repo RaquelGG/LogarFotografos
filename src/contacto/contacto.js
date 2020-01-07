@@ -105,10 +105,7 @@ function Contacto() {
                         </div>
                         <img className="img_dueno" />
                     </div>
-                    <div className="fake">
-
-                    </div>
-
+                    <div className="fake"></div>
                     <div className = "cuadro-giro-2 sombra"></div>
                     <div className = "cuadro-giro-3 sombra"></div>
                 </div>

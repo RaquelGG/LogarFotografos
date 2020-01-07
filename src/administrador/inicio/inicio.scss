@@ -2,8 +2,11 @@
 
 .content-inicio-admin{
     height: 100%;
-    
 
+    .opciones {
+        display: none;
+    }
+    
     .cuadro-imagen{
         height: 100%;
         width: 100%;
@@ -24,3 +27,4 @@
         }
     }
 }
+

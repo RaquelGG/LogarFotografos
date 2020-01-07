@@ -37,4 +37,29 @@
         border-right: 230px solid transparent;
         z-index: 49;
     }
+
+    .opciones {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 230px;
+        width: 460px;
+        left: 438px;
+        top: 14%;
+        z-index: 48;
+        background-color: $color-primario;
+
+        .fondo {
+            top: 5%;
+            height: 70%;
+            width: 90%;
+        }
+
+        .boton {
+            height: 20%;
+            width: 90%;
+        }
+    }
 }
