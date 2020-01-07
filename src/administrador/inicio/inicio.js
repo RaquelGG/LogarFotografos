@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Guardar from '@material-ui/icons/Save';
 import Notificador from '../../common/admin/admin_edicion'
 import './inicio.scss';
+import { editarFotoFondo } from "../common/conexion";
+
 
 function Admin_inicio (){
     const useStyles = makeStyles({
@@ -37,6 +39,15 @@ function Admin_inicio (){
     });
 
     const classes = useStyles();
+    let url = React.createRef();
+
+    // Para guardar la url
+    const guardarUrl = (url) => {
+        (async () => {
+            const resultado = await editarFotoFondo(1, url.current.value);
+            
+        })();
+    }; 
 
     return(
         <div className="content-inicio-admin">
@@ -44,17 +55,16 @@ function Admin_inicio (){
             <Inicio />
             <div className="cuadro-imagen">
                 <div className="cuadro">
-                    <form noValidate autoComplete="off">
-                        <TextField id="outlined-basic" className={classes.textfield} label="URL" variant="outlined" />
+                        <TextField id="outlined-basic" ref={url} className={classes.textfield} label="URL" variant="outlined" />
                         <Button
                             variant="contained"
                             size="large"
                             className={classes.button}
                             startIcon={<Guardar/>}
+                            onClick = {() => guardarUrl(url)}
                         >
                             Guardar
                         </Button> 
-                    </form>
                 </div>
             </div>
         </div>

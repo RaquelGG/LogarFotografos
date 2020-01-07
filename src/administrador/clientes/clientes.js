@@ -16,7 +16,16 @@ import 'simplebar/dist/simplebar.min.css';
 import './clientes.scss'
 import { FormLabel } from '@material-ui/core';
 import {
-    obtenerDatosSeleccion
+    obtenerDatosSeleccion,
+    subirBoda,
+    comprobarUsuarioExiste,
+    crearUsuario,
+    borrarUsuario,
+    borrarFotosBoda,
+    subirFotosBoda,
+    borrarBoda,
+    obtenerIdUsuario
+
 } from "../conexion";
 import DragAndDrop from '../dragAndDrop';
 
@@ -80,13 +89,8 @@ export function Clientes({ history }) {
         history.push("/acceso");
     }
 
-    const dateObj = new Date();
-    const month = dateObj.getUTCMonth(); //months from 1-12
-    const day = dateObj.getUTCDate();
-    const year = dateObj.getUTCFullYear();
-
     /* ---- Configuración de la fecha --- */
-    const [selectedDate, setSelectedDate] = React.useState(new Date(year, month, day)); // -- fecha
+    const [selectedDate, setSelectedDate] = React.useState(new Date()); // -- fecha
 
     const handleDateChange = date => {
         setSelectedDate(date);
@@ -96,7 +100,8 @@ export function Clientes({ history }) {
 
     /* ---- Configuración Radio button --- */
 
-    const [servicio, setServicio] = React.useState('boda'); // -- radio button
+    const [servicio, setServicio] = React.useState(); // -- radio button
+    const [valServicio, setValServicio] = React.useState();
 
 
     const handleChange = event => {
@@ -119,8 +124,8 @@ export function Clientes({ history }) {
     /* ----------------------------------- */
     // Para guardar variables
     const [processing, setProcessing] = useState(false); // Para esperar mientras se está procesando
-    let fecha = React.createRef();
-    let evento = React.createRef();
+    //let fecha = React.createRef();
+    //let servicio = React.createRef();
 
     // Para finalizar la subida de la boda
     /* Tiene que 
@@ -129,24 +134,80 @@ export function Clientes({ history }) {
         generar una contraseña
         subir la boda con los datos
     */
-    
+    function generarCadena(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    // SUBIR BODA -------------------------------
     const subirBoda = () => {
         if (processing) return;
         setProcessing(true);
 
+        if (!valServicio) {
+            alert("Debes de seleccionar un servicio y fecha");
+            setProcessing(false);
+            return;
+        }
+
+        const fecha = selectedDate.toJSON().slice(0, 10);
+        console.log("Servicio:", valServicio);
+        console.log("Fecha:", fecha);
+
+        let error = false;
+
+        let nuevoUser;
+        let nuevaPass = generarCadena(5);
+
         (async () => {
-            const resultado = await finalizarSeleccion();
-            console.log(resultado);
+            let existe = false;
+            while(existe) {
+                nuevoUser = generarCadena(5);
+                existe = await comprobarUsuarioExiste(nuevoUser);
+            }
+            
+            console.log("Usuario:", nuevoUser);
+            console.log("Contraseña:", nuevaPass);
+
+            await crearUsuario(nuevoUser, nuevaPass);
+            const id_usuario =  await obtenerIdUsuario(nuevoUser);
+            const resultado = await subirBoda(id_usuario, fecha, valServicio)
             if (resultado) {
-                alert("¡Tu selección ha sido enviada correctamente!");
-                history.push("/");
-                window.session = null;
-                //setData(null);
-                
+                if (DragAndDrop.files.length > 0) {
+                    const resSubirFotos = await subirFotosBoda(DragAndDrop.files, fecha);
+
+                    if (resSubirFotos) {
+                        alert(`
+                            ¡Se ha subido correctamente!\n
+                            Url: https://www.logarfotografos.es/acceso/${nuevoUser}\n
+                            Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
+                        `);
+                        DragAndDrop.files = null;
+                    } else {
+                        alert("Se ha producido un problema mientras se subían las imagenes.");
+                        error = true;
+                    }
+
+                } else {
+                    alert("Debes subir las fotos en un .zip.");
+                    error = true;
+                }
+
             } else {
                 alert("Se ha producido un problema. Vuélvalo a intentar más tarde.");
-                setProcessing(false);
+                error = true;
             }
+
+            if (error) {
+                await borrarBoda(fecha);
+                await borrarUsuario(id_usuario);
+            }
+            setProcessing(false);
         })();
     };
 
@@ -162,7 +223,7 @@ export function Clientes({ history }) {
                         <div className="cuadro sombra">
                             <div className="input">
                                 <div className="url sombra">
-                                <DragAndDrop />
+                                    <DragAndDrop />
                                     {/*<div className="arrastrar">
                                     </div>
                                     <div className="examinar">
@@ -172,7 +233,7 @@ export function Clientes({ history }) {
                                 </div>
                                 <div className="valor">
                                     <div className="mod">
-                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils} disabled={processing} ref={selectedDate}>
                                             <KeyboardDatePicker
                                                 disableToolbar
                                                 disableFuture
@@ -192,18 +253,19 @@ export function Clientes({ history }) {
                                         <div className="linea"></div>
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend"> Seleccione Evento</FormLabel>
-                                            <RadioGroup onChange={handleChange} value={servicio}>
-                                                <FormControlLabel value="boda" control={<BlackRadio />} label="Boda" />
-                                                <FormControlLabel value="preboda" control={<BlackRadio />} label="Preboda" />
-                                                <FormControlLabel value="postboda" control={<BlackRadio />} label="Postboda" />
+                                            <RadioGroup onChange={handleChange} value={servicio} disabled={processing}>
+                                                <FormControlLabel onClick={() => setValServicio('Boda')} value="boda" control={<BlackRadio />} label="Boda" />
+                                                <FormControlLabel onClick={() => setValServicio('Preboda')} value="preboda" control={<BlackRadio />} label="Preboda" />
+                                                <FormControlLabel onClick={() => setValServicio('Postboda')} value="postboda" control={<BlackRadio />} label="Postboda" />
                                             </RadioGroup>
                                         </FormControl>
                                     </div>
                                     <div className="boton">
-                                        <button 
+                                        <button
                                             className="enviar"
-                                            //onClick={() => finalizarSelec()}
-                                            >
+                                            onClick={() => subirBoda()}
+                                            disabled={processing}
+                                        >
                                             SUBIR
                                         </button>
                                     </div>

@@ -187,8 +187,9 @@ export async function crearUsuario(nuevoUser, nuevaPass) {
                 nuevaPass: nuevaPass
             })
         });
-        
+
         return true;
+        
     } catch(err) {
         console.error("Error de administrador:", err);
     }
@@ -301,8 +302,8 @@ export async function obtenerDatosSeleccion() {
     }
 }
 
-// Subir fotos de una boda
-export async function subirBoda(nuevoUser, fecha, servicio) {
+// Subir una boda
+export async function subirBoda(id_usuario, fecha, servicio) {
     if (!window.session.admin) return false;
     try {
         const response = await fetch(`${ruta}/seleccion/subirBoda.php`, {
@@ -314,7 +315,7 @@ export async function subirBoda(nuevoUser, fecha, servicio) {
             body: JSON.stringify({
                 user: window.session.user, 
                 pass: window.session.pass,
-                nuevoUser, nuevoUser,
+                id_usuario, id_usuario,
                 fecha: fecha,
                 servicio: servicio
             })
@@ -328,4 +329,90 @@ export async function subirBoda(nuevoUser, fecha, servicio) {
     return false;
 }
 
+// Subir fotos de una boda
+export async function subirFotosBoda(fotos, fecha) {
+    if (!window.session.admin) return false;
+    try {
+        let formData = new FormData();
+        formData.append("fotos", fotos[0]); // En la posición 0; es decir, el primer elemento
+
+        const response = await fetch(`${ruta}/seleccion/subirFotosBoda.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass,
+                fecha: fecha,
+                fotos: formData
+            })
+            
+        });
+        
+        return true;
+
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return false;
+}
+
+// borrar boda
+export async function borrarBoda(fecha) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/seleccion/borrarBoda.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                fecha: fecha
+            })
+        });
+        
+        return true;
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return false;
+}
+
+
+// borrar boda
+export async function obtenerIdUsuario(nuevoUser) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/seleccion/obtenerIdUsuario.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                nuevoUser: nuevoUser
+            })
+        });
+
+        const respuesta = await response.text();
+        
+        console.log(respuesta);
+        console.log(window.session.user);
+        return respuesta;
+        
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return null;
+}
+
 // SUBIR  FOTO PRIVADA
+
+

@@ -189,6 +189,7 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
+                                
 
                                 .enviar {
                                     height: 80%;
@@ -199,7 +200,10 @@
                                     font-family: "Century Gothic", sans-serif;
                                     border: none;
                                     font-size: 21px;
+                                    cursor: pointer;
                                 }
+
+                                
                             }
                         }
                     }
