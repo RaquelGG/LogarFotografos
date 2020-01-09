@@ -35,7 +35,7 @@ function App() {
                     <Route path='/seleccion' exact component={Cliente} />
                     <Route path='/admin/inicio' exact component={AdminInicio} />
                     <Route path='/admin/galeria' exact component={AdminGaleria} />
-                    <Route path='/admin/seleccion' exact component={AdminSeleccion}/>
+                    <Route path='/admin/seleccion/:id_boda' exact component={AdminSeleccion}/>
                     <Route path='/admin/contacto' exact component={AdminContacto}/>
 
                     <Route component={NotFound} />

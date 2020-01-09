@@ -52,6 +52,7 @@
                     .activado {
                         border: 2px solid $color_primario;
                         background-color: $color_primario;
+                        cursor: pointer;
                     }
 
                     .desactivado {

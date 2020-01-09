@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useCallback, setState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Inicio from '../../inicio/inicio'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
@@ -21,7 +21,6 @@ import {
     comprobarUsuarioExiste,
     crearUsuario,
     borrarUsuario,
-    borrarFotosBoda,
     subirFotosBoda,
     borrarBoda,
     obtenerIdUsuario
@@ -29,7 +28,7 @@ import {
 } from "../conexion";
 import DragAndDrop from '../dragAndDrop';
 
-function Lista() {
+export function Lista({history}) {
     const [data, setData] = useState(false);
 
     useEffect(() => {
@@ -39,6 +38,21 @@ function Lista() {
         }
         fetchData();
     }, []);
+
+    // Para guardar la descripción
+    const eliminarFotosBoda = (id_boda, fecha) => {
+        console.log("id_boda seleccionada: ", id_boda);
+        console.log("fecha seleccionada: ", fecha);
+        (async () => {
+            await borrarBoda(id_boda, fecha);
+            window.location.href = window.location.href;
+        })();
+    };
+
+    const abrirEdicion = (id_boda) => {
+        console.log("id_boda seleccionada: ", id_boda);
+        history.push(`/admin/seleccion/${id_boda}`);
+    }
 
     const list = data;
     return (
@@ -52,7 +66,7 @@ function Lista() {
                             <div className="cuadro">
                                 <div className="item">
                                     <div className="nombre">
-                                        {item.fecha}
+                                        {item.fecha}, {item.servicio}
                                     </div>
                                     <div className="funciones">
                                         <div className="linea"></div>
@@ -60,10 +74,11 @@ function Lista() {
                                             <ArrowDownwardIcon style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                         <div className="caja activado">
-                                            <EditOutlinedIcon style={{ width: "35px", height: "35px", color: "white" }} />
+                                            <EditOutlinedIcon onClick={() => abrirEdicion(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
+                                        
                                         <div className="caja activado">
-                                            <DeleteForeverIcon style={{ width: "35px", height: "35px", color: "white" }} />
+                                            <DeleteForeverIcon onClick={() => eliminarFotosBoda(item.id_boda, item.fecha)} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                     </div>
                                 </div>
@@ -91,6 +106,7 @@ export function Clientes({ history }) {
 
     /* ---- Configuración de la fecha --- */
     const [selectedDate, setSelectedDate] = React.useState(new Date()); // -- fecha
+    const [file, setFile] = useState();
 
     const handleDateChange = date => {
         setSelectedDate(date);
@@ -124,8 +140,6 @@ export function Clientes({ history }) {
     /* ----------------------------------- */
     // Para guardar variables
     const [processing, setProcessing] = useState(false); // Para esperar mientras se está procesando
-    //let fecha = React.createRef();
-    //let servicio = React.createRef();
 
     // Para finalizar la subida de la boda
     /* Tiene que 
@@ -145,7 +159,7 @@ export function Clientes({ history }) {
     }
 
     // SUBIR BODA -------------------------------
-    const subirBoda = () => {
+    const subirFotos = () => {
         if (processing) return;
         setProcessing(true);
 
@@ -166,10 +180,10 @@ export function Clientes({ history }) {
 
         (async () => {
             let existe = false;
-            while(existe) {
+            do {
                 nuevoUser = generarCadena(5);
                 existe = await comprobarUsuarioExiste(nuevoUser);
-            }
+            } while (existe);
             
             console.log("Usuario:", nuevoUser);
             console.log("Contraseña:", nuevaPass);
@@ -178,8 +192,9 @@ export function Clientes({ history }) {
             const id_usuario =  await obtenerIdUsuario(nuevoUser);
             const resultado = await subirBoda(id_usuario, fecha, valServicio)
             if (resultado) {
-                if (DragAndDrop.files.length > 0) {
-                    const resSubirFotos = await subirFotosBoda(DragAndDrop.files, fecha);
+                console.log("file:", file);
+                if (file) {
+                    const resSubirFotos = await subirFotosBoda(file, fecha);
 
                     if (resSubirFotos) {
                         alert(`
@@ -187,7 +202,8 @@ export function Clientes({ history }) {
                             Url: https://www.logarfotografos.es/acceso/${nuevoUser}\n
                             Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
                         `);
-                        DragAndDrop.files = null;
+                        setFile(undefined);
+                        window.location.href = window.location.href;
                     } else {
                         alert("Se ha producido un problema mientras se subían las imagenes.");
                         error = true;
@@ -216,14 +232,14 @@ export function Clientes({ history }) {
             <Inicio />
             <div className="contenido">
                 <div className="lista">
-                    <Lista />
+                    <Lista history={history} />
                 </div>
                 <div className="agregar-contenido">
                     <div className="input-cuadro">
                         <div className="cuadro sombra">
                             <div className="input">
                                 <div className="url sombra">
-                                    <DragAndDrop />
+                                    <DragAndDrop onFileSelected={f => setFile(f)} />
                                     {/*<div className="arrastrar">
                                     </div>
                                     <div className="examinar">
@@ -263,7 +279,7 @@ export function Clientes({ history }) {
                                     <div className="boton">
                                         <button
                                             className="enviar"
-                                            onClick={() => subirBoda()}
+                                            onClick={() => subirFotos()}
                                             disabled={processing}
                                         >
                                             SUBIR

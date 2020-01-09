@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Inicio from '../../inicio/inicio';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +9,10 @@ import './inicio.scss';
 import { editarFotoFondo } from "../conexion";
 
 
-function Admin_inicio ({history}){
+function Admin_inicio (){
+
+    const [url, setUrl] = useState('');
+
     const useStyles = makeStyles({
         textfield: {
             borderRightStyle: 'none',
@@ -37,19 +40,24 @@ function Admin_inicio ({history}){
             } 
         }
     });
-
     const classes = useStyles();
-    let url = React.createRef();
 
     // Para guardar la url
-    const guardarUrl = (url) => {
+    const guardarUrl = () => {
+        console.log("Url fondo:", url);
+        
+        
         (async () => {
-            const resultado = await editarFotoFondo(1, url.current.value);
+            if (url.length < 20) {
+                alert("La URL de imagen es inválida");
+                return;
+            }
+            const resultado = await editarFotoFondo(1, url);
             if (resultado) window.location.href = window.location.href;
             else alert("No se ha podido subir la imagen");
 
         })();
-    }; 
+    };
 
     return(
         <div className="content-inicio-admin">
@@ -57,13 +65,20 @@ function Admin_inicio ({history}){
             <Inicio />
             <div className="cuadro-imagen">
                 <div className="cuadro">
-                        <TextField id="outlined-basic" ref={url} className={classes.textfield} label="URL" variant="outlined" />
+                        <TextField 
+                            id="outlined-basic"
+                            name = "url"
+                            className={classes.textfield} 
+                            label="URL" 
+                            variant="outlined"
+                            onChange = {event => setUrl(event.target.value)}
+                        />
                         <Button
                             variant="contained"
                             size="large"
                             className={classes.button}
                             startIcon={<Guardar/>}
-                            onClick = {() => guardarUrl(url)}
+                            onClick = {() => guardarUrl()}
                         >
                             Guardar
                         </Button> 
