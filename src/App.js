@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
-import { withTranslation, Trans } from 'react-i18next';
+import i18n from './common/i18n';
+
 
 const Inicio = lazy(() => import('./inicio/inicio'));
 const Precios = lazy(() => import('./precios/precios'));
@@ -20,9 +21,22 @@ const AdminContacto = lazy(() => import('./administrador/contacto/contacto'));
 const NotFound = Inicio;
 
 function App() {
+
+    function handleClick(lang) {
+        i18n.changeLanguage(lang);
+    }
+
     return (
         <Router>
             <Menu/>
+            <div style={{zIndex:'50000', position: 'absolute'}}>
+                <button onClick={() => handleClick('es')}>
+                    Español
+                </button>
+                <button onClick={() => handleClick('en')}>
+                    English
+                </button>
+            </div>
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />
@@ -45,5 +59,4 @@ function App() {
   );
 }
 
-
-export default withTranslation('common')(App); 
+export default App; 

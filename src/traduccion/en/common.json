@@ -1,4 +1,11 @@
 {
+	"menu" : {
+		"inicio" : "index",
+		"precios" : "prices",
+		"galeria" : "gallery",
+		"contacto" : "about"
+	},
+
 	"contacto" : {
 		"this" : "contact",
 		"titulo" : "Logar Photographers",

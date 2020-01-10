@@ -3,7 +3,9 @@
 		"inicio" : "inicio",
 		"precios" : "precios",
 		"galeria" : "galeria",
-		"contacto" : "contacto"
+		"contacto" : "contacto",
+		"terminos" : "Terminos de uso",
+		"politica" : "política de privacidad"
 	},
 
 	"contacto" : {
@@ -41,11 +43,12 @@
 	"precios" : {
 		"this" : "precios",
 		"titulo" : "Bodas",
-		"verFotosBodas" : "Ver fotos de bodas",
+		"verFotosBodas" : "Ver fotos de boda",
 		"verFotosPrebodas" : "Ver fotos de prebodas",
 		"verFotosPostbodas" : "Ver fotos de postbodas",
 
-		"cerenomia" : "Ceremonia",
+		"ceremonia" : "Ceremonia",
+		"exterior" : "exteriores",
 		"casaNovios" : "Casa novios",
 		"coctel" : "Cóctel",
 		"celebracion" : "Celebración hasta el baile nupcial",
@@ -57,24 +60,24 @@
 		"texto1" : "* LAS FOTOS SE ENTREGARÁN EN ALTA RESOLUCIÓN EN UN PEN DRIVE.",
 		"texto2" : "* LOS VÍDEOS SE ENTREGARÁN EDITADOS EN ALTA RESOLUCIÓN EN UN PEN DRIVE.",
 		"texto3" : "* PARA ÁLBUMES DIGITALES 30X30CM 30 HOJAS 295€ MÁS.",
-		"textoRegalo" : "¡REGALO! VÍDEO DE AGRADECIMIENTO PARA VISUALIZARLO EN LA CELEBRACIÓN.",
+		"textoRegalo" : "¡REGALO CON VÍDEO! VÍDEO DE AGRADECIMIENTO PARA VISUALIZARLO EN LA CELEBRACIÓN.",
 				
 		"opcion1" : {
 			"titulo" : "Opcion 1",
-			"precioFoto" : "295€",
-			"precioVideo" : "295€"
+			"precioFoto" : "Fotos 295€",
+			"precioVideo" : "Vídeo 295€"
 		},
 
 		"opcion2" : {
 			"titulo" : "Opcion 2",
-			"precioFoto" : "395€",
-			"precioVideo" : "550€"
+			"precioFoto" : "Fotos 395€",
+			"precioVideo" : "Vídeo 550€"
 		},
 
 		"opcion3" : {
 			"titulo" : "Opcion 3",
-			"precioFoto" : "495€",
-			"precioVideo" : "895€"
+			"precioFoto" : "Fotos 495€",
+			"precioVideo" : "Vídeo 895€"
 		}
 	},
 
@@ -95,7 +98,7 @@
 	},
 
 	"seleccion" : {
-		"this" : "eleccion",
+		"this" : "seleccion",
 		"boda" : "Boda",
 		"opcional" : "(Opcional)",
 		"explicacion" : "Especifica cambios en imágenes seleccionadas nombrando el número de imagen",

@@ -4,12 +4,14 @@ import logo from "../acceso/img/logo.svg"
 import Loader from '../common/loader/loader';
 import Gallery from "react-photo-gallery";
 import dialogo from './dialogo.svg';
-import traduccion from "../traduccion/es/common.json";
 import "./cliente.scss";
 import SelectedImage from "./imagenSeleccionada";
 import { finalizarSeleccion, obtenerGaleriaPrivada, seleccionarTodoCliente, obtenerDatosCliente, guardarDescripcionCliente } from "../common/conexion";
+// Traducción
+import { useTranslation} from 'react-i18next';
 
 export function Cliente({history}) {
+    const {t, i18n } = useTranslation();
     // Si no es cliente, se redirige a acceso
     if (!window.session.user || !window.session.pass || window.session.admin) {
         history.push("/acceso");
@@ -103,10 +105,6 @@ export function Cliente({history}) {
 
     /* --------------- */
 
-    /* --- JSON --- */
-    const json = traduccion.seleccion;
-    /* ------------ */
-
     /* --- Animación cliente --- */
     function abrir_dialogo() {
         const dialogo = document.querySelector('.dialogo');
@@ -122,7 +120,7 @@ export function Cliente({history}) {
 
     return (
         <div className="content">
-            <Menu size_logo={"124px"} logo={logo} is_seleccion={true} />
+            {/*<Menu size_logo={"124px"} logo={logo} is_seleccion={true} />*/}
             <div className="fake-burger" onClick={abrir_dialogo}>
                 <div className="line1"></div>
                 <div className="line2"></div>
@@ -131,26 +129,28 @@ export function Cliente({history}) {
             <div className="burger-dialogo" onClick={abrir_dialogo}>
                 <img src={dialogo} />
             </div>
-            {
-                images
-                    ? <Gallery
-                        className="galeria"
-                        photos={images}
-                        // seleccionar
-                        renderImage={imageRenderer}
-                    />
-                    : <Loader className="galeria" />
-            }
+            <div className="galeria_seleccion">
+                {
+                    images
+                        ? <Gallery
+                            className="galeria"
+                            photos={images}
+                            // seleccionar
+                            renderImage={imageRenderer}
+                        />
+                        : <Loader className="galeria" />
+                }
+            </div>
             <div className="dialogo">
                 <div className="content">
                     <div className="input">
                         <div className="inner">
-                            <h1>{json.opcional}</h1>
-                            <h3>{json.explicacion}</h3>
+                            <h1>{t('seleccion.opcional')}</h1>
+                            <h3>{t('seleccion.explicacion')}</h3>
                             <div className="formulario">
                                 <textarea 
                                     rows="5" cols="50" 
-                                    placeholder={json.mensaje} 
+                                    placeholder={t('seleccion.mensaje')} 
                                     className="mensaje" 
                                     ref={descripcion}
                                     defaultValue={data && data.descripcion || ''}
@@ -166,7 +166,7 @@ export function Cliente({history}) {
                                 <button 
                                     onClick={() => finalizarSelec()}
                                     className="boton-enviar">
-                                    {json.enviar}
+                                    {t('seleccion.enviar')}
                                 </button>
                             </div>
                         </div>
@@ -176,13 +176,13 @@ export function Cliente({history}) {
                             onClick={() => seleccionarTodo(true)}
                             disabled={processing}
                         >
-                                {json.selecTodo}
+                                {t('seleccion.selecTodo')}
                         </button>
                         <button
                             onClick={() => seleccionarTodo(false)}
                             disabled={processing}
                         >
-                            {json.deselecTodo}
+                            {t('seleccion.deselecTodo')}
                         </button>
                     </div>
                 </div>

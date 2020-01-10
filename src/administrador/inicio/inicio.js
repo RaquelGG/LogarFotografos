@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Guardar from '@material-ui/icons/Save';
 import Notificador from '../../common/admin/admin_edicion'
 import './inicio.scss';
-import { editarFotoFondo } from "../common/conexion";
+import { editarFotoFondo } from "../conexion";
 
 
 function Admin_inicio (){

@@ -6,12 +6,11 @@ import telefono from "./iconos/telefono.svg"
 import whatsapp from "./iconos/whatsapp.svg"
 import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
-import f_black from "./iconos/facebook-black.svg";
-import e_black from "./iconos/email-black.svg";
-import w_black from "./iconos/whatsapp-black.svg"
+import Enlace from '@material-ui/icons/Link';
 import traduccion from "../../traduccion/es/common.json"
 import Admin_edicion from "../../common/admin/admin_edicion";
 import "../../common/admin/contacto/contacto.scss";
+import { makeStyles } from '@material-ui/core';
 
 // Traducción
 /*import i18next from 'i18next';
@@ -35,6 +34,14 @@ i18next.init({
 function Contacto() {
 
     const json = traduccion.contacto;
+
+    const useStyles = makeStyles({
+        root: {
+            paddingLeft: '10px'
+        },
+    });
+
+    const classes = useStyles();
 
     //const { t, i18n } = this.props;
     return (
@@ -65,6 +72,8 @@ function Contacto() {
                                     <td><img src = {ubicacion} className = "icono"/></td>
                                     <td className = "titulo">DIRECCIÓN</td>
                                     <td><input type="text" name="direccion" defaultValue={json.tabla.direccion} className="admin input-data"/></td>
+                                    <td><Enlace className={classes.root}/></td>
+                                    <td><input type="text" name="direccion" defaultValue={json.tabla.direccionUrl} className="admin input-url"/></td>
                                 </tr>
                                 <tr>
                                     <td><img src = {correo} className = "icono"/></td>
@@ -85,15 +94,19 @@ function Contacto() {
                                     <td><img src = {facebook} className = "icono"/></td>
                                     <td className = "titulo">FACEBOOK</td>
                                     <td><input type="text" name="direccion" defaultValue={json.tabla.facebook} className="admin input-data"/></td>
+                                    <td><Enlace className={classes.root}/></td>
+                                    <td><input type="text" name="direccion" defaultValue={json.tabla.facebookUrl} className="admin input-url"/></td>
                                 </tr>
                                 <tr>
                                     <td><img src = {bodasnet} className = "icono"/></td>
                                     <td className = "titulo">BODAS.NET</td>
                                     <td><input type="text" name="direccion" defaultValue={json.tabla.bodasNet} className="admin input-data"/></td>
+                                    <td><Enlace className={classes.root}/></td>
+                                    <td><input type="text" name="direccion" defaultValue={json.tabla.bodasNetUrl} className="admin input-url"/></td>
                                 </tr>
                             </table>
                         </div>
-                        <img className="img_dueno" />
+                        <div className="img_dueno" />
                     </div>
                     <div className="fake">
 
@@ -101,25 +114,6 @@ function Contacto() {
 
                     <div className = "cuadro-giro-2 sombra"></div>
                     <div className = "cuadro-giro-3 sombra"></div>
-                </div>
-                
-
-                <div className = "info-contacto-formulario sombra">
-                    <div className="cuadro-giro-2-3 sombra"></div>
-                    <div className = "info-contacto-formulario-contenido">
-                        <h1>ENVIAR UN MENSAJE</h1>
-                        <form>
-                            <input type="text" placeholder="Nombre"name="nombre" className = "nombre"  />
-                            <input type="email" placeholder="Correo válido" name="email" className="email"/>
-                            <textarea rows="5" cols="50" placeholder="Mensaje" name="mensaje" className="mensaje" />
-                            <input type="submit" className="enviar" value="ENVIAR MENSAJE"/>
-                        </form>
-                    </div>
-                    <div className="redes">
-                            <img src={f_black}/>
-                            <img src={e_black} />
-                            <img src={w_black} />
-                    </div>
                 </div>
             </div>
         </div>

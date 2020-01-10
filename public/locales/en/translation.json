@@ -1,0 +1,118 @@
+{
+	"menu" : {
+		"inicio" : "home",
+		"precios" : "prices",
+		"galeria" : "gallery",
+		"contacto" : "contact",
+		"terminos" : "terms of use",
+		"politica" : "privacy policy"
+	},
+
+	"contacto" : {
+		"this" : "contact",
+		"titulo" : "Logar Photographers",
+		"subtitulo" : "Professional photographers",
+
+		"tabla" : {
+			"title_direccion" : "Address",
+			"title_correo" : "Email",
+			"title_tel" : "Number",
+			"title_whats" : "Whatsapp",
+			"title_facebook" : "Facebook",
+			"title_bodasNet" : "Bodas.net",
+			"direccion" : "C/Sol Nº5, Berja, Almería",
+			"direccionUrl" : "https://www.google.es/maps/dir//Logar+fot%C3%B3grafos,+Calle+Sol,+5,+04760+Berja,+Almer%C3%ADa/@36.8377842,-2.9391874,18.5z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd7048a9f25c5f1f:0xa3563a98bd0811bc!2m2!1d-2.938638!2d36.837849",
+			"correo" : "bodas@logarfotografos.es",
+			"telefono" : "(+34) 689 13 77 01",
+			"whatsapp" : "(+34) 609 41 04 71",
+			"facebook" : "Logar fotógrafos",
+			"facebookUrl" : "https://www.facebook.com/pages/category/Professional-Service/Logar-Fot%C3%B3grafos-559523350737654/",
+			"bodasNet" : "Logar fotógrafos",
+			"bodasNetUrl": "https://www.bodas.net/fotografos/logar-fotografos--e18407"
+		},
+		
+		"formulario" : {
+			"titulo" : "Send a message",
+			"nombre" : "Name",
+			"email" : "E-mail address",
+			"mensaje" : "Message",
+			"enviar" : "Send message"
+		}
+	},
+
+	"precios" : {
+		"this" : "precios",
+		"titulo" : "Weddings",
+		"verFotosBodas" : "Wedding Photos",
+		"verFotosPrebodas" : "Pre-Wedding Photos",
+		"verFotosPostbodas" : "Post-Wedding Photos",
+
+		"ceremonia" : "Ceremony",
+		"exterior" : "Outsides",
+		"casaNovios" : "Bride and groom house",
+		"coctel" : "Cocktail",
+		"celebracion" : "Celebration until the wedding dance",
+		"fotos" : "Photos",
+		"video": "Video",
+		"regalo" : "¡Gift!",
+		"preboda" : "Pre-Wedding",
+		"postboda" : "Post-Wedding",
+		"texto1" : "* THE PHOTOS WILL BE DELIVERED IN HIGH RESOLUTION ON A PEN DRIVE.",
+		"texto2" : "* THE VIDEOS WILL BE DELIVERED EDITED IN HIGH RESOLUTION ON A PEN DRIVE.",
+		"texto3" : "* FOR DIGITAL ALBUMS 30X30CM 30 SHEETS 295€ MORE",
+		"textoRegalo" : "¡Gift with video! THANK YOU VIDEO TO BE SHOWN AT THE CELEBRATION.",
+				
+		"opcion1" : {
+			"titulo" : "1st Option",
+			"precioFoto" : "Photos 295€",
+			"precioVideo" : "Video 295€"
+		},
+
+		"opcion2" : {
+			"titulo" : "2n Option",
+			"precioFoto" : "Photos 395€",
+			"precioVideo" : "Video 550€"
+		},
+
+		"opcion3" : {
+			"titulo" : "3rd Option",
+			"precioFoto" : "Photos 495€",
+			"precioVideo" : "Video 895€"
+		}
+	},
+
+	"galeria" : {
+		"this" : "galeria",
+		"bodas" : "Bodas",
+		"prebodas" : "Prebodas",
+		"postbodas" : "Postbodas"
+	},
+
+	"acceso" : {
+		"this" : "acceso",
+		"usuario" : "Usuario",
+		"contraseña" : "Contraseña",
+		"acceder" : "Acceder",
+		"volver" : "Volver a la página de Inicio",
+		"error" : "Usuario o contraseña incorrecto"
+	},
+
+	"seleccion" : {
+		"this" : "selection",
+		"boda" : "Wedding",
+		"opcional" : "(Optional)",
+		"explicacion" : "Specifies changes to selected images by naming the image number",
+		"mensaje" : "Message",
+		"guardar" : "Save",
+		"enviar" : "Send everything and finish",
+		"selecTodo" : "Select all",
+		"borrarSelec" : "Delete selected",
+		"subirFoto" : "Upload photos",
+		"examinarEquipo" : "Browse my computer",
+		"deselecTodo" : "Deselect all",
+		"confirmar": "Are you sure"
+	},
+
+	"terminos" : "Terminos de uso",
+	"privacidad" : "Política de privacidad"
+}
