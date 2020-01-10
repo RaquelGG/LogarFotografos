@@ -25,16 +25,17 @@ const activeStyle = {
 };
 
 
-function Basic(props) {
+function Basic({ onFileSelected }) {
     const onDrop = useCallback(acceptedFiles => {
         // Do something with the files
+        onFileSelected(acceptedFiles[0]);
     }, [])
     const {
         acceptedFiles,
         getRootProps,
         getInputProps,
         isDragActive,
-    } = useDropzone();
+    } = useDropzone({ onDrop });
 
     const style = useMemo(() => ({
         ...baseStyle,

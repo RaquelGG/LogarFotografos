@@ -5,22 +5,35 @@ import Gallery from "react-photo-gallery";
 import translate from "../../traduccion/es/common.json";
 import fondo_arrastrar from "../seleccion/background_arrastrar.svg";
 import img_arrastrar from "./img_arrastrar.svg";
-import './seleccion.scss'
+import './seleccion.scss';
+import {
+    obtenerDatosBoda,
+    obtenerGaleriaPrivada,
 
-export function Seleccion_admin() {
+} from "../conexion";
+import DragAndDrop from '../dragAndDrop';
+
+export function Seleccion_admin({match}) {
+    const id_boda = match.params.id_boda;
 
     /* --- Galería --- */
     // TODO : Cambiar la galeria por la del sujeto en cuestion
 
     const [images, setImages] = useState(null);
+    const [data, setData] = useState('');
 
-    // Obtenemos las fotos del servidor
+    // Obtenemos las fotos y los datos del servidor
     useEffect(() => {
         async function fetchData() {
-            setImages(await obtenerGaleria())
+            setData(await obtenerDatosBoda(id_boda))
         }
+        async function fetchImages() {
+            setImages(await obtenerGaleriaPrivada(id_boda))
+        }
+        fetchImages();
         fetchData();
     }, []);
+
 
     /* --------------- */
 
@@ -31,8 +44,8 @@ export function Seleccion_admin() {
     return (
         <div className="content-seleccion">
             <div className="content-titulo">
-                <div className="titulo">{traduccion.boda}</div>
-                <div className="nombre">Maria del mar y juan</div>
+                <div className="titulo">{data.servicio}</div>
+                <div className="nombre">{data.fecha}, {data.usuario}</div>
             </div>
             <div className="content-galeria">
                 <div className="galeria">

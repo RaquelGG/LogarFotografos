@@ -51,7 +51,7 @@ export async function editarEtiqueta(id_foto, servicio) {
 export async function editarFotoFondo(id_foto, url) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/editarEtiqueta.php`, {
+        const response = await fetch(`${ruta}/editarFotoFondo.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -113,30 +113,6 @@ export async function borrarFotoPrivada(id_foto) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({user: window.session.user, pass: window.session.pass, id_foto: id_foto})
-        });
-        
-        return true;
-    } catch(err) {
-        console.error("Error de administrador:", err);
-    }
-    return false;
-}
-
-// Borra las fotos de una boda
-export async function borrarFotosBoda(id_foto) {
-    if (!window.session.admin) return false;
-    try {
-        const response = await fetch(`${ruta}/seleccion/borrarFotosBoda.php`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: window.session.user, 
-                pass: window.session.pass, 
-                id_foto: id_foto
-            })
         });
         
         return true;
@@ -302,6 +278,36 @@ export async function obtenerDatosSeleccion() {
     }
 }
 
+
+// obtener datos selección de una id_boda
+export async function obtenerDatosBoda(id_boda) {
+    if (!window.session.admin) return null;
+    console.log("id_boda", id_boda)
+    try {
+        const response = await fetch(`${ruta}/seleccion/obtenerDatosBoda.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass,
+                id_boda: id_boda
+            })
+        });
+        
+        const resultado = await response.json();
+
+        const datos = resultado;
+        console.log(datos);
+        return datos;
+
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+}
+
 // Subir una boda
 export async function subirBoda(id_usuario, fecha, servicio) {
     if (!window.session.admin) return false;
@@ -333,21 +339,15 @@ export async function subirBoda(id_usuario, fecha, servicio) {
 export async function subirFotosBoda(fotos, fecha) {
     if (!window.session.admin) return false;
     try {
-        let formData = new FormData();
-        formData.append("fotos", fotos[0]); // En la posición 0; es decir, el primer elemento
+        const formData = new FormData();
+        formData.append("user", window.session.user);
+        formData.append("pass", window.session.pass);
+        formData.append("fotos", fotos); // En la posición 0; es decir, el primer elemento
+        formData.append("fecha", fecha);
 
         const response = await fetch(`${ruta}/seleccion/subirFotosBoda.php`, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: window.session.user, 
-                pass: window.session.pass,
-                fecha: fecha,
-                fotos: formData
-            })
+            body: formData
             
         });
         
@@ -360,7 +360,7 @@ export async function subirFotosBoda(fotos, fecha) {
 }
 
 // borrar boda
-export async function borrarBoda(fecha) {
+export async function borrarBoda(id_boda, fecha) {
     if (!window.session.admin) return false;
     try {
         const response = await fetch(`${ruta}/seleccion/borrarBoda.php`, {
@@ -372,6 +372,7 @@ export async function borrarBoda(fecha) {
             body: JSON.stringify({
                 user: window.session.user, 
                 pass: window.session.pass, 
+                id_boda: id_boda,
                 fecha: fecha
             })
         });
@@ -411,6 +412,34 @@ export async function obtenerIdUsuario(nuevoUser) {
         console.error("Error de administrador:", err);
     }
     return null;
+}
+
+// Obtiene la galeria de un usuario
+export async function obtenerGaleriaPrivada(id_boda) {
+    try {
+        const response = await fetch(`${ruta}/seleccion/obtenerFotosPrivadas.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass,
+                id_boda: id_boda
+            }),
+        });
+
+        // TODO: recoger imagenes del servidor privado
+        const resultado = await response.json();
+
+        const fotos = resultado;//.map(JSON.parse);
+        console.log(fotos);
+        return fotos;
+
+    } catch(err) {
+        console.error("Error obteniendo las imagenes:", err);
+    }
 }
 
 // SUBIR  FOTO PRIVADA
