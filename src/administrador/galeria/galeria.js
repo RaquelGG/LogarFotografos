@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Galeria from "react-photo-gallery";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -11,10 +11,18 @@ import Radio from '@material-ui/core/Radio';
 import Notificador from '../../common/admin/admin_edicion'
 import "./galeria.scss"
 import { Button } from '@material-ui/core';
+import Loader from '../../common/loader/loader';
+import { 
+    subirFotoPublica,
+    borrarFotoPublica,
+    editarEtiqueta,
+
+ } from "./conexion";
+ import {obtenerGaleria} from "../../common/conexion";
+ import SelectedImage from "../../cliente/imagenSeleccionada"
+
 
 function Admin_galeria (){
-    const user = "admin";
-    const pass = 'admin';
 
     const useStyles = makeStyles({
         textField: {
@@ -68,12 +76,89 @@ function Admin_galeria (){
         setState({ ...state, [name]: event.target.checked });
     };
 
+    // GALERIA --------------------------------------------------------------------
+    const [images, setImages] = useState([]);
+    // Para seleccionar
+    const [selectAll, setSelectAll] = useState(-1);
+    // Para no sobrecargar el servidor comprobando si está procesando
+    const [processing, setProcessing] = useState(false);
+
+
+    // Cogemos las imagenes del servidor
+    useEffect(() => {
+        async function fetchImages() {
+            setImages((await obtenerGaleria()).map(img => [img, false])); // ò.ó
+        }
+        fetchImages();
+    }, []);
+
+    useEffect(() => {
+        console.log("Images:", images);
+    }, [images]);
+
+    // Para borrar las fotos seleccionadas
+    const borrarFotos = () => {
+        if (processing) return;
+        setProcessing(true);
+        
+        // Borra las que están seleccionadas.
+        // TODO
+            images.forEach(img => {
+                console.log("is selected:", img[1]);
+                if (img[1]) {
+                    (async () => {
+                        await borrarFotoPublica(img[0].key);
+                        console.log("img key:", img[0].key);
+                    })();
+                }
+            });            
+        
+        setProcessing(false);
+    };
+
+    const selectionChangeHandler = (index, isSelected, imgs) => {
+        console.log("selection changed for index", index, "s", isSelected);
+        const clonedImages = imgs.slice();
+        console.log("we got", imgs.length, "and", clonedImages.length);
+        clonedImages[index][1] = isSelected;
+        setImages(clonedImages);
+    };
+
+    const imageRenderer = useCallback(
+        ({ index, left, top, key, photo }) => (
+            <SelectedImage
+                selected={
+                    selectAll === -1
+                    ? photo.isSelected
+                    : selectAll === 1
+                }
+                key={key}
+                margin={"2px"}
+                index={index}
+                photo={photo}
+                left={left}
+                top={top}
+                onSelectionChange={s => selectionChangeHandler(index, s, images)}
+            />
+        ),
+        [selectAll, images]
+    );
+
     /* ------------------------------ */
 
     return(
         <div className="content-galeria-admin">
             <Notificador />
-            <Galeria />
+            {
+                images
+                    ? <Galeria
+                        className="galeria"
+                        photos = {images.map(img => img[0])}
+                        renderImage = {imageRenderer}
+                    />
+                    : <Loader className="galeria" />
+            }
+            
             <div className="content-cuadro">
                 <div className="titulo">
                     <h3 style={{width: "30%", paddingLeft: "59px"}}>Subir imágenes</h3>
@@ -101,16 +186,16 @@ function Admin_galeria (){
                         <div className="tipos">
                             <FormGroup>
                                 <FormControlLabel
-                                    control={<Switch checked={state.gilad} onChange={handleChange('boda')} value="boda" />}
+                                    control={<Switch defaultChecked="true" onChange={handleChange('boda')} value="boda" />}
                                     label="BODA"
                                 />
                                 <FormControlLabel
-                                    control={<Switch checked={state.jason} onChange={handleChange('preboda')} value="preboda" />}
+                                    control={<Switch defaultChecked="true" onChange={handleChange('preboda')} value="preboda" />}
                                     label="PREBODA"
                                 />
                                 <FormControlLabel
                                     control={
-                                        <Switch checked={state.antoine} onChange={handleChange('postboda')} value="postboda" />}
+                                        <Switch defaultChecked="true" onChange={handleChange('postboda')} value="postboda" />}
                                     label="POSTBODA"
                                 />
                             </FormGroup>
@@ -119,9 +204,9 @@ function Admin_galeria (){
                     </div>
                     <div className="etiqueta">
                         <RadioGroup onChange={handleChange}>
-                            <FormControlLabel  control={<Radio />} label="Female" />
-                            <FormControlLabel  control={<Radio />} label="Male" />
-                            <FormControlLabel  control={<Radio />} label="Other" />
+                            <FormControlLabel  control={<Radio />} label="Boda" />
+                            <FormControlLabel  control={<Radio />} label="Preboda" />
+                            <FormControlLabel  control={<Radio />} label="Postboda" />
                         </RadioGroup>
                     </div>
                     <div className="botones">
@@ -131,6 +216,7 @@ function Admin_galeria (){
                                 variant="contained" 
                                 color="primary"
                                 className={classes.deseleccionar}
+                                onClick={() => setSelectAll(0)}
                                 >
                                     DESELECCIONAR FOTOS
                                 </Button>
@@ -138,6 +224,7 @@ function Admin_galeria (){
                                 variant="contained" 
                                 color="primary"
                                 className={classes.borrar}
+                                onClick={() => borrarFotos()}
                                 >
                                     BORRAR SELECCIONADAS
                                 </Button>

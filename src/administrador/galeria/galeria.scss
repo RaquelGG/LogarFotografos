@@ -1,9 +1,28 @@
 @import '../../common/estilos_comunes.scss';
 
+.react-images__footer__count {
+    display: none;
+}
+
 .content-galeria-admin{
     height: 82.7%;
     width: 100%;
     overflow-x: hidden;
+
+    .react-photo-gallery--gallery {
+        
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-top: $distancia_principio_pc;
+        background-color: rgba(255, 255, 255, 0.548);
+    
+        img {
+            object-fit: cover;
+        }
+    }
+
+    
 
     .content-cuadro{
         position: absolute;
