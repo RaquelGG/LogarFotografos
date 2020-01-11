@@ -24,9 +24,10 @@ const SelectedImage = ({
     direction,
     top,
     left,
-    selected
+    selected,
+    onSelectionChange
 }) => {
-    const [isSelected, setIsSelected] = useState(selected);
+    const [isSelected, setIsSelected] = useState(selected || false);
     const [processing, setProcessing] = useState(false);
     //calculate x,y scale
     const sx = (100 - (30 / photo.width) * 100) / 100;
@@ -34,7 +35,7 @@ const SelectedImage = ({
     selectedImgStyle.transform = `translateZ(0px) scale3d(${sx}, ${sy}, 1)`;
 
     useEffect(() => {
-        setIsSelected(selected);
+        setIsSelected(selected || false);
     }, [selected]);
 
     if (direction === "column") {
@@ -43,25 +44,27 @@ const SelectedImage = ({
         cont.top = top;
     }
 
-    const handleOnClick = e => {
+    const handleOnClick = onSelectionChange
+    ? (() => {
+        onSelectionChange(!isSelected);
+        setIsSelected(!isSelected);
+    })
+    : (() => {
         if (processing) return;
         setProcessing(true);
-        // Cambiamos la selección en el servidor
-        (async () => {
-            const resultado = await seleccionarFotoCliente(photo.key, !isSelected);
-            if (resultado) setIsSelected(!isSelected);
-            setProcessing(false);
-        })();
-            
-    };
+        if(!window.session.admin) {
+            // Cambiamos la selección en el servidor 
+            (async () => {
+                const resultado = await seleccionarFotoCliente(photo.key, !isSelected);
+                if (resultado) setIsSelected(!isSelected);
+            })();
+        } else {
+            setIsSelected(!isSelected);
+        }
+        setProcessing(false);
+    });
 
     
-    
-
-    useEffect(() => {
-        setIsSelected(selected);
-    }, [selected]);
-
     return (
         <div
             style={{ margin, height: photo.height, width: photo.width, ...cont }}

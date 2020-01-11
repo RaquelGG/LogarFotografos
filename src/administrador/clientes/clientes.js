@@ -25,7 +25,7 @@ import {
     borrarBoda,
     obtenerIdUsuario
 
-} from "../conexion";
+} from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 
 export function Lista({history}) {
