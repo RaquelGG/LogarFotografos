@@ -75,15 +75,6 @@
             background-color: #ACB48A;
         }
 
-        .opcion_1_admin {
-            background-color: #ACB48A;
-
-            .subtitulo {
-                width: 163px;
-                height: 42px;
-            }
-        }
-
         .opcion_2 {
             background-color: #EB8AA0;
         }
@@ -437,7 +428,45 @@
 
             }
         }
-                
+
+        .opcion_1_admin {
+            height: 50px;
+            padding: 10px;
+
+            .subtitulo {
+                width: 163px;
+                height: 40px;
+                border: none;
+                font-size: 27px;
+                font-weight: bold;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .sub_1 {
+                background-color: rgba(147, 158, 95, 0.8);
+            }
+
+            .sub_2 {
+                background-color: rgba(207, 117, 138, 0.8);
+            }
+
+            .sub_3 {
+                background-color: rgba(68, 151, 144, 0.8);
+            }
+        }
+
+        .color_1 {
+            background-color: rgba(172, 180, 138, 0.8);
+        }
+
+        .color_2 {
+            background-color: rgba(235, 138, 161, 0.8);
+        } 
+
+        .color_3 {
+            background-color: rgba(26, 210, 195, 0.8);
+        }
         
         .opciones {
             //width: 100%;
@@ -471,13 +500,14 @@
                     align-items: center;
 
                     .opcion_1_precio_admin {
-                        width: 152px;
+                        width: 170px;
                         height: 33px;
                         font-size: 27px;
                         background-color: #919191;
                         border: solid 1px $color-borde;
                         font-weight: bold;
                         text-align: center;
+                        text-transform: uppercase;
                     }
 
                     .color1 {

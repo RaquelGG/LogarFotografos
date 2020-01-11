@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import Menu from "../common/menu/menu"
-import logo from "../acceso/img/logo.svg"
 import Loader from '../common/loader/loader';
 import Gallery from "react-photo-gallery";
 import dialogo from './dialogo.svg';
@@ -9,6 +7,7 @@ import SelectedImage from "./imagenSeleccionada";
 import { finalizarSeleccion, obtenerGaleriaPrivada, seleccionarTodoCliente, obtenerDatosCliente, guardarDescripcionCliente } from "../common/conexion";
 // Traducción
 import { useTranslation} from 'react-i18next';
+import Logo from '../common/logo/logo';
 
 export function Cliente({history}) {
     const {t, i18n } = useTranslation();
@@ -142,6 +141,9 @@ export function Cliente({history}) {
                 }
             </div>
             <div className="dialogo">
+                <div className="logo-dialogo">
+                    <Logo />
+                </div>
                 <div className="content">
                     <div className="input">
                         <div className="inner">

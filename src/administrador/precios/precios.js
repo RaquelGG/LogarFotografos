@@ -32,8 +32,8 @@ function Precios() {
                     <div className="carta">
                         
                         <div className="opcion">
-                            <div className="alinear_fondo opcion_1_admin">
-                                <input type="text" className="subtitulo" defaultValue={t('precios.opcion1.titulo')} />
+                            <div className="alinear_fondo opcion_1_admin color_1">
+                                <input type="text" className="subtitulo sub_1" defaultValue={t('precios.opcion1.titulo')} />
                             </div>
                            
                             <div className="fondo_blanco">
@@ -63,8 +63,8 @@ function Precios() {
                     <div className="carta sombra">
                         
                         <div className="opcion f_opcion">
-                            <div className="fondo_opcion_color alinear_fondo opcion_2">
-                                <h2 className="subtitulo">{t('precios.opcion2.titulo')}</h2>
+                            <div className="alinear_fondo opcion_1_admin color_2">
+                                <input type="text" className="subtitulo sub_2" defaultValue={t('precios.opcion2.titulo')} />
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -97,8 +97,8 @@ function Precios() {
 
                     <div className="carta sombra">
                         <div className="opcion f_opcion">
-                            <div className="fondo_opcion_color alinear_fondo opcion_3">
-                                <h2 className="subtitulo">{t('precios.opcion3.titulo')}</h2>
+                            <div className="alinear_fondo opcion_1_admin color_3">
+                                <input type="text" className="subtitulo sub_3" defaultValue={t('precios.opcion3.titulo')} />
                             </div>
                             <div className="fondo_blanco">
                                 <ul>

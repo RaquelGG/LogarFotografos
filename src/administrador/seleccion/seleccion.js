@@ -14,10 +14,14 @@ import {
 } from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
+// Traduccion 
+import { useTranslation } from 'react-i18next';
 
 
 export function Seleccion_admin({ match }) {
     const id_boda = match.params.id_boda;
+
+    const {t, i18n } = useTranslation();
 
     /* --- Galería --- */
     // Para no sobrecargar el servidor comprobando si está procesando
@@ -140,9 +144,9 @@ export function Seleccion_admin({ match }) {
                                 <div className="content-arrastrar">
                                     <img src={fondo_arrastrar} />
                                     <div className="content-img">
-                                        <h1>{traduccion.arrastrar}</h1>
+                                        <h1>{t('seleccion.arrastrar')}</h1>
                                         <img src={img_arrastrar} />
-                                        <h1>{traduccion.o}</h1>
+                                        <h1>{t('seleccion.o')}</h1>
                                     </div>
                                 </div>
                             </div>

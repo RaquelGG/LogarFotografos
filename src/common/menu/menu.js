@@ -2,6 +2,7 @@ import React from 'react';
 import Redes from '../redes/redes';
 import "../menu/menu.scss";
 import Logo from '../logo/logo';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
 // Traduccion 
@@ -58,8 +59,10 @@ function Menu ({is_seleccion}) {
           }          
           last = '.' + elemento;
         } else {
+
             setUnderline(elemento);
         }
+        actualizarPag();
     }
 
     function quitarBorde(elemento) {
@@ -79,6 +82,16 @@ function Menu ({is_seleccion}) {
         last = elemento;
     }
 
+    function actualizarPag() {
+        const x = document.querySelector('.nav-links');
+        x.className = "nav-links";
+
+        const log = (<div className="logo-pc">
+                        <Logo />
+                     </div>);
+        ReactDOM.render(log, document.getElementById('logoo'));
+    }
+
     /* 
         Control para movil
     */
@@ -93,15 +106,19 @@ function Menu ({is_seleccion}) {
         return tamano <= 728;
     }
 
+    function is_seleccion() {
+        return  (window.innerWidth >= 728) && (window.location.href.includes('seleccion'));
+    }
+
     return(
         <nav>
             <div className ="content-menu">
-                <div className="logo-pc">
-                    <Logo />
+                <div id="logoo" className="logo-pc">
+                    <Logo/>
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
-                    <ul className="nav-links">
+                    <ul className={is_seleccion() ? "nav-links seleccion" : "nav-links"}>
                         <li className="logo-movil">
                             <Logo />
                         </li>
@@ -121,7 +138,7 @@ function Menu ({is_seleccion}) {
                             <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
                         </li>
                         <li className ="redes-movil">
-                            <Redes/>
+                            <Redes />
                         </li>
                     </ul>
 

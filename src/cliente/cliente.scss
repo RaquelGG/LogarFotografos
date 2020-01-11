@@ -40,10 +40,10 @@ h3 {
     }
 
     .galeria_seleccion {
-        top: 25.3%;
         left: 0;
         width: 69%;
         height: 74.7%;
+        top: 25.3%;
         overflow-y: scroll;
         background-color: red($color: #000000);
         position: relative;
@@ -144,9 +144,17 @@ h3 {
             }
         }
     }
+
+    .terminos-movil {
+        display: none;
+    }
+
+    .logo-dialogo {
+        display: none;
+    }
 }
 
-@media screen and ($movil) {
+@media screen and ($movil), screen and ($mTablet) {
     html, body {
         position:relative;
         overflow-x:hidden;
@@ -160,6 +168,7 @@ h3 {
         width: 47px;
         border: 2px solid #707070;
         background-color: $color-primario;
+        z-index: 1;
     }
 
     .fake-burger {
@@ -171,7 +180,7 @@ h3 {
         height: 47px;
         width: 47px;
         border: 2px solid $color-primario;
-        z-index: 11;
+        z-index: 500;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -188,19 +197,28 @@ h3 {
     .dialogo{
         position: absolute;
         overflow-y: scroll;
-        top: 15%;
-        height: 85%;
+        top: 0;
+        height: 100%;
         width: 100%;
         display: flex;
+        flex-direction: column;
         transform: translateX(100%);
         background-color: white;
-        justify-content: center;
+        align-items: flex-start;
+        z-index: 1000;
+
+        .logo-dialogo {
+            position: relative;
+            top: 0;
+            left: 5%;
+        }
 
         .content {
             position: relative;
             width: 86%;
             background-color: white;
             display: flex;
+            left: 5%;
             flex-direction: column;
             align-items: center;
 
@@ -228,9 +246,7 @@ h3 {
     
                     .mensaje {
                         width: 100%;
-                        min-height: 149px;
                         resize: none;
-                        padding: 0;
                         padding-left: 10px;
                         font-size: 14px;
                         border: none;
@@ -285,6 +301,51 @@ h3 {
     
 }
 
+@media screen and ($mTablet) {
+    .galeria_seleccion {
+        margin-top: 29%;
+        overflow: hidden;
+    }
+
+    .dialogo{
+        overflow-y: hidden;
+        z-index: 1;
+    }
+
+    .content {
+
+        .mensaje {
+            min-height: 149px;
+        }
+    }
+}
+
+
+@media screen and ($movil) {
+
+    .galeria_seleccion {
+        margin-top: 25%;
+    }
+
+    .content {
+
+        .formulario {
+            overflow: scroll;
+
+            .mensaje {
+                min-height: 50px;
+                padding-left: 10px;
+            }
+
+            .boton-enviar {
+                font-size: 14px;
+                height: 40px;
+                min-height: 20px;
+            }
+        }
+    }
+}
+
 .abrir-dialogo {
     transform: translateX(0%);
     transition: transform 0.5s ease-in;
@@ -310,10 +371,5 @@ h3 {
     transform: rotate(44deg) translate(-4px, -5.5px);
 }
 
-@media screen and ($ordenador) {
-    .logo-logar {
-        background-image: url(../common/logo/logo.svg);
-        background-repeat: no-repeat;
-    }
-}
+
 
