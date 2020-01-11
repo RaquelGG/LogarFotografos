@@ -86,6 +86,13 @@
         display: none;
     }
 
+    .logo-movil {
+        .logo-logar {
+            background-image: url(../logo/logo_blanco.svg);
+            background-repeat: no-repeat;
+        }
+    }
+
     .nav-links {
         z-index: 10;
         position: absolute;
@@ -289,6 +296,24 @@
                         // ----------------- Fin de animación
                 }
             }
+
+            /* 
+                Parte de selección 
+            */
+
+            .seleccion {
+                li {
+                    a {
+                        color: $color-primario;
+                        font-size: 27px;
+                        text-shadow: none;                        
+                    }
+                    
+                    a:after {
+                        background: $color-primario;
+                    }
+                }
+            }
         
             .redes-movil {
                 display: flex;
@@ -301,7 +326,6 @@
         }
     }
 }
-
 
 
 

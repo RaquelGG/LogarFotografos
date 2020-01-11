@@ -12,25 +12,6 @@ import Admin_edicion from "../../common/admin/admin_edicion";
 import "../../common/admin/contacto/contacto.scss";
 import { makeStyles } from '@material-ui/core';
 
-// Traducción
-/*import i18next from 'i18next';
-
-import common_es from "../traduccion/es/common.json";
-import common_en from "../traduccion/en/common.json";
-
-i18next.init({
-    interpolation: { escapeValue: false },  // React already does escaping
-    lng: 'es',                              // language to use
-    resources: {
-        es: {
-            common: common_es               // 'common' is our custom namespace
-        },
-        en: {
-            common: common_en
-        },
-    },
-});*/
-
 function Contacto() {
 
     const json = traduccion.contacto;
@@ -95,7 +76,7 @@ function Contacto() {
                                     <td className = "titulo">FACEBOOK</td>
                                     <td><input type="text" name="direccion" defaultValue={json.tabla.facebook} className="admin input-data"/></td>
                                     <td><Enlace className={classes.root}/></td>
-                                    <td><input type="text" name="direccion" defaultValue={json.tabla.facebookUrl} className="admin input-url"/></td>
+                                    <td><input id="dir" type="text" name="direccion" defaultValue={json.tabla.facebookUrl} className="admin input-url"/></td>
                                 </tr>
                                 <tr>
                                     <td><img src = {bodasnet} className = "icono"/></td>

@@ -14,10 +14,14 @@ import {
 } from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
+// Traduccion 
+import { useTranslation } from 'react-i18next';
 
 
 export function Seleccion_admin({ match }) {
     const id_boda = match.params.id_boda;
+
+    const {t, i18n } = useTranslation();
 
     /* --- Galería --- */
     // Para no sobrecargar el servidor comprobando si está procesando
@@ -111,15 +115,11 @@ export function Seleccion_admin({ match }) {
 
     /* --------------- */
 
-    /* --- JSON --- */
-    let traduccion = translate.seleccion;
-    /* ------------ */
-
     return (
         <div className="content-seleccion">
             <div className="content-titulo">
-                <div className="titulo">{data.servicio}</div>
-                <div className="nombre">{data.fecha}, {data.usuario}</div>
+                {<div className="titulo">{data.servicio}</div>}
+               { <div className="nombre">{data.fecha}, {data.usuario}</div> }
             </div>
             <div className="content-galeria">
                 <div className="galeria">
@@ -140,17 +140,21 @@ export function Seleccion_admin({ match }) {
                         <div onClick={() => borrarFotos()} className="boton puntero">Borrar selección</div>
                         <div className="recuadro-subida">
                             <div className="subir">
-                                <div>{traduccion.subirFoto}</div>
+                                <div>{t('seleccion.subirFoto')}</div>
                             </div>
                             <div className="arrastrar sombra">
                                 <div className="content-arrastrar">
                                 <DragAndDrop onFileSelected={f => setFile(f)} />
                                     {/*<img src={fondo_arrastrar} />
                                     <div className="content-img">
-                                        <h1>{traduccion.arrastrar}</h1>
+                                        <h1>{t('seleccion.arrastrar')}</h1>
                                         <img src={img_arrastrar} />
+<<<<<<< HEAD
                                         <h1>{traduccion.o}</h1>
                                     
+=======
+                                        <h1>{t('seleccion.o')}</h1>
+>>>>>>> bc7861bd1cccc26b2b162826613caf2dbd2c5e2d
                                     </div>
                                 */}
                                 </div>

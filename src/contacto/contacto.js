@@ -6,9 +6,9 @@ import telefono from "./iconos/telefono.svg"
 import whatsapp from "./iconos/whatsapp.svg"
 import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
-import f_black from "./iconos/facebook-black.svg";
-import e_black from "./iconos/email-black.svg";
-import w_black from "./iconos/whatsapp-black.svg"
+import f_black from "../common/iconos_black/facebook-black.svg";
+import e_black from "../common/iconos_black/email-black.svg";
+import w_black from "../common/iconos_black/whatsapp-black.svg"
 import traduccion from "../traduccion/es/common.json"
 import "../common/admin/contacto/contacto.scss";
 
@@ -94,7 +94,6 @@ function Contacto() {
                     <div className = "cuadro-giro-2 sombra"></div>
                     <div className = "cuadro-giro-3 sombra"></div>
                 </div>
-                
 
                 <div className = "info-contacto-formulario sombra">
                     <div className="cuadro-giro-2-3 sombra"></div>

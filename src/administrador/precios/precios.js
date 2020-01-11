@@ -1,9 +1,10 @@
 import React from 'react';
-import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
-import "../common/admin/precios/precios.scss";
-import cuadrado_tick from "../common/admin/precios/img/cuadrado_tick.svg"
-import cuadrado_cruz from "../common/admin/precios/img/cuadrado_cruz.svg"
-import flecha from "../common/admin/precios/img/flecha.svg"
+import Imagen_fondo from "../../common/imagen_fondo/imagen_fondo"
+import "../../common/admin/precios/precios.scss";
+import cuadrado_tick from "../../common/admin/precios/img/cuadrado_tick.svg"
+import cuadrado_cruz from "../../common/admin/precios/img/cuadrado_cruz.svg"
+import flecha from "../../common/admin/precios/img/flecha.svg"
+import AdminEdicion from "../../common/admin/admin_edicion"
 
 // Traduccion 
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,7 @@ function Precios() {
     return (
         <div className="content_precios">
             <Imagen_fondo id_foto={2} />
+            <AdminEdicion />
             
             <div className="resto_contenido">
                 <div className="fondo_titulo">
@@ -30,8 +32,8 @@ function Precios() {
                     <div className="carta">
                         
                         <div className="opcion">
-                            <div className="alinear_fondo opcion_1">
-                                <h2 className="subtitulo">{t('precios.opcion1.titulo')}</h2>
+                            <div className="alinear_fondo opcion_1_admin color_1">
+                                <input type="text" className="subtitulo sub_1" defaultValue={t('precios.opcion1.titulo')} />
                             </div>
                            
                             <div className="fondo_blanco">
@@ -50,19 +52,19 @@ function Precios() {
 
                         <div className="fondo_triangulo"></div>
                         <div className="fondo_precios alinear_fondo">
-                            <div className="fondo_giro1"></div>
-                            <div className="fondo_giro2"></div>
-                            <div className="precios">
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.opcion1.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.opcion1.precioVideo')}</h2>
+                            <div className="fondo_giro1">
+                                <div className="precios_admin">
+                                    <input type="text" className="subtitulo opcion_1_precio_admin color1" defaultValue={t('precios.opcion1.precioFoto')} />
+                                    <input type="text" className="subtitulo opcion_1_precio_admin color1" defaultValue={t('precios.opcion1.precioVideo')} />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="carta sombra">
                         
                         <div className="opcion f_opcion">
-                            <div className="fondo_opcion_color alinear_fondo opcion_2">
-                                <h2 className="subtitulo">{t('precios.opcion2.titulo')}</h2>
+                            <div className="alinear_fondo opcion_1_admin color_2">
+                                <input type="text" className="subtitulo sub_2" defaultValue={t('precios.opcion2.titulo')} />
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -84,20 +86,19 @@ function Precios() {
                         
                         <div className="fondo_triangulo"></div>
                         <div className="fondo_precios alinear_fondo">
-                            <div className="fondo_giro1"></div>
-                            <div className="fondo_giro2"></div>
-                            <div className="precios">
-
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.opcion2.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.opcion2.precioVideo')}</h2>
+                            <div className="fondo_giro1">
+                                <div className="precios_admin">
+                                    <input className="subtitulo opcion_1_precio_admin color2" defaultValue={t('precios.opcion2.precioFoto')} />
+                                    <input className="subtitulo opcion_1_precio_admin color2" defaultValue={t('precios.opcion2.precioVideo')} />
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="carta sombra">
                         <div className="opcion f_opcion">
-                            <div className="fondo_opcion_color alinear_fondo opcion_3">
-                                <h2 className="subtitulo">{t('precios.opcion3.titulo')}</h2>
+                            <div className="alinear_fondo opcion_1_admin color_3">
+                                <input type="text" className="subtitulo sub_3" defaultValue={t('precios.opcion3.titulo')} />
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -121,11 +122,11 @@ function Precios() {
 
                         <div className="fondo_triangulo"></div>
                         <div className="fondo_precios alinear_fondo">
-                            <div className="fondo_giro1"></div>
-                            <div className="fondo_giro2"></div>
-                            <div className="precios">
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.opcion3.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.opcion3.precioVideo')}</h2>
+                            <div className="fondo_giro1">
+                                <div className="precios_admin">
+                                    <input className="subtitulo opcion_1_precio_admin color3" defaultValue={t('precios.opcion3.precioFoto')} />
+                                    <input className="subtitulo opcion_1_precio_admin color3" defaultValue={t('precios.opcion3.precioVideo')} />
+                                </div>
                             </div>
                         </div>
                     </div>

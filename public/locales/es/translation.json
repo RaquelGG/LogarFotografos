@@ -63,19 +63,19 @@
 		"textoRegalo" : "¡REGALO CON VÍDEO! VÍDEO DE AGRADECIMIENTO PARA VISUALIZARLO EN LA CELEBRACIÓN.",
 				
 		"opcion1" : {
-			"titulo" : "Opcion 1",
+			"titulo" : "Opción 1",
 			"precioFoto" : "Fotos 295€",
 			"precioVideo" : "Vídeo 295€"
 		},
 
 		"opcion2" : {
-			"titulo" : "Opcion 2",
+			"titulo" : "Opción 2",
 			"precioFoto" : "Fotos 395€",
 			"precioVideo" : "Vídeo 550€"
 		},
 
 		"opcion3" : {
-			"titulo" : "Opcion 3",
+			"titulo" : "Opción 3",
 			"precioFoto" : "Fotos 495€",
 			"precioVideo" : "Vídeo 895€"
 		}
