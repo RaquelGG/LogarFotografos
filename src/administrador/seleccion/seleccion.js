@@ -24,9 +24,11 @@ export function Seleccion_admin({ match }) {
     const [processing, setProcessing] = useState(false);
     // Para seleccionar
     const [selectAll, setSelectAll] = useState(-1);
-    // TODO : Cambiar la galeria por la del sujeto en cuestion
+    // Cambiar la galeria por la del sujeto en cuestion
     const [images, setImages] = useState(null);
     const [data, setData] = useState('');
+    // Para el drag and drop
+    const [file, setFile] = useState(); // Contiene el archivo subido
 
     // Obtenemos las fotos y los datos del servidor
     useEffect(() => {
@@ -142,12 +144,15 @@ export function Seleccion_admin({ match }) {
                             </div>
                             <div className="arrastrar sombra">
                                 <div className="content-arrastrar">
-                                    <img src={fondo_arrastrar} />
+                                <DragAndDrop onFileSelected={f => setFile(f)} />
+                                    {/*<img src={fondo_arrastrar} />
                                     <div className="content-img">
                                         <h1>{traduccion.arrastrar}</h1>
                                         <img src={img_arrastrar} />
                                         <h1>{traduccion.o}</h1>
+                                    
                                     </div>
+                                */}
                                 </div>
                             </div>
                             <div className="examinar">Examinar equipo</div>
