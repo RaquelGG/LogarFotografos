@@ -15,14 +15,6 @@ function Acceso({match, history}) {
         const u = user.current.value;
         const p = pass.current.value;
 
-        if (await comprobarUsuario(u, p)) {
-            window.session = {
-                user: u,
-                pass: p,
-                admin: false,
-            };
-            history.push("/seleccion");// Si es un cliente
-        }
         if (await comprobarAdmin(u, p)) {
             window.session = {
                 user: u,
@@ -30,7 +22,15 @@ function Acceso({match, history}) {
                 admin: true,
             };
             history.push("/admin"); // Si es admin
+        } else if (await comprobarUsuario(u, p)) {
+            window.session = {
+                user: u,
+                pass: p,
+                admin: false,
+            };
+            history.push("/seleccion");// Si es un cliente
         }
+        
     }
 
 
