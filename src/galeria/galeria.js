@@ -70,7 +70,6 @@ export function Galeria() {
                         : <Loader />
                 }
             </div>
-
         </div>
     );
 }
