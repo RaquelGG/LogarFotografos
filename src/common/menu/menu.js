@@ -116,6 +116,7 @@ function Menu ({is_seleccion}) {
     return(
         <nav>
             <div className ="content-menu">
+                <div className="degradado"></div>
                 <div id="logoo" className="logo-pc">
                     <Logo/>
                 </div>
