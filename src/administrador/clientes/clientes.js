@@ -58,7 +58,7 @@ export function Lista({history}) {
     return (
         <SimpleBar className="content-lista" style={{ backgroundcolor: '#2C2C2C' }}>
             {/* Check to see if any items are found*/}
-            {list.length ? (
+            {list ? (
                 <div className="content-item">
                     {/* Render the list of items */}
                     {list.map((item) => {
