@@ -9,11 +9,11 @@
     background-repeat: no-repeat;
 
 
-@media screen and ($movil){
+@media screen and ($movil), screen and ($mTablet){
         text-align: center;
-        $size: 300px;
+        $size: 230px;
         width: $size;
-        height: 150px;
+        height: 130px;
         background-size: $size;
     }
 }

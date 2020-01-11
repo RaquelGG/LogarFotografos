@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { obtenerGaleria } from "../../common/conexion";
 import Loader from '../../common/loader/loader';
 import Galeria from "react-photo-gallery";
-import traduccion from "../../traduccion/es/common.json";
+import translate from "../../traduccion/es/common.json";
 import fondo_arrastrar from "../seleccion/background_arrastrar.svg";
 import img_arrastrar from "./img_arrastrar.svg";
 import './seleccion.scss';
@@ -109,6 +109,9 @@ export function Seleccion_admin({ match }) {
 
     /* --------------- */
 
+    /* --- JSON --- */
+    let traduccion = translate.seleccion;
+    /* ------------ */
 
     return (
         <div className="content-seleccion">

@@ -4,7 +4,13 @@ import "../menu/menu.scss";
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 
+// Traduccion 
+import { useTranslation } from 'react-i18next';
+
+
 function Menu ({is_seleccion}) {
+
+    const {t, i18n } = useTranslation();
 
     let last = '.inicio';
 
@@ -32,11 +38,27 @@ function Menu ({is_seleccion}) {
         burger.classList.toggle('toggle');
     }
 
-    function detectmob(elemento) {
+    function manejoInicio () {
+        if(!paginaInicio() && tamanoInicio()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function detectarMovil(elemento) {
         if(window.innerWidth <= 800) {
           navSlide();
+          const burger = document.querySelector('.burger');
+          if(elemento == 'inicio') {
+                burger.className = "burger";
+          } else {
+                burger.className = "burger seleccion";
+                burger.style.border = "2px solid #707070";
+          }          
+          last = '.' + elemento;
         } else {
-          setUnderline(elemento);
+            setUnderline(elemento);
         }
     }
 
@@ -57,6 +79,19 @@ function Menu ({is_seleccion}) {
         last = elemento;
     }
 
+    /* 
+        Control para movil
+    */
+
+    function paginaInicio () {
+        const pag = window.location.href;
+        return  (pag.includes('contacto') || pag.includes('precios') || pag.includes('galeria') || pag.includes('seleccion'));
+    }
+
+    function tamanoInicio () {
+        const tamano = window.innerWidth;
+        return tamano <= 728;
+    }
 
     return(
         <nav>
@@ -70,28 +105,27 @@ function Menu ({is_seleccion}) {
                         <li className="logo-movil">
                             <Logo />
                         </li>
-                        <li className="inicio" onClick={() => detectmob('inicio')} >
-                            <Link to="/">INICIO</Link>
+                        <li className="inicio" onClick={() => detectarMovil('inicio')} >
+                            <Link to="/">{t('menu.inicio')}</Link>
                         </li>
-                        <li className="precio" onClick={() => detectmob('precio')}>
-                            <Link to="/precios">PRECIOS</Link>
+                        <li className="precio" onClick={() => detectarMovil('precio')}>
+                            <Link to="/precios">{t('menu.precios')}</Link>
                         </li>
-                        <li className="galeria" onClick={() => detectmob('galeria')}>
-                            <Link to="/galeria">GALERÍA</Link>
+                        <li className="galeria" onClick={() => detectarMovil('galeria')}>
+                            <Link to="/galeria">{t('menu.galeria')}</Link>
                         </li>
-                        <li className="contacto" onClick={() => detectmob('contacto')}>
-                            <Link to="/contacto">CONTACTO</Link>
+                        <li className="contacto" onClick={() => detectarMovil('contacto')}>
+                            <Link to="/contacto">{t('menu.contacto')}</Link>
                         </li>
-                        
                         <li className="terminos-movil">
-                            <h3><a>TÉRMINOS DE USO</a>\<a>POLÍTICA DE PRIVACIDAD</a></h3>
+                            <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
                         </li>
                         <li className ="redes-movil">
                             <Redes/>
                         </li>
                     </ul>
 
-                    <div className={(is_seleccion) ? "burger seleccion" : "burger"} onClick={navSlide}>
+                    <div className={manejoInicio() ? "burger" : "burger seleccion"} onClick={navSlide}>
                         <div className="line1"></div>
                         <div className="line2"></div>
                         <div className="line3"></div>

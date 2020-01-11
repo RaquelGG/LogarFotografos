@@ -40,7 +40,7 @@ export function Galeria() {
     return (
         <div className="content_galeria">
             <Imagen_fondo id_foto={4} />
-            <div className="galeria">
+            <div className="galeria_div">
                 {
                     images
                         ? <>

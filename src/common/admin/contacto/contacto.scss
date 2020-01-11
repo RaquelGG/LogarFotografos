@@ -90,7 +90,7 @@
     }
 }
 
-@media screen and ($movil){
+@media screen and ($movil), screen and ($mTablet){
     .info-contacto{
         width: 100%;
         top: $distancia_principio_mv;
@@ -382,7 +382,7 @@
             width: 96%;
             height: 62%;
             bottom: 0;
-            top: 27%;
+            top: 23%;
             padding-left: 0.6%;
 
             .info-contacto-cuadro{
@@ -422,6 +422,18 @@
                             font-size: 22px;
                             margin-left: 29px;
                             font-weight: normal; 
+                            padding-left: 5px;
+                        }
+
+                        .input-url {
+                            width: 700px;
+                            font-size: 22px;
+                            margin-left: 10px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-weight: normal; 
+                            text-transform: lowercase;
+                            text-overflow: ellipsis;
                         }
 
                         .input-title {
