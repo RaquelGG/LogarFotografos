@@ -108,6 +108,8 @@
 		"selecTodo" : "Select all",
 		"borrarSelec" : "Delete selected",
 		"subirFoto" : "Upload photos",
+		"arrastrar" : "Drag the images", 
+		"o" : "or",
 		"examinarEquipo" : "Browse my computer",
 		"deselecTodo" : "Deselect all",
 		"confirmar": "Are you sure"

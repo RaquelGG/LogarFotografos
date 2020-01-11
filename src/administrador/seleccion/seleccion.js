@@ -13,7 +13,12 @@ import {
 } from "../conexion";
 import DragAndDrop from '../dragAndDrop';
 
+// Traducción
+import { useTranslation} from 'react-i18next';
+
 export function Seleccion_admin({match}) {
+    const {t, i18n } = useTranslation();
+
     const id_boda = match.params.id_boda;
 
     /* --- Galería --- */
@@ -34,18 +39,13 @@ export function Seleccion_admin({match}) {
         fetchData();
     }, []);
 
-
     /* --------------- */
-
-    /* --- JSON --- */
-    let traduccion = translate.seleccion;
-    /* ------------ */
 
     return (
         <div className="content-seleccion">
             <div className="content-titulo">
-                <div className="titulo">{data.servicio}</div>
-                <div className="nombre">{data.fecha}, {data.usuario}</div>
+                {<div className="titulo">{data.servicio}</div>}
+               { <div className="nombre">{data.fecha}, {data.usuario}</div> }
             </div>
             <div className="content-galeria">
                 <div className="galeria">
@@ -57,26 +57,26 @@ export function Seleccion_admin({match}) {
                 </div>
                 <div className="menu-lateral">
                     <div className="contenido-menu">
-                        <div className="boton puntero">{traduccion.selecTodo}</div>
-                        <div className="boton puntero">{traduccion.deselecTodo}</div>
-                        <div className="boton puntero">{traduccion.borrarSelec}</div>
+                        <div className="boton puntero">{t('seleccion.selecTodo')}</div>
+                        <div className="boton puntero">{t('seleccion.deselecTodo')}</div>
+                        <div className="boton puntero">{t('seleccion.borrarSelec')}</div>
                         <div className="recuadro-subida">
                             <div className="subir">
-                                <div>{traduccion.subirFoto}</div>
+                                <div>{t('seleccion.subirFoto')}</div>
                             </div>
                             <div className="arrastrar sombra">
                                 <div className="content-arrastrar">
                                     <img src={fondo_arrastrar} />
                                     <div className="content-img">
-                                        <h1>{traduccion.arrastrar}</h1>
+                                        <h1>{t('seleccion.arrastrar')}</h1>
                                         <img src={img_arrastrar}/>
-                                        <h1>{traduccion.o}</h1>
+                                        <h1>{t('seleccion.o')}</h1>
                                     </div>
                                 </div>
                             </div>
-                            <div className="examinar">{traduccion.examinarEquipo}</div>
+                            <div className="examinar">{t('seleccion.examinarEquipo')}</div>
                         </div>   
-                        <div className="guardar puntero">{traduccion.guardar}</div>
+                        <div className="guardar puntero">{t('seleccion.guardar')}</div>
                     </div>
                 </div>
             </div>
