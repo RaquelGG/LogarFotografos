@@ -16,34 +16,35 @@ function Acceso({match, history}) {
         const u = user.current.value;
         const p = pass.current.value;
 
+        let logo = document.querySelector('.content-menu');
+
         if (await comprobarAdmin(u, p)) {
 
             window.session.user = u;
             window.session.pass = p;
             window.session.admin = true;
+            logo.style.display = "flex"; 
 
             history.push("/admin"); // Si es admin
         } else if (await comprobarUsuario(u, p)) {
             window.session.user = u;
             window.session.pass = p;
             window.session.admin = false;
-            history.push("/seleccion");// Si es un cliente
-        }
-    }
-
-    async function updateMenu (acceso) {
-        let logo = document.querySelector('.content-menu');
-        logo.style.display = "flex";
-
-        if(acceso) {
-            await acceder();
-
+            history.push("/seleccion");// Si es un cliente 
+            
+            logo.style.display = "flex";  
+            
             logo = document.querySelector('.logo-logar');
             logo.className = "logo-logar negro";
             
             logo = document.querySelector('.nav-links');
             logo.className = "nav-links seleccion";
         }
+    }
+
+    async function updateMenu () {
+        let logo = document.querySelector('.content-menu');
+        logo.style.display = "flex";
     }
 
     return (
@@ -53,8 +54,8 @@ function Acceso({match, history}) {
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
-                <button className="button" onClick={() => updateMenu(true)}>Acceder</button>
-                <Link to="/" className="volver" onClick={updateMenu}>
+                <button className="button" onClick={() => acceder()}>Acceder</button>
+                <Link to="/" className="volver" onClick={() => updateMenu()}>
                     <h4>Volver a la página principal</h4>
                 </Link>
             </div>

@@ -102,8 +102,7 @@ function Menu () {
     */
 
     function isAdmin () {
-        return false;
-        //return window.session.admin;
+        return window.session.admin;
     }
 
     /* 

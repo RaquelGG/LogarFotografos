@@ -1,4 +1,4 @@
-import React, { lazy, useState, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
@@ -32,17 +32,12 @@ function App() {
                 user: '',
                 pass: '',
                 admin: false,
-                contenidoVariable: await obtenerTextoVariable()
             }
-            
+            window.session.contenidoVariable =  await obtenerTextoVariable();
         }
         fetchContenidoVariable();
     }, []);    
 
-
-     function handleClick(lang) {
-         i18n.changeLanguage(lang);
-     }
      
     return (
         <Router>
