@@ -34,12 +34,15 @@ function App() {
             window.session.contenidoVariable =  await obtenerTextoVariable();
         }
         fetchContenidoVariable();
-    }, []);    
+    }, []);
 
-     
+    function necesitaMenu () {
+        return window.location.href.includes('acceso');
+    }
+
     return (
         <Router>
-            <Menu/>
+            { necesitaMenu() ? <></> : <Menu />} 
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />
