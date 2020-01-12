@@ -38,8 +38,8 @@ function Acceso({match, history, setUserType}) {
     }
 
     function updateMenu () {
-        let logo = document.querySelector('.content-menu');
-        logo.style.display = "flex";
+        setUserType('publico');
+        history.push("/");
     }
 
     return (
@@ -50,8 +50,8 @@ function Acceso({match, history, setUserType}) {
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
                 <button className="button" onClick={() => acceder()}>Acceder</button>
-                <Link to="/" className="volver" onClick={() => updateMenu()}>
-                    <h4>Volver a la página principal</h4>
+                <Link className="volver" onClick={() => updateMenu()}>
+                    <h4 className="volver">Volver a la página principal</h4>
                 </Link>
             </div>
             <div className="triangulo1"></div>
