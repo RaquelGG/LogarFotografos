@@ -42,7 +42,7 @@ function Acceso({match, history}) {
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
                 <button className="button" onClick={() => acceder()}>Acceder</button>
-                <Link to="/" className="volver">
+                <Link to="/"  className="volver">
                     <h4>Volver a la página principal</h4>
                 </Link>
             </div>

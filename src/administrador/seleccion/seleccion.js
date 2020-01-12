@@ -9,19 +9,26 @@ import './seleccion.scss';
 import {
     obtenerDatosBoda,
     obtenerDatosFotos,
-    obtenerFotoPrivada
+    obtenerFotoPrivada,
+    borrarFotoPrivada
 
 } from "./conexion";
+
+import { subirFotosBoda } from "../clientes/conexion"
 import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
 // Traduccion 
 import { useTranslation } from 'react-i18next';
+import { seleccionarFotoCliente } from '../../cliente/conexion';
 
 
-export function Seleccion_admin({ match }) {
+export function Seleccion_admin({ match, history }) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
     const id_boda = match.params.id_boda;
 
-    const {t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     /* --- Galería --- */
     // Para no sobrecargar el servidor comprobando si está procesando
@@ -29,36 +36,57 @@ export function Seleccion_admin({ match }) {
     // Para seleccionar
     const [selectAll, setSelectAll] = useState(-1);
     // Cambiar la galeria por la del sujeto en cuestion
-    const [images, setImages] = useState(null);
+    const [images, setImages] = useState([]);
     const [data, setData] = useState('');
     // Para el drag and drop
     const [file, setFile] = useState(); // Contiene el archivo subido
 
+
+    async function cargarImagenes(seleccion) {
+        const resDataImages = await obtenerDatosFotos(id_boda);
+        const datos = await obtenerDatosBoda(id_boda);
+        const clonedImages = resDataImages.slice();
+        await Promise.all(clonedImages.map(
+            async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
+        ));
+        setImages(clonedImages.map(img => [img, seleccion]));
+        console.log("images:", clonedImages);
+        setSelectAll(seleccion);
+    }
     // Obtenemos las fotos y los datos del servidor
     useEffect(() => {
         async function fetchData() {
             setData(await obtenerDatosBoda(id_boda));
         }
         async function fetchImages() {
-            const resDataImages = await obtenerDatosFotos(id_boda);
-            const datos = await obtenerDatosBoda(id_boda);
-
-            /*resDataImages.map(
-                img => (async () => {
-                    img.src = await obtenerFotoPrivada(img.alt, datos.fecha);
-                })()
-            );*/
-            const clonedImages = resDataImages.slice();
-            await Promise.all(clonedImages.map(
-                async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
-            ));
-            setImages(clonedImages);
-            console.log("images:", clonedImages);
+            await cargarImagenes(false);
         }
 
         fetchData();
         fetchImages();
     }, []);
+
+    const subirFotos = () => {
+        if (processing) return;
+        setProcessing(true);
+
+        if (file) {
+            (async () => {
+                const resSubirFotos = await subirFotosBoda(file, data.fecha);
+
+                if (resSubirFotos) {
+                    alert(`¡Se ha subido correctamente!`);
+                    setFile(undefined);
+                    await cargarImagenes(false);
+                } else {
+                    alert("Se ha producido un problema mientras se subían las imagenes.");
+                }
+            })();
+
+        } else {
+            alert("Debes subir las fotos en un .zip.");
+        }
+    }
 
     // Para seleccionar
     // images[0].src = "" --- esto NO causa que se actualice
@@ -81,9 +109,10 @@ export function Seleccion_admin({ match }) {
                 onSelectionChange={s => selectionChangeHandler(index, s)}
             />
         ),
-        [selectAll]
+        [selectAll, images]
     );
 
+    // Enlaza los ticks con las imagenes seleccionadas
     const selectionChangeHandler = (index, isSelected) => {
         console.log("selection changed for index", index, "s", isSelected);
         const clonedImages = images.slice();
@@ -100,15 +129,13 @@ export function Seleccion_admin({ match }) {
         // Borra las que están seleccionadas.
         // TODO
         images.forEach(img => {
-            console.log("is selected:", img.isSelected);
             if (img[1]) {
                 (async () => {
-                    //await borrarFotoPublica(img.key);
-                    console.log("img key:", img.key);
+                    await borrarFotoPrivada(img[0].alt, data.fecha);
                 })();
             }
         });
-
+        cargarImagenes();
         setProcessing(false);
     };
 
@@ -119,7 +146,7 @@ export function Seleccion_admin({ match }) {
         <div className="content-seleccion">
             <div className="content-titulo">
                 {<div className="titulo">{data.servicio}</div>}
-               { <div className="nombre">{data.fecha}, {data.usuario}</div> }
+                {<div className="nombre">{data.fecha}, {data.usuario}</div>}
             </div>
             <div className="content-galeria">
                 <div className="galeria">
@@ -127,7 +154,7 @@ export function Seleccion_admin({ match }) {
                         images
                             ? <Galeria
                                 className="galeria"
-                                photos={images}
+                                photos={images.map(img => img[0])}
                                 renderImage={imageRenderer}
                             />
                             : <Loader className="galeria" />
@@ -135,33 +162,18 @@ export function Seleccion_admin({ match }) {
                 </div>
                 <div className="menu-lateral">
                     <div className="contenido-menu">
-                        <div className="boton puntero">Seleccionar todo</div>
-                        <div className="boton puntero">Deseleccionar todo</div>
+                        <div onClick={() => cargarImagenes(1)} className="boton puntero">Seleccionar todo</div>
+                        <div onClick={() => cargarImagenes(0)} className="boton puntero">Deseleccionar todo</div>
                         <div onClick={() => borrarFotos()} className="boton puntero">Borrar selección</div>
                         <div className="recuadro-subida">
-                            <div className="subir">
-                                <div>{t('seleccion.subirFoto')}</div>
-                            </div>
                             <div className="arrastrar sombra">
                                 <div className="content-arrastrar">
-                                <DragAndDrop onFileSelected={f => setFile(f)} />
-                                    {/*<img src={fondo_arrastrar} />
-                                    <div className="content-img">
-                                        <h1>{t('seleccion.arrastrar')}</h1>
-                                        <img src={img_arrastrar} />
-<<<<<<< HEAD
-                                        <h1>{traduccion.o}</h1>
-                                    
-=======
-                                        <h1>{t('seleccion.o')}</h1>
->>>>>>> bc7861bd1cccc26b2b162826613caf2dbd2c5e2d
-                                    </div>
-                                */}
+                                    <DragAndDrop onFileSelected={f => setFile(f)} />
+
                                 </div>
                             </div>
-                            <div className="examinar">Examinar equipo</div>
                         </div>
-                        <div className="guardar puntero">Guardar</div>
+                        <div onClick={() => subirFotos()} className="guardar puntero">Subir imágenes</div>
                     </div>
                 </div>
             </div>

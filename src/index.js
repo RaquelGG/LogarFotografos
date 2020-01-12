@@ -15,6 +15,12 @@ window.session = {
     admin: null,
 }
 
+window.session = {
+    user: "admin",
+    pass: "admin",
+    admin: true,
+}
+
 ReactDOM.render(
     <Suspense fallback={<Loader />}>
         <App />

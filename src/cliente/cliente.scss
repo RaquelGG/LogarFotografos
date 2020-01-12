@@ -1,5 +1,15 @@
 @import '../common/estilos_comunes.scss';
+.react-photo-gallery--gallery {
+        
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.548);
 
+    img {
+        object-fit: cover;
+    }
+}
 h1 {
     width: 100%;
     text-transform: uppercase;

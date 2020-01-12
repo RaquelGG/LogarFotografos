@@ -76,7 +76,7 @@ export async function crearUsuario(nuevoUser, nuevaPass) {
     return false;
 }
 
-// crear usuario
+// comprueba si el usuario existe
 export async function comprobarUsuarioExiste(nuevoUser) {
     if (!window.session.admin) return false;
     try {
@@ -104,7 +104,7 @@ export async function comprobarUsuarioExiste(nuevoUser) {
     return false;
 }
 
-// editar fatos de la selección
+// editar fotos de la selección
 export async function editarDatosSeleccion(id_boda, fecha, servicio) {
     if (!window.session.admin) return false;
     try {
@@ -259,7 +259,7 @@ export async function borrarBoda(id_boda, fecha) {
 }
 
 
-// borrar boda
+// Obtenemos un id de usuario a partir de su nombre de usuario
 export async function obtenerIdUsuario(nuevoUser) {
     if (!window.session.admin) return false;
     try {
