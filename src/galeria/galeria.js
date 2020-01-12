@@ -32,7 +32,7 @@ export function Galeria({match}) {
             
 
             console.log("Contador imagenes totales: ", res.length);
-            console.log("Contador imagenes filtro: ", res.filter(img => img.alt.includes(filtro)).length);
+            console.log("Contador imagenes filtro: ", res.filter(img => img.alt === filtro));
         }
         async function fetchFiltro() {
             //setFiltro(); // Si se filtra por Boda, Preboda o Postboda

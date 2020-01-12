@@ -34,7 +34,7 @@ function Precios({history}) {
                     <div className="fondo_titulo_giro2"></div>
                     <div className="alinear_titulo">
                         <h1 className="titulo sombra_texto">{t('precios.titulo')}</h1>
-                        <span><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} className="flecha" /></span>
+                        <span onClick={history.push("/galeria/bodas")} ><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} className="flecha" /></span>
                     </div>
                 </div>
                 <div className="opciones">
@@ -47,8 +47,7 @@ function Precios({history}) {
                                     name = "titulo1"
                                     defaultValue={contenido.precios.opcion1.titulo}
                                     onChange={() => contenido.precios.opcion1.titulo = document.getElementsByName("titulo1")[0].value}
-
-                                    />
+                                />
                             
                             </div>
 
@@ -112,7 +111,7 @@ function Precios({history}) {
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
                                         <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
@@ -164,9 +163,9 @@ function Precios({history}) {
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
                                         <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
                                         <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.postboda')}</li></span>
-                                        <span className="ver_fotos"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span onClick={history.push("/galeria/postboda")} className="ver_fotos"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
