@@ -1,11 +1,10 @@
 import React from 'react';
 import "./acceso.scss";
 import {Link} from 'react-router-dom';
-import Logo from '../common/logo/logo';
-import ReactDOM from 'react-dom';
-import Menu from '../common/menu/menu'
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
 import Imagen_fondo from '../common/imagen_fondo/imagen_fondo';
+import {obtenerTextoVariable} from '../common/conexion';
+
 
 function Acceso({match, history}) {
     const {usuario} = match.params;
@@ -18,28 +17,26 @@ function Acceso({match, history}) {
         const p = pass.current.value;
 
         if (await comprobarAdmin(u, p)) {
-            window.session = {
-                user: u,
-                pass: p,
-                admin: true,
-            };
+
+            window.session.user = u;
+            window.session.pass = p;
+            window.session.admin = true;
+
             history.push("/admin"); // Si es admin
         } else if (await comprobarUsuario(u, p)) {
-            window.session = {
-                user: u,
-                pass: p,
-                admin: false,
-            };
+            window.session.user = u;
+            window.session.pass = p;
+            window.session.admin = false;
             history.push("/seleccion");// Si es un cliente
         }
     }
 
-    function updateMenu (acceso) {
+    async function updateMenu (acceso) {
         let logo = document.querySelector('.content-menu');
         logo.style.display = "flex";
 
         if(acceso) {
-            acceder();
+            await acceder();
 
             logo = document.querySelector('.logo-logar');
             logo.className = "logo-logar negro";

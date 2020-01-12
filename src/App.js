@@ -5,6 +5,7 @@ import Loader from './common/loader/loader';
 // TRADUCCIONES
 import {obtenerTextoVariable} from './common/conexion';
 
+import i18n from './common/i18n';
 
 const Inicio = lazy(() => import('./inicio/inicio'));
 const Precios = lazy(() => import('./precios/precios'));
@@ -38,6 +39,11 @@ function App() {
         fetchContenidoVariable();
     }, []);    
 
+
+     function handleClick(lang) {
+         i18n.changeLanguage(lang);
+     }
+     
     return (
         <Router>
             <Menu/>

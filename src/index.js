@@ -1,19 +1,31 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Loader from './common/loader/loader';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {obtenerTextoVariable} from './common/conexion';
+import texto from './common/editable.json'
+
 
 // Traducción
 import './common/i18n'
 
+async function obtenerTexto() {
+    const respuesta = await obtenerTextoVariable();
+    return respuesta ? respuesta : texto;
+}
+
 // Para hacer pruebas:
-/*window.session = {
-    user: null,
-    pass: null,
-    admin: true,
-}*/
+(async () => {
+    window.session = {
+        user: null,
+        pass: null,
+        admin: false,
+        contenidoVariable: await obtenerTexto()
+    }
+})();
+
 
 ReactDOM.render(
     <Suspense fallback={<Loader />}>
