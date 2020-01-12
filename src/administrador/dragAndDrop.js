@@ -47,7 +47,7 @@ function Basic({ onFileSelected }) {
 
     const files = acceptedFiles.map(file => (
         <li key={file.path}>
-            {file.path} - {file.size} bytes
+            {file.path} - {bytesToSize(file.size)}
     </li>
     ));
 
@@ -57,7 +57,7 @@ function Basic({ onFileSelected }) {
             <center>
             <div {...getRootProps({ className: 'dropzone', style })}>
                 <input {...getInputProps()} />
-                <p>Arrastra y suelta los archivos aquí, o pulsa aquí para examinar</p>
+                <p>Arrastra y suelta el .zip aquí, o pulsa aquí para examinar</p>
             </div>
             <aside>
                 
@@ -76,5 +76,13 @@ function Basic({ onFileSelected }) {
         </section>
     );
 }
+
+// Muestra lo que pesa lo seleccionado
+function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return '0 Byte';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+ }
 
 export default Basic;

@@ -4,7 +4,14 @@ import Gallery from "react-photo-gallery";
 import dialogo from './dialogo.svg';
 import "./cliente.scss";
 import SelectedImage from "./imagenSeleccionada";
-import { finalizarSeleccion, obtenerGaleriaPrivada, seleccionarTodoCliente, obtenerDatosCliente, guardarDescripcionCliente } from "../common/conexion";
+import { 
+    finalizarSeleccion,
+    seleccionarTodoCliente,
+    obtenerDatosCliente,
+    guardarDescripcionCliente,
+    obtenerDatosFotos,
+    obtenerFotoPrivada
+} from "./conexion";
 // Traducción
 import { useTranslation} from 'react-i18next';
 import Logo from '../common/logo/logo';
@@ -37,7 +44,15 @@ export function Cliente({history}) {
             setData(datos)
         }
         async function fetchImages() {
-            setImages(await obtenerGaleriaPrivada())
+            const resDataImages = await obtenerDatosFotos();
+            const datos = await obtenerDatosCliente();
+
+            const clonedImages = resDataImages.slice();
+            await Promise.all(clonedImages.map(
+                async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
+            ));
+            setImages(clonedImages);
+            console.log("images:", clonedImages);
         }
         fetchImages();
         fetchData();

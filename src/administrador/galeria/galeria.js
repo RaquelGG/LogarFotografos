@@ -90,11 +90,14 @@ function Admin_galeria (){
     // Para no sobrecargar el servidor comprobando si está procesando
     const [processing, setProcessing] = useState(false);
 
-
+    // Cargar imagenes
+    async function cargarImagenes() {
+        setImages((await obtenerGaleria()).map(img => [img, false])); // ò.ó
+    }
     // Cogemos las imagenes del servidor
     useEffect(() => {
         async function fetchImages() {
-            setImages((await obtenerGaleria()).map(img => [img, false])); // ò.ó
+            cargarImagenes();
         }
         fetchImages();
     }, []);
@@ -109,7 +112,6 @@ function Admin_galeria (){
         setProcessing(true);
         
         // Borra las que están seleccionadas.
-        // TODO
             images.forEach(img => {
                 console.log("is selected:", img[1]);
                 if (img[1]) {
@@ -119,7 +121,7 @@ function Admin_galeria (){
                     })();
                 }
             });            
-        
+        cargarImagenes();
         setProcessing(false);
     };
 

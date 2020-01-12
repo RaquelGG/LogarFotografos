@@ -82,27 +82,39 @@ export async function obtenerFotoPrivada(nombre, fecha) {
         console.log("Nombre:", nombre);
         console.log("Fecha:", fecha);
 
-        //--
-        /*let reader = new FileReader();
-        reader.readAsDataURL(resultado); // Lee el contenido como url
-        reader.onloadend = function () {
-            let res = reader.result;
-
-            console.log("resultado", res);
-            return res;
-
-        }*/
         return await readImage(resultado)
-
-        //return res;
 
     } catch (err) {
         console.error("Error obteniendo las imagenes:", err);
     }
 }
 
-// SUBIR  FOTO PRIVADA
+// Borra la imagen privada selecionada a partir de su nombre y fecha
+export async function borrarFotoPrivada(nombre, fecha) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/borrarFotoPrivada.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                nombre: nombre,
+                fecha: fecha
+            })
+        });
+        
+        return true;
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return false;
+}
 
+// Leemos la imagen como una url
 function readImage(o){
     return new Promise((resolve, reject) => {
       var fr = new FileReader();  

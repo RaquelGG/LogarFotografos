@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { seleccionarFotoCliente } from "../common/conexion";
+import { seleccionarFotoCliente } from "./conexion";
 import Checkmark from "./checkmark";
 
 

@@ -30,13 +30,20 @@ import {
 } from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 
-export function Lista({history}) {
-    const [data, setData] = useState(false);
+const [data, setData] = useState(false);
+
+async function obtenerDatos() {
+    setData(await obtenerDatosSeleccion());
+}
+
+export function Lista({ history }) {
+
+    /* DATOS PARA LA LISTA */
+
 
     useEffect(() => {
         async function fetchData() {
-            const datos = await obtenerDatosSeleccion();
-            setData(datos)
+            await obtenerDatos();
         }
         fetchData();
     }, []);
@@ -47,7 +54,7 @@ export function Lista({history}) {
         console.log("fecha seleccionada: ", fecha);
         (async () => {
             await borrarBoda(id_boda, fecha);
-            window.location.href = window.location.href;
+            await obtenerDatos();
         })();
     };
 
@@ -78,7 +85,7 @@ export function Lista({history}) {
                                         <div className="caja activado">
                                             <EditOutlinedIcon onClick={() => updateMenu(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
-                                        
+
                                         <div className="caja activado">
                                             <DeleteForeverIcon onClick={() => eliminarFotosBoda(item.id_boda, item.fecha)} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
@@ -154,6 +161,10 @@ export function Clientes({ history }) {
         checked: {},
     })(props => <Radio color="default" {...props} />);
 
+
+
+
+
     /* ----------------------------------- */
     // Para guardar variables
     const [processing, setProcessing] = useState(false); // Para esperar mientras se está procesando
@@ -201,30 +212,33 @@ export function Clientes({ history }) {
                 nuevoUser = generarCadena(5);
                 existe = await comprobarUsuarioExiste(nuevoUser);
             } while (existe);
-            
+
             console.log("Usuario:", nuevoUser);
             console.log("Contraseña:", nuevaPass);
 
             await crearUsuario(nuevoUser, nuevaPass);
-            const id_usuario =  await obtenerIdUsuario(nuevoUser);
+            const id_usuario = await obtenerIdUsuario(nuevoUser);
             const resultado = await subirBoda(id_usuario, fecha, valServicio)
             if (resultado) {
                 console.log("file:", file);
                 if (file) {
-                    const resSubirFotos = await subirFotosBoda(file, fecha);
+                    (async () => {
+                        const resSubirFotos = await subirFotosBoda(file, fecha);
 
-                    if (resSubirFotos) {
-                        alert(`
+                        if (resSubirFotos) {
+                            alert(`
                             ¡Se ha subido correctamente!\n
                             Url: https://www.logarfotografos.es/acceso/${nuevoUser}\n
                             Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
                         `);
-                        setFile(undefined);
-                        window.location.href = window.location.href;
-                    } else {
-                        alert("Se ha producido un problema mientras se subían las imagenes.");
-                        error = true;
-                    }
+                            setFile(undefined);
+                            await obtenerDatos();
+                        } else {
+                            alert("Se ha producido un problema mientras se subían las imagenes.");
+                            error = true;
+                        }
+                    })();
+
 
                 } else {
                     alert("Debes subir las fotos en un .zip.");
