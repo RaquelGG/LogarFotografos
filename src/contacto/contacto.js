@@ -32,6 +32,16 @@ function Contacto() {
     const link_bodasNet = contenidoV.tabla.bodasNetUrl;
     /* ------------------------------ */
 
+    function share (destino) {
+        if(destino.includes('maps')) {
+            window.open(link_address);
+        } else if (destino.includes('face')) {
+            window.open(link_face);
+        } else {
+            window.open(link_bodasNet);
+        }
+    }
+
     return (
         <div className = "content-contacto">
             <ImagenFondo id_foto={3} />
@@ -43,48 +53,52 @@ function Contacto() {
                     <div className = "info-contacto-cuadro-informacion">
                         <div className = "info-contacto-cuadro-informacion-datos">
                             <table>
-                                <tr>
-                                    <th colSpan="3">
-                                        {//<h1>{this.props.t('contacto.titulo', { framework: "react-i18next" })}</h1>
-                                        }
-                                        <h1>{t('contacto.titulo')}</h1>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colSpan="3">
-                                        <h3>{t('contacto.subtitulo')}</h3>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Enlace a dirección de Google Maps" src = {ubicacion} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_direccion')}</td>
-                                    <td className = "datos"><a href = {link_address}>{address}</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Enlace a correo electronico" src = {correo} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_correo')}</td>
-                                    <td className = "datos"><a href = {"mailto: " + link_email}>{link_email}</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Número de telefono" src = {telefono} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_tel')}</td>
-                                    <td className = "datos"><a href = {"tel: " + link_tel}>{link_tel}</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Número de Whatsapp" src = {whatsapp} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_whats')}</td>
-                                    <td className = "datos"><a href={"https://api.whatsapp.com/send?phone=" + link_what }>{link_what}</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Enlace a página de facebook" src = {facebook} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_facebook')}</td>
-                                    <td className = "datos"><a href={link_face}>{face}</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img alt="Enlace a página de bodas.net" src = {bodasnet} className = "icono"/></td>
-                                    <td className = "titulo">{t('contacto.tabla.title_bodasNet')}</td>
-                                    <td className = "datos"><a href={link_bodasNet}>{bodasNet}</a></td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th colSpan="3">
+                                            {//<h1>{this.props.t('contacto.titulo', { framework: "react-i18next" })}</h1>
+                                            }
+                                            <h1>{t('contacto.titulo')}</h1>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colSpan="3">
+                                            <h3>{t('contacto.subtitulo')}</h3>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img alt="Enlace a dirección de Google Maps" src = {ubicacion} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_direccion')}</td>
+                                        <td className = "datos"><a onClick={() => share('maps')}>{address}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img alt="Enlace a correo electronico" src = {correo} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_correo')}</td>
+                                        <td className = "datos"><a href = {"mailto: " + link_email}>{link_email}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img alt="Número de telefono" src = {telefono} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_tel')}</td>
+                                        <td className = "datos"><a href = {"tel: " + link_tel}>{link_tel}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img alt="Número de Whatsapp" src = {whatsapp} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_whats')}</td>
+                                        <td className = "datos"><a href={"https://api.whatsapp.com/send?phone=" + link_what }>{link_what}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img alt="Enlace a página de facebook" src = {facebook} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_facebook')}</td>
+                                        <td className = "datos"><a onClick={() => share('face')}>{face}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img alt="Enlace a página de bodas.net" src = {bodasnet} className = "icono"/></td>
+                                        <td className = "titulo">{t('contacto.tabla.title_bodasNet')}</td>
+                                        <td className = "datos"><a onClick={() => share('boda')}>{bodasNet}</a></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div className="img_dueno" />
