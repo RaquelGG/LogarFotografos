@@ -33,9 +33,6 @@ import DragAndDrop from '../dragAndDrop';
 
 
 export function Lista({ history }) {
-    if (!window.session.user || !window.session.pass || !window.session.admin) {
-        history.push("/acceso");
-    }
 
     /* DATOS PARA LA LISTA */
 

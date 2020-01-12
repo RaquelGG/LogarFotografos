@@ -30,7 +30,9 @@ export async function comprobarUsuario(user, pass) {
         let respuesta = await response.text();
         
         console.log(respuesta);
-        return respuesta === 1;
+        if (respuesta === "1") return true;
+        return false;
+
     } catch(err) {
         console.error("Nombre de usuario o contraseña incorrecta:", err);
     }
@@ -50,7 +52,8 @@ export async function comprobarAdmin(user, pass) {
         });
         let respuesta = await response.text();
         console.log(respuesta);
-        return respuesta;
+        if (respuesta === "1") return true;
+        return false;
     } catch(err) {
         console.error("Nombre de usuario o contraseña incorrecta:", err);
     }

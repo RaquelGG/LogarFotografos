@@ -16,7 +16,6 @@ function Acceso({match, history, setUserType}) {
         const p = pass.current.value;
 
         if (await comprobarAdmin(u, p)) {
-            
             window.session.user = u;
             window.session.pass = p;
             
@@ -25,7 +24,7 @@ function Acceso({match, history, setUserType}) {
             history.push("/admin"); // Si es admin
             setUserType('admin');
         } else if (await comprobarUsuario(u, p)) {
-            
+
             window.session.user = u;
             window.session.pass = p;
             window.session.admin = false;
