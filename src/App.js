@@ -5,8 +5,6 @@ import Loader from './common/loader/loader';
 // TRADUCCIONES
 import {obtenerTextoVariable} from './common/conexion';
 
-import i18n from './common/i18n';
-
 const Inicio = lazy(() => import('./inicio/inicio'));
 const Precios = lazy(() => import('./precios/precios'));
 const Contacto = lazy(() => import('./contacto/contacto'));
@@ -36,12 +34,15 @@ function App() {
             window.session.contenidoVariable =  await obtenerTextoVariable();
         }
         fetchContenidoVariable();
-    }, []);    
+    }, []);
 
-     
+    function necesitaMenu () {
+        return window.location.href.includes('acceso');
+    }
+
     return (
         <Router>
-            <Menu/>
+            { necesitaMenu() ? <></> : <Menu />} 
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />

@@ -7,7 +7,6 @@ import * as serviceWorker from './serviceWorker';
 import {obtenerTextoVariable} from './common/conexion';
 import texto from './common/editable.json'
 
-
 // Traducción
 import './common/i18n'
 

@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 // Traduccion 
 import { useTranslation } from 'react-i18next';
 
-
 function Menu () {
 
     const {t, i18n } = useTranslation();

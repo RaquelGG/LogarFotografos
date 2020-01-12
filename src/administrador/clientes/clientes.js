@@ -17,6 +17,7 @@ import './clientes.scss'
 import Logo from '../../common/logo/logo';
 import ReactDOM from 'react-dom';
 import { FormLabel } from '@material-ui/core';
+import Menu from '../../common/menu/menu'
 import {
     obtenerDatosSeleccion,
     subirBoda,
