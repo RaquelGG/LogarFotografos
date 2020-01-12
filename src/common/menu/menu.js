@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 // Traduccion 
 import { useTranslation } from 'react-i18next';
 
-function Menu () {
+function Menu ({userType}) {
 
     const {t, i18n } = useTranslation();
 
@@ -101,7 +101,7 @@ function Menu () {
     */
 
     function isAdmin () {
-        return window.session.admin;
+        return userType === 'admin';
     }
 
     /* 

@@ -279,7 +279,7 @@ export function Clientes({ history }) {
                                 </div>
                                 <div className="valor">
                                     <div className="mod">
-                                        <MuiPickersUtilsProvider utils={DateFnsUtils} disabled={processing} ref={selectedDate}>
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils} disabled={processing} >
                                             <KeyboardDatePicker
                                                 disableToolbar
                                                 disableFuture

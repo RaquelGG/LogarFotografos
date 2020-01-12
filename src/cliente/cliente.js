@@ -22,6 +22,7 @@ export function Cliente({history}) {
     if (!window.session.user || !window.session.pass || window.session.admin) {
         history.push("/acceso");
     }
+    
     /* --- Galería --- */
     // Para cargar los datos, incluido el comentario
     const [data, setData] = useState(false);

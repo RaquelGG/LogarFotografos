@@ -1,6 +1,7 @@
 import React from 'react';
 import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import "../../common/admin/precios/precios.scss";
+import "../../common/estilos_comunes.scss";
 import cuadrado_tick from "../../common/admin/precios/img/cuadrado_tick.svg"
 import cuadrado_cruz from "../../common/admin/precios/img/cuadrado_cruz.svg"
 import flecha from "../../common/admin/precios/img/flecha.svg"
@@ -34,7 +35,7 @@ function Precios({history}) {
                     <div className="fondo_titulo_giro2"></div>
                     <div className="alinear_titulo">
                         <h1 className="titulo sombra_texto">{t('precios.titulo')}</h1>
-                        <span onClick={history.push("/galeria/bodas")} ><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} alt="Enlace para ver fotos de boda" className="flecha" /></span>
+                        <span className="puntero" onClick={() => history.push("/admin/galeria/bodas")} ><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} className="flecha" /></span>
                     </div>
                 </div>
                 <div className="opciones">
@@ -110,8 +111,8 @@ function Precios({history}) {
                                     </div>
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
-                                        <span className="alinear"><img src={cuadrado_tick} alt="Preboda incluida" className="opcion_2 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} alt="Ver foto de preboda" className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.preboda')}</li></span>
+                                        <span  onClick={() => history.push("/admin/galeria/prebodas")} className="ver_fotos puntero"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
@@ -162,10 +163,10 @@ function Precios({history}) {
                                     </div>
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
-                                        <span className="alinear"><img src={cuadrado_tick} alt="Preboda incluida" className="opcion_3 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} alt="Ver fotos de preboda" className="flecha" /></span>
-                                        <span className="alinear"><img src={cuadrado_tick} alt="Postboda incluida" className="opcion_3 imagen_lista" /><li>{t('precios.postboda')}</li></span>
-                                        <span onClick={history.push("/galeria/postboda")} className="ver_fotos"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} alt="Ver fotos de postboda" className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.preboda')}</li></span>
+                                        <span  onClick={() => history.push("/admin/galeria/prebodas")} className="ver_fotos puntero"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.postboda')}</li></span>
+                                        <span  onClick={() => history.push("/admin/galeria/postbodas")} className="ver_fotos puntero"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
