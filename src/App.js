@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
+import {obtenerTextoVariable} from './common/conexion';
+
 import i18n from './common/i18n';
 
 const Inicio = lazy(() => import('./inicio/inicio'));
@@ -21,6 +23,22 @@ const AdminPrecios = lazy(() => import('./administrador/precios/precios'));
 const NotFound = Inicio;
 
 function App() {
+    //const [contenidoVariable, setContenidoVariable] = useState('');
+    useEffect(() => {
+        async function fetchContenidoVariable() {
+            //setContenidoVariable(await obtenerTextoVariable());
+            //window.session.contenidoVariable = contenidoVariable;
+            window.session = {
+                user: '',
+                pass: '',
+                admin: false,
+                contenidoVariable: await obtenerTextoVariable()
+            }
+            
+        }
+        fetchContenidoVariable();
+    }, []);    
+
 
      function handleClick(lang) {
          i18n.changeLanguage(lang);
@@ -29,11 +47,6 @@ function App() {
     return (
         <Router>
             <Menu/>
-            <div className="btn_idioma" style={{zIndex: '50000', position: 'absolute'} }>
-                <button onClick={() => (lang == 'es') ? setLang('en') : setLang('es')}>
-                    {lang}
-                </button>
-            </div>
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />

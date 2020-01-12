@@ -13,6 +13,7 @@ function Menu () {
 
     const {t, i18n } = useTranslation();
 
+    const [lang, setLang] = useState('en');
 
     let last = '.inicio';
 
@@ -101,7 +102,8 @@ function Menu () {
     */
 
     function isAdmin () {
-        return window.session.admin;
+        return false;
+        //return window.session.admin;
     }
 
     /* 
@@ -120,6 +122,14 @@ function Menu () {
 
     function isSeleccion() {
         return  (window.innerWidth >= 728) && (window.location.href.includes('seleccion'));
+    }
+
+    function cambiarIdioma() {
+        if(i18n.language === 'es') {
+           i18n.changeLanguage('en');
+        } else {
+           i18n.changeLanguage('es');
+        }
     }
 
     return(
@@ -149,6 +159,11 @@ function Menu () {
                         </li>
                         <li className="terminos-movil">
                             <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
+                        </li>
+                        <li className="btn_idioma" onClick={() => cambiarIdioma()}>
+                            <h3 onClick={() => (lang == 'es') ? setLang('en') : setLang('es')}>
+                                {lang}
+                            </h3>
                         </li>
                         {  
                             isAdmin() ?
