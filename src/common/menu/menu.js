@@ -159,7 +159,7 @@ function Menu ({userType}) {
                             <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
                         </li>
                         <li className="btn_idioma" onClick={() => cambiarIdioma()}>
-                            <h3 onClick={() => (lang == 'es') ? setLang('en') : setLang('es')}>
+                            <h3 onClick={() => (lang === 'es') ? setLang('en') : setLang('es')}>
                                 {lang}
                             </h3>
                         </li>

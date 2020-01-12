@@ -2,7 +2,7 @@ import React from 'react';
 import "./acceso.scss";
 import {Link} from 'react-router-dom';
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
-import Imagen_fondo from '../common/imagen_fondo/imagen_fondo';
+import ImagenFondo from '../common/imagen_fondo/imagen_fondo';
 
 function Acceso({match, history, setUserType}) {
     const usuario = match.params.usuario;
@@ -45,7 +45,7 @@ function Acceso({match, history, setUserType}) {
 
     return (
         <div className="content_acceso">
-            <Imagen_fondo id_foto={1}/>
+            <ImagenFondo id_foto={1}/>
             <div className="acceso sombra">
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>

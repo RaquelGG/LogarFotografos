@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
+import ImagenFondo from "../common/imagen_fondo/imagen_fondo"
 
 import "./galeria.scss";
 import { obtenerGaleria } from "../common/conexion";
@@ -56,7 +56,7 @@ export function Galeria({match}) {
 
     return (
         <div className="content_galeria">
-            <Imagen_fondo id_foto={4} />
+            <ImagenFondo id_foto={4} />
             <div className="galeria_div">
                 {
                     filteredImages

@@ -55,7 +55,7 @@ function Contacto({history}) {
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td><img src={ubicacion} className="icono" /></td>
+                                    <td><img src={ubicacion} alt="Enlace a dirección de Google Maps" className="icono" /></td>
                                     <td className="titulo">DIRECCIÓN</td>
                                     <td><input
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.direccion = document.getElementsByName("direccion")[0].value}
@@ -75,7 +75,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={correo} className="icono" /></td>
+                                    <td><img src={correo} alt="Enlace a email" className="icono" /></td>
                                     <td className="titulo">CORREO</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.correo = document.getElementsByName("correo")[0].value}
@@ -85,7 +85,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={telefono} className="icono" /></td>
+                                    <td><img src={telefono} alt="Número de telefono" className="icono" /></td>
                                     <td className="titulo">TELÉFONO</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.telefono = document.getElementsByName("telefono")[0].value}
@@ -95,7 +95,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={whatsapp} className="icono" /></td>
+                                    <td><img src={whatsapp} alt="Número de whatsapp" className="icono" /></td>
                                     <td className="titulo">WHATSAPP</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.whatsapp = document.getElementsByName("whatsapp")[0].value}
@@ -105,7 +105,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={facebook} className="icono" /></td>
+                                    <td><img src={facebook} alt="Enlace a página de facebook" className="icono" /></td>
                                     <td className="titulo">FACEBOOK</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.facebook = document.getElementsByName("facebook")[0].value}
@@ -123,7 +123,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={bodasnet} className="icono" /></td>
+                                    <td><img src={bodasnet} alt="Enlace a página de bodas.net" className="icono" /></td>
                                     <td className="titulo">BODAS.NET</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.bodasNet = document.getElementsByName("bodasNet")[0].value}
