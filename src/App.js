@@ -4,8 +4,6 @@ import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
 import i18n from './common/i18n';
-import {obtenerTextoVariable} from './common/conexion';
-
 
 const Inicio = lazy(() => import('./inicio/inicio'));
 const Precios = lazy(() => import('./precios/precios'));
@@ -23,22 +21,6 @@ const AdminPrecios = lazy(() => import('./administrador/precios/precios'));
 const NotFound = Inicio;
 
 function App() {
-    //const [contenidoVariable, setContenidoVariable] = useState('');
-    useEffect(() => {
-        async function fetchContenidoVariable() {
-            //setContenidoVariable(await obtenerTextoVariable());
-            //window.session.contenidoVariable = contenidoVariable;
-            window.session = {
-                user: '',
-                pass: '',
-                admin: false,
-                contenidoVariable: await obtenerTextoVariable()
-            }
-            
-        }
-        fetchContenidoVariable();
-    }, []);
-
 
     function handleClick(lang) {
         i18n.changeLanguage(lang);

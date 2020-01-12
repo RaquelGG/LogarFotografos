@@ -9,7 +9,6 @@ import flecha from "../common/admin/precios/img/flecha.svg"
 import { useTranslation } from 'react-i18next';
 
 function Precios() {
-
     const {t, i18n } = useTranslation();
     const contenido = window.session.contenidoVariable.precios;
 
@@ -32,7 +31,7 @@ function Precios() {
                         
                         <div className="opcion">
                             <div className="alinear_fondo opcion_1">
-                                <h2 className="subtitulo">{t(contenido.opcion1.titulo)}</h2>
+                                <h2 className="subtitulo">{contenido.opcion1.titulo}</h2>
                             </div>
                            
                             <div className="fondo_blanco">
@@ -63,7 +62,7 @@ function Precios() {
                         
                         <div className="opcion f_opcion">
                             <div className="fondo_opcion_color alinear_fondo opcion_2">
-                                <h2 className="subtitulo">{t(contenido.opcion2.titulo)}</h2>
+                                <h2 className="subtitulo">{contenido.opcion2.titulo}</h2>
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -98,7 +97,7 @@ function Precios() {
                     <div className="carta sombra">
                         <div className="opcion f_opcion">
                             <div className="fondo_opcion_color alinear_fondo opcion_3">
-                                <h2 className="subtitulo">{t(contenido.opcion3.titulo)}</h2>
+                                <h2 className="subtitulo">{contenido.opcion3.titulo}</h2>
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
