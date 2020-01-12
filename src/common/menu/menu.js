@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Redes from '../redes/redes';
 import "../menu/menu.scss";
 import Logo from '../logo/logo';
@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 
-function Menu ({is_seleccion}) {
+function Menu () {
 
     const {t, i18n } = useTranslation();
+
 
     let last = '.inicio';
 
@@ -95,6 +96,14 @@ function Menu ({is_seleccion}) {
         x.style.display = "flex";
     }
 
+    /*
+        Control de Admin
+    */
+
+    function isAdmin () {
+        return window.session.admin;
+    }
+
     /* 
         Control para movil
     */
@@ -109,41 +118,52 @@ function Menu ({is_seleccion}) {
         return tamano <= 728;
     }
 
-    function is_seleccion() {
+    function isSeleccion() {
         return  (window.innerWidth >= 728) && (window.location.href.includes('seleccion'));
     }
 
     return(
         <nav>
-            <div className ="content-menu">
+            <div id="menu" className ="content-menu">
                 <div className="degradado"></div>
                 <div id="logoo" className="logo-pc">
                     <Logo/>
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
-                    <ul className={is_seleccion() ? "nav-links seleccion" : "nav-links"}>
+                    <ul className={isSeleccion() ? "nav-links seleccion" : "nav-links" }>
                         <li className="logo-movil">
                             <Logo />
                         </li>
                         <li className="inicio" onClick={() => detectarMovil('inicio')} >
-                            <Link to="/">{t('menu.inicio')}</Link>
+                            <Link to={isAdmin() ? "/admin/inicio" :"/"}>{t('menu.inicio')}</Link>
                         </li>
                         <li className="precio" onClick={() => detectarMovil('precio')}>
-                            <Link to="/precios">{t('menu.precios')}</Link>
+                            <Link to={isAdmin() ? "/admin/precios" :"/precios"}>{t('menu.precios')}</Link>
                         </li>
                         <li className="galeria" onClick={() => detectarMovil('galeria')}>
-                            <Link to="/galeria">{t('menu.galeria')}</Link>
+                            <Link to={isAdmin() ? "/admin/galeria" :"/galeria"}>{t('menu.galeria')}</Link>
                         </li>
                         <li className="contacto" onClick={() => detectarMovil('contacto')}>
-                            <Link to="/contacto">{t('menu.contacto')}</Link>
+                            <Link to={isAdmin() ? "/admin/contacto" : "/contacto"}>{t('menu.contacto')}</Link>
                         </li>
                         <li className="terminos-movil">
                             <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
                         </li>
-                        <li className ="redes-movil">
-                            <Redes />
-                        </li>
+                        {  
+                            isAdmin() ?
+
+                            <li className="crear_Seleccion" onClick={() => detectarMovil('crear_Seleccion')}>
+                                <Link to="/admin/">{t('menu.seleccion')}</Link>
+                            </li>
+
+                            :
+
+                            <li className ="redes-movil" >
+                                <Redes />
+                            </li>
+                        }
+                        
                     </ul>
 
                     <div className={manejoInicio() ? "burger" : "burger seleccion"} onClick={navSlide}>

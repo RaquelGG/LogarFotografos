@@ -149,12 +149,7 @@ export function Seleccion_admin({ match }) {
                                     <div className="content-img">
                                         <h1>{t('seleccion.arrastrar')}</h1>
                                         <img src={img_arrastrar} />
-<<<<<<< HEAD
                                         <h1>{traduccion.o}</h1>
-                                    
-=======
-                                        <h1>{t('seleccion.o')}</h1>
->>>>>>> bc7861bd1cccc26b2b162826613caf2dbd2c5e2d
                                     </div>
                                 */}
                                 </div>

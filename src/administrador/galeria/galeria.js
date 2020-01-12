@@ -9,6 +9,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Notificador from '../../common/admin/admin_edicion'
+import ClearIcon from '@material-ui/icons/Clear';
+import SaveIcon from '@material-ui/icons/Save';
+import SelectAllIcon from '@material-ui/icons/SelectAll';
 import "./galeria.scss"
 import { Button } from '@material-ui/core';
 import Loader from '../../common/loader/loader';
@@ -26,7 +29,9 @@ function Admin_galeria (){
 
     const useStyles = makeStyles({
         textField: {
-            width: '97%',
+            width: '65%',
+            paddingRight: '5%',
+            marginLeft: '5%',
             alignContent: 'center',
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
@@ -57,7 +62,9 @@ function Admin_galeria (){
         },
         guardar: {
             width: '90%',
-            height: '90%',
+            marginTop: '2%',
+            height: '75%',
+            fontSize: '19px'
         }
     });
 
@@ -161,7 +168,7 @@ function Admin_galeria (){
             
             <div className="content-cuadro">
                 <div className="titulo">
-                    <h3 style={{width: "30%", paddingLeft: "59px"}}>Subir imágenes</h3>
+                    <h3 style={{width: "40%", paddingLeft: "59px"}}>Subir imágenes</h3>
                     <h3 style={{width: "20%", marginLeft: "-59px"}}>filtrar imágenes</h3>
                     <h3 style={{width: "20%"}}>cambiar etiqueta</h3>
                 </div>
@@ -169,13 +176,23 @@ function Admin_galeria (){
                 <div className="contenido">
 
                     <div className="subir-imagen">
-                            <TextField label="URL"
-                                multiline
-                                rows="4"
-                                className={classes.textField}
-                                margin="normal"
-                                variant="outlined"
-                            />
+                        <TextField label="Enlaces de imágenes a subir"
+                            multiline
+                            rows="4"
+                            className={classes.textField}
+                            margin="normal"
+                            variant="outlined"
+                        />
+                        <div className="guardar">
+                        <Button 
+                                variant="contained" 
+                                color="primary"
+                                className={classes.guardar}
+                                startIcon={<SaveIcon />}
+                                >
+                                    GUARDAR
+                                </Button>
+                        </div>
                     </div>
 
                     <div className="filtro-imagen">
@@ -208,15 +225,18 @@ function Admin_galeria (){
                             <FormControlLabel  control={<Radio />} label="Preboda" />
                             <FormControlLabel  control={<Radio />} label="Postboda" />
                         </RadioGroup>
+                    </div>                    
+                    <div className="line_galAdmin">
+                        <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab"}}></div>
                     </div>
                     <div className="botones">
-                        <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab", paddingtop: "25%"}}/>
                         <div className="seleccion">
                             <Button 
                                 variant="contained" 
                                 color="primary"
                                 className={classes.deseleccionar}
                                 onClick={() => setSelectAll(0)}
+                                startIcon={<ClearIcon />}
                                 >
                                     DESELECCIONAR FOTOS
                                 </Button>
@@ -224,18 +244,10 @@ function Admin_galeria (){
                                 variant="contained" 
                                 color="primary"
                                 className={classes.borrar}
+                                startIcon={<SelectAllIcon />}
                                 onClick={() => borrarFotos()}
                                 >
                                     BORRAR SELECCIONADAS
-                                </Button>
-                        </div>
-                        <div className="guardar">
-                        <Button 
-                                variant="contained" 
-                                color="primary"
-                                className={classes.guardar}
-                                >
-                                    GUARDAR
                                 </Button>
                         </div>
                     </div>
