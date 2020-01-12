@@ -5,8 +5,6 @@ import Loader from './common/loader/loader';
 // TRADUCCIONES
 import {obtenerTextoVariable} from './common/conexion';
 
-import i18n from './common/i18n';
-
 const Inicio = lazy(() => import('./inicio/inicio'));
 const Precios = lazy(() => import('./precios/precios'));
 const Contacto = lazy(() => import('./contacto/contacto'));
@@ -23,20 +21,30 @@ const AdminPrecios = lazy(() => import('./administrador/precios/precios'));
 const NotFound = Inicio;
 
 function App() {
+    //const [contenidoVariable, setContenidoVariable] = useState('');
+    useEffect(() => {
+        async function fetchContenidoVariable() {
+            //setContenidoVariable(await obtenerTextoVariable());
+            //window.session.contenidoVariable = contenidoVariable;
+            window.session = {
+                user: '',
+                pass: '',
+                admin: false,
+            }
+            window.session.contenidoVariable =  await obtenerTextoVariable();
+        }
+        fetchContenidoVariable();
+    }, []);    
 
-     function handleClick(lang) {
-         i18n.changeLanguage(lang);
-     }
      
     return (
         <Router>
-            <Menu />
+            <Menu/>
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />
                     <Route path='/acceso/:usuario?' exact component={Acceso} />
-                    {/*<Route path='/galeria/:id' exact component={Galeria} />*/}
-                    <Route path='/galeria' exact component={Galeria} />
+                    <Route path='/galeria/:id?' exact component={Galeria} />
                     <Route path='/precios' exact component={Precios} />
                     <Route path='/contacto' exact component={Contacto} />
                     <Route path='/admin' exact component={Admin} />
@@ -54,4 +62,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
