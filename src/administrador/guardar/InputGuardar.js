@@ -7,7 +7,7 @@ import { editarFotoFondo, editarJson } from "../conexion";
 import './InputGuardar.scss';
 
 
-function InputGuardar ({id_foto}) {
+function InputGuardar ({id_foto, history}) {
     if (!window.session.user || !window.session.pass || !window.session.admin) {
         history.push("/acceso");
     }
