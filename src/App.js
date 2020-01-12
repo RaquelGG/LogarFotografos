@@ -1,9 +1,8 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, useState, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
-import i18n from './common/i18n';
 import {obtenerTextoVariable} from './common/conexion';
 
 
@@ -37,22 +36,11 @@ function App() {
             
         }
         fetchContenidoVariable();
-    }, []);
+    }, []);    
 
-     const [lang, setLang] = useState('es');
-
-     function handleClick(lang) {
-         i18n.changeLanguage(lang);
-     }
-     
     return (
         <Router>
             <Menu/>
-            <div className="btn_idioma" style={{zIndex: '50000', position: 'absolute'} }>
-                <button onClick={() => (lang == 'es') ? setLang('en') : setLang('es')}>
-                    {lang}
-                </button>
-            </div>
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />
