@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 function Precios() {
 
     const {t, i18n } = useTranslation();
+    const contenido = window.session.contenidoVariable.precios;
 
     return (
         <div className="content_precios">
@@ -31,7 +32,7 @@ function Precios() {
                         
                         <div className="opcion">
                             <div className="alinear_fondo opcion_1">
-                                <h2 className="subtitulo">{t('precios.opcion1.titulo')}</h2>
+                                <h2 className="subtitulo">{t(contenido.opcion1.titulo)}</h2>
                             </div>
                            
                             <div className="fondo_blanco">
@@ -53,8 +54,8 @@ function Precios() {
                             <div className="fondo_giro1"></div>
                             <div className="fondo_giro2"></div>
                             <div className="precios">
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.opcion1.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.opcion1.precioVideo')}</h2>
+                                <h2 className="subtitulo opcion_1_precio">{t('precios.fotos')} {contenido.opcion1.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_1_precio">{t('precios.video')} {contenido.opcion1.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>
@@ -62,7 +63,7 @@ function Precios() {
                         
                         <div className="opcion f_opcion">
                             <div className="fondo_opcion_color alinear_fondo opcion_2">
-                                <h2 className="subtitulo">{t('precios.opcion2.titulo')}</h2>
+                                <h2 className="subtitulo">{t(contenido.opcion2.titulo)}</h2>
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -88,8 +89,8 @@ function Precios() {
                             <div className="fondo_giro2"></div>
                             <div className="precios">
 
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.opcion2.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.opcion2.precioVideo')}</h2>
+                                <h2 className="subtitulo opcion_2_precio">{t('precios.fotos')} {contenido.opcion2.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_2_precio">{t('precios.video')} {contenido.opcion2.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>
@@ -97,7 +98,7 @@ function Precios() {
                     <div className="carta sombra">
                         <div className="opcion f_opcion">
                             <div className="fondo_opcion_color alinear_fondo opcion_3">
-                                <h2 className="subtitulo">{t('precios.opcion3.titulo')}</h2>
+                                <h2 className="subtitulo">{t(contenido.opcion3.titulo)}</h2>
                             </div>
                             <div className="fondo_blanco">
                                 <ul>
@@ -124,8 +125,8 @@ function Precios() {
                             <div className="fondo_giro1"></div>
                             <div className="fondo_giro2"></div>
                             <div className="precios">
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.opcion3.precioFoto')}</h2>
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.opcion3.precioVideo')}</h2>
+                                <h2 className="subtitulo opcion_3_precio">{t('precios.fotos')} {contenido.opcion3.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_3_precio">{t('precios.video')} {contenido.opcion3.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>

@@ -20,17 +20,18 @@ function Contacto() {
     const {t, i18n } = useTranslation();
 
     const json = traduccion.contacto;
+    const contenidoV = window.session.contenidoVariable.contacto;
 
     /* --- Obtención de los datos ---*/
-    const address = json.tabla.direccion;
-    const link_address = json.tabla.direccionUrl;
-    const link_email = json.tabla.correo;
-    const link_tel = json.tabla.telefono;
-    const link_what = json.tabla.whatsapp;
-    const face = json.tabla.facebook;
-    const link_face = json.tabla.facebookUrl;
-    const bodasNet = json.tabla.bodasNet;
-    const link_bodasNet = json.tabla.bodasNetUrl;
+    const address = contenidoV.tabla.direccion;
+    const link_address = contenidoV.tabla.direccionUrl;
+    const link_email = contenidoV.tabla.correo;
+    const link_tel = contenidoV.tabla.telefono;
+    const link_what = contenidoV.tabla.whatsapp;
+    const face = contenidoV.tabla.facebook;
+    const link_face = contenidoV.tabla.facebookUrl;
+    const bodasNet = contenidoV.tabla.bodasNet;
+    const link_bodasNet = contenidoV.tabla.bodasNetUrl;
     /* ------------------------------ */
 
     return (
@@ -48,12 +49,12 @@ function Contacto() {
                                     <th colSpan="3">
                                         {//<h1>{this.props.t('contacto.titulo', { framework: "react-i18next" })}</h1>
                                         }
-                                        <h1>{json.titulo}</h1>
+                                        <h1>{t('contacto.titulo')}</h1>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th colSpan="3">
-                                        <h3>{json.subtitulo}</h3>
+                                        <h3>{t('contacto.subtitulo')}</h3>
                                     </th>
                                 </tr>
                                 <tr>

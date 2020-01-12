@@ -30,7 +30,6 @@ function Acceso({match, history}) {
             };
             history.push("/seleccion");// Si es un cliente
         }
-        
     }
 
 

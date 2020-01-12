@@ -28,3 +28,27 @@ export async function editarFotoFondo(id_foto, url) {
     }
     return false;
 }
+
+// Editar json con texto variable
+export async function editarJson(jsn) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/editarJson.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                jsn: jsn
+            })
+        });
+        
+        return true;
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return false;
+}
