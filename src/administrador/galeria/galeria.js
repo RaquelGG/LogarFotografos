@@ -207,16 +207,16 @@ function Admin_galeria ({history}) {
                         <div className="tipos">
                             <FormGroup>
                                 <FormControlLabel
-                                    control={<Switch defaultChecked="true" onChange={handleChange('boda')} value="boda" />}
+                                    control={<Switch defaultChecked="1" onChange={handleChange('boda')} value="boda" />}
                                     label="BODA"
                                 />
                                 <FormControlLabel
-                                    control={<Switch defaultChecked="true" onChange={handleChange('preboda')} value="preboda" />}
+                                    control={<Switch defaultChecked="1" onChange={handleChange('preboda')} value="preboda" />}
                                     label="PREBODA"
                                 />
                                 <FormControlLabel
                                     control={
-                                        <Switch defaultChecked="true" onChange={handleChange('postboda')} value="postboda" />}
+                                        <Switch defaultChecked="1" onChange={handleChange('postboda')} value="postboda" />}
                                     label="POSTBODA"
                                 />
                             </FormGroup>

@@ -12,6 +12,7 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 export function Galeria({match}) {
     const [filtro, setFiltro] = useState(match.params.id);
     
+    
     // Para obtener las imagenes
     const [images, setImages] = useState(null);
     const [filteredImages, setFilteredImages] = useState(null);
