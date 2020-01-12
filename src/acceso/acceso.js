@@ -39,7 +39,6 @@ function Acceso({match, history, setUserType}) {
 
     function updateMenu () {
         setUserType('publico');
-        history.push("/");
     }
 
     return (
@@ -50,7 +49,7 @@ function Acceso({match, history, setUserType}) {
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
                 <button className="button" onClick={() => acceder()}>Acceder</button>
-                <Link className="volver" onClick={() => updateMenu()}>
+                <Link to="/" className="volver" onClick={() => updateMenu()}>
                     <h4 className="volver">Volver a la página principal</h4>
                 </Link>
             </div>
