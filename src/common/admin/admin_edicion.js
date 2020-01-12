@@ -7,41 +7,6 @@ import './admin_edicion.scss';
 
 function  Admin_edicion ({id_foto, contenido}) {
 
-    function handleclick () {
-        const pag = window.location.href; 
-        switch(pag) {
-            case pag.includes('contacto'):
-                manejoContacto();
-                break;
-            
-            case pag.includes('galeria'):
-                manejoGaleria();
-                break;
-            case pag.includes('precios'):
-                manejoPrecios();
-                break;
-            default:
-        }
-    }
-
-    /*
-        Manejo de las distintas páginas de administrador
-    */
-
-    function manejoContacto() {
-
-    }
-
-    function manejoGaleria() {
-
-    }
-
-    function manejoPrecios() {
-        
-    }
-
-    /* -------------------------------------------------- */
-
     const useStyles = makeStyles({
         icono: {
             width: '100px',

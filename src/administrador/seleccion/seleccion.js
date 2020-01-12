@@ -1,10 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { obtenerGaleria } from "../../common/conexion";
 import Loader from '../../common/loader/loader';
 import Galeria from "react-photo-gallery";
-import translate from "../../traduccion/es/common.json";
-import fondo_arrastrar from "../seleccion/background_arrastrar.svg";
-import img_arrastrar from "./img_arrastrar.svg";
 import './seleccion.scss';
 import {
     obtenerDatosBoda,
@@ -19,7 +15,6 @@ import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
 // Traduccion 
 import { useTranslation } from 'react-i18next';
-import { seleccionarFotoCliente } from '../../cliente/conexion';
 
 
 export function Seleccion_admin({ match, history }) {
@@ -27,8 +22,6 @@ export function Seleccion_admin({ match, history }) {
         history.push("/acceso");
     }
     const id_boda = match.params.id_boda;
-
-    const { t, i18n } = useTranslation();
 
     /* --- Galería --- */
     // Para no sobrecargar el servidor comprobando si está procesando

@@ -93,7 +93,7 @@ export async function obtenerFotoPrivada(nombre, fecha) {
 export async function borrarFotoPrivada(nombre, fecha) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/borrarFotoPrivada.php`, {
+        await fetch(`${ruta}/borrarFotoPrivada.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

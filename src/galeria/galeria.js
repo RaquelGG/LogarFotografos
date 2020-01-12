@@ -7,8 +7,6 @@ import Loader from '../common/loader/loader';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
-
-
 export function Galeria({match}) {
     const [filtro, setFiltro] = useState(match.params.id);
     

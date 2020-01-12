@@ -52,7 +52,7 @@ function Menu ({userType}) {
         if(window.innerWidth <= 800) {
           navSlide();
           const burger = document.querySelector('.burger');
-          if(elemento == 'inicio') {
+          if(elemento === 'inicio') {
                 burger.className = "burger";
           } else {
                 burger.className = "burger seleccion";

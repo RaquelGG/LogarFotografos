@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Inicio from '../../inicio/inicio';
 import Notificador from '../../common/admin/admin_edicion'
 import BotonGuardar from '../guardar/InputGuardar'

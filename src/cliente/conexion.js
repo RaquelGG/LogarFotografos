@@ -71,7 +71,7 @@ export async function seleccionarFotoCliente(id_foto, seleccionada) {
             },
             body: JSON.stringify({user: window.session.user, pass: window.session.pass, id_foto: id_foto, seleccionada: seleccionada}),
         });
-        const resultado = await response.text();
+        await response.text();
 
         return true;
 
@@ -92,7 +92,7 @@ export async function seleccionarTodoCliente(seleccionada) {
             },
             body: JSON.stringify({user: window.session.user, pass: window.session.pass, seleccionada: seleccionada}),
         });
-        const resultado = await response.text();
+        await response.text();
 
         return true;
 
@@ -137,7 +137,7 @@ export async function guardarDescripcionCliente(descripcion) {
             },
             body: JSON.stringify({user: window.session.user, pass: window.session.pass, descripcion: descripcion}),
         });
-        const resultado = await response.text();
+        await response.text();
 
         return true;
 
@@ -150,7 +150,7 @@ export async function guardarDescripcionCliente(descripcion) {
 // Seleccionar o deseleccionar todas las imagenes
 export async function finalizarSeleccion() {
     try {
-        const response = await fetch(`${ruta}/finalizarSeleccion.php`, {
+        await fetch(`${ruta}/finalizarSeleccion.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
