@@ -8,9 +8,9 @@ import Switch from '@material-ui/core/Switch';
 import SearchIcon from '@material-ui/icons/Search';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
-import Notificador from '../../common/admin/admin_edicion'
 import ClearIcon from '@material-ui/icons/Clear';
 import SaveIcon from '@material-ui/icons/Save';
+import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import SelectAllIcon from '@material-ui/icons/SelectAll';
 import "./galeria.scss"
 import { Button } from '@material-ui/core';
@@ -20,6 +20,7 @@ import {
     //editarEtiqueta,
  } from "./conexion";
  import {obtenerGaleria} from "../../common/conexion";
+ import AdminEdicion from "../../common/admin/admin_edicion";
  import SelectedImage from "../../cliente/imagenSeleccionada"
 
 
@@ -157,7 +158,8 @@ function Admin_galeria ({history}) {
 
     return(
         <div className="content-galeria-admin">
-            <Notificador />
+            <ImagenFondo id_foto={4} />
+            <AdminEdicion id_foto={4} history={history} lugar={"precios"} />
             {
                 images
                     ? <Galeria
@@ -223,9 +225,9 @@ function Admin_galeria ({history}) {
                     </div>
                     <div className="etiqueta">
                         <RadioGroup onChange={handleChange}>
-                            <FormControlLabel  control={<Radio />} label="Boda" />
-                            <FormControlLabel  control={<Radio />} label="Preboda" />
-                            <FormControlLabel  control={<Radio />} label="Postboda" />
+                            <FormControlLabel control={<Radio />} label="Boda" />
+                            <FormControlLabel control={<Radio />} label="Preboda" />
+                            <FormControlLabel control={<Radio />} label="Postboda" />
                         </RadioGroup>
                     </div>                    
                     <div className="line_galAdmin">

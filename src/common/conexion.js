@@ -50,7 +50,7 @@ export async function comprobarAdmin(user, pass) {
         });
         let respuesta = await response.text();
         console.log(respuesta);
-        return respuesta === 1;
+        return respuesta;
     } catch(err) {
         console.error("Nombre de usuario o contraseña incorrecta:", err);
     }

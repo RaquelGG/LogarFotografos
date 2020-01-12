@@ -5,7 +5,7 @@ import InputGuardar from '../../administrador/guardar/InputGuardar'
 
 import './admin_edicion.scss';
 
-function  Admin_edicion ({id_foto, contenido}) {
+function  Admin_edicion ({id_foto, history, lugar}) {
 
     const useStyles = makeStyles({
         icono: {
@@ -26,7 +26,7 @@ function  Admin_edicion ({id_foto, contenido}) {
                 <EditIcon className={classStyle.icono}/>
             </div>
             <div className="opciones sombra">
-                <InputGuardar id_foto={id_foto} contenido={contenido} />
+                <InputGuardar id_foto={id_foto} history={history} lugar={lugar}/>
             </div>
             <div className="triangulo">
             </div>

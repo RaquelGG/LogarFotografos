@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen_fondo from "../../common/imagen_fondo/imagen_fondo"
+import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
 import telefono from "./iconos/telefono.svg"
@@ -8,7 +8,7 @@ import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
 import Enlace from '@material-ui/icons/Link';
 import traduccion from "../../traduccion/es/common.json"
-import Admin_edicion from "../../common/admin/admin_edicion";
+import AdminEdicion from "../../common/admin/admin_edicion";
 import "../../common/admin/contacto/contacto.scss";
 import { makeStyles } from '@material-ui/core';
 
@@ -32,8 +32,8 @@ function Contacto({history}) {
     //const { t, i18n } = this.props;
     return (
         <div className="content-contacto">
-            <Imagen_fondo id_foto={3} />
-            <Admin_edicion id_foto={3} />
+            <ImagenFondo id_foto={3} />
+            <AdminEdicion id_foto={3} history={history} lugar={"precios"} />
 
             <div className="info-contacto">
                 <div className="cuadro-giro-superior sombra"> </div>

@@ -6,7 +6,6 @@ import cuadrado_tick from "../../common/admin/precios/img/cuadrado_tick.svg"
 import cuadrado_cruz from "../../common/admin/precios/img/cuadrado_cruz.svg"
 import flecha from "../../common/admin/precios/img/flecha.svg"
 import AdminEdicion from "../../common/admin/admin_edicion"
-import { editarJson } from '../conexion'
 
 // Traduccion 
 import { useTranslation } from 'react-i18next';
@@ -19,14 +18,10 @@ function Precios({history}) {
     const { t, i18n } = useTranslation();
     let contenido = window.session.contenidoVariable;
 
-    async function cambioContenido() {
-        await editarJson(contenido);
-    }
-
     return (
         <div className="content_precios">
             <Imagen_fondo id_foto={2} />
-            <AdminEdicion />
+            <AdminEdicion id_foto={2} history={history} lugar={"precios"} />
 
             <div className="resto_contenido">
                 <div className="fondo_titulo">
@@ -208,7 +203,6 @@ function Precios({history}) {
                             <h3>{t('precios.texto3')}</h3>
                         </div>
                     </div>
-                    <button onClick={() => cambioContenido()} className="guardar">Guardar texto</button>
                 </div>
             </div>
         </div>
