@@ -9,19 +9,38 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 
 
 
-export function Galeria() {
+export function Galeria({match}) {
+    const [filtro, setFiltro] = useState(match.params.id);
+    
     // Para obtener las imagenes
     const [images, setImages] = useState(null);
+    const [filteredImages, setFilteredImages] = useState(null);
+
     // Para abrir imagen
     const [currentImage, setCurrentImage] = useState(0);
     const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
     // Obtenemos las fotos del servidor
     useEffect(() => {
-        async function fetchData() {
-            setImages(await obtenerGaleria())
+        async function fetchFotos() {
+            console.log("filtro: ", filtro);
+            const res = await obtenerGaleria();
+            if (res) {
+                setFilteredImages(filtro
+                    ? res.filter(img => img.alt === filtro)
+                    : res);
+            }
+            setImages(await obtenerGaleria());
+            
+
+            console.log("Contador imagenes totales: ", res.length);
+            console.log("Contador imagenes filtro: ", res.filter(img => img.alt.includes(filtro)).length);
         }
-        fetchData();
+        async function fetchFiltro() {
+            //setFiltro(); // Si se filtra por Boda, Preboda o Postboda
+        }
+        fetchFiltro();
+        fetchFotos();
     }, []);
 
     // Para que la imagen se abra en grande
@@ -35,17 +54,16 @@ export function Galeria() {
         setViewerIsOpen(false);
     };
 
-    
 
     return (
         <div className="content_galeria">
             <Imagen_fondo id_foto={4} />
             <div className="galeria_div">
                 {
-                    images
+                    filteredImages
                         ? <>
                             <Gallery
-                                photos={images}
+                                photos={filteredImages}
                                 onClick={openLightbox}
                                 //direction="column"
                                 //margin = "0"
