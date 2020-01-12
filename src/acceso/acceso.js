@@ -34,9 +34,19 @@ function Acceso({match, history}) {
         }
     }
 
-    function updateMenu () {
-        const logo = document.querySelector('.content-menu');
+    function updateMenu (acceso) {
+        let logo = document.querySelector('.content-menu');
         logo.style.display = "flex";
+
+        if(acceso) {
+            acceder();
+
+            logo = document.querySelector('.logo-logar');
+            logo.className = "logo-logar negro";
+            
+            logo = document.querySelector('.nav-links');
+            logo.className = "nav-links seleccion";
+        }
     }
 
     return (
@@ -46,7 +56,7 @@ function Acceso({match, history}) {
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
-                <button className="button" onClick={() => acceder()}>Acceder</button>
+                <button className="button" onClick={() => updateMenu(true)}>Acceder</button>
                 <Link to="/" className="volver" onClick={updateMenu}>
                     <h4>Volver a la página principal</h4>
                 </Link>

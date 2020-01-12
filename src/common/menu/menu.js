@@ -163,7 +163,6 @@ function Menu () {
                                 <Redes />
                             </li>
                         }
-                        
                     </ul>
 
                     <div className={manejoInicio() ? "burger" : "burger seleccion"} onClick={navSlide}>
