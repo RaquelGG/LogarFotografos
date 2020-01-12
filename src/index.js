@@ -22,8 +22,9 @@ async function obtenerTexto() {
         user: null,
         pass: null,
         admin: false,
-        contenidoVariable: await obtenerTexto()
+        contenidoVariable: texto
     }
+    window.session.contenidoVariable = obtenerTexto();
 })();
 
 

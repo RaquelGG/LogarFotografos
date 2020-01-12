@@ -23,22 +23,6 @@ const AdminPrecios = lazy(() => import('./administrador/precios/precios'));
 const NotFound = Inicio;
 
 function App() {
-    //const [contenidoVariable, setContenidoVariable] = useState('');
-    useEffect(() => {
-        async function fetchContenidoVariable() {
-            //setContenidoVariable(await obtenerTextoVariable());
-            //window.session.contenidoVariable = contenidoVariable;
-            window.session = {
-                user: '',
-                pass: '',
-                admin: false,
-                contenidoVariable: await obtenerTextoVariable()
-            }
-            
-        }
-        fetchContenidoVariable();
-    }, []);    
-
 
      function handleClick(lang) {
          i18n.changeLanguage(lang);
@@ -46,7 +30,7 @@ function App() {
      
     return (
         <Router>
-            <Menu/>
+            <Menu />
             <Suspense fallback={<Loader />}>
                 <Switch>
                     <Route path='/' exact component={Inicio} />
