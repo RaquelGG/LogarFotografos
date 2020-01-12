@@ -30,17 +30,17 @@ import {
 } from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 
-const [data, setData] = useState(false);
 
-async function obtenerDatos() {
-    setData(await obtenerDatosSeleccion());
-}
 
 export function Lista({ history }) {
 
     /* DATOS PARA LA LISTA */
 
+    const [data, setData] = useState(false);
 
+    async function obtenerDatos() {
+        setData(await obtenerDatosSeleccion());
+    }
     useEffect(() => {
         async function fetchData() {
             await obtenerDatos();
@@ -161,10 +161,6 @@ export function Clientes({ history }) {
         checked: {},
     })(props => <Radio color="default" {...props} />);
 
-
-
-
-
     /* ----------------------------------- */
     // Para guardar variables
     const [processing, setProcessing] = useState(false); // Para esperar mientras se está procesando
@@ -232,7 +228,7 @@ export function Clientes({ history }) {
                             Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
                         `);
                             setFile(undefined);
-                            await obtenerDatos();
+                            // obtenerDatos();
                         } else {
                             alert("Se ha producido un problema mientras se subían las imagenes.");
                             error = true;
@@ -263,7 +259,7 @@ export function Clientes({ history }) {
             <Inicio />
             <div className="contenido">
                 <div className="lista">
-                    <Lista history={history} />
+                    <Lista id="lista" history={history} />
                 </div>
                 <div className="agregar-contenido">
                     <div className="input-cuadro">

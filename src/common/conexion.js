@@ -71,3 +71,15 @@ export async function obtenerGaleria() {
         console.error("error obteniendo las imagenes:", err);
     }
 }
+
+// Obtener el texto que puede editar el administrador
+export async function obtenerTextoVariable() {
+    try {
+        const response = await fetch(`${ruta}/publico/editableJson.php`)
+        const resultado = await response.json();
+
+        return resultado;
+    } catch(err) {
+        console.error("error obteniendo las traducciones:", err);
+    }
+}

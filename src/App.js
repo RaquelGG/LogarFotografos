@@ -1,9 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
 // TRADUCCIONES
 import i18n from './common/i18n';
+import {obtenerTextoVariable} from './common/conexion';
 
 
 const Inicio = lazy(() => import('./inicio/inicio'));
@@ -22,6 +23,16 @@ const AdminPrecios = lazy(() => import('./administrador/precios/precios'));
 const NotFound = Inicio;
 
 function App() {
+    //const [contenidoVariable, setContenidoVariable] = useState('');
+    useEffect(() => {
+        async function fetchContenidoVariable() {
+            //setContenidoVariable(await obtenerTextoVariable());
+            //window.session.contenidoVariable = contenidoVariable;
+            window.session.contenidoVariable = await obtenerTextoVariable();
+        }
+        fetchContenidoVariable();
+    }, []);
+
 
     function handleClick(lang) {
         i18n.changeLanguage(lang);
