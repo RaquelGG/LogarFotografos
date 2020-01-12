@@ -3,27 +3,31 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Guardar from '@material-ui/icons/Save';
-import { editarFotoFondo } from "../conexion";
+import { editarFotoFondo, editarJson } from "../conexion";
 import './InputGuardar.scss';
 
 
-function InputGuardar () {
+function InputGuardar ({id_foto}) {
 
     const [url, setUrl] = useState('');
 
     // Para guardar la url
-    const guardarUrl = () => {
+    const guardarCambios = () => {
         console.log("Url fondo:", url);
-        
+        console.log("Id fondo:", id_foto);
+        console.log("admin:", window.session.admin);
+
         
         (async () => {
-            if (url.length < 20) {
-                alert("La URL de imagen es inválida");
-                return;
+            console.log("url long:", url.length);
+            if (url.length > 20) {
+                const resultado = await editarFotoFondo(id_foto, url);
+                if (resultado) window.location.href = window.location.href;
+                else alert("No se ha podido subir la imagen");
             }
-            const resultado = await editarFotoFondo(1, url);
-            if (resultado) window.location.href = window.location.href;
-            else alert("No se ha podido subir la imagen");
+            await editarJson();
+            alert("Se han guardado los cambios.");
+            
 
         })();
     };
@@ -76,7 +80,7 @@ function InputGuardar () {
                 size="large"
                 className={classes.button}
                 startIcon={<Guardar/>}
-                onClick = {() => guardarUrl()}
+                onClick = {() => guardarCambios()}
             >
                 Guardar
             </Button> 

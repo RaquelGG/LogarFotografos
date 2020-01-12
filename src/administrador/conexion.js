@@ -2,13 +2,12 @@ let ruta = process.env.NODE_ENV === "production" ? 'https://pruebas.logarfotogra
 //const ruta = 'https://pruebas.logarfotografos.es';
 ruta += '/administrador';
 
-
-
 // Edita la foto de fondo (cambiando la url)
 export async function editarFotoFondo(id_foto, url) {
     if (!window.session.admin) return false;
+    console.log("estoy aqui");
     try {
-        const response = await fetch(`${ruta}/editarFotoFondo.php`, {
+        await fetch(`${ruta}/editarFotoFondo.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,10 +29,10 @@ export async function editarFotoFondo(id_foto, url) {
 }
 
 // Editar json con texto variable
-export async function editarJson(jsn) {
+export async function editarJson() {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/editarJson.php`, {
+        await fetch(`${ruta}/editarJson.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -42,7 +41,7 @@ export async function editarJson(jsn) {
             body: JSON.stringify({
                 user: window.session.user, 
                 pass: window.session.pass, 
-                jsn: jsn
+                jsn:  window.session.contenidoVariable
             })
         });
         

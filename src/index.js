@@ -9,11 +9,11 @@ import * as serviceWorker from './serviceWorker';
 import './common/i18n'
 
 // Para hacer pruebas:
-window.session = {
+/*window.session = {
     user: null,
     pass: null,
-    admin: null,
-}
+    admin: true,
+}*/
 
 ReactDOM.render(
     <Suspense fallback={<Loader />}>

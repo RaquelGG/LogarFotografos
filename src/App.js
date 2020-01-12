@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Menu from './common/menu/menu'
 import Loader from './common/loader/loader';
@@ -28,7 +28,13 @@ function App() {
         async function fetchContenidoVariable() {
             //setContenidoVariable(await obtenerTextoVariable());
             //window.session.contenidoVariable = contenidoVariable;
-            window.session.contenidoVariable = await obtenerTextoVariable();
+            window.session = {
+                user: '',
+                pass: '',
+                admin: false,
+                contenidoVariable: await obtenerTextoVariable()
+            }
+            
         }
         fetchContenidoVariable();
     }, []);
