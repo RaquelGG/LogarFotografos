@@ -17,7 +17,7 @@ import { useTranslation} from 'react-i18next';
 import Logo from '../common/logo/logo';
 
 export function Cliente({history}) {
-    const {t, i18n } = useTranslation();
+    const {t} = useTranslation();
     // Si no es cliente, se redirige a acceso
     if (!window.session.user || !window.session.pass || window.session.admin) {
         history.push("/acceso");
@@ -170,7 +170,7 @@ export function Cliente({history}) {
                                     placeholder={t('seleccion.mensaje')} 
                                     className="mensaje" 
                                     ref={descripcion}
-                                    defaultValue={data && data.descripcion || ''}
+                                    defaultValue={(data && data.descripcion) || ''}
                                     onChange={() => guardarDescripcion(descripcion)}
                                 />
                                 {/*<button

@@ -20,7 +20,7 @@ async function obtenerTexto() {
     window.session = {
         user: null,
         pass: null,
-        admin: false,
+        admin: null,
         contenidoVariable: await obtenerTexto()
     }
 })();

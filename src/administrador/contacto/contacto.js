@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen_fondo from "../../common/imagen_fondo/imagen_fondo"
+import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
 import telefono from "./iconos/telefono.svg"
@@ -8,7 +8,7 @@ import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
 import Enlace from '@material-ui/icons/Link';
 import traduccion from "../../traduccion/es/common.json"
-import Admin_edicion from "../../common/admin/admin_edicion";
+import AdminEdicion from "../../common/admin/admin_edicion";
 import "../../common/admin/contacto/contacto.scss";
 import { makeStyles } from '@material-ui/core';
 
@@ -32,8 +32,8 @@ function Contacto({history}) {
     //const { t, i18n } = this.props;
     return (
         <div className="content-contacto">
-            <Imagen_fondo id_foto={3} />
-            <Admin_edicion id_foto={3} />
+            <ImagenFondo id_foto={3} />
+            <AdminEdicion id_foto={3} />
 
             <div className="info-contacto">
                 <div className="cuadro-giro-superior sombra"> </div>
@@ -55,7 +55,7 @@ function Contacto({history}) {
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td><img src={ubicacion} className="icono" /></td>
+                                    <td><img src={ubicacion} alt="Enlace a dirección de Google Maps" className="icono" /></td>
                                     <td className="titulo">DIRECCIÓN</td>
                                     <td><input
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.direccion = document.getElementsByName("direccion")[0].value}
@@ -75,7 +75,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={correo} className="icono" /></td>
+                                    <td><img src={correo} alt="Enlace a email" className="icono" /></td>
                                     <td className="titulo">CORREO</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.correo = document.getElementsByName("correo")[0].value}
@@ -85,7 +85,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={telefono} className="icono" /></td>
+                                    <td><img src={telefono} alt="Número de telefono" className="icono" /></td>
                                     <td className="titulo">TELÉFONO</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.telefono = document.getElementsByName("telefono")[0].value}
@@ -95,7 +95,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={whatsapp} className="icono" /></td>
+                                    <td><img src={whatsapp} alt="Número de whatsapp" className="icono" /></td>
                                     <td className="titulo">WHATSAPP</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.whatsapp = document.getElementsByName("whatsapp")[0].value}
@@ -105,7 +105,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={facebook} className="icono" /></td>
+                                    <td><img src={facebook} alt="Enlace a página de facebook" className="icono" /></td>
                                     <td className="titulo">FACEBOOK</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.facebook = document.getElementsByName("facebook")[0].value}
@@ -123,7 +123,7 @@ function Contacto({history}) {
                                     /></td>
                                 </tr>
                                 <tr>
-                                    <td><img src={bodasnet} className="icono" /></td>
+                                    <td><img src={bodasnet} alt="Enlace a página de bodas.net" className="icono" /></td>
                                     <td className="titulo">BODAS.NET</td>
                                     <td><input type="text"
                                         onChange={() => window.session.contenidoVariable.contacto.tabla.bodasNet = document.getElementsByName("bodasNet")[0].value}

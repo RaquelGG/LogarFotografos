@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen_fondo from "../common/imagen_fondo/imagen_fondo"
+import ImagenFondo from "../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
 import telefono from "./iconos/telefono.svg"
@@ -9,7 +9,6 @@ import bodasnet from "./iconos/bodasnet.svg"
 import f_black from "../common/iconos_black/facebook-black.svg";
 import e_black from "../common/iconos_black/email-black.svg";
 import w_black from "../common/iconos_black/whatsapp-black.svg"
-import traduccion from "../traduccion/es/common.json"
 import "../common/admin/contacto/contacto.scss";
 
 // Traducción
@@ -17,9 +16,8 @@ import { useTranslation} from 'react-i18next';
 
 function Contacto() {
 
-    const {t, i18n } = useTranslation();
+    const {t} = useTranslation();
 
-    const json = traduccion.contacto;
     const contenidoV = window.session.contenidoVariable.contacto;
 
     /* --- Obtención de los datos ---*/
@@ -36,7 +34,7 @@ function Contacto() {
 
     return (
         <div className = "content-contacto">
-            <Imagen_fondo id_foto={3} />
+            <ImagenFondo id_foto={3} />
 
             <div className = "info-contacto">
                 <div className = "cuadro-giro-superior sombra"> </div>
@@ -58,32 +56,32 @@ function Contacto() {
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td><img src = {ubicacion} className = "icono"/></td>
+                                    <td><img alt="Enlace a dirección de Google Maps" src = {ubicacion} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_direccion')}</td>
                                     <td className = "datos"><a href = {link_address}>{address}</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src = {correo} className = "icono"/></td>
+                                    <td><img alt="Enlace a correo electronico" src = {correo} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_correo')}</td>
                                     <td className = "datos"><a href = {"mailto: " + link_email}>{link_email}</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src = {telefono} className = "icono"/></td>
+                                    <td><img alt="Número de telefono" src = {telefono} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_tel')}</td>
                                     <td className = "datos"><a href = {"tel: " + link_tel}>{link_tel}</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src = {whatsapp} className = "icono"/></td>
+                                    <td><img alt="Número de Whatsapp" src = {whatsapp} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_whats')}</td>
                                     <td className = "datos"><a href={"https://api.whatsapp.com/send?phone=" + link_what }>{link_what}</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src = {facebook} className = "icono"/></td>
+                                    <td><img alt="Enlace a página de facebook" src = {facebook} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_facebook')}</td>
                                     <td className = "datos"><a href={link_face}>{face}</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src = {bodasnet} className = "icono"/></td>
+                                    <td><img alt="Enlace a página de bodas.net" src = {bodasnet} className = "icono"/></td>
                                     <td className = "titulo">{t('contacto.tabla.title_bodasNet')}</td>
                                     <td className = "datos"><a href={link_bodasNet}>{bodasNet}</a></td>
                                 </tr>
@@ -108,9 +106,9 @@ function Contacto() {
                         </form>
                     </div>
                     <div className="redes">
-                            <img src={f_black}/>
-                            <img src={e_black} />
-                            <img src={w_black} />
+                            <img src={f_black} alt="Enlace a página de facebook" />
+                            <img src={e_black} alt="Enlace a email"/>
+                            <img src={w_black} alt="Enlace a número de whatsapp" />
                     </div>
                 </div>
             </div>

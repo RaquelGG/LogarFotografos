@@ -7,14 +7,10 @@ import {
     obtenerDatosFotos,
     obtenerFotoPrivada,
     borrarFotoPrivada
-
 } from "./conexion";
-
 import { subirFotosBoda } from "../clientes/conexion"
 import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
-// Traduccion 
-import { useTranslation } from 'react-i18next';
 
 
 export function Seleccion_admin({ match, history }) {

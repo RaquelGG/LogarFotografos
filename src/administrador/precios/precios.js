@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen_fondo from "../../common/imagen_fondo/imagen_fondo"
+import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import "../../common/admin/precios/precios.scss";
 import cuadrado_tick from "../../common/admin/precios/img/cuadrado_tick.svg"
 import cuadrado_cruz from "../../common/admin/precios/img/cuadrado_cruz.svg"
@@ -15,7 +15,7 @@ function Precios({history}) {
         history.push("/acceso");
     }
 
-    const { t, i18n } = useTranslation();
+    const {t} = useTranslation();
     let contenido = window.session.contenidoVariable;
 
     async function cambioContenido() {
@@ -24,7 +24,7 @@ function Precios({history}) {
 
     return (
         <div className="content_precios">
-            <Imagen_fondo id_foto={2} />
+            <ImagenFondo id_foto={2} />
             <AdminEdicion />
 
             <div className="resto_contenido">
@@ -34,7 +34,7 @@ function Precios({history}) {
                     <div className="fondo_titulo_giro2"></div>
                     <div className="alinear_titulo">
                         <h1 className="titulo sombra_texto">{t('precios.titulo')}</h1>
-                        <span onClick={history.push("/galeria/bodas")} ><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} className="flecha" /></span>
+                        <span onClick={history.push("/galeria/bodas")} ><li className="sombra_texto">{t('precios.verFotosBodas')}</li><img src={flecha} alt="Enlace para ver fotos de boda" className="flecha" /></span>
                     </div>
                 </div>
                 <div className="opciones">
@@ -54,11 +54,11 @@ function Precios({history}) {
                             <div className="fondo_blanco">
                                 <ul>
                                     <div>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_1 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_1 imagen_lista" /><li>{t('precios.exterior')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_cruz} className="opcion_1 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_cruz} className="opcion_1 imagen_lista" /><li>{t('precios.coctel')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_cruz} className="opcion_1 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos de ceremonia incluidas" className="opcion_1 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos exteriores incluidas"  className="opcion_1 imagen_lista" /><li>{t('precios.exterior')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_cruz} alt="Fotos en casa de novios no incluidas" className="opcion_1 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_cruz} alt="Fotos en cóctel no incluidas" className="opcion_1 imagen_lista" /><li>{t('precios.coctel')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_cruz} alt="Fotos hasta baile nupcial no incluidas" className="opcion_1 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
                                     </div>
                                 </ul>
                             </div>
@@ -102,16 +102,16 @@ function Precios({history}) {
                             <div className="fondo_blanco">
                                 <ul>
                                     <div>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.exterior')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.coctel')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_cruz} className="opcion_2 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos de ceremonia incluidas" className="opcion_2 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos exteriores incluidas"  className="opcion_2 imagen_lista" /><li>{t('precios.exterior')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos en casa de novios incluidas" className="opcion_2 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos en cóctel incluidas" className="opcion_2 imagen_lista" /><li>{t('precios.coctel')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_cruz} alt="Fotos hasta baile nupcial incluidas" className="opcion_2 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
                                     </div>
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_2 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Preboda incluida" className="opcion_2 imagen_lista" /><li>{t('precios.preboda')}</li></span>
+                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} alt="Ver foto de preboda" className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
@@ -154,18 +154,18 @@ function Precios({history}) {
                             <div className="fondo_blanco">
                                 <ul>
                                     <div>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.exterior')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.coctel')}</li></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos de ceremonia incluidas" className="opcion_3 imagen_lista" /><li>{t('precios.ceremonia')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos exteriores incluidas"  className="opcion_3 imagen_lista" /><li>{t('precios.exterior')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos en casa de novios incluidas" className="opcion_3 imagen_lista" /><li>{t('precios.casaNovios')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos en cóctel incluidas" className="opcion_3 imagen_lista" /><li>{t('precios.coctel')}</li></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Fotos hasta baile nupcial incluidas" className="opcion_3 imagen_lista" /><li>{t('precios.celebracion')}</li></span>
                                     </div>
                                     <div className="cont_der">
                                         <li className="regalo">{t('precios.regalo')}</li>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.preboda')}</li></span>
-                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} className="flecha" /></span>
-                                        <span className="alinear"><img src={cuadrado_tick} className="opcion_3 imagen_lista" /><li>{t('precios.postboda')}</li></span>
-                                        <span onClick={history.push("/galeria/postboda")} className="ver_fotos"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Preboda incluida" className="opcion_3 imagen_lista" /><li>{t('precios.preboda')}</li></span>
+                                        <span onClick={history.push("/galeria/preboda")} className="ver_fotos"><li>{t('precios.verFotosPrebodas')}</li><img src={flecha} alt="Ver fotos de preboda" className="flecha" /></span>
+                                        <span className="alinear"><img src={cuadrado_tick} alt="Postboda incluida" className="opcion_3 imagen_lista" /><li>{t('precios.postboda')}</li></span>
+                                        <span onClick={history.push("/galeria/postboda")} className="ver_fotos"><li>{t('precios.verFotosPostbodas')}</li><img src={flecha} alt="Ver fotos de postboda" className="flecha" /></span>
                                     </div>
                                 </ul>
                             </div>
