@@ -37,6 +37,7 @@ function InputGuardar ({id_foto}) {
             borderRightStyle: 'none',
             width: '80%',
             '& .MuiOutlinedInput-root': {
+                backgroundColor: 'white',
                 '& fieldset': {
                   borderColor: '#ed2b8d',
                 },
@@ -46,6 +47,9 @@ function InputGuardar ({id_foto}) {
                 '&.Mui-focused fieldset': {
                   borderColor: '#ed2b8d',
                 },
+            },
+            '& .MuiInputLabel-outlined': {
+                color: '#ed2b8d',
             },
         },
         button: {

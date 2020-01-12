@@ -1,6 +1,9 @@
 import React from 'react';
 import "./acceso.scss";
 import {Link} from 'react-router-dom';
+import Logo from '../common/logo/logo';
+import ReactDOM from 'react-dom';
+import Menu from '../common/menu/menu'
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
 import Imagen_fondo from '../common/imagen_fondo/imagen_fondo';
 
@@ -8,7 +11,6 @@ function Acceso({match, history}) {
     const {usuario} = match.params;
     let user = React.createRef();
     let pass = React.createRef();
-    
 
     // Comprueba si el usuario existe
     async function acceder() {
@@ -32,6 +34,20 @@ function Acceso({match, history}) {
         }
     }
 
+    function updateMenu (acceso) {
+        let logo = document.querySelector('.content-menu');
+        logo.style.display = "flex";
+
+        if(acceso) {
+            acceder();
+
+            logo = document.querySelector('.logo-logar');
+            logo.className = "logo-logar negro";
+            
+            logo = document.querySelector('.nav-links');
+            logo.className = "nav-links seleccion";
+        }
+    }
 
     return (
         <div className="content_acceso">
@@ -40,8 +56,8 @@ function Acceso({match, history}) {
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
-                <button className="button" onClick={() => acceder()}>Acceder</button>
-                <Link to="/"  className="volver">
+                <button className="button" onClick={() => updateMenu(true)}>Acceder</button>
+                <Link to="/" className="volver" onClick={updateMenu}>
                     <h4>Volver a la página principal</h4>
                 </Link>
             </div>

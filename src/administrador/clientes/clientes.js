@@ -14,6 +14,8 @@ import SimpleBar from 'simplebar-react';
 import { withStyles } from '@material-ui/core/styles';
 import 'simplebar/dist/simplebar.min.css';
 import './clientes.scss'
+import Logo from '../../common/logo/logo';
+import ReactDOM from 'react-dom';
 import { FormLabel } from '@material-ui/core';
 import {
     obtenerDatosSeleccion,
@@ -81,7 +83,7 @@ export function Lista({ history }) {
                                             <ArrowDownwardIcon style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                         <div className="caja activado">
-                                            <EditOutlinedIcon onClick={() => abrirEdicion(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
+                                            <EditOutlinedIcon onClick={() => updateMenu(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
 
                                         <div className="caja activado">
@@ -103,6 +105,21 @@ export function Lista({ history }) {
         </SimpleBar>
     );
 
+    /*
+        Actualización del menú
+    */
+    
+    function updateMenu(id){
+        abrirEdicion(id);
+        
+        let logo = (<div className="logo-pc">
+                        <Logo />
+                     </div>);
+        ReactDOM.render(logo, document.getElementById('logoo'));
+
+        logo = document.querySelector('.nav-links');
+        logo.className = "nav-links seleccion";
+    }
 }
 
 export function Clientes({ history }) {

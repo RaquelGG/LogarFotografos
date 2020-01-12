@@ -61,10 +61,18 @@
             
             .subir-imagen{
                 height: 100%;
-                width: 30%;
+                width: 40%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                .guardar {
+                    width: 30%;
+                    height: 94%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
             }
 
             .filtro-imagen{
@@ -99,29 +107,26 @@
                 margin: 0;
                 justify-content: center;
             }
+            
+            .line_galAdmin {
+                display: flex;
+                align-items: center;
+            }
 
             .botones{
                 height: 100%;
-                width: 30%;
+                width: 20%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
                 .seleccion{
-                    width: 70%;
+                    width: 98%;
                     height: 100%;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                }
-
-                .guardar {
-                    width: 30%;
-                    height: 94%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
                 }
             }
         }
