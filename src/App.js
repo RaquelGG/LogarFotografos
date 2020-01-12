@@ -22,19 +22,16 @@ const NotFound = Inicio;
 
 function App() {
 
-    function handleClick(lang) {
-        i18n.changeLanguage(lang);
-    }
-
+     function handleClick(lang) {
+         i18n.changeLanguage(lang);
+     }
+     
     return (
         <Router>
             <Menu/>
-            <div style={{zIndex:'50000', position: 'absolute'}}>
-                <button onClick={() => handleClick('es')}>
-                    Español
-                </button>
-                <button onClick={() => handleClick('en')}>
-                    English
+            <div className="btn_idioma" style={{zIndex: '50000', position: 'absolute'} }>
+                <button onClick={() => (lang == 'es') ? setLang('en') : setLang('es')}>
+                    {lang}
                 </button>
             </div>
             <Suspense fallback={<Loader />}>
