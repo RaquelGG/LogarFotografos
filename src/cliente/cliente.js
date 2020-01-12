@@ -142,7 +142,7 @@ export function Cliente({history}) {
                 <div className="line3"></div>
             </div>
             <div className="burger-dialogo" onClick={abrir_dialogo}>
-                <img src={dialogo} />
+                <img src={dialogo} alt="Abrir dialogo"/>
             </div>
             <div className="galeria_seleccion">
                 {
