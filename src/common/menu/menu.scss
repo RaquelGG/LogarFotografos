@@ -203,11 +203,21 @@
         width: 100%;
         position: absolute; //
 
+        .degradado {
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgb(43, 43, 43), transparent);
+            z-index: 1;
+        }
+
         h3{
             font-weight: normal;
         }
 
-        .rutas { z-index: 3; }
+        .rutas { z-index: 500; }
 
         .cruz { z-index: 4; }
 

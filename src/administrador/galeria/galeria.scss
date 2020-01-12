@@ -10,8 +10,7 @@
     overflow-x: hidden;
 
     .react-photo-gallery--gallery {
-        
-        position: absolute;
+        position: relative;
         top: 0;
         width: 100%;
         margin-top: $distancia_principio_pc;
@@ -21,8 +20,6 @@
             object-fit: cover;
         }
     }
-
-    
 
     .content-cuadro{
         position: absolute;
