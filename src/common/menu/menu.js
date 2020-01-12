@@ -109,7 +109,7 @@ function Menu ({is_seleccion}) {
         return tamano <= 728;
     }
 
-    function is_seleccion() {
+    function isSeleccion() {
         return  (window.innerWidth >= 728) && (window.location.href.includes('seleccion'));
     }
 
@@ -122,7 +122,7 @@ function Menu ({is_seleccion}) {
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
-                    <ul className={is_seleccion() ? "nav-links seleccion" : "nav-links"}>
+                    <ul className={isSeleccion() ? "nav-links seleccion" : "nav-links"}>
                         <li className="logo-movil">
                             <Logo />
                         </li>

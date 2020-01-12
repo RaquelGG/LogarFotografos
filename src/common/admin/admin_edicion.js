@@ -5,7 +5,7 @@ import InputGuardar from '../../administrador/guardar/InputGuardar'
 
 import './admin_edicion.scss';
 
-function  Admin_edicion () {
+function  Admin_edicion ({id_foto, contenido}) {
 
     function handleclick () {
         const pag = window.location.href; 
@@ -61,7 +61,7 @@ function  Admin_edicion () {
                 <EditIcon className={classStyle.icono}/>
             </div>
             <div className="opciones sombra">
-                <InputGuardar />
+                <InputGuardar id_foto={id_foto} contenido={contenido} />
             </div>
             <div className="triangulo">
             </div>
