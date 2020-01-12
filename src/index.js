@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import Loader from './common/loader/loader';
 import './index.scss';

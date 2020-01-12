@@ -7,7 +7,7 @@ ruta += '/administrador/galeria';
 export async function borrarFotoPublica(id_foto) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/borrarFotoPublica.php`, {
+        await fetch(`${ruta}/borrarFotoPublica.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -31,7 +31,7 @@ export async function borrarFotoPublica(id_foto) {
 export async function editarEtiqueta(id_foto, servicio) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/editarEtiqueta.php`, {
+        await fetch(`${ruta}/editarEtiqueta.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -56,7 +56,7 @@ export async function editarEtiqueta(id_foto, servicio) {
 export async function subirFotoPublica(url, servicio) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/subirFotoPublica.php`, {
+        await fetch(`${ruta}/subirFotoPublica.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

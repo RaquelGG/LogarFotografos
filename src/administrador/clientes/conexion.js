@@ -10,7 +10,7 @@ ruta += '/administrador/seleccion';
 export async function borrarFotoPrivada(id_foto) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/borrarFotoPrivada.php`, {
+        await fetch(`${ruta}/borrarFotoPrivada.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,7 +30,7 @@ export async function borrarFotoPrivada(id_foto) {
 export async function borrarUsuario(id_usuario) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/borrarUsuario.php`, {
+        await fetch(`${ruta}/borrarUsuario.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -54,7 +54,7 @@ export async function borrarUsuario(id_usuario) {
 export async function crearUsuario(nuevoUser, nuevaPass) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/crearUsuario.php`, {
+        await fetch(`${ruta}/crearUsuario.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -108,7 +108,7 @@ export async function comprobarUsuarioExiste(nuevoUser) {
 export async function editarDatosSeleccion(id_boda, fecha, servicio) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/editarDatosSeleccion.php`, {
+        await fetch(`${ruta}/editarDatosSeleccion.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -134,7 +134,7 @@ export async function editarDatosSeleccion(id_boda, fecha, servicio) {
 export async function finalizarSeleccion(id_boda, finalizado) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/finalizarSeleccion.php`, {
+        await fetch(`${ruta}/finalizarSeleccion.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -186,7 +186,7 @@ export async function obtenerDatosSeleccion() {
 export async function subirBoda(id_usuario, fecha, servicio) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/subirBoda.php`, {
+        await fetch(`${ruta}/subirBoda.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -195,7 +195,7 @@ export async function subirBoda(id_usuario, fecha, servicio) {
             body: JSON.stringify({
                 user: window.session.user, 
                 pass: window.session.pass,
-                id_usuario, id_usuario,
+                id_usuario: id_usuario,
                 fecha: fecha,
                 servicio: servicio
             })
@@ -219,7 +219,7 @@ export async function subirFotosBoda(fotos, fecha) {
         formData.append("fotos", fotos); // En la posición 0; es decir, el primer elemento
         formData.append("fecha", fecha);
 
-        const response = await fetch(`${ruta}/subirFotosBoda.php`, {
+        await fetch(`${ruta}/subirFotosBoda.php`, {
             method: 'POST',
             body: formData
             
@@ -237,7 +237,7 @@ export async function subirFotosBoda(fotos, fecha) {
 export async function borrarBoda(id_boda, fecha) {
     if (!window.session.admin) return false;
     try {
-        const response = await fetch(`${ruta}/borrarBoda.php`, {
+        await fetch(`${ruta}/borrarBoda.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

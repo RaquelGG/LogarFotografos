@@ -16,10 +16,8 @@ import "./galeria.scss"
 import { Button } from '@material-ui/core';
 import Loader from '../../common/loader/loader';
 import { 
-    subirFotoPublica,
     borrarFotoPublica,
-    editarEtiqueta,
-
+    //editarEtiqueta,
  } from "./conexion";
  import {obtenerGaleria} from "../../common/conexion";
  import SelectedImage from "../../cliente/imagenSeleccionada"

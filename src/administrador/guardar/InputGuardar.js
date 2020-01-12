@@ -25,13 +25,11 @@ function InputGuardar ({id_foto, history}) {
             console.log("url long:", url.length);
             if (url.length > 20) {
                 const resultado = await editarFotoFondo(id_foto, url);
-                if (resultado) window.location.href = window.location.href;
+                if (resultado) window.location.reload();
                 else alert("No se ha podido subir la imagen");
             }
             await editarJson();
             alert("Se han guardado los cambios.");
-            
-
         })();
     };
 

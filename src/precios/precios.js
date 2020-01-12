@@ -9,7 +9,7 @@ import flecha from "../common/admin/precios/img/flecha.svg"
 import { useTranslation } from 'react-i18next';
 
 function Precios() {
-    const {t, i18n } = useTranslation();
+    const {t} = useTranslation();
     const contenido = window.session.contenidoVariable.precios;
 
     return (
