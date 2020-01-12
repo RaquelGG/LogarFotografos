@@ -12,7 +12,10 @@ import Admin_edicion from "../../common/admin/admin_edicion";
 import "../../common/admin/contacto/contacto.scss";
 import { makeStyles } from '@material-ui/core';
 
-function Contacto() {
+function Contacto({history}) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
 
     const json = traduccion.contacto;
 

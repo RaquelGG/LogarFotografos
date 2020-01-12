@@ -10,7 +10,10 @@ import { editarJson } from '../conexion'
 // Traduccion 
 import { useTranslation } from 'react-i18next';
 
-function Precios() {
+function Precios({history}) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
 
     const { t, i18n } = useTranslation();
     let contenido = window.session.contenidoVariable;

@@ -5,8 +5,11 @@ import BotonGuardar from '../guardar/InputGuardar'
 import './inicio.scss';
 
 
-function Admin_inicio (){    
-
+function Admin_inicio ({history}) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
+    
     return(
         <div className="content-inicio-admin">
             <Notificador />

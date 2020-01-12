@@ -8,6 +8,9 @@ import './InputGuardar.scss';
 
 
 function InputGuardar ({id_foto}) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
 
     const [url, setUrl] = useState('');
 

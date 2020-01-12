@@ -25,8 +25,10 @@ import {
  import SelectedImage from "../../cliente/imagenSeleccionada"
 
 
-function Admin_galeria (){
-
+function Admin_galeria ({history}) {
+    if (!window.session.user || !window.session.pass || !window.session.admin) {
+        history.push("/acceso");
+    }
     const useStyles = makeStyles({
         textField: {
             width: '65%',
