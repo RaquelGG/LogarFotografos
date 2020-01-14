@@ -17,6 +17,10 @@ import './clientes.scss'
 import Logo from '../../common/logo/logo';
 import ReactDOM from 'react-dom';
 import { FormLabel } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
+import Loader from '../../common/loader/loader';
+
+
 import {
     obtenerDatosSeleccion,
     subirBoda,
@@ -25,28 +29,43 @@ import {
     borrarUsuario,
     subirFotosBoda,
     borrarBoda,
-    obtenerIdUsuario
+    obtenerIdUsuario,
+    obtenerSeleccionFinalizada,
+    obtenerComentarioFinalizada
 
 } from "./conexion";
 import DragAndDrop from '../dragAndDrop';
 
 
 
-export function Lista({ history }) {
+export function Lista({ history, data, setData }) {
 
-    /* DATOS PARA LA LISTA */
+    
 
-    const [data, setData] = useState(false);
+    // Descargar Imagenes seleccionadas por usuario
+    function descargar(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
 
-    async function obtenerDatos() {
-        setData(await obtenerDatosSeleccion());
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
     }
-    useEffect(() => {
-        async function fetchData() {
-            await obtenerDatos();
-        }
-        fetchData();
-    }, []);
+
+    const descargarTxt = (id_boda, fecha) => {
+        (async () => {
+            const txtSeleccion = await obtenerSeleccionFinalizada(id_boda);
+            descargar(fecha + " - Selección.txt", txtSeleccion);
+
+            const txtComentaraio = await obtenerComentarioFinalizada(id_boda);
+            descargar(fecha + " - Comentario.txt", txtComentaraio);
+
+        })();
+    }
 
     // Para guardar la descripción
     const eliminarFotosBoda = (id_boda, fecha) => {
@@ -54,7 +73,7 @@ export function Lista({ history }) {
         console.log("fecha seleccionada: ", fecha);
         (async () => {
             await borrarBoda(id_boda, fecha);
-            await obtenerDatos();
+            setData(await obtenerDatosSeleccion());
         })();
     };
 
@@ -79,11 +98,11 @@ export function Lista({ history }) {
                                     </div>
                                     <div className="funciones">
                                         <div className="linea"></div>
-                                        <div className={`caja ${item.finalizado ? 'activado' : 'desactivado'}`}>
-                                            <ArrowDownwardIcon style={{ width: "35px", height: "35px", color: "white" }} />
+                                        <div className={`caja ${item.finalizado ? 'activado descargar' : 'desactivado'}`}>
+                                            <ArrowDownwardIcon onClick = {() => item.finalizado ? descargarTxt(item.id_boda, item.fecha) : null} style={{width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                         <div className="caja activado">
-                                            <EditOutlinedIcon onClick={() => updateMenu(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
+                                            <EditOutlinedIcon onClick={() => updateMenu(parseInt(item.id_boda))} style={{width: "35px", height: "35px", color: "white" }} />
                                         </div>
 
                                         <div className="caja activado">
@@ -108,13 +127,13 @@ export function Lista({ history }) {
     /*
         Actualización del menú
     */
-    
-    function updateMenu(id){
+
+    function updateMenu(id) {
         abrirEdicion(id);
-        
+
         let logo = (<div className="logo-pc">
-                        <Logo />
-                     </div>);
+            <Logo />
+        </div>);
         ReactDOM.render(logo, document.getElementById('logoo'));
 
         logo = document.querySelector('.nav-links');
@@ -127,6 +146,20 @@ export function Clientes({ history }) {
     if (!window.session.user || !window.session.pass || !window.session.admin) {
         history.push("/acceso");
     }
+
+    /* DATOS PARA LA LISTA */
+
+    const [data, setData] = useState(false);
+
+    async function obtenerDatos() {
+        setData(await obtenerDatosSeleccion());
+    }
+    useEffect(() => {
+        async function fetchData() {
+            await obtenerDatos();
+        }
+        fetchData();
+    }, []);
 
     /* ---- Configuración de la fecha --- */
     const [selectedDate, setSelectedDate] = React.useState(new Date()); // -- fecha
@@ -174,7 +207,7 @@ export function Clientes({ history }) {
     */
     function generarCadena(length) {
         var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
         for (var i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -188,7 +221,7 @@ export function Clientes({ history }) {
         setProcessing(true);
 
         if (!valServicio) {
-            alert("Debes de seleccionar un servicio y fecha");
+            //<Alert severity="warning">Debes de seleccionar un servicio y fecha</Alert>
             setProcessing(false);
             return;
         }
@@ -228,7 +261,7 @@ export function Clientes({ history }) {
                             Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
                         `);
                             setFile(undefined);
-                            // obtenerDatos();
+                            obtenerDatos();
                         } else {
                             alert("Se ha producido un problema mientras se subían las imagenes.");
                             error = true;
@@ -259,14 +292,19 @@ export function Clientes({ history }) {
             <Inicio />
             <div className="contenido">
                 <div className="lista">
-                    <Lista id="lista" history={history} />
+                    <Lista id="lista" history={history} data={data} />
                 </div>
                 <div className="agregar-contenido">
                     <div className="input-cuadro">
                         <div className="cuadro sombra">
                             <div className="input">
                                 <div className="url sombra">
-                                    <DragAndDrop onFileSelected={f => setFile(f)} />
+                                    {
+                                        processing 
+                                            ? <DragAndDrop onFileSelected={f => setFile(f)} />
+                                            : <Loader />
+                                    }
+                                    
                                     {/*<div className="arrastrar">
                                     </div>
                                     <div className="examinar">

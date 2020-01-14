@@ -287,3 +287,61 @@ export async function obtenerIdUsuario(nuevoUser) {
     }
     return null;
 }
+
+// Obtenemos las fotos selecionadas en .txt
+export async function obtenerSeleccionFinalizada(id_boda) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/obtenerSeleccionFinalizada.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                id_boda: id_boda
+            })
+        });
+
+        const respuesta = await response.text();
+        
+        console.log(respuesta);
+
+        return respuesta.split("-*-").join(" O ");
+        
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return null;
+}
+
+// Obtenemos las fotos selecionadas en .txt
+export async function obtenerComentarioFinalizada(id_boda) {
+    if (!window.session.admin) return false;
+    try {
+        const response = await fetch(`${ruta}/obtenerComentarioFinalizada.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: window.session.user, 
+                pass: window.session.pass, 
+                id_boda: id_boda
+            })
+        });
+
+        const respuesta = await response.text();
+        
+        console.log(respuesta);
+
+        return respuesta;
+        
+    } catch(err) {
+        console.error("Error de administrador:", err);
+    }
+    return null;
+}
