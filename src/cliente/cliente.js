@@ -4,7 +4,9 @@ import Gallery from "react-photo-gallery";
 import dialogo from './dialogo.svg';
 import "./cliente.scss";
 import SelectedImage from "./imagenSeleccionada";
-import { 
+import ImagenFondo from '../common/imagen_fondo/imagen_fondo';
+
+import {
     finalizarSeleccion,
     seleccionarTodoCliente,
     obtenerDatosCliente,
@@ -13,16 +15,18 @@ import {
     obtenerFotoPrivada
 } from "./conexion";
 // Traducción
-import { useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Logo from '../common/logo/logo';
+import AlertDialog from '../common/dialog';
 
-export function Cliente({history}) {
-    const {t} = useTranslation();
+
+export function Cliente({ history }) {
+    const { t } = useTranslation();
     // Si no es cliente, se redirige a acceso
     if (!window.session.user || !window.session.pass || window.session.admin) {
         history.push("/acceso");
     }
-    
+
     /* --- Galería --- */
     // Para cargar los datos, incluido el comentario
     const [data, setData] = useState(false);
@@ -34,26 +38,41 @@ export function Cliente({history}) {
     const [processing, setProcessing] = useState(false);
 
     let descripcion = React.createRef();
-    
+
+    // Para los dialogos
+    const [open, setOpen] = React.useState(true);
+    const [dialogoTitulo, setDialogoTitulo] = React.useState("Autoguardado");
+    const [dialogoMensaje, setDialogoMensaje] = React.useState("Tu selección se guardará en todo momento, por eso, no necesitamos botón de guardar. ¡Tómate tu tiempo para elegir las imágenes perfectas!");
+
+    const abrirDialogo = (titulo, mensaje) => {
+        console.log("Titulo = ", titulo);
+        setDialogoTitulo(titulo);
+        setDialogoMensaje(mensaje);
+        setOpen(true);
+    }
+
 
 
     // Para establecer la descripción
     useEffect(() => {
         async function fetchData() {
             const datos = await obtenerDatosCliente();
-            console.log("datos", datos, "antes era", data);
             setData(datos)
         }
         async function fetchImages() {
             const resDataImages = await obtenerDatosFotos();
             const datos = await obtenerDatosCliente();
 
-            const clonedImages = resDataImages.slice();
-            await Promise.all(clonedImages.map(
-                async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
-            ));
-            setImages(clonedImages);
-            console.log("images:", clonedImages);
+            if (datos) {
+                const clonedImages = resDataImages.slice();
+                await Promise.all(clonedImages.map(
+                    async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
+                ));
+                setImages(clonedImages);
+            }
+
+
+            console.log("images:", images);
         }
         fetchImages();
         fetchData();
@@ -66,15 +85,19 @@ export function Cliente({history}) {
         (async () => {
             const resultado = await seleccionarTodoCliente(seleccionar);
             if (resultado) setSelectAll(seleccionar ? 1 : 0);
+            else abrirDialogo("Error de conexión", "Asegúrate de tener conexión a internet, o los cambios no se guardarán.");
             setProcessing(false);
         })();
     };
 
     // Para guardar la descripción
     const guardarDescripcion = (descripcion) => {
+        if (processing) return;
         (async () => {
             const resultado = await guardarDescripcionCliente(descripcion.current.value);
-            if(resultado) setData(descripcion);
+            if (resultado) setData(descripcion);
+            else abrirDialogo("Error de conexión", "Asegúrate de tener conexión a internet, o los cambios no se guardarán.");
+            setProcessing(false);
         })();
     };
 
@@ -87,13 +110,13 @@ export function Cliente({history}) {
             const resultado = await finalizarSeleccion();
             console.log(resultado);
             if (resultado) {
-                alert("¡Tu selección ha sido enviada correctamente!");
+                abrirDialogo("Se ha enviado correctamente", "¡Ahora ya tenemos tu selección!");
                 history.push("/");
                 window.session = null;
                 //setData(null);
-                
+
             } else {
-                alert("Se ha producido un problema. Vuélvalo a intentar más tarde.");
+                abrirDialogo("Oh, oh", "Se ha producido un problema, vuelve a finalizar tu selección más tarde.");
                 setProcessing(false);
             }
         })();
@@ -104,8 +127,8 @@ export function Cliente({history}) {
             <SelectedImage
                 selected={
                     selectAll === -1
-                    ? photo.isSelected
-                    : selectAll === 1
+                        ? photo.isSelected
+                        : selectAll === 1
                 }
                 key={photo.key}
                 margin={"2px"}
@@ -134,15 +157,16 @@ export function Cliente({history}) {
     /* ------------------------- */
 
     return (
+        
         <div className="content">
-            {/*<Menu size_logo={"124px"} logo={logo} is_seleccion={true} />*/}
+            <ImagenFondo id_foto={5}/>
             <div className="fake-burger" onClick={abrir_dialogo}>
                 <div className="line1"></div>
                 <div className="line2"></div>
                 <div className="line3"></div>
             </div>
             <div className="burger-dialogo" onClick={abrir_dialogo}>
-                <img src={dialogo} alt="Abrir dialogo"/>
+                <img src={dialogo} alt="Abrir dialogo" />
             </div>
             <div className="galeria_seleccion">
                 {
@@ -166,10 +190,10 @@ export function Cliente({history}) {
                             <h1>{t('seleccion.opcional')}</h1>
                             <h3>{t('seleccion.explicacion')}</h3>
                             <div className="formulario">
-                                <textarea 
-                                    rows="5" cols="50" 
-                                    placeholder={t('seleccion.mensaje')} 
-                                    className="mensaje" 
+                                <textarea
+                                    rows="5" cols="50"
+                                    placeholder={t('seleccion.mensaje')}
+                                    className="mensaje"
                                     ref={descripcion}
                                     defaultValue={(data && data.descripcion) || ''}
                                     onChange={() => guardarDescripcion(descripcion)}
@@ -181,7 +205,7 @@ export function Cliente({history}) {
                                     className="boton-enviar">
                                     {json.guardar}
                                 </button>*/}
-                                <button 
+                                <button
                                     onClick={() => finalizarSelec()}
                                     className="boton-enviar">
                                     {t('seleccion.enviar')}
@@ -194,7 +218,7 @@ export function Cliente({history}) {
                             onClick={() => seleccionarTodo(true)}
                             disabled={processing}
                         >
-                                {t('seleccion.selecTodo')}
+                            {t('seleccion.selecTodo')}
                         </button>
                         <button
                             onClick={() => seleccionarTodo(false)}
@@ -205,6 +229,12 @@ export function Cliente({history}) {
                     </div>
                 </div>
             </div>
+            <AlertDialog
+                titulo={dialogoTitulo}
+                mensaje={dialogoMensaje}
+                open={open}
+                setOpen={setOpen}
+            />
         </div>
     );
 }

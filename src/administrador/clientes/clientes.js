@@ -17,8 +17,8 @@ import './clientes.scss'
 import Logo from '../../common/logo/logo';
 import ReactDOM from 'react-dom';
 import { FormLabel } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
 import Loader from '../../common/loader/loader';
+import AlertDialog from '../../common/dialog';
 
 
 import {
@@ -38,9 +38,7 @@ import DragAndDrop from '../dragAndDrop';
 
 
 
-export function Lista({ history, data, setData }) {
-
-    
+export function Lista({ history, data, setData, setDialogoTitulo, setDialogoMensaje, setOpen }) {
 
     // Descargar Imagenes seleccionadas por usuario
     function descargar(filename, text) {
@@ -56,6 +54,10 @@ export function Lista({ history, data, setData }) {
         document.body.removeChild(element);
     }
 
+    async function obtenerDatos() {
+        setData(await obtenerDatosSeleccion());
+    }
+
     const descargarTxt = (id_boda, fecha) => {
         (async () => {
             const txtSeleccion = await obtenerSeleccionFinalizada(id_boda);
@@ -63,6 +65,8 @@ export function Lista({ history, data, setData }) {
 
             const txtComentaraio = await obtenerComentarioFinalizada(id_boda);
             descargar(fecha + " - Comentario.txt", txtComentaraio);
+
+            abrirDialogo("Selección de boda descargada", `Se ha descargado la boda con fecha ${fecha}.`);
 
         })();
     }
@@ -73,7 +77,8 @@ export function Lista({ history, data, setData }) {
         console.log("fecha seleccionada: ", fecha);
         (async () => {
             await borrarBoda(id_boda, fecha);
-            setData(await obtenerDatosSeleccion());
+            abrirDialogo("Boda eliminada", `La boda con fecha ${fecha} ha sido eliminada correctamente.`);
+            obtenerDatos();
         })();
     };
 
@@ -82,14 +87,20 @@ export function Lista({ history, data, setData }) {
         history.push(`/admin/seleccion/${id_boda}`);
     }
 
-    const list = data;
+    const abrirDialogo = (titulo, mensaje) => {
+        console.log("Titulo = ", titulo);
+        setDialogoTitulo(titulo);
+        setDialogoMensaje(mensaje);
+        setOpen(true);
+    }
+
     return (
         <SimpleBar className="content-lista" style={{ backgroundcolor: '#2C2C2C' }}>
             {/* Check to see if any items are found*/}
-            {list ? (
+            {data ? (
                 <div className="content-item">
                     {/* Render the list of items */}
-                    {list.map((item) => {
+                    {data.map((item) => {
                         return (
                             <div className="cuadro">
                                 <div className="item">
@@ -99,14 +110,14 @@ export function Lista({ history, data, setData }) {
                                     <div className="funciones">
                                         <div className="linea"></div>
                                         <div className={`caja ${item.finalizado ? 'activado descargar' : 'desactivado'}`}>
-                                            <ArrowDownwardIcon onClick = {() => item.finalizado ? descargarTxt(item.id_boda, item.fecha) : null} style={{width: "35px", height: "35px", color: "white" }} />
+                                            <ArrowDownwardIcon onClick={() => item.finalizado ? descargarTxt(item.id_boda, item.fecha) : null} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                         <div className="caja activado">
-                                            <EditOutlinedIcon onClick={() => updateMenu(parseInt(item.id_boda))} style={{width: "35px", height: "35px", color: "white" }} />
+                                            <EditOutlinedIcon onClick={() => abrirEdicion(parseInt(item.id_boda))} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
 
                                         <div className="caja activado">
-                                            <DeleteForeverIcon onClick={() => eliminarFotosBoda(item.id_boda, item.fecha)} style={{ width: "35px", height: "35px", color: "white" }} />
+                                            <DeleteForeverIcon onDoubleClick={() => eliminarFotosBoda(item.id_boda, item.fecha)} style={{ width: "35px", height: "35px", color: "white" }} />
                                         </div>
                                     </div>
                                 </div>
@@ -124,21 +135,6 @@ export function Lista({ history, data, setData }) {
         </SimpleBar>
     );
 
-    /*
-        Actualización del menú
-    */
-
-    function updateMenu(id) {
-        abrirEdicion(id);
-
-        let logo = (<div className="logo-pc">
-            <Logo />
-        </div>);
-        ReactDOM.render(logo, document.getElementById('logoo'));
-
-        logo = document.querySelector('.nav-links');
-        logo.className = "nav-links seleccion";
-    }
 }
 
 export function Clientes({ history }) {
@@ -154,12 +150,18 @@ export function Clientes({ history }) {
     async function obtenerDatos() {
         setData(await obtenerDatosSeleccion());
     }
+    
     useEffect(() => {
         async function fetchData() {
             await obtenerDatos();
         }
         fetchData();
     }, []);
+
+    // Para los dialogos
+    const [open, setOpen] = React.useState(false);
+    const [dialogoTitulo, setDialogoTitulo] = React.useState("Titulo");
+    const [dialogoMensaje, setDialogoMensaje] = React.useState("Mensaje");
 
     /* ---- Configuración de la fecha --- */
     const [selectedDate, setSelectedDate] = React.useState(new Date()); // -- fecha
@@ -221,7 +223,8 @@ export function Clientes({ history }) {
         setProcessing(true);
 
         if (!valServicio) {
-            //<Alert severity="warning">Debes de seleccionar un servicio y fecha</Alert>
+            abrirDialogo("Error al subir la boda", "Debes de seleccionar un servicio y fecha.");
+
             setProcessing(false);
             return;
         }
@@ -255,27 +258,27 @@ export function Clientes({ history }) {
                         const resSubirFotos = await subirFotosBoda(file, fecha);
 
                         if (resSubirFotos) {
-                            alert(`
-                            ¡Se ha subido correctamente!\n
-                            Url: https://www.logarfotografos.es/acceso/${nuevoUser}\n
-                            Usuario: ${nuevoUser} Contraseña: ${nuevaPass}
-                        `);
+                            abrirDialogo("¡Se ha subido correctamente!",
+                                `Url: https://www.logarfotografos.es/acceso/${nuevoUser}\n\tUsuario: ${nuevoUser}\n\tContraseña: ${nuevaPass}`);
+
+                            setOpen(true);
+
                             setFile(undefined);
                             obtenerDatos();
                         } else {
-                            alert("Se ha producido un problema mientras se subían las imagenes.");
+                            abrirDialogo("Error al subir la boda", "Se ha producido un problema mientras se subían las imagenes.");
                             error = true;
                         }
                     })();
 
 
                 } else {
-                    alert("Debes subir las fotos en un .zip.");
+                    abrirDialogo("Error al subir la boda", "Debes subir las fotos en un .zip.");
                     error = true;
                 }
 
             } else {
-                alert("Se ha producido un problema. Vuélvalo a intentar más tarde.");
+                abrirDialogo("Error al subir la boda", "Se ha producido un problema. Vuélvalo a intentar más tarde.");
                 error = true;
             }
 
@@ -287,30 +290,26 @@ export function Clientes({ history }) {
         })();
     };
 
+    const abrirDialogo = (titulo, mensaje) => {
+        console.log("Titulo = ", titulo);
+        setDialogoTitulo(titulo);
+        setDialogoMensaje(mensaje);
+        setOpen(true);
+    }
+
     return (
         <div className="content-clientes-admin">
             <Inicio />
             <div className="contenido">
                 <div className="lista">
-                    <Lista id="lista" history={history} data={data} />
+                    <Lista id="lista" history={history} data={data} setData={setData} setDialogoTitulo={setDialogoTitulo} setDialogoMensaje={setDialogoMensaje} setOpen={setOpen} />
                 </div>
                 <div className="agregar-contenido">
                     <div className="input-cuadro">
                         <div className="cuadro sombra">
                             <div className="input">
                                 <div className="url sombra">
-                                    {
-                                        processing 
-                                            ? <DragAndDrop onFileSelected={f => setFile(f)} />
-                                            : <Loader />
-                                    }
-                                    
-                                    {/*<div className="arrastrar">
-                                    </div>
-                                    <div className="examinar">
-                                        <h1>EXAMINAR EN EL EQUIPO</h1>
-                                    </div>*/
-                                    }
+                                    <DragAndDrop onFileSelected={f => setFile(f)} />
                                 </div>
                                 <div className="valor">
                                     <div className="mod">
@@ -342,13 +341,28 @@ export function Clientes({ history }) {
                                         </FormControl>
                                     </div>
                                     <div className="boton">
+                                        {
+                                            processing
+                                                ? <Loader />
+                                                : null
+                                        }
                                         <button
-                                            className="enviar"
+
+                                            className={processing ? "desactivado" : "enviar"}
                                             onClick={() => subirFotos()}
                                             disabled={processing}
                                         >
                                             SUBIR
                                         </button>
+                                        <AlertDialog
+                                            titulo={dialogoTitulo}
+                                            mensaje={dialogoMensaje}
+                                            open={open}
+                                            setOpen={setOpen}
+                                        />
+
+
+
                                     </div>
                                 </div>
                             </div>

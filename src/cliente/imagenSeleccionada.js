@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { seleccionarFotoCliente } from "./conexion";
 import Checkmark from "./checkmark";
+import NombreImagen from "./nombreImagen";
 
 
 const imgStyle = {
@@ -71,6 +72,7 @@ const SelectedImage = ({
             className={!isSelected ? "not-selected" : ""}
         >
             <Checkmark selected={isSelected} />
+            <NombreImagen nombre={photo.alt} />
             <img
                 alt={photo.alt}
                 style={

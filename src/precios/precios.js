@@ -54,8 +54,8 @@ function Precios({history}) {
                             <div className="fondo_giro1"></div>
                             <div className="fondo_giro2"></div>
                             <div className="precios">
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.fotos')} {contenido.opcion1.precioFoto}</h2>
-                                <h2 className="subtitulo opcion_1_precio">{t('precios.video')} {contenido.opcion1.precioVideo}</h2>
+                                <h2 className="subtitulo opcion_1_precio">{t('precios.fotos')} {contenido.opcion1.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_1_precio">{t('precios.video')} {contenido.opcion1.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>
@@ -89,8 +89,8 @@ function Precios({history}) {
                             <div className="fondo_giro2"></div>
                             <div className="precios">
 
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.fotos')} {contenido.opcion2.precioFoto}</h2>
-                                <h2 className="subtitulo opcion_2_precio">{t('precios.video')} {contenido.opcion2.precioVideo}</h2>
+                                <h2 className="subtitulo opcion_2_precio">{t('precios.fotos')} {contenido.opcion2.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_2_precio">{t('precios.video')} {contenido.opcion2.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>
@@ -125,8 +125,8 @@ function Precios({history}) {
                             <div className="fondo_giro1"></div>
                             <div className="fondo_giro2"></div>
                             <div className="precios">
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.fotos')} {contenido.opcion3.precioFoto}</h2>
-                                <h2 className="subtitulo opcion_3_precio">{t('precios.video')} {contenido.opcion3.precioVideo}</h2>
+                                <h2 className="subtitulo opcion_3_precio">{t('precios.fotos')} {contenido.opcion3.precioFoto}€</h2>
+                                <h2 className="subtitulo opcion_3_precio">{t('precios.video')} {contenido.opcion3.precioVideo}€</h2>
                             </div>
                         </div>
                     </div>

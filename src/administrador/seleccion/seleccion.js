@@ -11,6 +11,8 @@ import {
 import { subirFotosBoda } from "../clientes/conexion"
 import DragAndDrop from '../dragAndDrop';
 import SelectedImage from "../../cliente/imagenSeleccionada"
+import AlertDialog from '../../common/dialog';
+
 
 
 export function Seleccion_admin({ match, history }) {
@@ -34,13 +36,16 @@ export function Seleccion_admin({ match, history }) {
     async function cargarImagenes(seleccion) {
         const resDataImages = await obtenerDatosFotos(id_boda);
         const datos = await obtenerDatosBoda(id_boda);
-        const clonedImages = resDataImages.slice();
-        await Promise.all(clonedImages.map(
-            async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
-        ));
-        setImages(clonedImages.map(img => [img, seleccion]));
-        console.log("images:", clonedImages);
-        setSelectAll(seleccion);
+        if (resDataImages) {
+            const clonedImages = resDataImages.slice();
+            await Promise.all(clonedImages.map(
+                async img => img.src = await obtenerFotoPrivada(img.alt, datos.fecha)
+            ));
+            setImages(clonedImages.map(img => [img, seleccion]));
+            console.log("images:", clonedImages);
+            setSelectAll(seleccion);
+        }
+
     }
     // Obtenemos las fotos y los datos del servidor
     useEffect(() => {
@@ -64,16 +69,16 @@ export function Seleccion_admin({ match, history }) {
                 const resSubirFotos = await subirFotosBoda(file, data.fecha);
 
                 if (resSubirFotos) {
-                    alert(`¡Se ha subido correctamente!`);
+                    AlertDialog(`¡Se ha subido correctamente!`, "El usuario verá las nuevas fotos subidas.");
                     setFile(undefined);
                     await cargarImagenes(false);
                 } else {
-                    alert("Se ha producido un problema mientras se subían las imagenes.");
+                    AlertDialog("No se han podido subir las imagenes", "Se ha producido un problema mientras se subían las imagenes.");
                 }
             })();
 
         } else {
-            alert("Debes subir las fotos en un .zip.");
+            AlertDialog("Error en el tipo de archivo", "Debes subir las fotos en un .zip.");
         }
     }
 
@@ -130,6 +135,17 @@ export function Seleccion_admin({ match, history }) {
 
 
     /* --------------- */
+    // Para los dialogos
+    const [open, setOpen] = React.useState(false);
+    const [dialogoTitulo, setDialogoTitulo] = React.useState("Titulo");
+    const [dialogoMensaje, setDialogoMensaje] = React.useState("Mensaje");
+
+    const abrirDialogo = (titulo, mensaje) => {
+        console.log("Titulo = ", titulo);
+        setDialogoTitulo(titulo);
+        setDialogoMensaje(mensaje);
+        setOpen(true);
+    }
 
     return (
         <div className="content-seleccion">
@@ -166,6 +182,12 @@ export function Seleccion_admin({ match, history }) {
                     </div>
                 </div>
             </div>
+            <AlertDialog
+                titulo={dialogoTitulo}
+                mensaje={dialogoMensaje}
+                open={open}
+                setOpen={setOpen}
+            />
         </div>
     );
 }

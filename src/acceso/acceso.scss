@@ -13,6 +13,11 @@ $triangulo_size: 132px;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    .error {
+        color: rgb(187, 52, 52);
+        margin-bottom: 20px;
+        margin-top: -10px;
+    }
     
     
     @media screen and ($movil), screen and ($mTablet) {
@@ -30,6 +35,8 @@ $triangulo_size: 132px;
 
             $width_logo: 266px;
             $heigth_logo: 120px;
+
+            
 
             .logo {
                 background-image: url("./img/logo.svg");
@@ -85,6 +92,8 @@ $triangulo_size: 132px;
                     font-size: 15px;
                 }
             }
+
+            
 
             
         }

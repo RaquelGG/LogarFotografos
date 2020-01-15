@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./acceso.scss";
 import {Link} from 'react-router-dom';
 import {comprobarUsuario, comprobarAdmin} from '../common/conexion';
@@ -8,6 +8,8 @@ function Acceso({match, history, setUserType}) {
     const usuario = match.params.usuario;
     let user = React.createRef();
     let pass = React.createRef();
+
+    const [error, setError] = useState(false);
     
     setUserType('acceso');
     // Comprueba si el usuario existe
@@ -31,9 +33,8 @@ function Acceso({match, history, setUserType}) {
             
             history.push("/seleccion");// Si es un cliente
             setUserType('publico');
-
-            let logo = document.querySelector('.content-menu');
-            logo.style.display = "flex"; 
+        } else {
+            setError(true);
         }
     }
 
@@ -48,6 +49,12 @@ function Acceso({match, history, setUserType}) {
                 <div className="logo"></div>
                 <input type="text" ref={user} className="inp" placeholder="USUARIO" defaultValue={usuario}/>
                 <input type="password" ref={pass} className="inp" placeholder="CONTRASEÑA"/>
+                {
+                    error 
+                        ? <p className="error">Usuario o contraseña incorrecta</p>
+                        : null
+                }
+                
                 <button className="button" onClick={() => acceder()}>Acceder</button>
                 <Link to="/" className="volver" onClick={() => updateMenu()}>
                     <h4 className="volver">Volver a la página principal</h4>

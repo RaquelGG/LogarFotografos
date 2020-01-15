@@ -93,7 +93,7 @@ function Menu ({userType}) {
         ReactDOM.render(log, document.getElementById('logoo'));
 
         x = document.querySelector('.terminos-movil');
-        x.style.display = "flex";
+        if (x) x.style.display = "flex";
     }
 
     /*
@@ -118,10 +118,6 @@ function Menu ({userType}) {
         return tamano <= 728;
     }
 
-    function isSeleccion() {
-        return  (window.innerWidth >= 728) && (window.location.href.includes('seleccion'));
-    }
-
     function cambiarIdioma() {
         if(i18n.language === 'es') {
            i18n.changeLanguage('en');
@@ -139,10 +135,11 @@ function Menu ({userType}) {
                 </div>
                 <div className="rutas">
                     <div className="sombra"></div>
-                    <ul className={isSeleccion() ? "nav-links seleccion" : "nav-links" }>
+                    <ul className={"nav-links" }>
                         <li className="logo-movil">
                             <Logo />
                         </li>
+                        
                         <li className="inicio" onClick={() => detectarMovil('inicio')} >
                             <Link to={isAdmin() ? "/admin/inicio" :"/"}>{t('menu.inicio')}</Link>
                         </li>
@@ -155,9 +152,13 @@ function Menu ({userType}) {
                         <li className="contacto" onClick={() => detectarMovil('contacto')}>
                             <Link to={isAdmin() ? "/admin/contacto" : "/contacto"}>{t('menu.contacto')}</Link>
                         </li>
-                        <li className="terminos-movil">
-                            <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3>
-                        </li>
+                        {
+                            isAdmin()
+                                ? null
+                                : <><li className="terminos-movil">
+                                <h3><a>{t('menu.terminos')}</a><div className="linea"><h3>\</h3></div><a>{t('menu.politica')}</a></h3></li></>
+                        }
+                        
                         <li className="btn_idioma" onClick={() => cambiarIdioma()}>
                             <h3 onClick={() => (lang === 'es') ? setLang('en') : setLang('es')}>
                                 {lang}
@@ -183,6 +184,12 @@ function Menu ({userType}) {
                         <div className="line2"></div>
                         <div className="line3"></div>
                     </div>
+                    {
+                        isAdmin()
+                            ? null
+                            : <div className="degradadoBot"></div>
+                    }
+                    
                 </div>
             </div>
         </nav>

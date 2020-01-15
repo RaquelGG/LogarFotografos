@@ -12,22 +12,44 @@ import ClearIcon from '@material-ui/icons/Clear';
 import SaveIcon from '@material-ui/icons/Save';
 import ImagenFondo from "../../common/imagen_fondo/imagen_fondo"
 import SelectAllIcon from '@material-ui/icons/SelectAll';
+import { FormLabel } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
+import AlertDialog from '../../common/dialog';
+
+
 import "./galeria.scss"
 import { Button } from '@material-ui/core';
 import Loader from '../../common/loader/loader';
-import { 
+import {
     borrarFotoPublica,
-    //editarEtiqueta,
- } from "./conexion";
- import {obtenerGaleria} from "../../common/conexion";
- import AdminEdicion from "../../common/admin/admin_edicion";
- import SelectedImage from "../../cliente/imagenSeleccionada"
+    subirFotoPublica,
+} from "./conexion";
+import { obtenerGaleria } from "../../common/conexion";
+import AdminEdicion from "../../common/admin/admin_edicion";
+import SelectedImage from "../../cliente/imagenSeleccionada"
 
 
-function Admin_galeria ({history}) {
+function Admin_galeria({ history }) {
     if (!window.session.user || !window.session.pass || !window.session.admin) {
         history.push("/acceso");
     }
+
+    /* ---- Configuración Radio button --- */
+
+    const [servicio, setServicio] = React.useState(); // -- radio button
+    const [filtrar, setFiltrar] = React.useState({
+        boda: 1,
+        preboda: 1,
+        postboda: 1
+    }); // -- radio button
+    const [valServicio, setValServicio] = React.useState("");
+
+
+
+    const handleChangeService = event => {
+        setServicio(event.target.servicio);
+    };
+
     const useStyles = makeStyles({
         textField: {
             width: '65%',
@@ -36,13 +58,13 @@ function Admin_galeria ({history}) {
             alignContent: 'center',
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: '#ed2b8d',
+                    borderColor: '#ed2b8d',
                 },
                 '&:hover fieldset': {
-                  borderColor: '#ed2b8d',
+                    borderColor: '#ed2b8d',
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: '#ed2b8d',
+                    borderColor: '#ed2b8d',
                 },
             },
         },
@@ -71,18 +93,59 @@ function Admin_galeria ({history}) {
 
     const classes = useStyles();
 
-    /* ---- Control de Switches ---- */
-    const [state, setState] = React.useState({
-        boda: false,
-        preboda: false,
-        postboda: false
-      });
+    // Para los dialogos
+    const [open, setOpen] = React.useState(false);
+    const [dialogoTitulo, setDialogoTitulo] = React.useState("Titulo");
+    const [dialogoMensaje, setDialogoMensaje] = React.useState("Mensaje");
+    // SUBIR FOTOS--------------------------------------------------------------
 
-    /* --- Manejor de eventos ------- */
+    const subirFotos = () => {
+        if (processing) return;
+        setProcessing(true);
+        const fotos = document.getElementById("urlFotos").value.split(".jpg");
 
-    const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
+        if (!fotos || !(filtrar)) {
+            abrirDialogo("No se han especificado URLs", "Debes especificar las urls y el evento, puedes pasar a la vez tantas como quieras.");
+            setProcessing(false);
+            return;
+        }
+
+        if (!valServicio) {
+            abrirDialogo("Error al subir las imagenes", "Debes de seleccionar el tipo de servicio.");
+            setProcessing(false);
+            return;
+        }
+
+        (async () => {
+
+            fotos.forEach(foto => {
+                if (foto.length > 5) {
+                    const resultado = subirFotoPublica(foto.trim() + ".jpg", valServicio);
+                    if (!resultado) {
+                        abrirDialogo("Error al subir las imagenes", "Se ha producido un fallo mientras se subían las URLs de las imagenes.");
+                        setProcessing(false);
+                        return;
+                    }
+                }
+
+            });
+
+        })();
+        setValServicio(null);
+        document.getElementById("urlFotos").value = "";
+        setServicio(null);
+        abrirDialogo("Se han guardado las URLs correctamente", "Ahora la galería estará más bonita! :)");
+        cargarImagenes();
+        setProcessing(false);
     };
+
+    const abrirDialogo = (titulo, mensaje) => {
+        console.log("Titulo = ", titulo);
+        setDialogoTitulo(titulo);
+        setDialogoMensaje(mensaje);
+        setOpen(true);
+    }
+
 
     // GALERIA --------------------------------------------------------------------
     const [images, setImages] = useState([]);
@@ -111,17 +174,17 @@ function Admin_galeria ({history}) {
     const borrarFotos = () => {
         if (processing) return;
         setProcessing(true);
-        
+
         // Borra las que están seleccionadas.
-            images.forEach(img => {
-                console.log("is selected:", img[1]);
-                if (img[1]) {
-                    (async () => {
-                        await borrarFotoPublica(img[0].key);
-                        console.log("img key:", img[0].key);
-                    })();
-                }
-            });            
+        images.forEach(img => {
+            console.log("is selected:", img[1]);
+            if (img[1]) {
+                (async () => {
+                    await borrarFotoPublica(img[0].key);
+                    console.log("img key:", img[0].key);
+                })();
+            }
+        });
         cargarImagenes();
         setProcessing(false);
     };
@@ -139,8 +202,8 @@ function Admin_galeria ({history}) {
             <SelectedImage
                 selected={
                     selectAll === -1
-                    ? photo.isSelected
-                    : selectAll === 1
+                        ? photo.isSelected
+                        : selectAll === 1
                 }
                 key={key}
                 margin={"2px"}
@@ -156,7 +219,7 @@ function Admin_galeria ({history}) {
 
     /* ------------------------------ */
 
-    return(
+    return (
         <div className="content-galeria-admin">
             <ImagenFondo id_foto={4} />
             <AdminEdicion id_foto={4} history={history} lugar={"precios"} />
@@ -164,17 +227,24 @@ function Admin_galeria ({history}) {
                 images
                     ? <Galeria
                         className="galeria"
-                        photos = {images.map(img => img[0])}
-                        renderImage = {imageRenderer}
+                        photos={images.map(img => img[0])
+                            .filter(img => 
+                                (img.alt.localeCompare('preboda') === 0  && filtrar.preboda)||
+                                (img.alt.localeCompare('boda') === 0 && filtrar.boda)|| 
+                                
+                                (img.alt.localeCompare('postboda') === 0 && filtrar.postboda))
+                        }
+                        
+                        renderImage={imageRenderer}
                     />
                     : <Loader className="galeria" />
             }
-            
+
             <div className="content-cuadro">
                 <div className="titulo">
-                    <h3 style={{width: "40%", paddingLeft: "59px"}}>Subir imágenes</h3>
-                    <h3 style={{width: "20%", marginLeft: "-59px"}}>filtrar imágenes</h3>
-                    <h3 style={{width: "20%"}}>cambiar etiqueta</h3>
+                    <h3 style={{ width: "40%", paddingLeft: "59px" }}>Subir imágenes</h3>
+                    <h3 style={{ width: "20%", marginLeft: "-59px" }}>filtrar imágenes</h3>
+                    {/*<h3 style={{ width: "20%" }}>cambiar etiqueta</h3>*/}
                 </div>
 
                 <div className="contenido">
@@ -183,79 +253,106 @@ function Admin_galeria ({history}) {
                         <TextField label="Enlaces de imágenes a subir"
                             multiline
                             rows="4"
+                            id="urlFotos"
                             className={classes.textField}
                             margin="normal"
                             variant="outlined"
                         />
+                        <FormControl component="fieldset" className="etiqueta">
+                                <FormLabel component="legend"> Seleccione Evento</FormLabel>
+                                <RadioGroup onChange={handleChangeService} value={servicio} disabled={processing}>
+                                    <FormControlLabel onClick={() => setValServicio('boda')} value="boda" control={<Radio />} label="Boda" />
+                                    <FormControlLabel onClick={() => setValServicio('preboda')} value="preboda" control={<Radio />} label="Preboda" />
+                                    <FormControlLabel onClick={() => setValServicio('postboda')} value="postboda" control={<Radio />} label="Postboda" />
+                                </RadioGroup>
+                            </FormControl>
                         <div className="guardar">
-                        <Button 
-                                variant="contained" 
+                            
+                            <Button
+                                variant="contained"
                                 color="primary"
                                 className={classes.guardar}
+                                onClick={() => subirFotos()}
                                 startIcon={<SaveIcon />}
-                                >
-                                    GUARDAR
+                            >
+                                SUBIR
                                 </Button>
                         </div>
                     </div>
-
-                    <div className="filtro-imagen">
-                        <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab"}}></div>
+                    
+                        
+                            <div className="filtro-imagen">
+                        <div style={{ height: "75%", width: "1px", backgroundColor: "#ff80ab" }}></div>
                         <div className="icono">
-                            <SearchIcon className={classes.largeIcon}/>
+                            <SearchIcon className={classes.largeIcon} />
                         </div>
                         <div className="tipos">
                             <FormGroup>
                                 <FormControlLabel
-                                    control={<Switch defaultChecked="1" onChange={handleChange('boda')} value="boda" />}
+                                    control={<Switch id="filtrarBoda"  onClick={() =>cargarImagenes()} defaultChecked="1" onChange={() => setFiltrar({boda: !filtrar.boda, preboda: filtrar.preboda, postboda: filtrar.postboda})} value="boda" />}
                                     label="BODA"
                                 />
                                 <FormControlLabel
-                                    control={<Switch defaultChecked="1" onChange={handleChange('preboda')} value="preboda" />}
+                                    control={<Switch id="filtrarPreboda"  onClick={() =>cargarImagenes()} defaultChecked="1" onChange={() => setFiltrar({boda: filtrar.boda, preboda: !filtrar.preboda, postboda: filtrar.postboda})} value="preboda" />}
                                     label="PREBODA"
                                 />
                                 <FormControlLabel
                                     control={
-                                        <Switch defaultChecked="1" onChange={handleChange('postboda')} value="postboda" />}
+                                        <Switch id="filtrarPostoda"  onClick={() =>cargarImagenes()} defaultChecked="1" onChange={() => setFiltrar({boda: filtrar.boda, preboda: filtrar.preboda, postboda: !filtrar.postboda})} value="postboda" />}
                                     label="POSTBODA"
                                 />
                             </FormGroup>
                         </div>
-                        <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab"}}></div>
+                        <div style={{ height: "75%", width: "1px", backgroundColor: "#ff80ab" }}></div>
                     </div>
-                    <div className="etiqueta">
+                        
+                    
+
+
+                    {
+                        /*
+                         <div className="etiqueta">
                         <RadioGroup onChange={handleChange}>
                             <FormControlLabel control={<Radio />} label="Boda" />
                             <FormControlLabel control={<Radio />} label="Preboda" />
                             <FormControlLabel control={<Radio />} label="Postboda" />
                         </RadioGroup>
-                    </div>                    
+                    </div>
+                         */
+                    }
+
                     <div className="line_galAdmin">
-                        <div style={{height: "75%", width: "1px", backgroundColor: "#ff80ab"}}></div>
+                        <div style={{ height: "75%", width: "1px", backgroundColor: "#ff80ab" }}></div>
                     </div>
                     <div className="botones">
                         <div className="seleccion">
-                            <Button 
-                                variant="contained" 
+                            <Button
+                                variant="contained"
                                 color="primary"
                                 className={classes.deseleccionar}
                                 onClick={() => setSelectAll(0)}
                                 startIcon={<ClearIcon />}
-                                >
-                                    DESELECCIONAR FOTOS
+                            >
+                                DESELECCIONAR FOTOS
                                 </Button>
-                            <Button 
-                                variant="contained" 
+                            <Button
+                                variant="contained"
                                 color="primary"
                                 className={classes.borrar}
                                 startIcon={<SelectAllIcon />}
                                 onClick={() => borrarFotos()}
-                                >
-                                    BORRAR SELECCIONADAS
+                            >
+                                BORRAR SELECCIONADAS
                                 </Button>
                         </div>
                     </div>
                 </div>
+                <AlertDialog
+                    titulo={dialogoTitulo}
+                    mensaje={dialogoMensaje}
+                    open={open}
+                    setOpen={setOpen}
+                />
             </div>
         </div>
     );
