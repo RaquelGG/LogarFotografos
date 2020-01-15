@@ -168,7 +168,7 @@ function Menu ({userType, history}) {
                             isAdmin() ?
 
                             <li className="crear_Seleccion" onClick={() => detectarMovil('crear_Seleccion')}>
-                                <Link to="/admin/">{t('menu.seleccion')}</Link>
+                                <Link to="/admin">{t('menu.seleccion')}</Link>
                             </li>
 
                             :

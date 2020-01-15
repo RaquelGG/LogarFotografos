@@ -111,10 +111,12 @@ export function Cliente({ history }) {
             console.log(resultado);
             if (resultado) {
                 abrirDialogo("Se ha enviado correctamente", "¡Ahora ya tenemos tu selección!");
-                history.push("/");
-                window.session = null;
+                setTimeout(() => {
+                    history.push("/");
+                    window.session = null;
+                }, 2000);
+               
                 //setData(null);
-
             } else {
                 abrirDialogo("Oh, oh", "Se ha producido un problema, vuelve a finalizar tu selección más tarde.");
                 setProcessing(false);
