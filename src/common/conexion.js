@@ -90,7 +90,7 @@ export async function obtenerTextoVariable() {
 // Enviar mensaje
 export async function enviarMensaje(nombre, email, mensaje) {
     try {
-        const response = await fetch(`${ruta}/publico/enviarMensaje.php`, {
+        await fetch(`${ruta}/publico/enviarMensaje.php`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -98,7 +98,7 @@ export async function enviarMensaje(nombre, email, mensaje) {
             },
             body: JSON.stringify({
                 nombre: nombre, 
-                email: email,
+                correo: email,
                 mensaje: mensaje
             })
         });

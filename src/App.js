@@ -22,6 +22,7 @@ const NotFound = Inicio;
 
 function App() {
     const [userType, setUserType] = useState('publico');
+
     useEffect(() => {
         async function fetchContenidoVariable() {
 

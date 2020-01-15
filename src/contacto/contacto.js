@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ImagenFondo from "../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
@@ -6,14 +6,12 @@ import telefono from "./iconos/telefono.svg"
 import whatsapp from "./iconos/whatsapp.svg"
 import facebook from "./iconos/facebook.svg"
 import bodasnet from "./iconos/bodasnet.svg"
-import f_black from "../common/iconos_black/facebook-black.svg";
-import e_black from "../common/iconos_black/email-black.svg";
-import w_black from "../common/iconos_black/whatsapp-black.svg"
 import "../common/admin/contacto/contacto.scss";
 import "../common/estilos_comunes.scss";
 
 // Traducción
 import { useTranslation} from 'react-i18next';
+import { enviarMensaje } from '../common/conexion';
 
 function Contacto() {
 
@@ -46,22 +44,53 @@ function Contacto() {
     //const [agitar, setAgitar] = useState(false);
     function agitar() {
         const div = document.getElementById("enviarCorreo");
+        executeScroll();
         div.style.animationName = "agitar";
         setTimeout(() => {
             div.style.animationName = "";
-        }, 2000);
+        }, 1000);
     }
 
-    function generarToken() {
-       // CryptoJS.MD5("Message");
+    const [error, setError] = useState(false);
+    const [enviado, setEnviado] = useState(false);
+
+    async function enviar() {
+        const nombre = document.getElementsByName("nombre")[0].value;
+        const email = document.getElementsByName("email")[0].value;
+        const mensaje = document.getElementsByName("mensaje")[0].value;
+        setEnviado(false);
+
+        if (!nombre || !email || !mensaje) {
+            agitar();
+            setError(true);
+            return;
+        }
+
+        const resultado = await enviarMensaje(nombre, email, mensaje);
+        if (resultado) {
+            document.getElementsByName("nombre")[0].value = null;
+            document.getElementsByName("email")[0].value = null;
+            document.getElementsByName("mensaje")[0].value = null;
+            setError(false);
+            setEnviado(true);
+            return;
+        }
+        agitar();
+        setError(true);
+
     }
+
+    // Scroll
+    const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+    const enviarCorreo = useRef(null);
+    const executeScroll = () => scrollToRef(enviarCorreo);
 
     return (
         <div className = "content-contacto">
             <ImagenFondo id_foto={3} />
 
-            <div className = "info-contacto">
-                <div className = "cuadro-giro-superior sombra"> </div>
+            <div className ="info-contacto">
+                <div className = "cuadro-giro-superior sombra fondo"> </div>
                 <div className = "info-contacto-cuadro" >
 
                     <div className = "info-contacto-cuadro-informacion">
@@ -121,28 +150,37 @@ function Contacto() {
                         </div>
                         <div className="img_dueno" />
                     </div>
-                    <div className="fake"></div>
-                    <div className = "cuadro-giro-2 sombra"></div>
-                    <div className = "cuadro-giro-3 sombra"></div>
+                    <div className="fake fondo"></div>
+                    <div className = "cuadro-giro-2 sombra fondo"></div>
+                    <div className = "cuadro-giro-3 sombra fondo"></div>
                 </div>
 
-                <div id="enviarCorreo" className = "info-contacto-formulario sombra">
+                <div id="enviarCorreo" ref={enviarCorreo} className = "info-contacto-formulario sombra">
                     <div className="cuadro-giro-2-3 sombra"></div>
                     <div className = "info-contacto-formulario-contenido">
                         <h1>{t('contacto.formulario.titulo')}</h1>
-                        <form>
+                        <div className="formEnviar">
                             <input type="text" placeholder={t('contacto.formulario.nombre')} name="nombre" className = "nombre"  />
                             <input type="email" placeholder={t('contacto.formulario.email')} name="email" className="email"/>
                             <textarea rows="5" cols="50" placeholder={t('contacto.formulario.mensaje')} name="mensaje" className="mensaje" />
-                            <input type="hidden" name="token" value="d4f3e48f-7ae3-4398-ba24-0dca81383e6c"/>
-                            <input type="submit" className="enviar puntero" value={t('contacto.formulario.enviar')}/>
-                        </form>
+                            <input type="hidden" name="csrf" value="d4f3e48f-7ae3-4398-ba24-0dca81383e6c"/>
+                            {
+                                enviado
+                                    ? <p className="color_bien">Tu mensaje se ha enviado correctamente</p>
+                                    : null
+
+                                    
+                            }
+                            {
+                                error
+                                    ? <p className="color_error">No se ha enviado, comprueba que todos los datos están correctamente.</p>
+                                    : null
+
+                            }
+                            <input type="submit" onClick={() => enviar()} className="enviar puntero" value={t('contacto.formulario.enviar')}/>
+                        </div>
                     </div>
-                    <div className="redes">
-                            <img src={f_black} alt="Enlace a página de facebook" />
-                            <img src={e_black} alt="Enlace a email"/>
-                            <img src={w_black} alt="Enlace a número de whatsapp" />
-                    </div>
+                    
                 </div>
             </div>
         </div>

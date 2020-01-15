@@ -96,10 +96,8 @@ export function Lista({ history, data, setData, setDialogoTitulo, setDialogoMens
 
     return (
         <SimpleBar className="content-lista" style={{ backgroundcolor: '#2C2C2C' }}>
-            {/* Check to see if any items are found*/}
             {data ? (
                 <div className="content-item">
-                    {/* Render the list of items */}
                     {data.map((item) => {
                         return (
                             <div className="cuadro">
