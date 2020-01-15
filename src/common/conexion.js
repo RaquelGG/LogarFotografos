@@ -86,3 +86,25 @@ export async function obtenerTextoVariable() {
         console.error("error obteniendo las traducciones:", err);
     }
 }
+
+// Enviar mensaje
+export async function enviarMensaje(nombre, email, mensaje) {
+    try {
+        const response = await fetch(`${ruta}/publico/enviarMensaje.php`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: nombre, 
+                email: email,
+                mensaje: mensaje
+            })
+        });
+        return true;
+    } catch(err) {
+        console.error("Error al enviar mensaje:", err);
+    }
+    return false;
+}

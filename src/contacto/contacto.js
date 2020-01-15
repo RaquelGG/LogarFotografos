@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImagenFondo from "../common/imagen_fondo/imagen_fondo"
 import ubicacion from "./iconos/ubicacion.svg"
 import correo from "./iconos/email.svg"
@@ -10,6 +10,7 @@ import f_black from "../common/iconos_black/facebook-black.svg";
 import e_black from "../common/iconos_black/email-black.svg";
 import w_black from "../common/iconos_black/whatsapp-black.svg"
 import "../common/admin/contacto/contacto.scss";
+import "../common/estilos_comunes.scss";
 
 // Traducción
 import { useTranslation} from 'react-i18next';
@@ -40,6 +41,19 @@ function Contacto() {
         } else {
             window.open(link_bodasNet);
         }
+    }
+
+    //const [agitar, setAgitar] = useState(false);
+    function agitar() {
+        const div = document.getElementById("enviarCorreo");
+        div.style.animationName = "agitar";
+        setTimeout(() => {
+            div.style.animationName = "";
+        }, 2000);
+    }
+
+    function generarToken() {
+       // CryptoJS.MD5("Message");
     }
 
     return (
@@ -76,7 +90,11 @@ function Contacto() {
                                     <tr>
                                         <td><img alt="Enlace a correo electronico" src = {correo} className = "icono"/></td>
                                         <td className = "titulo">{t('contacto.tabla.title_correo')}</td>
-                                        <td className = "datos"><a href = {"mailto: " + link_email}>{link_email}</a></td>
+                                        <td className = "datos">
+                                            <a onClick={() => agitar()}>
+                                                {link_email}
+                                            </a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><img alt="Número de telefono" src = {telefono} className = "icono"/></td>
@@ -108,7 +126,7 @@ function Contacto() {
                     <div className = "cuadro-giro-3 sombra"></div>
                 </div>
 
-                <div className = "info-contacto-formulario sombra">
+                <div id="enviarCorreo" className = "info-contacto-formulario sombra">
                     <div className="cuadro-giro-2-3 sombra"></div>
                     <div className = "info-contacto-formulario-contenido">
                         <h1>{t('contacto.formulario.titulo')}</h1>
@@ -116,7 +134,8 @@ function Contacto() {
                             <input type="text" placeholder={t('contacto.formulario.nombre')} name="nombre" className = "nombre"  />
                             <input type="email" placeholder={t('contacto.formulario.email')} name="email" className="email"/>
                             <textarea rows="5" cols="50" placeholder={t('contacto.formulario.mensaje')} name="mensaje" className="mensaje" />
-                            <input type="submit" className="enviar" value={t('contacto.formulario.enviar')}/>
+                            <input type="hidden" name="token" value="d4f3e48f-7ae3-4398-ba24-0dca81383e6c"/>
+                            <input type="submit" className="enviar puntero" value={t('contacto.formulario.enviar')}/>
                         </form>
                     </div>
                     <div className="redes">

@@ -32,3 +32,14 @@ body {
 .puntero {
     cursor: pointer;
 }
+  
+  @keyframes agitar {
+    0% {right: 0}
+    1% {right: -3px}
+    2% {right: 5px}
+    3% {right: -8px}
+    4% {right: 8px}
+    5% {right: -5px}
+    6% {right: 3px}
+    7% {right: 0}
+  }

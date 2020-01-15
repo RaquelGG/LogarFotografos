@@ -280,6 +280,18 @@
                 height: 90%;
                 width: 43%;
                 z-index: 16;
+                animation-duration: 5s;
+                animation-timing-function: ease-in;
+                //animation-name: agitar;
+                
+                //animation-iteration-count: infinite;
+                
+
+                .agitarAnim {
+                    animation-name: agitar;
+                    
+                }
+                
 
                 .cuadro-giro-2-3{
                     display: none;
