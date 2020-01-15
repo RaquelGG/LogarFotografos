@@ -21,6 +21,7 @@ $triangulo_size: 132px;
     
     
     @media screen and ($movil), screen and ($mTablet) {
+        overflow: hidden;
 
         .acceso {
             display: inline-flex;
@@ -81,6 +82,7 @@ $triangulo_size: 132px;
                 margin-bottom: 40px;
                 text-align: center;
                 font-size: 16px;
+                padding: 10px;
             }
 
             .volver {

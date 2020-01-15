@@ -42,7 +42,7 @@ export function Cliente({ history }) {
     // Para los dialogos
     const [open, setOpen] = React.useState(true);
     const [dialogoTitulo, setDialogoTitulo] = React.useState("Autoguardado");
-    const [dialogoMensaje, setDialogoMensaje] = React.useState("Tu selección se guardará en todo momento, por eso, no necesitamos botón de guardar. ¡Tómate tu tiempo para elegir las imágenes perfectas!");
+    const [dialogoMensaje, setDialogoMensaje] = React.useState("Tu selección se guardará en todo momento, por eso, no necesitamos botón de guardar. ¡Tómate tu tiempo para elegir las imágenes perfectas! cuando ya hayas terminado de elegir definitivamente, pulsa el botón de [GUARDAR TODO Y ENVIAR], pero cuidado, una vez lo pulses no podrás volver a entrar.");
 
     const abrirDialogo = (titulo, mensaje) => {
         console.log("Titulo = ", titulo);
@@ -115,7 +115,7 @@ export function Cliente({ history }) {
                     history.push("/");
                     window.session = null;
                 }, 2000);
-               
+
                 //setData(null);
             } else {
                 abrirDialogo("Oh, oh", "Se ha producido un problema, vuelve a finalizar tu selección más tarde.");
@@ -159,85 +159,88 @@ export function Cliente({ history }) {
     /* ------------------------- */
 
     return (
-        
-        <div className="content">
-            <ImagenFondo id_foto={5}/>
-            <div className="fake-burger" onClick={abrir_dialogo}>
-                <div className="line1"></div>
-                <div className="line2"></div>
-                <div className="line3"></div>
-            </div>
-            <div className="burger-dialogo" onClick={abrir_dialogo}>
-                <img src={dialogo} alt="Abrir dialogo" />
-            </div>
-            <div className="galeria_seleccion">
-                {
-                    images
-                        ? <Gallery
-                            className="galeria"
-                            photos={images}
-                            // seleccionar
-                            renderImage={imageRenderer}
-                        />
-                        : <Loader className="galeria" />
-                }
-            </div>
-            <div className="dialogo">
-                <div className="logo-dialogo">
-                    <Logo />
+        <>
+            <ImagenFondo id_foto={5} />
+            <div className="content">
+                <div className="fake-burger" onClick={abrir_dialogo}>
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
                 </div>
-                <div className="content">
-                    <div className="input">
-                        <div className="inner">
-                            <h1>{t('seleccion.opcional')}</h1>
-                            <h3>{t('seleccion.explicacion')}</h3>
-                            <div className="formulario">
-                                <textarea
-                                    rows="5" cols="50"
-                                    placeholder={t('seleccion.mensaje')}
-                                    className="mensaje"
-                                    ref={descripcion}
-                                    defaultValue={(data && data.descripcion) || ''}
-                                    onChange={() => guardarDescripcion(descripcion)}
-                                />
-                                {/*<button
+                <div className="burger-dialogo" onClick={abrir_dialogo}>
+                    <img src={dialogo} alt="Abrir dialogo" />
+                </div>
+                <div className="galeria_seleccion">
+                    {
+                        images
+                            ? <Gallery
+                                className="galeria"
+                                photos={images}
+                                // seleccionar
+                                renderImage={imageRenderer}
+                            />
+                            : <Loader className="galeria" />
+                    }
+                </div>
+                <div className="dialogo">
+                    <div className="logo-dialogo">
+                        <Logo />
+                    </div>
+                    <div className="content">
+                        <div className="input">
+                            <div className="inner">
+                                <h1>{t('seleccion.opcional')}</h1>
+                                <h3>{t('seleccion.explicacion')}</h3>
+                                <div className="formulario">
+                                    <textarea
+                                        rows="5" cols="50"
+                                        placeholder={t('seleccion.mensaje')}
+                                        className="mensaje"
+                                        ref={descripcion}
+                                        defaultValue={(data && data.descripcion) || ''}
+                                        onChange={() => guardarDescripcion(descripcion)}
+                                    />
+                                    {/*<button
                                     onClick={() => guardarDescripcion(descripcion)}
                                     disabled={processing}
                                     style={{ marginBottom: "20px" }} 
                                     className="boton-enviar">
                                     {json.guardar}
                                 </button>*/}
-                                <button
-                                    onClick={() => finalizarSelec()}
-                                    className="boton-enviar">
-                                    {t('seleccion.enviar')}
-                                </button>
+                                    <button
+                                        onClick={() => finalizarSelec()}
+                                        className="boton-enviar">
+                                        {t('seleccion.enviar')}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="botones">
-                        <button
-                            onClick={() => seleccionarTodo(true)}
-                            disabled={processing}
-                        >
-                            {t('seleccion.selecTodo')}
-                        </button>
-                        <button
-                            onClick={() => seleccionarTodo(false)}
-                            disabled={processing}
-                        >
-                            {t('seleccion.deselecTodo')}
-                        </button>
+                        <div className="botones">
+                            <button
+                                onClick={() => seleccionarTodo(true)}
+                                disabled={processing}
+                            >
+                                {t('seleccion.selecTodo')}
+                            </button>
+                            <button
+                                onClick={() => seleccionarTodo(false)}
+                                disabled={processing}
+                            >
+                                {t('seleccion.deselecTodo')}
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <AlertDialog
+                    titulo={dialogoTitulo}
+                    mensaje={dialogoMensaje}
+                    open={open}
+                    setOpen={setOpen}
+                />
             </div>
-            <AlertDialog
-                titulo={dialogoTitulo}
-                mensaje={dialogoMensaje}
-                open={open}
-                setOpen={setOpen}
-            />
-        </div>
+        </>
+
+
     );
 }
 
